@@ -28,8 +28,10 @@ html,body{width:100%;height:100%;overflow:hidden;background:#04121f;
   background:linear-gradient(135deg,#0a3a5a,var(--deep));border:2px solid var(--cy);position:relative}
 .avf.act{border-color:var(--gold);box-shadow:0 0 9px rgba(255,204,0,.7)}
 .avf canvas{width:100%;height:100%;image-rendering:pixelated;display:block}
-.avf.me::after{content:"🎒";position:absolute;right:-4px;bottom:-4px;font-size:11px;
-  background:var(--org);border:1px solid #000;border-radius:3px;padding:0 1px;line-height:1.2}
+.avf.me::after{content:"";position:absolute;right:-4px;bottom:-4px;width:14px;height:14px;
+  background:var(--org) center/9px 9px no-repeat
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%232a1400" stroke-width="3" stroke-linejoin="round"><path d="M5 8h14v12H5z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>');
+  border:1px solid #000;border-radius:3px}
 .pn{font-family:Orbitron;font-size:8px;font-weight:900;text-shadow:1px 1px 0 #000;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:88px}
 .ps.r .pn{text-align:right}
@@ -61,7 +63,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#04121f;
   font-family:Orbitron;font-size:8.5px;padding:3px 9px;border-radius:3px;pointer-events:none;
   background:rgba(2,10,20,.72);color:var(--ice);opacity:0;transition:.18s;white-space:nowrap}
 #gmode.on{opacity:1}
-#hint{position:absolute;left:50%;bottom:4px;transform:translateX(-50%);font-size:9px;
+#hint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);font-size:9px;
   color:rgba(107,219,255,.8);background:rgba(2,10,20,.6);padding:3px 8px;border-radius:3px;
   pointer-events:none;z-index:5;white-space:nowrap;transition:.5s}
 
@@ -253,9 +255,10 @@ const clamp=(v,a,b)=>v<a?a:v>b?b:v, lerp=(a,b,t)=>a+(b-a)*t, rnd=(a,b)=>a+Math.r
 
 const TERR_W=1200, TERR_H=350, WORLD_W=1900, WORLD_H=900;
 const TSCALE=WORLD_W/TERR_W, GROUND_H=Math.round(TERR_H*TSCALE), GROUND_Y=WORLD_H-GROUND_H;
-const MIN_DIST=1150, GRAV=0.30, WIND_K=0.0135, SPD_K=0.265;
+const MIN_DIST=1150, GRAV=0.30, WIND_K=0.0030, SPD_K=0.265;
 const AD_CELL=74, AD_H=59, TH_CELL=83, TH_H=55, TH_N=8, NUM_W=23, NUM_H=34;
 const AV_SC=0.86;                                          // tỉ lệ avatar so với xe
+const THOR_Y=130;                                          // độ cao vệ tinh, dùng chung
 
 /* ---- tải ảnh ---- */
 const IMG={};
@@ -277,6 +280,13 @@ function avImg(key){
   if (IMG[key] !== undefined) return IMG[key];
   if (!avPending[key]){ avPending[key]=1; loadImg(key, AV_CDN+key+".png"); }
   return null;
+}
+/* đã thử tải và hỏng hẳn — khác với “đang tải” */
+const avFailed = key => IMG[key] === null;
+let avWarned = false;
+function avWarnOnce(){
+  if (avWarned) return; avWarned = true;
+  popMsg("KHÔNG TẢI ĐƯỢC ẢNH TRANG BỊ","#ff8c2a");
 }
 
 /* ---- địa hình ---- */
@@ -332,7 +342,7 @@ const G={
   units:[], turn:0, round:1, wind:0, phase:"aim", weapon:0,
   power:40, proj:null, parts:[], beams:[], shake:0,
   cam:{x:0,y:0,z:1,tx:0,ty:0}, follow:false, over:false, t:0, msgT:0,
-  thor:{ x:WORLD_W/2, y:GROUND_Y-215, lvl:1, exp:0, f:0, flash:0 }
+  thor:{ x:WORLD_W/2, y:THOR_Y, lvl:1, exp:0, f:0, flash:0 }
 };
 const THOR_NEED=[0,28,48,72,100,999];        // mốc kinh nghiệm mỗi cấp
 function thorGain(v){
@@ -598,7 +608,7 @@ function drawThor(c,z){
   c.strokeStyle=T.lvl>=5?"#ff4a9d":"#6bdbff"; c.lineWidth=4*z; c.lineCap="round";
   c.beginPath(); c.arc(p.x,p.y,R,-Math.PI/2,-Math.PI/2+pr*Math.PI*2); c.stroke();
   c.restore();
-  drawNum(c,"Lv"===""?"":T.lvl,p.x,p.y-h*.5-26*z,T.lvl>=5?"num_r":"num_g",0.42*z+0.16,true);
+  drawNum(c,T.lvl,p.x,p.y-h*.5-26*z,T.lvl>=5?"num_r":"num_g",0.42*z+0.16,true);
 }
 function drawUnit(c,u,z){
   if(u.dead) return;
@@ -627,7 +637,11 @@ function drawAim(c){
   const m=muzzle(u), p=w2s(m.bx,m.by), R=25, a=u.ang*Math.PI/180;
   c.save(); c.globalAlpha=.5; c.translate(p.x,p.y); c.rotate(-a*u.side);
   if(u.side<0) c.scale(-1,1);
-  c.drawImage(IMG.cross,-R,-R,R*2,R*2); c.restore();
+  if(IMG.cross){                                   // 147x168 — giu dung ti le
+    const cw=R*2, chh=cw*IMG.cross.height/IMG.cross.width;
+    c.drawImage(IMG.cross,-cw/2,-chh/2,cw,chh);
+  }
+  c.restore();
   c.save();
   c.strokeStyle="rgba(107,219,255,.9)"; c.lineWidth=3; c.lineCap="round";
   c.beginPath(); c.arc(p.x,p.y,R-3,u.side>0?-a:Math.PI+a,u.side>0?0:Math.PI,u.side<0); c.stroke();
@@ -661,6 +675,8 @@ function drawGauge(){
   if(gcv.width!==W){gcv.width=W;gcv.height=H;}
   const c=gcx; c.clearRect(0,0,W,H);
   const x0=8,y0=8,w0=W-16,h0=H-18;
+  /* khung ve TRUOC: gauge.png dac 100%, ve sau se che mat thanh mau */
+  if(IMG.gauge) c.drawImage(IMG.gauge,0,0,W,H);
   c.fillStyle="#000"; c.fillRect(x0,y0,w0,h0);
   const p=G.power/100;
   for(const [s,e,c1,c2] of [[0,.5,"#4aff4a","#00cc00"],[.5,.8,"#ffd700","#ffaa00"],[.8,1,"#ff3a3a","#c00"]]){
@@ -671,7 +687,6 @@ function drawGauge(){
   for(let i=1;i<10;i++){ c.fillStyle="rgba(255,255,255,.16)"; c.fillRect(x0+w0*i/10,y0,1,h0); }
   /* con trỏ */
   c.fillStyle="#fff"; c.fillRect(x0+w0*p-2,y0-4,4,h0+8);
-  if(IMG.gauge) c.drawImage(IMG.gauge,0,0,W,H);
   drawNum(c,Math.round(G.power),clamp(x0+w0*p,40,W-40),y0+6,"num_b",.78,true);
 }
 /* ---- ô đạn ---- */
@@ -727,8 +742,7 @@ function drawThorBadge(){
   c.beginPath(); c.arc(cxp,cyp,R,-Math.PI/2,-Math.PI/2+pr*Math.PI*2); c.stroke();
   c.font="900 9px Orbitron"; c.textAlign="center";
   c.fillStyle=T.lvl>=5?"#ff8ad8":"#8ad8ff";
-  c.fillText("THOR",cxp,H-14);
-  drawNum(c,T.lvl,cxp,H-12,T.lvl>=5?"num_r":"num_g",.36,true);
+  c.fillText("THOR Lv"+T.lvl,cxp,H-5);
 }
 function popMsg(t,col){ const m=$("#msg"); m.textContent=t; if(col)m.style.color=col; m.classList.add("on"); G.msgT=82; }
 
@@ -784,12 +798,15 @@ function solve(me,en,wid){
       const v=pw*SPD_K*W.spd;
       let x=sx,y=sy,vx=Math.cos(a)*v*sgn,vy=-Math.sin(a)*v;
       let md=1e9;
-      for(let t=0;t<420;t++){
-        vy+=GRAV*W.grav; vx+=G.wind*WIND_K; x+=vx; y+=vy;
-        const d=Math.hypot(x-tx,y-ty); if(d<md) md=d;
-        if(d<26) break;
-        if(x<-200||x>WORLD_W+200||y>WORLD_H+200) break;
-        if(y>0&&solidAt(x,y)) break;              // đụng địa hình thì dừng
+      /* phai tich phan Y HET stepProj (4 buoc con) — neu khong bot lech co he thong */
+      sim: for(let t=0;t<420;t++){
+        for(let k=0;k<4;k++){
+          vy+=GRAV*W.grav/4; vx+=G.wind*WIND_K/4; x+=vx/4; y+=vy/4;
+          const d=Math.hypot(x-tx,y-ty); if(d<md) md=d;
+          if(d<26) break sim;
+          if(x<-200||x>WORLD_W+200||y>WORLD_H+200) break sim;
+          if(y>0&&solidAt(x,y)) break sim;        // đụng địa hình thì dừng
+        }
       }
       if(!best||md<best.err) best={ang,pw,err:md};
       if(md<18) return best;                       // đủ chuẩn, dừng sớm
@@ -986,19 +1003,38 @@ function renderGrid(){
     keys.map(k=>`<div class="icell${me.set[INV.tab]===k?" on":""}" data-k="${k}">
        <div class="px"><canvas width="72" height="52" data-c="${k}"></canvas></div>
        <div class="nm">${ITEMS[k].n}</div></div>`).join("");
-  keys.forEach(k=>paintItem($(`canvas[data-c="${k}"]`),k,72,52));
+  gridGen++;                                    // vô hiệu hoá mọi lượt chờ của lưới trước
+  keys.forEach(k=>paintItem($(`canvas[data-c="${k}"]`),k,72,52,gridGen));
   $$("#invgrid .icell").forEach(el=>el.onclick=()=>{
     G.units[0].set[INV.tab]=el.dataset.k;
     renderGrid(); renderPrev(); drawHeadAv();
     sfx(520,.06,"sq",.1);
   });
 }
-function paintItem(cvs,key,W,H){
+let gridGen=0;                                  // mỗi lần vẽ lại lưới thì bỏ hết lượt chờ cũ
+const MAX_TRY=24;                               // ~6 giây rồi thôi, không thử mãi
+function itemPlaceholder(c,key,W,H){
+  c.clearRect(0,0,W,H);
+  c.strokeStyle="#2b4a66"; c.setLineDash([4,3]); c.lineWidth=1;
+  c.strokeRect(4.5,4.5,W-9,H-9); c.setLineDash([]);
+  c.fillStyle="#4d7a9c"; c.font="900 13px Orbitron"; c.textAlign="center"; c.textBaseline="middle";
+  c.fillText("?",W/2,H/2-4);
+  c.font="700 7px Orbitron"; c.fillStyle="#38607f";
+  c.fillText(({h:"ĐẦU",b:"THÂN",g:"KÍNH",f:"CỜ"}[ITEMS[key]&&ITEMS[key].t]||""),W/2,H/2+11);
+  c.textBaseline="alphabetic";
+}
+function paintItem(cvs,key,W,H,gen,tries){
   if(!cvs) return;
+  if(gen!==undefined && gen!==gridGen) return;  // lưới đã đổi, bỏ lượt chờ này
   const it=ITEMS[key], im=avImg(key);
   const c=cvs.getContext("2d"); c.imageSmoothingEnabled=false;
   c.clearRect(0,0,W,H);
-  if(!im){ setTimeout(()=>paintItem(cvs,key,W,H),260); return; }
+  if(!im){
+    tries=tries||0;
+    if(avFailed(key)||tries>=MAX_TRY){ itemPlaceholder(c,key,W,H); avWarnOnce(); return; }
+    setTimeout(()=>paintItem(cvs,key,W,H,gen,tries+1),260);
+    return;
+  }
   const i=it.f.length>>1, g=it.f[i];
   const s=Math.min(W/g[0],H/g[1],1.7);
   c.drawImage(im,it.xs[i],0,g[0],g[1],(W-g[0]*s)/2,(H-g[1]*s)/2,g[0]*s,g[1]*s);
@@ -1043,7 +1079,7 @@ function newGame(){
   buildTerrain(); placeUnits();
   G.turn=0; G.round=1; G.over=false; G.phase="aim"; G.weapon=0;
   G.power=40; G.proj=null; G.parts=[]; G.beams=[];
-  G.thor={x:WORLD_W/2,y:130,lvl:1,exp:0,f:0,flash:0};
+  G.thor={x:WORLD_W/2,y:THOR_Y,lvl:1,exp:0,f:0,flash:0};
   G.units.forEach(u=>{u.ang=45;u.angF=45;});
   rollWind(); drawWind(); drawGauge(); drawAmmo(); drawHeadAv(); drawThorBadge();
   $("#nm0").textContent="BẠN · CHÚ HỀ ĐỎ";
