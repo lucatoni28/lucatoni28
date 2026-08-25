@@ -103,6 +103,15 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .fld input::placeholder{color:#3d6b8c;letter-spacing:.04em}
 .fld .cnt{font-family:Orbitron,sans-serif;font-weight:700;font-size:10px;color:var(--dim)}
 .foot{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;font-size:10px;color:var(--dim)}
+.sexrow{display:flex;gap:8px;margin-bottom:12px}
+.sexb{flex:1;height:52px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:5px;
+  border:2px solid var(--stroke);background:linear-gradient(180deg,rgba(13,74,112,.6),rgba(6,44,70,.85));
+  box-shadow:0 3px 0 var(--deep)}
+.sexb span{font-family:Orbitron,sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;color:var(--dim)}
+.sexb.on{border-color:var(--gold);background:linear-gradient(180deg,rgba(255,204,0,.16),rgba(6,44,70,.9));
+  box-shadow:0 3px 0 var(--deep),0 0 12px rgba(255,204,0,.35)}
+.sexb.on span{font-weight:900;color:var(--gold)}
+.sexb.on svg{stroke:var(--gold)}
 
 /* ============ CHIẾN DỊCH ============ */
 #scrCamp{background:linear-gradient(180deg,#04121f 0%,#061c2e 55%,#04121f 100%)}
@@ -170,19 +179,19 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
   background:linear-gradient(180deg,#0d4a70,#062c46)}
 .card.r{border-color:var(--rr);background:linear-gradient(180deg,#2a1450,#150a2c)}
 .card.e{border-color:var(--re);background:linear-gradient(180deg,#4a2400,#1e1006)}
-.card.l{border-color:var(--rl);background:linear-gradient(180deg,#4a3a00,#1e1800);box-shadow:0 3px 0 #041e30,0 0 16px rgba(255,204,0,.18)}
+.card.u{border-color:var(--rl);background:linear-gradient(180deg,#4a3a00,#1e1800);box-shadow:0 3px 0 #041e30,0 0 16px rgba(255,204,0,.18)}
 .card.eq{box-shadow:0 3px 0 #041e30,0 0 0 2px var(--gold)}
 .card .art{position:relative;height:84px;display:grid;place-items:center;
   background:radial-gradient(circle at 50% 40%,rgba(107,219,255,.14),rgba(2,14,26,.75) 72%)}
 .card.r .art{background:radial-gradient(circle at 50% 40%,rgba(154,106,224,.26),rgba(12,6,24,.85) 72%)}
 .card.e .art{background:radial-gradient(circle at 50% 40%,rgba(255,140,42,.26),rgba(18,10,4,.85) 72%)}
-.card.l .art{background:radial-gradient(circle at 50% 40%,rgba(255,204,0,.26),rgba(18,14,0,.85) 72%)}
+.card.u .art{background:radial-gradient(circle at 50% 40%,rgba(255,204,0,.26),rgba(18,14,0,.85) 72%)}
 .card .art canvas{image-rendering:pixelated}
 .card .rar{position:absolute;left:6px;top:6px;padding:2px 6px;border-radius:3px;background:rgba(2,14,26,.82);
   border:1px solid var(--rc);font-family:Orbitron,sans-serif;font-weight:700;font-size:7.5px;letter-spacing:.1em;color:var(--ice)}
 .card.r .rar{border-color:#9a6ae0;color:#c9a6ff}
 .card.e .rar{border-color:var(--re);color:#ffb03a}
-.card.l .rar{border-color:var(--rl);color:#ffe98a}
+.card.u .rar{border-color:var(--rl);color:#ffe98a}
 .card .flag{position:absolute;right:6px;top:6px;padding:2px 7px;border-radius:3px;
   font-family:Orbitron,sans-serif;font-weight:900;font-size:7.5px}
 .card .flag.eq{background:var(--gold);color:#3a2500}
@@ -441,6 +450,17 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
         <div class="halo"></div><div class="pad"></div>
         <canvas class="car" id="loCar" width="222" height="177"></canvas>
       </div>
+    </div>
+
+    <div class="sexrow">
+      <button class="sexb on" id="sexM" data-s="m">
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#5d8aa8" stroke-width="2.2" stroke-linecap="round"><circle cx="10" cy="14" r="6"/><path d="M14.5 9.5 21 3M15 3h6v6"/></svg>
+        <span>NAM</span>
+      </button>
+      <button class="sexb" id="sexF" data-s="f">
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#5d8aa8" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="9" r="6"/><path d="M12 15v6M9 18h6"/></svg>
+        <span>NỮ</span>
+      </button>
     </div>
 
     <div class="fld">
@@ -741,7 +761,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
    ===================================================================== */
 
 const ASSET = "assets/";                                   // đổi sang URL khác nếu muốn
-const AV_CDN = "https://raw.githubusercontent.com/Wilter/DragonBound/master/client/static/images/ava/";
+const AV_CDN = "assets/ava/";            // ảnh trang bị nằm trong repo, chạy offline
 
 const FILES = {
   aduka:"aduka.png", thor:"thor.png", bg:"bg.jpg", fgc:"fgc.jpg", fga:"fga.png",
@@ -752,8 +772,8 @@ const FILES = {
   tab_head:"tab_head.png", tab_body:"tab_body.png", tab_glass:"tab_glass.png", tab_flag:"tab_flag.png"
 };
 
-/* danh mục trang bị — chỉ toạ độ, ảnh tải theo URL */
-const RAWITEMS = {"mh00050":{"n":"(RARE) Clown Costume","t":"h","f":"44,37,0,37|47,37,6,37|45,37,5,37*2|45,37,6,37|45,38,6,38|44,38,6,38*2|43,38,6,38*3|42,40,1,40|42,40,2,40|41,40,2,40*2|40,40,2,40|39,41,2,41|38,41,2,41*2|37,41,2,41|36,41,2,41*2"},"mb00048":{"n":"(RARE) Clown Costume","t":"b","f":"29,27,10,6*5|28,27,10,6*6"},"fh03163":{"n":"Teddy","t":"h","f":"34,34,9,29*22"},"fb03164":{"n":"Teddy","t":"b","f":"34,30,9,6*12"},"af03346":{"n":"Teddy Flag","t":"f","f":"24,50,-17,62*2|23,50,-18,62*2|24,50,-18,62|23,50,-19,62*2|24,50,-19,62|23,50,-20,62*3"},"mh00070":{"n":"Panda Hat","t":"h","f":"32,32,3,32|33,32,4,32*2|34,32,5,32|35,32,6,32|34,33,6,33|33,33,6,33*2|32,33,6,33*3|31,32,5,32|31,31,5,31|31,32,5,32*9"},"mb00071":{"n":"Panda Clothing","t":"b","f":"26,26,9,6|26,27,9,7*2|27,27,9,7*8"},"mh00072":{"n":"Frankenstein","t":"h","f":"29,32,2,32|33,32,4,32|33,33,4,33|34,32,5,32|34,33,5,33|33,33,5,33*6|28,33,4,33*5|28,32,4,33|27,32,4,33*5"},"mb00073":{"n":"Frankenstein","t":"b","f":"26,27,9,6*2|26,28,9,7*9"},"mh00000":{"n":"Default","t":"h","f":"24,23,0,24|24,23,1,24*4|25,23,2,24|24,23,2,24*5|26,24,3,24*7|25,24,3,24|26,24,4,24*3"},"mb00000":{"n":"Default","t":"b","f":"25,26,9,6|25,27,9,7*10"},"mh00147":{"n":"(RARE) Easter Bunny","t":"h","f":"39,35,1,36|35,35,0,36|35,35,1,36|35,35,2,36|36,35,4,36|36,36,5,37|36,36,6,37|35,37,6,38|35,37,7,38|34,37,7,38|35,37,8,38|37,37,2,38*3|37,36,2,37*5|38,35,2,36*3"},"mh00090":{"n":"Indian Chief Hair","t":"h","f":"43,74,3,56|42,74,10,56|41,74,10,56|41,74,11,56|42,74,12,56|41,75,12,57|42,75,13,57|41,75,13,57|42,75,14,57|41,75,14,57*3|42,75,14,57|41,75,13,57|42,75,13,57|41,74,12,56|41,74,11,56|42,74,11,56|41,74,10,56|41,74,9,56|42,74,9,56|43,74,3,56|47,75,2,57|48,75,3,57|48,74,3,57|47,74,3,57*2|47,73,3,57*12|47,74,3,57|48,74,3,57|47,74,2,57|47,75,2,57*2"},"mb00090":{"n":"Indian Chief","t":"b","f":"25,25,7,6*2|24,25,7,6*2|24,26,7,7*7"},"mh00096":{"n":"Insect Warrior","t":"h","f":"40,38,11,39|34,38,4,39|34,39,5,39*2|34,39,6,39|34,38,6,38|34,38,7,38*2|33,38,7,38|34,39,8,38*2|43,37,13,37*3|44,37,14,37*3|43,37,14,37*5"},"mb00096":{"n":"Insect Warrior","t":"b","f":"44,35,8,15*6|43,35,8,15*5"},"mh00095":{"n":"Archangel II","t":"h","f":"36,33,2,34|32,34,1,35|31,34,1,35|31,34,2,35|32,35,3,36|31,35,3,36|31,36,4,37|30,36,4,37|31,36,5,37*3|33,33,3,33|32,33,3,33*3|33,33,4,33|33,34,4,34|32,34,4,34*5"},"mh00133":{"n":"Observador","t":"h","f":"40,26,3,27|32,26,3,27|35,26,4,27*2|36,26,5,27|35,26,5,27|34,26,5,27*5|35,26,6,26|35,27,6,26*2|36,27,6,26*3|36,27,7,26*4|37,27,7,26"},"mg00030":{"n":"M. Sunglasses","t":"g","f":"16,8,1,13|19,8,0,13|21,8,0,13*3|20,8,0,13*2|21,8,1,13*2|21,9,1,13*2|16,8,1,13*3|16,7,1,13|15,7,1,13*6|16,7,2,13"},"mg00037":{"n":"Eagle","t":"g","f":"32,31,0,32|29,31,-3,32*10|33,32,1,33*2|34,32,2,33*9"},"fg00037":{"n":"Eagle","t":"g","f":"32,31,0,32|29,31,-3,32*10|33,32,1,33*2|34,32,2,33*9"},"fg00004":{"n":"Heart Painting","t":"g","f":"7,7,-4,9|8,7,-9,9|6,7,-14,9|6,6,-14,9*3|5,6,-14,9|6,6,-13,9*4|6,6,-4,8*4|7,6,-4,8*7"},"mf00124":{"n":"Robot X","t":"f","f":"47,38,0,37*5|47,39,0,38*4|47,40,0,39*2"},"af03096":{"n":"Kitten Cloud","t":"f","f":"74,45,0,50*10"},"af03041":{"n":"Rocker Boy","t":"f","f":"46,52,-9,42*4|46,51,-9,41*4|47,51,-9,41*2|47,50,-9,40"}};
+/* danh mục trang bị: n=tên t=loại s=giới tính r=độ hiếm p=giá g=khe giữa khung */
+const RAWITEMS = {"mh00000":{"n":"Default","t":"h","s":"m","r":"c","p":0,"g":1,"f":"24,23,0,24|24,23,1,24*4|25,23,2,24|24,23,2,24*5|26,24,3,24*7|25,24,3,24|26,24,4,24*3"},"mb00000":{"n":"Default","t":"b","s":"m","r":"c","p":0,"g":1,"f":"25,26,9,6|25,27,9,7*10"},"fh00000":{"n":"Default","t":"h","s":"f","r":"c","p":0,"g":1,"f":"26,25,-1,25|26,26,0,26|26,25,1,25*3|27,25,2,25|28,25,2,25*3|27,25,2,25*2|26,25,2,25*5|27,25,2,25*6"},"fb00000":{"n":"Default","t":"b","s":"f","r":"c","p":0,"g":1,"f":"25,26,9,6*4|24,26,9,6*14|25,26,9,6*4"},"mh00001":{"n":"Space Marine","t":"h","s":"m","r":"c","p":500,"g":1,"f":"26,23,2,24|27,23,3,24*4|27,23,4,24*6|28,25,4,25*4|27,25,4,25*7"},"mh00013":{"n":"Cowboy Hat","t":"h","s":"m","r":"c","p":500,"g":1,"f":"39,28,7,26|38,29,7,27|39,29,8,27|38,29,8,27*2|38,29,9,27*3|39,28,10,27|38,28,10,27*2|36,29,5,27|37,29,6,27|36,29,6,27*3|36,30,6,27|35,30,6,27*5"},"mh00028":{"n":"Magician Hat","t":"h","s":"m","r":"c","p":500,"g":1,"f":"41,36,9,37|40,36,9,37|41,36,10,37*4|41,36,11,37*5|41,36,9,36|40,36,9,36*2|41,36,9,36|40,36,9,36*3|41,36,10,36*4"},"mh00025":{"n":"Laurel Crown","t":"h","s":"m","r":"c","p":500,"g":1,"f":"33,33,2,32|35,33,5,32|33,33,5,32*2|34,33,6,32|33,33,6,32*2|33,33,7,32*4|33,31,6,30*6|34,31,7,30*2|33,31,7,30*3"},"mh00039":{"n":"Santa","t":"h","s":"m","r":"r","p":2200,"g":1,"f":"37,35,2,33|32,34,4,33|31,34,4,33*2|32,34,5,33*2|31,34,5,33*2|32,35,6,34*3|40,34,3,34*4|39,34,3,34*2|40,34,4,34*3|39,34,4,34*2"},"mb00001":{"n":"Space Marine","t":"b","s":"m","r":"c","p":450,"g":1,"f":"25,27,9,7*5|24,27,9,7*12|25,27,9,7|25,26,9,6*4"},"mb00012":{"n":"Cowboy","t":"b","s":"m","r":"c","p":450,"g":1,"f":"27,28,9,6|27,29,9,7|26,29,9,7*9"},"mb00026":{"n":"Magician A","t":"b","s":"m","r":"c","p":450,"g":1,"f":"29,27,9,6*3|29,28,9,7*2|28,28,9,7*6"},"mb00039":{"n":"Golden Armor","t":"b","s":"m","r":"u","p":16200,"g":1,"f":"28,27,9,7*2|27,27,9,7*9"},"mb00018":{"n":"Arch Angel","t":"b","s":"m","r":"u","p":16200,"g":1,"f":"43,37,8,16|43,38,8,17|44,38,8,17|44,37,8,16*2|45,37,8,16|45,36,8,15*2|46,36,8,15|46,35,8,15*2"},"mg00008":{"n":"Sunglasses","t":"g","s":"m","r":"c","p":350,"g":1,"f":"19,8,0,13|21,8,0,13|22,8,1,13*4|21,8,1,13|22,8,2,13|22,9,2,13*3|13,8,0,12*2|13,9,0,13*2|12,9,0,13*7"},"mg00030":{"n":"M. Sunglasses","t":"g","s":"m","r":"r","p":1550,"g":1,"f":"16,8,1,13|19,8,0,13|21,8,0,13*3|20,8,0,13*2|21,8,1,13*2|21,9,1,13*2|16,8,1,13*3|16,7,1,13|15,7,1,13*6|16,7,2,13"},"mg00019":{"n":"Orbiting Moon","t":"g","s":"m","r":"u","p":12600,"g":1,"f":"13,33,-5,25|24,30,1,25|33,27,6,24|41,21,10,21|45,16,12,19|47,13,13,17|47,18,13,19|42,22,10,20|36,24,7,20|27,25,2,19|17,25,-3,18|16,22,-4,15|26,18,1,12|35,14,5,10|41,14,8,10|45,19,10,12|45,24,10,15|43,30,10,19|38,34,7,22|30,34,3,23|21,35,-1,25|13,33,-5,25|14,34,-4,25|25,32,2,25|34,28,7,24|41,22,11,21|47,17,14,19|49,13,15,17|48,18,15,19|43,23,12,21|37,25,9,21|28,27,4,21|18,27,-1,20|15,24,-3,17|25,20,2,14|34,15,6,11|40,13,9,10|43,18,10,12|44,25,11,16|42,30,10,19|36,34,7,22|28,35,3,23|20,36,-1,25|14,34,-4,25"},"mf00051":{"n":"Golden Hammer","t":"f","s":"m","r":"c","p":400,"g":1,"f":"36,34,-10,31*5|37,34,-10,31*7"},"mf00057":{"n":"Radar","t":"f","s":"m","r":"c","p":400,"g":1,"f":"29,38,-15,35*2|28,38,-15,35|26,38,-15,35|24,38,-15,35|25,38,-15,35|26,39,-14,37|25,40,-14,38|25,42,-14,40|24,43,-14,41*4|24,42,-14,40|25,41,-14,39|25,39,-14,37|24,38,-15,35*2|26,38,-15,35|27,38,-15,35|28,38,-15,35|29,38,-15,35"},"mf00059":{"n":"GM Hammer","t":"f","s":"m","r":"u","p":14400,"g":1,"f":"23,33,-13,34*2|24,33,-13,34*2|25,33,-13,34*3|26,33,-13,34*3|27,33,-13,34"},"fh00009":{"n":"Rabbit Hair","t":"h","s":"f","r":"c","p":500,"g":1,"f":"35,45,6,39|36,45,8,39|35,43,6,37|34,44,5,38|33,43,5,38|32,44,6,39|31,45,7,40|32,46,8,41|33,47,9,42|34,48,10,43|36,48,11,43|29,45,1,40|29,44,1,39|30,43,1,39*2|31,43,1,39*3|30,44,1,39*2|29,44,1,39*2"},"fh00014":{"n":"Magician Hat","t":"h","s":"f","r":"r","p":2200,"g":1,"f":"37,33,3,30|35,33,3,30|43,33,9,30|43,31,10,29*3|43,32,11,29|43,31,11,28*4|40,32,6,30*2|39,32,5,30*3|39,31,5,29*2|39,32,5,29*4"},"fh00047":{"n":"Bride Hair","t":"h","s":"f","r":"u","p":18000,"g":1,"f":"30,39,-1,34|30,39,1,34|29,39,2,34|29,39,3,34|29,40,3,34*7|32,41,0,35|32,40,0,35*5|31,40,-1,35*4|32,40,-1,35"},"fh00055":{"n":"Golden Helmet","t":"h","s":"f","r":"e","p":7000,"g":1,"f":"31,27,1,26|38,27,9,26|51,26,16,26*3|50,27,16,26*3|51,27,17,26*3|30,26,2,26|31,26,2,26*10"},"fh00068":{"n":"Elf Hair","t":"h","s":"f","r":"e","p":7000,"g":1,"f":"25,29,0,26|25,29,1,26|25,30,1,27*3|26,30,2,27|25,30,2,27*3|26,30,3,27*2|25,29,0,26*3|26,29,0,26*8"},"fb00037":{"n":"Red Dress","t":"b","s":"f","r":"r","p":2000,"g":1,"f":"27,26,9,7*6|27,27,9,7|27,26,9,7*3|27,27,9,7"},"fb00034":{"n":"Devil Clothing","t":"b","s":"f","r":"r","p":2000,"g":1,"f":"44,34,10,14*3|45,34,10,14*2|45,33,10,13*4|45,32,10,12|46,32,10,12"},"fb00045":{"n":"Wedding Dress","t":"b","s":"f","r":"u","p":16200,"g":1,"f":"23,23,5,6*11"},"fb00053":{"n":"Golden Armor","t":"b","s":"f","r":"u","p":16200,"g":1,"f":"25,27,9,7*11"},"fb00071":{"n":"Panda Clothing","t":"b","s":"f","r":"e","p":6300,"g":1,"f":"25,27,8,7*2|25,26,8,6|26,26,8,6*5|27,26,8,6*3"},"fg00006":{"n":"Sunglasses","t":"g","s":"f","r":"c","p":350,"g":1,"f":"21,8,1,14|23,9,1,14*3|24,9,2,14|23,9,2,14*6|11,8,-1,13*2|10,8,-2,13|10,7,-2,12*3|11,7,-2,12*5"},"fg00030":{"n":"M. Sunglasses","t":"g","s":"f","r":"r","p":1550,"g":1,"f":"12,7,0,13|17,8,-1,13|20,8,-1,13*3|21,8,0,13|20,8,0,13*5|12,7,0,13*7|12,8,0,13|13,8,0,13*3"},"fg00019":{"n":"Orbiting Moon","t":"g","s":"f","r":"u","p":12600,"g":1,"f":"13,33,-5,25|24,30,1,25|33,27,6,24|41,21,10,21|45,16,12,19|47,13,13,17|47,18,13,19|42,22,10,20|36,24,7,20|27,25,2,19|17,25,-3,18|16,22,-4,15|26,18,1,12|35,14,5,10|41,14,8,10|45,19,10,12|45,24,10,15|43,30,10,19|38,34,7,22|30,34,3,23|21,35,-1,25|13,33,-5,25|14,34,-4,25|25,32,2,25|34,28,7,24|41,22,11,21|47,17,14,19|49,13,15,17|48,18,15,19|43,23,12,21|37,25,9,21|28,27,4,21|18,27,-1,20|15,24,-3,17|25,20,2,14|34,15,6,11|40,13,9,10|43,18,10,12|44,25,11,16|42,30,10,19|36,34,7,22|28,35,3,23|20,36,-1,25|14,34,-4,25"},"ah03265":{"n":"Angel","t":"h","s":"a","r":"r","p":2200,"g":1,"f":"27,47,2,31|32,47,4,31|30,46,3,31|32,46,3,31*2|32,45,4,31|33,46,4,31*3|34,46,4,31*5|34,47,4,31*4|35,47,4,31|36,47,4,31|41,47,10,31|37,47,4,31|30,46,2,33|31,46,2,33|32,45,2,33*4|33,45,3,33*2|32,45,3,33*2|31,45,3,33*2|31,46,3,33*2|31,45,3,33|32,46,3,33|31,49,2,33|32,51,2,33|32,52,2,33|32,53,2,33|33,54,2,33|33,55,2,33"},"ah03319":{"n":"Space Adventurer","t":"h","s":"a","r":"u","p":18000,"g":1,"f":"28,44,2,24|31,44,4,24|28,44,4,24*2|29,44,5,24|28,44,5,24*2|29,43,5,24|30,44,6,24|30,43,6,24*2|30,44,6,24|30,43,6,24|30,44,6,24*2|29,44,5,24*4|28,44,4,24*3|27,44,2,25|27,43,2,25*2|27,44,2,25*2|27,43,2,25*4|28,43,3,25|27,43,3,25*3|28,43,3,25|27,43,2,25*5|27,44,2,25*3"},"ab03264":{"n":"Angel","t":"b","s":"a","r":"r","p":2000,"g":1,"f":"26,24,8,6*8|26,25,8,7*4|26,24,8,6|26,25,8,7|26,24,8,6*8"},"ab03318":{"n":"Space Adventurer","t":"b","s":"a","r":"u","p":16200,"g":1,"f":"42,24,10,6*7|41,24,10,6*9|42,24,10,6*6"},"ag00061":{"n":"Blue Phoenix","t":"g","s":"a","r":"r","p":1550,"g":1,"f":"69,84,12,61|72,83,13,61|72,83,13,59|74,83,14,58|75,83,13,59|75,84,13,60|68,83,14,59|76,83,14,60|76,82,14,58|71,85,15,60|69,84,15,60|72,86,17,61|74,85,18,61|75,86,19,62|76,85,19,60|78,85,20,60|79,84,21,60|79,82,21,58|71,84,12,59|72,85,13,60|73,84,13,59|71,83,13,59|69,84,12,61|72,83,13,61|72,83,13,59|74,83,14,58|75,83,13,59|75,84,13,60|68,83,14,59|76,83,14,60|76,82,14,58|71,85,15,60|69,84,15,60|72,86,17,61|74,85,18,61|75,86,19,62|76,85,19,60|78,85,20,60|79,84,21,60|79,82,21,58|71,84,12,59|72,85,13,60|73,84,13,59|71,83,13,59"},"ag03068":{"n":"D-Balls","t":"g","s":"a","r":"u","p":12600,"g":1,"f":"13,33,-5,25|24,30,1,25|33,27,6,24|41,21,10,21|45,16,12,19|47,13,13,17|47,18,13,19|42,22,10,20|36,24,7,20|27,25,2,19|17,25,-3,18|16,22,-4,15|26,18,1,12|35,14,5,10|41,14,8,10|45,19,10,12|45,24,10,15|43,30,10,19|38,34,7,22|30,34,3,23|21,35,-1,25|13,33,-5,25|14,34,-4,25|25,32,2,25|34,28,7,24|41,22,11,21|47,17,14,19|49,13,15,17|48,18,15,19|43,23,12,21|37,25,9,21|28,27,4,21|18,27,-1,20|15,24,-3,17|25,20,2,14|34,15,6,11|40,13,9,10|43,18,10,12|44,25,11,16|42,30,10,19|36,34,7,22|28,35,3,23|20,36,-1,25|14,34,-4,25"},"af03041":{"n":"Rocker Boy","t":"f","s":"a","r":"u","p":14400,"g":1,"f":"46,52,-9,42*4|46,51,-9,41*4|47,51,-9,41*2|47,50,-9,40"},"af03042":{"n":"Pala","t":"f","s":"a","r":"e","p":5600,"g":1,"f":"34,60,-5,45*6"},"af03043":{"n":"Dragon Murk","t":"f","s":"a","r":"r","p":1750,"g":0,"f":"83,60,7,55*5"},"af00073":{"n":"Easter Chicken","t":"f","s":"a","r":"u","p":14400,"g":1,"f":"35,79,-21,53|35,79,-20,53|35,80,-19,54|35,80,-18,54|34,80,-18,54|35,79,-17,53*3|36,79,-16,53|35,79,-16,53|36,79,-15,53"}};
 function decF(s){
   const o=[];
   for (const p of s.split("|")){
@@ -764,13 +784,22 @@ function decF(s){
   return o;
 }
 const ITEMS = {};
-for (const k in RAWITEMS) ITEMS[k] = { n:RAWITEMS[k].n, t:RAWITEMS[k].t, f:decF(RAWITEMS[k].f) };
-function framesX(f){ const o=[]; let x=0; for(const g of f){ o.push(x); x+=g[0]+1; } return o; }
-for (const k in ITEMS) ITEMS[k].xs = framesX(ITEMS[k].f);
+for (const k in RAWITEMS){
+  const q=RAWITEMS[k];
+  ITEMS[k] = { n:q.n, t:q.t, s:q.s, r:q.r, p:q.p, g:q.g, f:decF(q.f) };
+}
+/* vài dải sprite xếp sát nhau, vài dải chừa 1px — g cho biết dải nào là dải nào */
+function framesX(f,gap){ const o=[]; let x=0; for(const g of f){ o.push(x); x+=g[0]+gap; } return o; }
+for (const k in ITEMS) ITEMS[k].xs = framesX(ITEMS[k].f, ITEMS[k].g);
+
+/* nam không mặc được đồ nữ và ngược lại; đồ "a" là đồ dùng chung */
+const canWear = (k,sex) => !!ITEMS[k] && (ITEMS[k].s===sex || ITEMS[k].s==="a");
 
 /* bộ mặc định */
-const SET_CLOWN = { h:"mh00050", b:"mb00048", g:"", f:"" };          // Chú hề đỏ
-const SET_BEAR  = { h:"fh03163", b:"fb03164", g:"", f:"af03346" };   // Gấu nâu Teddy
+const DEFAULT_SET = {
+  m: { h:"mh00000", b:"mb00000", g:"", f:"" },
+  f: { h:"fh00000", b:"fb00000", g:"", f:"" }
+};
 
 const $ = q => document.querySelector(q);
 const clamp=(v,a,b)=>v<a?a:v>b?b:v, lerp=(a,b,t)=>a+(b-a)*t, rnd=(a,b)=>a+Math.random()*(b-a);
@@ -883,7 +912,7 @@ function placeUnits(){
   if(bx-px<MIN_DIST){ const c=(px+bx)/2; px=c-MIN_DIST/2; bx=c+MIN_DIST/2; }
   px=clamp(px,90,WORLD_W-90); bx=clamp(bx,90,WORLD_W-90);
   const st=G.stage||stageOf(1);
-  G.units=[ mkUnit(px,1,true,P.set,100), mkUnit(bx,-1,false,SET_BEAR,st.hp) ];
+  G.units=[ mkUnit(px,1,true,P.set,100), mkUnit(bx,-1,false,st.set||DEFAULT_SET[P.sex==="m"?"f":"m"],st.hp) ];
   G.units.forEach(u=>settle(u));
 }
 function settle(u,dmg){
@@ -902,19 +931,37 @@ function rollWind(){
    ===================================================================== */
 const SAVE_KEY = "starArena.v2";
 const EXP_PER_LV = lv => 220 + (lv - 1) * 130;
-const DEF_PROFILE = () => ({
-  name:"", gold:1500, lv:1, exp:0, unlocked:1,
-  stars:{},                                   // {stageNo: 1..3}
-  owned:{ mh00000:1, mb00000:1 },             // bộ mặc định luôn có
-  set:{ h:"mh00000", b:"mb00000", g:"", f:"" }
-});
+const DEF_PROFILE = (sex) => {
+  sex = sex || "m";
+  const d = DEFAULT_SET[sex];
+  return {
+    name:"", sex, gold:1500, lv:1, exp:0, unlocked:1,
+    stars:{},                                          // {số màn: 1..3}
+    owned:{ [d.h]:1, [d.b]:1 },                        // bộ mặc định luôn có
+    set:Object.assign({},d)
+  };
+};
+/* đổi giới tính: giữ vàng/cấp/tiến trình, đổi lại bộ đang mặc cho hợp lệ */
+function setSex(sex){
+  if(P.sex===sex) return;
+  P.sex=sex;
+  const d=DEFAULT_SET[sex];
+  P.owned[d.h]=1; P.owned[d.b]=1;
+  for(const t of ["h","b","g","f"]){
+    if(P.set[t] && !canWear(P.set[t],sex)) P.set[t] = (t==="h"||t==="b") ? d[t] : "";
+  }
+  if(!P.set.h) P.set.h=d.h;
+  if(!P.set.b) P.set.b=d.b;
+  save();
+}
 let P = DEF_PROFILE();
 function loadSave(){
   try{
     const raw = localStorage.getItem(SAVE_KEY);
-    if(raw){ const o=JSON.parse(raw); if(o && typeof o==="object") P=Object.assign(DEF_PROFILE(),o); }
+    if(raw){ const o=JSON.parse(raw); if(o && typeof o==="object") P=Object.assign(DEF_PROFILE(o.sex),o); }
   }catch(e){ P = DEF_PROFILE(); }
-  if(!P.set) P.set={h:"",b:"",g:"",f:""};
+  if(P.sex!=="m"&&P.sex!=="f") P.sex="m";
+  if(!P.set) P.set=Object.assign({},DEFAULT_SET[P.sex]);
   if(!P.owned) P.owned={};
   if(!P.stars) P.stars={};
 }
@@ -956,24 +1003,13 @@ const NODEPOS = [
    ĐỘ HIẾM + CỬA HÀNG
    ===================================================================== */
 const RARITY = {
-  c:{k:"c", nm:"THƯỜNG",      mul:1.0},
-  r:{k:"r", nm:"HIẾM",        mul:2.6},
-  e:{k:"e", nm:"SỬ THI",      mul:5.0},
-  l:{k:"l", nm:"HUYỀN THOẠI", mul:9.0}
+  c:{k:"c", nm:"THƯỜNG",    col:"#6bdbff", w:1.00},
+  r:{k:"r", nm:"HIẾM",      col:"#c9a6ff", w:0.34},
+  e:{k:"e", nm:"EXCELLENT", col:"#ffb03a", w:0.12},
+  u:{k:"u", nm:"UNIQUE",    col:"#ffe98a", w:0.04}
 };
-/* xếp hạng theo tên món: (RARE) -> hiếm, một số món đặt tay là sử thi / huyền thoại */
-const FORCE_RARITY = { mh00090:"e", mb00090:"e", mh00096:"e", mb00096:"e", mh00095:"l", mg00037:"e", fg00037:"e", af03096:"r", mf00124:"r", af03041:"r" };
-function rarityOf(k){
-  if(FORCE_RARITY[k]) return FORCE_RARITY[k];
-  if(/^\(RARE\)/.test(ITEMS[k].n)) return "r";
-  if(k==="mh00000"||k==="mb00000") return "c";
-  return "c";
-}
-const BASE_PRICE = { h:900, b:700, g:600, f:800 };
-function priceOf(k){
-  const it=ITEMS[k];
-  return Math.round(BASE_PRICE[it.t] * RARITY[rarityOf(k)].mul / 10) * 10;
-}
+const rarityOf = k => ITEMS[k].r;
+const priceOf  = k => ITEMS[k].p;
 const SHOP_TABS = [["h","ĐẦU"],["b","THÂN"],["g","KÍNH"],["f","CỜ"]];
 const TAB_ICON = {
   h:'<path d="M4 14a8 8 0 0 1 16 0v2H4z"/><path d="M4 16h16v3H4z"/>',
@@ -981,15 +1017,21 @@ const TAB_ICON = {
   g:'<circle cx="7" cy="13" r="3.6"/><circle cx="17" cy="13" r="3.6"/><path d="M10.6 13h2.8M3.4 11 2 8M20.6 11 22 8"/>',
   f:'<path d="M6 3v18"/><path d="M6 4h12l-2.6 4L18 12H6z"/>'
 };
-const keysOfType = t => Object.keys(ITEMS).filter(k=>ITEMS[k].t===t);
+/* chỉ liệt kê món giới tính hiện tại mặc được */
+const keysOfType = t => Object.keys(ITEMS).filter(k=>ITEMS[k].t===t && canWear(k,P.sex));
 
-/* danh sách món có thể rơi: chưa sở hữu, ưu tiên bậc thấp */
-function rollDrop(){
-  const pool = Object.keys(ITEMS).filter(k=>!P.owned[k]);
+/* quay đồ rơi: chưa sở hữu, mặc được, ưu tiên bậc thấp.
+   bonus > 1 kéo tỉ lệ về phía đồ hiếm (dùng khi hạ trùm / chơi lại) */
+function rollDrop(bonus){
+  bonus = bonus || 1;
+  const pool = Object.keys(ITEMS).filter(k=>!P.owned[k] && canWear(k,P.sex));
   if(!pool.length) return null;
-  const w = pool.map(k=>({k, w:1/RARITY[rarityOf(k)].mul}));
-  let tot=w.reduce((a,b)=>a+b.w,0), r=Math.random()*tot;
-  for(const x of w){ r-=x.w; if(r<=0) return x.k; }
+  const w = pool.map(k=>{
+    const r=ITEMS[k].r;
+    return { k, w: RARITY[r].w * (r==="c" ? 1 : bonus) };
+  });
+  let tot=w.reduce((a,b)=>a+b.w,0), x=Math.random()*tot;
+  for(const q of w){ x-=q.w; if(x<=0) return q.k; }
   return w[w.length-1].k;
 }
 
@@ -1897,12 +1939,28 @@ window.drawHeadAv=drawHeadAv;
    MÀN CHÀO
    ===================================================================== */
 function drawLoginArt(){
+  drawLoginArt._n = drawLoginArt._n || 0;
   const cc=$("#loCar").getContext("2d");
   cc.imageSmoothingEnabled=false; cc.clearRect(0,0,222,177);
   if(IMG.aduka) cc.drawImage(IMG.aduka,0,0,AD_CELL,AD_H,0,0,222,177);
+  /* bộ đồ đang mặc, cùng thứ tự lớp như trong trận */
+  const S=3, nx=104, ny=64;
+  for(const t of ["f","b","h","g"]){
+    const k=P.set[t]; if(!k) continue;
+    const it=ITEMS[k], im=avImg(k); if(!it||!im) continue;
+    const i=it.f.length>>1, g=it.f[i];
+    cc.drawImage(im,it.xs[i],0,g[0],g[1],nx-g[2]*S,ny-g[3]*S,g[0]*S,g[1]*S);
+  }
+  /* ảnh trang bị tải xong lúc nào vẽ lúc đó — một hẹn giờ duy nhất, không chồng chuỗi */
+  clearTimeout(drawLoginArt._t);
+  if($("#scrLogin").classList.contains("on") && ++drawLoginArt._n < 20)
+    drawLoginArt._t = setTimeout(drawLoginArt, 700);
   const tc=$("#loThor").getContext("2d");
   tc.imageSmoothingEnabled=false; tc.clearRect(0,0,83,55);
   if(IMG.thor) tc.drawImage(IMG.thor,0,0,TH_CELL,TH_H,0,0,83,55);
+}
+function renderSex(){
+  ["m","f"].forEach(x=>$("#sex"+x.toUpperCase()).classList.toggle("on", P.sex===x));
 }
 function initLogin(){
   sprinkle($("#skyLogin"),46,20260824);
@@ -1915,6 +1973,13 @@ function initLogin(){
     const v=(inp.value||"").trim().toUpperCase().slice(0,12);
     P.name = v || "CHỈ HUY"; save();
   };
+  renderSex();
+  ["m","f"].forEach(x=>{
+    $("#sex"+x.toUpperCase()).onclick = () => {
+      setSex(x); renderSex(); drawHeadAv(); drawLoginArt();
+      sfx(x==="m"?420:620,.08,"sq",.12);
+    };
+  });
   $("#btnCamp").onclick = () => { commit(); sfx(520,.1,"sq",.12); show("scrCamp"); };
   $("#btnQuick").onclick = () => {
     commit(); sfx(440,.1,"sq",.12);
@@ -1924,7 +1989,8 @@ function initLogin(){
   $("#btnWipe").onclick = () => {
     if(!confirm("Xoá toàn bộ tiến trình đã lưu?")) return;
     try{ localStorage.removeItem(SAVE_KEY); }catch(e){}
-    P = DEF_PROFILE(); save(); inp.value=""; $("#nameCnt").textContent="0/12";
+    P = DEF_PROFILE(P.sex); save(); inp.value=""; $("#nameCnt").textContent="0/12";
+    renderSex();
     drawHeadAv();
   };
   drawLoginArt();
@@ -2080,7 +2146,7 @@ loadCore(p=>{
   $("#ldfill").style.width=Math.round(p*100)+"%";
   $("#ldtx").textContent="Đang nạp tài nguyên… "+Math.round(p*100)+"%";
 }).then(()=>{
-  [P.set,SET_BEAR].forEach(o=>["h","b","g","f"].forEach(t=>o[t]&&avImg(o[t])));
+  [DEFAULT_SET.m,DEFAULT_SET.f,P.set].forEach(o=>["h","b","g","f"].forEach(t=>o[t]&&avImg(o[t])));
   initLogin();
   newGame(stageOf(1),"quick");        // dựng sẵn địa hình để sân không trống
   tick();
