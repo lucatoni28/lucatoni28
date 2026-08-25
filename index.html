@@ -413,6 +413,63 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 #invprev .txt{flex:1;font-size:10px;color:var(--txt);line-height:1.5}
 #invprev .txt b{color:var(--gold)}
 
+/* ============ CHIẾN LỢI PHẨM NỔI ============ */
+#loot{position:absolute;left:50%;top:22%;transform:translateX(-50%) translateY(-8px);z-index:8;
+  pointer-events:none;opacity:0;transition:.25s;width:max-content;max-width:92%}
+#loot.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.lt{display:flex;flex-direction:column;align-items:center;gap:5px;padding:11px 16px;border-radius:6px;
+  background:rgba(2,10,20,.9);border:2px solid var(--gold);box-shadow:0 0 24px rgba(255,204,0,.3)}
+.lt.bad{border-color:var(--bad);box-shadow:0 0 24px rgba(255,90,106,.3)}
+.lt b{font-family:Orbitron,sans-serif;font-weight:900;font-size:14px;letter-spacing:.1em;color:var(--gold)}
+.lt.bad b{color:var(--bad)}
+.lt span{font-size:11px;color:var(--txt2)}
+.lt .rw{display:flex;align-items:center;gap:6px;font-family:Orbitron,sans-serif;font-weight:900;font-size:13px;color:var(--gold)}
+.lt .rw i{width:13px;height:13px;border-radius:50%;background:var(--gold);border:2px solid #8a6a00}
+.lt .rw i.x{border-radius:2px;background:var(--ice);border-color:#0a5c8c}
+.lt .up{font-family:Orbitron,sans-serif;font-weight:900;font-size:11px;letter-spacing:.1em;color:var(--ok)}
+.lt .kc{font-family:Orbitron,sans-serif;font-weight:700;font-size:10px;color:var(--dim)}
+.lt .dp,.lt .am{margin-top:2px;padding:3px 10px;border-radius:3px;border:1px solid var(--cy);
+  font-family:Orbitron,sans-serif;font-weight:900;font-size:9.5px;letter-spacing:.08em;text-align:center}
+.lt .am{border-color:var(--pink);color:#ff8ad8}
+
+/* nút rút lui trong trận */
+#retreat{position:absolute;left:8px;bottom:8px;z-index:7;display:flex;align-items:center;gap:6px;
+  height:34px;padding:0 11px;border-radius:5px;border:1px solid var(--stroke);
+  background:rgba(2,14,26,.82);box-shadow:0 2px 0 rgba(4,18,31,.8)}
+#retreat span{font-family:Orbitron,sans-serif;font-weight:700;font-size:9px;letter-spacing:.1em;color:var(--txt)}
+#killtag{position:absolute;right:8px;bottom:8px;z-index:7;padding:4px 10px;border-radius:4px;
+  background:rgba(2,14,26,.82);border:1px solid var(--stroke);
+  font-family:Orbitron,sans-serif;font-weight:900;font-size:10px;color:var(--ice)}
+
+/* ============ CỐT TRUYỆN / MỞ KHOÁ GIÁP ============ */
+#scrStory{background:radial-gradient(110% 60% at 50% 20%,#0f4468 0%,#072338 46%,#04121f 82%)}
+#scrStory .in{position:relative;flex:1;display:flex;flex-direction:column;justify-content:center;
+  gap:16px;padding:26px 22px;overflow-y:auto}
+#scrStory h1{font-family:Orbitron,sans-serif;font-weight:900;font-size:22px;letter-spacing:.06em;line-height:1.25;
+  background:linear-gradient(180deg,#fff,#ffe98a 52%,var(--gold));-webkit-background-clip:text;background-clip:text;
+  color:transparent;filter:drop-shadow(0 3px 0 rgba(4,18,31,.85))}
+#stBody{font-size:12.5px;line-height:1.85;color:var(--txt2);white-space:pre-line}
+#stArmor{display:none;align-items:center;gap:12px;padding:12px;border-radius:6px;border:2px solid var(--pink);
+  background:linear-gradient(135deg,rgba(58,10,44,.85),rgba(20,6,24,.95));
+  box-shadow:0 3px 0 var(--deep),0 0 20px rgba(255,74,157,.28)}
+#stArmor canvas{image-rendering:pixelated;flex:0 0 auto}
+#stArmor .tx i{font-family:Orbitron,sans-serif;font-weight:700;font-size:8.5px;letter-spacing:.18em;
+  color:#ff8ad8;font-style:normal}
+#stArmor .tx b{display:block;margin-top:3px;font-family:Orbitron,sans-serif;font-weight:900;font-size:15px}
+#stArmor .tx p{margin-top:4px;font-size:11px;line-height:1.5;color:#dbb6cc}
+
+/* ============ CHỌN GIÁP ============ */
+#armorList{display:flex;flex-direction:column;gap:8px;padding:12px 14px}
+.arw{display:flex;align-items:center;gap:11px;padding:9px 11px;border-radius:6px;border:2px solid var(--stroke);
+  background:linear-gradient(180deg,#0d4a70,#062c46);box-shadow:0 2px 0 #041e30}
+.arw.on{border-color:var(--gold);box-shadow:0 2px 0 #041e30,0 0 0 1px var(--gold)}
+.arw.lk{opacity:.45}
+.arw canvas{image-rendering:pixelated;flex:0 0 auto}
+.arw .tx{flex:1;min-width:0}
+.arw .tx b{font-family:Orbitron,sans-serif;font-weight:900;font-size:12px}
+.arw .tx p{margin-top:3px;font-size:10.5px;line-height:1.45;color:var(--txt)}
+.arw .st{display:flex;gap:8px;margin-top:5px;font-family:Orbitron,sans-serif;font-weight:700;font-size:9px;color:var(--ice)}
+
 /* ============ OVERLAY ============ */
 .ov{position:fixed;inset:0;background:rgba(2,10,20,.94);z-index:80;display:none;
   flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:22px;text-align:center}
@@ -503,6 +560,9 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
     </button>
     <h2>CHIẾN DỊCH</h2>
+    <button class="back" id="btnArmor" title="Kho giáp">
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3 4 6.4v5.2c0 4.7 3.3 8.6 8 9.8 4.7-1.2 8-5.1 8-9.8V6.4z"/></svg>
+    </button>
     <div class="chip">
       <svg viewBox="0 0 24 24" width="17" height="17"><circle cx="12" cy="12" r="9" fill="#ffcc00" stroke="#8a6a00" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="#8a6a00" stroke-width="1.6"/></svg>
       <b id="campGold">0</b>
@@ -510,7 +570,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
   </div>
 
   <div class="chap">
-    <div class="hd"><i>CHƯƠNG 1</i><b>VÀNH ĐAI SAO</b></div>
+    <div class="hd"><i id="chapNo">CHƯƠNG 1</i><b id="chapNm">VÀNH ĐAI SAO</b></div>
     <div class="pg"><div class="bar"><i id="campBar" style="width:0"></i></div><b id="campPg">0/12 MÀN</b></div>
   </div>
 
@@ -522,7 +582,9 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
       <div style="flex:1;min-width:0">
         <div class="ttl"><i id="stNo">MÀN 01</i><b id="stName">—</b></div>
         <div class="desc" id="stDesc">—</div>
-        <div class="diff"><span>ĐỘ KHÓ</span><span id="stStars" style="display:flex;gap:3px"></span></div>
+        <div class="desc" id="stFoe" style="color:#ff8c2a;font-weight:600">—</div>
+        <div class="diff"><span>ĐỘ KHÓ</span><span id="stStars" style="display:flex;gap:3px"></span>
+          <span style="margin-left:auto;color:var(--ice)" id="stKills">0/3</span></div>
       </div>
     </div>
     <div class="rewrow">
@@ -610,6 +672,12 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
       <span>SS SẴN SÀNG · SÁT THƯƠNG ×2</span>
     </div>
     <div id="gmode"></div>
+    <div id="loot"></div>
+    <button id="retreat">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#9fc4dd" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/><path d="M20 12H9"/></svg>
+      <span>RÚT LUI</span>
+    </button>
+    <div id="killtag">0/3</div>
     <div id="hint">Vuốt DỌC để chỉnh góc · vuốt NGANG để xem bản đồ</div>
   </div>
 
@@ -725,6 +793,31 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
       </button>
     </div>
   </div>
+</div>
+
+<!-- ============ CỐT TRUYỆN ============ -->
+<div class="scr" id="scrStory">
+  <div class="sky" id="skyStory"></div>
+  <div class="in">
+    <h1 id="stTitle">VÀNH ĐAI SAO</h1>
+    <div id="stBody"></div>
+    <div id="stArmor">
+      <canvas id="stArmorCv" width="96" height="76"></canvas>
+      <div class="tx"><i>MỞ KHOÁ GIÁP</i><b id="stArmorNm">—</b><p id="stArmorDesc">—</p></div>
+    </div>
+    <button class="btn pri" id="stOk">TIẾP TỤC</button>
+  </div>
+</div>
+
+<!-- ============ CHỌN GIÁP ============ -->
+<div class="scr" id="scrArmor">
+  <div class="tbar">
+    <button class="back" id="armorBack">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
+    </button>
+    <h2>KHO GIÁP</h2>
+  </div>
+  <div id="armorList" style="flex:1;overflow-y:auto"></div>
 </div>
 
 <!-- ============ NẠP / MẸO ============ -->
@@ -911,8 +1004,14 @@ function placeUnits(){
   let px=WORLD_W*0.16, bx=WORLD_W*0.84;
   if(bx-px<MIN_DIST){ const c=(px+bx)/2; px=c-MIN_DIST/2; bx=c+MIN_DIST/2; }
   px=clamp(px,90,WORLD_W-90); bx=clamp(bx,90,WORLD_W-90);
-  const st=G.stage||stageOf(1);
-  G.units=[ mkUnit(px,1,true,P.set,100), mkUnit(bx,-1,false,st.set||DEFAULT_SET[P.sex==="m"?"f":"m"],st.hp) ];
+  const M=G.map||mapOf(1,1);
+  const pa=ARMORS[P.armor]||ARMORS.aduka;
+  const you=mkUnit(px,1,true,P.set,Math.round(pa.hp*(1+(P.lv-1)*.06)));
+  you.armor=P.armor; you.dmg=pa.dmg; you.fuelMax=pa.fuel;
+  const foe=mkUnit(bx,-1,false,M.boss?DEFAULT_SET[P.sex==="m"?"f":"m"]:null,M.hp);
+  foe.armor=M.armor; foe.dmg=(ARMORS[M.armor]||ARMORS.aduka).dmg; foe.fuelMax=100;
+  foe.boss=!!M.boss;
+  G.units=[you,foe];
   G.units.forEach(u=>settle(u));
 }
 function settle(u,dmg){
@@ -922,7 +1021,7 @@ function settle(u,dmg){
   u.y=gy-2;
 }
 function rollWind(){
-  const w = (G.stage && G.stage.wind) || 22;
+  const w = (G.map && G.map.wind) || 12;
   G.wind = Math.round(rnd(-w, w));
 }
 
@@ -935,8 +1034,12 @@ const DEF_PROFILE = (sex) => {
   sex = sex || "m";
   const d = DEFAULT_SET[sex];
   return {
-    name:"", sex, gold:1500, lv:1, exp:0, unlocked:1,
-    stars:{},                                          // {số màn: 1..3}
+    name:"", sex, gold:1500, lv:1, exp:0,
+    ch:1, unlocked:1,                                  // chương hiện tại, map đã mở
+    kills:{},                                          // {"1-3": số lần hạ}
+    armor:"aduka", armors:{aduka:1},                   // giáp đang mặc / đã mở khoá
+    seenIntro:0,
+    stars:{},                                          // {"1-3": 1..3}
     owned:{ [d.h]:1, [d.b]:1 },                        // bộ mặc định luôn có
     set:Object.assign({},d)
   };
@@ -964,6 +1067,10 @@ function loadSave(){
   if(!P.set) P.set=Object.assign({},DEFAULT_SET[P.sex]);
   if(!P.owned) P.owned={};
   if(!P.stars) P.stars={};
+  if(!P.kills) P.kills={};
+  if(!P.armors) P.armors={aduka:1};
+  if(!ARMORS[P.armor]) P.armor="aduka";
+  if(!P.ch) P.ch=1;
 }
 function save(){ try{ localStorage.setItem(SAVE_KEY, JSON.stringify(P)); }catch(e){} }
 function addExp(v){
@@ -974,30 +1081,79 @@ function addExp(v){
 }
 
 /* =====================================================================
-   CHIẾN DỊCH — 12 màn
-   aim = độ lệch ngắm ban đầu của bot (nhỏ = bắn chuẩn hơn)
+   GIÁP — mỗi loại là một biến đổi màu trên sprite xe, đổi được ngay
+   khi có sprite riêng (chỉ cần thay fx bằng img)
    ===================================================================== */
-const STAGES = [
-  {n:1, name:"BỜ VỰC SAO",     desc:"Gió nhẹ · bot mới tập bắn",        wind:6,  hp:70,  aim:11, gold:180, drop:.04, foe:"TÂN BINH"},
-  {n:2, name:"CẦU TREO",       desc:"Gió nhẹ · địa hình gãy khúc",      wind:8,  hp:80,  aim:10, gold:220, drop:.05, foe:"LÍNH GÁC"},
-  {n:3, name:"THÁP ĐÁ",        desc:"Cột đá cao chắn đường bắn",        wind:10, hp:85,  aim:9,  gold:260, drop:.06, foe:"XẠ THỦ"},
-  {n:4, name:"VÀNH ĐAI BĂNG",  desc:"Gió trung bình · băng dễ vỡ",      wind:12, hp:90,  aim:8,  gold:300, drop:.07, foe:"GẤU NÂU"},
-  {n:5, name:"MỎ SAO BĂNG",    desc:"Gió đổi hướng liên tục",           wind:14, hp:95,  aim:7,  gold:360, drop:.08, foe:"THỢ MỎ"},
-  {n:6, name:"HẺM GIÓ",        desc:"Gió mạnh · phải canh kỹ",          wind:16, hp:100, aim:6.5,gold:420, drop:.09, foe:"PHI CÔNG"},
-  {n:7, name:"ĐÀI THIÊN VĂN",  desc:"Bot bắt đầu dùng đạn 2",           wind:16, hp:105, aim:6,  gold:480, drop:.10, foe:"NHÀ QUAN SÁT"},
-  {n:8, name:"XƯỞNG THÉP",     desc:"Địa hình dày, khó phá",            wind:18, hp:115, aim:5.5,gold:560, drop:.11, foe:"THỢ RÈN"},
-  {n:9, name:"CỔNG DỊCH CHUYỂN",desc:"Gió rất mạnh",                    wind:20, hp:125, aim:5,  gold:640, drop:.12, foe:"NGƯỜI GÁC CỔNG"},
-  {n:10,name:"QUỸ ĐẠO THẤP",   desc:"Bot ưu tiên tích Thor",            wind:20, hp:135, aim:4.5,gold:740, drop:.14, foe:"PHI HÀNH GIA"},
-  {n:11,name:"BÃO TỪ",         desc:"Gió cực mạnh · bot bắn chuẩn",     wind:22, hp:145, aim:4,  gold:860, drop:.16, foe:"KỴ SĨ BÃO"},
-  {n:12,name:"LÕI SAO",        desc:"TRÙM · máu dày, ngắm rất chuẩn",   wind:22, hp:200, aim:3,  gold:1500,drop:.35, foe:"LÕI SAO", boss:true}
-];
-const stageOf = n => STAGES[clamp(n,1,STAGES.length)-1];
+const ARMORS = {
+  aduka:  { nm:"ADUKA",    fx:"",                                              hp:100, dmg:1.00, fuel:100,
+            desc:"Khung cũ nhặt ở bãi phế liệu. Không mạnh, nhưng là của bạn." },
+  scrap:  { nm:"PHẾ LIỆU", fx:"grayscale(.75) brightness(.8)",                 hp:80,  dmg:0.85, fuel:130,
+            desc:"Ghép từ xác drone. Mỏng nhưng đi được xa." },
+  vesper: { nm:"VESPER",   fx:"hue-rotate(260deg) saturate(1.35)",             hp:135, dmg:1.10, fuel:85,
+            desc:"Giáp tuần tra Vành Đai. Dày, chậm." },
+  crimson:{ nm:"CRIMSON",  fx:"hue-rotate(120deg) saturate(1.6)",              hp:110, dmg:1.28, fuel:80,
+            desc:"Giáp xung kích. Đánh rất đau, chịu đòn kém." },
+  noctis: { nm:"NOCTIS",   fx:"hue-rotate(60deg) saturate(1.7) brightness(.82)", hp:155, dmg:1.18, fuel:95,
+            desc:"Giáp của Lõi Sao. Thứ không nên tồn tại." }
+};
+/* sprite đã nhuộm màu, dựng một lần rồi dùng lại */
+const armorCache = {};
+function armorSprite(key){
+  const A=ARMORS[key]||ARMORS.aduka;
+  if(!A.fx) return IMG.aduka || null;
+  if(armorCache[key]) return armorCache[key];
+  if(!IMG.aduka) return null;
+  const c=document.createElement("canvas");
+  c.width=IMG.aduka.width; c.height=IMG.aduka.height;
+  const x=c.getContext("2d");
+  x.filter=A.fx; x.drawImage(IMG.aduka,0,0); x.filter="none";
+  armorCache[key]=c; return c;
+}
 
-/* vị trí node trên bản đồ (toạ độ trong svg 390x520) */
-const NODEPOS = [
-  [62,486],[150,436],[248,452],[318,382],[224,330],[118,296],
-  [196,240],[300,200],[210,156],[104,126],[196,86],[300,48]
-];
+/* =====================================================================
+   CỐT TRUYỆN + CHƯƠNG
+   Mỗi chương có 5 map nhỏ: 4 map đánh máy móc, map 5 đánh trùm hình người.
+   ===================================================================== */
+const STORY = {
+  intro:
+    "Vành Đai Sao từng là chuỗi trạm bảo trì quay quanh một ngôi sao lùn.\n\n"+
+    "Rồi có Đợt Tắt Sóng. Liên lạc đứt trong bốn mươi giây, và khi tín hiệu "+
+    "trở lại thì đám drone bảo trì đã không còn nghe ai nữa.\n\n"+
+    "Bạn là thợ trục vớt. Bạn tìm được một khung ADUKA cũ trong bãi phế liệu "+
+    "vành ngoài — hỏng, nhưng còn bắn được.\n\n"+
+    "Bắn thủng đường vào lõi. Nhặt giáp trên xác thứ mình hạ. Xem ai đang "+
+    "ngồi trong đó.",
+  chapterDone:
+    "Chỉ huy Vesper tháo mũ trước khi khung giáp tắt hẳn.\n\n"+
+    "«Ngươi tưởng bọn ta phát điên à? Bọn ta nghe lệnh. Lệnh từ lõi.»\n\n"+
+    "Giáp Vesper giờ là của bạn. Cửa vào vành trong đã mở."
+};
+
+const CHAPTERS = [{
+  n:1, name:"VÀNH ĐAI SAO",
+  maps:[
+    { n:1, name:"BÃI PHẾ LIỆU",  foe:"DRONE CÀO",    armor:"scrap",   hp:60,  aim:12, wind:6,
+      gold:[35,60],   exp:[16,26],  drop:.05, need:3,
+      line:"Drone cào rác. Chậm, bắn ẩu. Chỗ tốt để làm quen tay." },
+    { n:2, name:"VÀNH NGOÀI",    foe:"DRONE TUẦN",   armor:"scrap",   hp:80,  aim:10, wind:9,
+      gold:[55,90],   exp:[24,38],  drop:.06, need:3,
+      line:"Bọn này bay theo tuyến cũ. Gió ngoài vành mạnh hơn trong bãi." },
+    { n:3, name:"THÁP TÍN HIỆU", foe:"DRONE NẶNG",   armor:"vesper",  hp:110, aim:8,  wind:12,
+      gold:[85,140],  exp:[36,56],  drop:.08, need:4,
+      line:"Khung dày hơn hẳn. Đây là lần đầu bạn thấy giáp Vesper." },
+    { n:4, name:"HÀNH LANG BĂNG",foe:"DRONE BẮN TỈA",armor:"crimson", hp:95,  aim:6,  wind:16,
+      gold:[120,190], exp:[50,76],  drop:.10, need:4,
+      line:"Ngắm rất chuẩn và đánh rất đau. Đừng đứng yên một chỗ." },
+    { n:5, name:"LÕI TRẠM",      foe:"CHỈ HUY VESPER",armor:"vesper", hp:240, aim:4,  wind:14,
+      gold:[420,620], exp:[190,280],drop:.34, need:1, boss:true, unlock:"vesper",
+      line:"Có người thật ngồi trong khung này. Hạ được thì lấy luôn giáp." }
+  ]
+}];
+const chapterOf = n => CHAPTERS[clamp(n,1,CHAPTERS.length)-1];
+const mapOf = (ch,m) => chapterOf(ch).maps[clamp(m,1,5)-1];
+
+/* toạ độ 5 node trên bản đồ (trong svg 390x520) */
+const NODEPOS = [[64,452],[168,384],[268,312],[160,232],[248,132]];
 
 /* =====================================================================
    ĐỘ HIẾM + CỬA HÀNG
@@ -1038,12 +1194,13 @@ function rollDrop(bonus){
 /* =====================================================================
    CHUYỂN MÀN HÌNH
    ===================================================================== */
-const SCREENS = ["scrLogin","scrCamp","scrShop","ovRew"];
+const SCREENS = ["scrLogin","scrCamp","scrShop","scrStory","scrArmor","ovRew"];
 function show(id){
   SCREENS.forEach(x=>$("#"+x).classList.toggle("on", x===id));
   $("#game").classList.toggle("on", id==="game");
   if(id==="scrCamp") renderCamp();
   if(id==="scrShop") renderShop();
+  if(id==="scrArmor") renderArmor();
 }
 
 /* nền sao rắc ngẫu nhiên nhưng cố định theo seed */
@@ -1119,10 +1276,11 @@ function boom(x,y,off){
     for(let i=0;i<n;i++)
       G.parts.push({x,y,vx:rnd(-6,6),vy:rnd(-7,2),l:rnd(18,46),
         c:["#fff2b0","#ffb03a","#ff5a2a","#ffe9a0"][i%4],r:rnd(2,7)});
-    let dealt=applyDamage(x,y,W.rad,W.dmg);
+    const mul=(p&&p.owner&&p.owner.dmg)||1;
+    let dealt=applyDamage(x,y,W.rad,W.dmg*mul);
     if(W.kind==="ss"){                                   // Thor bắn tia gấp đôi
       G.beams.push({x,y,l:34});
-      dealt+=applyDamage(x,y,W.rad,W.dmg);
+      dealt+=applyDamage(x,y,W.rad,W.dmg*mul);
       G.thor.lvl=1; G.thor.exp=0; G.thor.flash=50;
       popMsg("THOR STRIKE ×2!","#ff8ad8");
       sfx(90,.5,"saw",.34);
@@ -1268,9 +1426,9 @@ function draw(){
 function drawProj(c,z){
   const p=G.proj, s=w2s(p.x,p.y);
   if(p.w.kind==="mobile"){                       // đạn 2 = chính chiếc xe
-    const w=AD_CELL*z*.72,h=AD_H*z*.72;
+    const w=AD_CELL*z*.72,h=AD_H*z*.72, sp=armorSprite((p.owner&&p.owner.armor)||"aduka");
     c.save(); c.translate(s.x,s.y); c.rotate(p.rot);
-    c.drawImage(IMG.aduka,0,0,AD_CELL,AD_H,-w/2,-h/2,w,h); c.restore();
+    if(sp) c.drawImage(sp,0,0,AD_CELL,AD_H,-w/2,-h/2,w,h); c.restore();
   } else if(p.w.kind==="ss"){                    // SS = đĩa Thor
     const w=TH_CELL*z*1.05,h=TH_H*z*1.05;
     c.drawImage(IMG.thor,Math.floor(p.f)*TH_CELL,0,TH_CELL,TH_H,s.x-w/2,s.y-h/2,w,h);
@@ -1312,11 +1470,13 @@ function drawUnit(c,u,z){
   else fi=Math.floor(u.anim)%7;
   c.globalAlpha=.3; c.fillStyle="#000";
   c.beginPath(); c.ellipse(p.x,p.y,20*z,6*z,0,0,7); c.fill(); c.globalAlpha=1;
+  const sp=armorSprite(u.armor||"aduka");
   c.save(); c.translate(p.x,p.y);
   if(u.side<0) c.scale(-1,1);
-  c.drawImage(IMG.aduka,fi*AD_CELL,0,AD_CELL,AD_H,-w/2,-h,w,h);
+  if(sp) c.drawImage(sp,fi*AD_CELL,0,AD_CELL,AD_H,-w/2,-h,w,h);
   c.restore();
-  drawAvatar(c,u,z,G.t);
+  /* chỉ người và trùm mới có avatar ngồi trên; drone thì không */
+  if(u.human||u.boss) drawAvatar(c,u,z,G.t);
   const bw=34*z, bx=p.x-bw/2, by=p.y-h-30*z;
   c.fillStyle="rgba(0,0,0,.7)"; c.fillRect(bx-1,by-1,bw+2,5*z+2);
   c.fillStyle=u.human?"#4aff8a":"#ff5a6a"; c.fillRect(bx,by,bw*(u.hp/u.maxHp),5*z);
@@ -1435,7 +1595,7 @@ function drawAmmo(){
 /* ---- nhiên liệu ---- */
 function drawFuel(){
   const u=G.units[0]; if(!u) return;
-  const f=clamp(Math.round(u.fuel),0,100);
+  const f=clamp(Math.round(u.fuel/(u.fuelMax||100)*100),0,100);
   $("#fuelV").textContent=f;
   const seg=$("#fuelSeg");
   if(seg.children.length!==10){ seg.innerHTML="<i></i>".repeat(10); }
@@ -1523,25 +1683,141 @@ function tickTimer(){
   }
 }
 function endTurn(){
-  if(G.over) return;
+  if(G.over||G.phase==="down") return;
   const dead=G.units.find(u=>u.dead);
-  if(dead){ finish(dead.human?1:0); return; }
+  if(dead){ onDown(dead); return; }
   G.turn=1-G.turn; if(G.turn===0) G.round++;
   G.phase="aim"; G.follow=false;
-  thorGain(6);                                     // vệ tinh lớn dần theo thời gian
+  thorGain(6);
   rollWind(); drawWind();
-  const u=G.units[G.turn]; u.fuel=100;
+  const u=G.units[G.turn]; u.fuel=u.fuelMax||100;
   camTo(u.x,u.y-130);
   resetTimer(); syncHud(); drawGauge();
-  popMsg(G.turn===0?"LƯỢT CỦA BẠN":"BOT ĐANG NGẮM…",G.turn===0?"#6bdbff":"#ffb03a");
+  popMsg(G.turn===0?"LƯỢT CỦA BẠN":"ĐỐI THỦ ĐANG NGẮM…",G.turn===0?"#6bdbff":"#ffb03a");
   if(G.turn===1) setTimeout(botTurn,900);
 }
 
-/* số sao đạt được: 3 sao nếu còn nhiều máu và ít lượt */
+/* =====================================================================
+   VÒNG FARMING — hạ xong thì cả hai bên hồi sinh, vòng chơi chạy tiếp
+   ===================================================================== */
+const RESPAWN_MS = 2400;
+function onDown(u){
+  G.phase="down"; G.tEnd=0; G.follow=false;
+  if(G.mode==="quick"){ finish(u.human?1:0); return; }
+  if(u.human) playerDown(); else foeDown();
+}
+
+function foeDown(){
+  const M=G.map, key=P.ch+"-"+M.n;
+  const gold=Math.round(rnd(M.gold[0],M.gold[1])*(1+(P.lv-1)*.03));
+  const exp =Math.round(rnd(M.exp[0],M.exp[1]));
+  P.gold+=gold;
+  const ups=addExp(exp);
+  P.kills[key]=(P.kills[key]||0)+1;
+  const kills=P.kills[key];
+
+  /* đủ số lần hạ thì mở map kế trong chương */
+  if(kills>=M.need && M.n>=P.unlocked && M.n<chapterOf(P.ch).maps.length)
+    P.unlocked=M.n+1;
+
+  /* rơi đồ — hạ trùm hoặc đánh lại thì tỉ lệ ra đồ xịn cao hơn */
+  const luck = M.boss ? 3.5 : (kills>M.need ? 1.6 : 1);
+  let drop=null;
+  if(Math.random() < M.drop*(M.boss?1:1+Math.min(kills,8)*.02)) drop=rollDrop(luck);
+  if(drop) P.owned[drop]=1;
+
+  /* hạ trùm thì lấy luôn giáp nó đang mặc */
+  let newArmor=null;
+  if(M.unlock && !P.armors[M.unlock]){ P.armors[M.unlock]=1; newArmor=M.unlock; }
+  save();
+
+  showLoot({gold,exp,drop,ups,newArmor,kills,need:M.need,boss:M.boss});
+  updateKillTag();
+  sfx(720,.12,"sq",.13); setTimeout(()=>sfx(940,.16,"sq",.11),130);
+
+  if(M.boss && newArmor){ setTimeout(()=>bossCleared(newArmor), 1500); return; }
+  respawn();
+}
+
+function playerDown(){
+  const lost=Math.min(P.gold, Math.round(P.gold*.04));
+  P.gold-=lost; save();
+  showLoot({down:true, lost});
+  sfx(140,.4,"saw",.24);
+  respawn();
+}
+
+/* dựng lại cả hai bên, giữ nguyên địa hình đã bị phá */
+function respawn(){
+  setTimeout(()=>{
+    if(G.over) return;
+    const [you,foe]=G.units;
+    let px=WORLD_W*rnd(.12,.24), bx=WORLD_W*rnd(.76,.88);
+    if(bx-px<MIN_DIST){ const c=(px+bx)/2; px=c-MIN_DIST/2; bx=c+MIN_DIST/2; }
+    you.x=clamp(px,90,WORLD_W-90); foe.x=clamp(bx,90,WORLD_W-90);
+    [you,foe].forEach(u=>{
+      u.hp=u.maxHp; u.dead=false; u.fuel=u.fuelMax||100;
+      u.ang=45; u.angF=45; u.fireT=0; settle(u);
+    });
+    /* rơi xuống vực lúc dựng lại thì nâng lên mặt đất gần nhất */
+    [you,foe].forEach(u=>{
+      if(u.dead){ u.dead=false; u.hp=u.maxHp; u.x=WORLD_W/2+(u.side>0?-260:260); settle(u); }
+    });
+    G.thor={x:WORLD_W/2,y:THOR_Y,lvl:Math.max(1,G.thor.lvl-1),exp:0,f:0,flash:30};
+    G.turn=0; G.round++; G.phase="aim"; G.proj=null;
+    rollWind(); drawWind(); drawGauge(); drawAmmo(); drawFuel();
+    resetTimer(); syncHud(); fitBoth();
+    setTimeout(()=>{ G.cam.z=clamp(G.cam.z*2.4,.5,1.25); camTo(G.units[0].x,G.units[0].y-120); camClamp(); },500);
+    popMsg("VÒNG MỚI","#6bdbff");
+  }, RESPAWN_MS);
+}
+
+/* bảng chiến lợi phẩm nổi lên giữa sân */
+function showLoot(d){
+  const el=$("#loot");
+  let h="";
+  if(d.down){
+    h='<div class="lt bad"><b>BỊ HẠ</b><span>Mất '+d.lost.toLocaleString("vi-VN")+' vàng · dựng lại sau 2 giây</span></div>';
+  }else{
+    h='<div class="lt"><b>'+(d.boss?"HẠ ĐƯỢC TRÙM":"HẠ MỤC TIÊU")+'</b>'+
+      '<span class="rw"><i class="g"></i>+'+d.gold.toLocaleString("vi-VN")+'</span>'+
+      '<span class="rw"><i class="x"></i>+'+d.exp+' KN</span>';
+    if(d.ups) h+='<span class="up">LÊN CẤP '+P.lv+'</span>';
+    if(!d.boss) h+='<span class="kc">'+Math.min(d.kills,d.need)+'/'+d.need+' lần hạ</span>';
+    if(d.drop){
+      const r=RARITY[ITEMS[d.drop].r];
+      h+='<span class="dp" style="border-color:'+r.col+';color:'+r.col+'">RƠI ĐỒ · '+r.nm+' — '+ITEMS[d.drop].n+'</span>';
+    }
+    if(d.newArmor) h+='<span class="am">MỞ KHOÁ GIÁP · '+ARMORS[d.newArmor].nm+'</span>';
+    h+='</div>';
+  }
+  el.innerHTML=h; el.classList.add("on");
+  clearTimeout(showLoot._t);
+  showLoot._t=setTimeout(()=>el.classList.remove("on"), d.boss?2600:2000);
+}
+
+/* hạ trùm: hiện cốt truyện rồi mở chương kế */
+function bossCleared(armorKey){
+  G.over=true;
+  const me=G.units[0];
+  const stars=starsFor(me.hp,me.maxHp,G.round);
+  P.stars[P.ch+"-5"]=Math.max(P.stars[P.ch+"-5"]||0,stars);
+  save();
+  $("#stTitle").textContent="CHƯƠNG "+P.ch+" HOÀN THÀNH";
+  $("#stBody").textContent=STORY.chapterDone;
+  $("#stArmor").style.display="flex";
+  $("#stArmorNm").textContent=ARMORS[armorKey].nm;
+  $("#stArmorDesc").textContent=ARMORS[armorKey].desc;
+  drawArmorPreview($("#stArmorCv"),armorKey);
+  $("#stOk").textContent="VỀ BẢN ĐỒ";
+  show("scrStory");
+}
+
+/* số sao: còn nhiều máu và ít vòng thì 3 sao */
 function starsFor(hpLeft,maxHp,rounds){
-  const hpPct=hpLeft/maxHp;
-  if(hpPct>=.7 && rounds<=6) return 3;
-  if(hpPct>=.35) return 2;
+  const pct=hpLeft/maxHp;
+  if(pct>=.7 && rounds<=8) return 3;
+  if(pct>=.35) return 2;
   return 1;
 }
 
@@ -1549,75 +1825,12 @@ function finish(win){
   G.over=true; G.phase="end"; G.tEnd=0;
   $("#sstoast").classList.remove("on");
   syncHud();
-  if(G.mode!=="camp"){                              // đấu nhanh: kết thúc đơn giản
-    $("#endT").textContent=win===0?"CHIẾN THẮNG":"THUA RỒI";
-    $("#endT").style.color=win===0?"":"#ff6a8a";
-    $("#endP").textContent=win===0
-      ? "Bạn hạ gục Bot sau "+G.round+" lượt. Máu còn lại "+Math.round(G.units[0].hp)+"."
-      : "Bot hạ bạn sau "+G.round+" lượt. Canh gió kỹ hơn và tích Thor lên cấp 5 nhé.";
-    setTimeout(()=>$("#ovEnd").classList.add("on"),700);
-    return;
-  }
-  if(win!==0){                                      // thua trong chiến dịch
-    $("#endT").textContent="THUA RỒI";
-    $("#endT").style.color="#ff6a8a";
-    $("#endP").textContent="Màn "+G.stage.n+" — "+G.stage.name+". Thử lại nhé: canh gió kỹ hơn, "
-      +"hoặc tích Thor lên cấp 5 rồi dùng SS.";
-    setTimeout(()=>$("#ovEnd").classList.add("on"),700);
-    return;
-  }
-  setTimeout(()=>showReward(),800);
-}
-
-/* ---- tổng kết & phần thưởng ---- */
-function showReward(){
-  const st=G.stage, me=G.units[0];
-  const stars=starsFor(me.hp,me.maxHp,G.round);
-  const first=!P.stars[st.n];
-  const gold=Math.round(st.gold*(first?1:.35)*(1+(stars-1)*.15));
-  const exp=Math.round(st.gold*.55*(first?1:.3));
-
-  P.stars[st.n]=Math.max(P.stars[st.n]||0,stars);
-  P.gold+=gold;
-  const lvBefore=P.lv, ups=addExp(exp);
-  if(st.n>=P.unlocked && st.n<STAGES.length) P.unlocked=st.n+1;
-
-  let drop=null;
-  if(Math.random()<st.drop){ drop=rollDrop(); if(drop) P.owned[drop]=1; }
-  save();
-
-  $("#rewStage").textContent="MÀN "+String(st.n).padStart(2,"0")+" HOÀN THÀNH";
-  $("#rewTitle").textContent=st.boss?"HẠ ĐƯỢC TRÙM!":"CHIẾN THẮNG";
-  $("#rewStars").innerHTML=[0,1,2].map(i=>starSvg(i<stars, i===1?58:46)
-    .replace("<svg ", i===1?'<svg style="margin-bottom:8px;filter:drop-shadow(0 0 12px rgba(255,204,0,.6))" ':"<svg ")).join("");
-  $("#rewGold").textContent="+"+gold.toLocaleString("vi-VN");
-  $("#rewExp").textContent="+"+exp;
-  $("#rewLvA").textContent="Lv "+P.lv;
-  $("#rewLvB").textContent="Lv "+(P.lv+1);
-  const need=EXP_PER_LV(P.lv);
-  $("#rewExpBar").style.width=(P.exp/need*100)+"%";
-  $("#rewExpGain").style.left="0"; $("#rewExpGain").style.width="0";
-
-  if(drop){
-    $("#rewDrop").style.display="flex";
-    const r=RARITY[rarityOf(drop)];
-    $("#rewDropRar").textContent=r.nm;
-    $("#rewDropNm").textContent=ITEMS[drop].n.replace(/^\(RARE\)\s*/,"");
-    $("#rewDropSub").textContent="Trang bị "+({h:"ĐẦU",b:"THÂN",g:"KÍNH",f:"CỜ"}[ITEMS[drop].t])+" · đã vào tủ đồ";
-    gridGen++; paintItem($("#rewDropCv"),drop,68,68,gridGen);
-  } else $("#rewDrop").style.display="none";
-
-  $("#rewNoteTx").innerHTML = drop
-    ? 'Tỉ lệ rơi đồ màn này là <b>'+Math.round(st.drop*100)+'%</b> — bạn đã may mắn'
-    : 'Không rơi đồ lần này · tỉ lệ <b>'+Math.round(st.drop*100)+'%</b>';
-  if(ups) popMsg("LÊN CẤP "+P.lv+"!","#ffcc00");
-
-  const last = st.n>=STAGES.length;
-  $("#rewNextTx").textContent = last ? "VỀ BẢN ĐỒ" : "MÀN "+String(st.n+1).padStart(2,"0");
-  $("#rewNext").dataset.next = last ? "" : String(st.n+1);
-  show("ovRew");
-  sfx(660,.16,"sq",.14);
-  setTimeout(()=>sfx(880,.2,"sq",.12),150);
+  $("#endT").textContent=win===0?"CHIẾN THẮNG":"THUA RỒI";
+  $("#endT").style.color=win===0?"":"#ff6a8a";
+  $("#endP").textContent=win===0
+    ? "Bạn hạ được đối thủ sau "+G.round+" lượt. Máu còn "+Math.round(G.units[0].hp)+"."
+    : "Đối thủ hạ bạn sau "+G.round+" lượt. Canh gió kỹ hơn và tích Thor lên cấp 5 nhé.";
+  setTimeout(()=>$("#ovEnd").classList.add("on"),700);
 }
 
 /* ---- AI ---- */
@@ -1916,9 +2129,10 @@ function tick(){
   if(G.t%30===0) drawAmmo();
   draw();
 }
-function newGame(stage,mode){
-  G.mode = mode || "quick";
-  G.stage = stage || stageOf(1);
+function enterMap(ch,mapNo,mode){
+  G.mode = mode || "farm";
+  G.ch = ch; G.map = mapOf(ch,mapNo);
+  P.ch = ch; save();
   buildTerrain(); placeUnits();
   G.turn=0; G.round=1; G.over=false; G.phase="aim"; G.weapon=0;
   G.power=40; G.proj=null; G.parts=[]; G.beams=[]; lastPow=null;
@@ -1926,14 +2140,24 @@ function newGame(stage,mode){
   G.units.forEach(u=>{u.ang=45;u.angF=45;});
   rollWind(); drawWind(); drawGauge(); drawAmmo(); drawFuel(); drawHeadAv(); drawThorBadge();
   $("#nm0").textContent = P.name || "BẠN";
-  $("#nm1").textContent = G.stage.foe;
+  $("#nm1").textContent = G.map.foe;
+  $("#retreat").style.display = G.mode==="farm" ? "flex" : "none";
+  $("#killtag").style.display = G.mode==="farm" ? "block" : "none";
+  updateKillTag();
   resize(); fitBoth();
   setTimeout(()=>{ G.cam.z=clamp(G.cam.z*2.6,.5,1.25); camTo(G.units[0].x,G.units[0].y-120); camClamp(); },700);
-  resetTimer(); syncHud(); popMsg("LƯỢT CỦA BẠN","#6bdbff");
+  resetTimer(); syncHud(); popMsg(G.map.name,"#6bdbff");
+}
+function updateKillTag(){
+  if(G.mode!=="farm"||!G.map) return;
+  const k=P.kills[P.ch+"-"+G.map.n]||0;
+  $("#killtag").textContent = G.map.boss ? (k?"ĐÃ HẠ TRÙM":"CHƯA HẠ TRÙM") : Math.min(k,G.map.need)+"/"+G.map.need+" LẦN HẠ";
 }
 window.addEventListener("resize",resize);
 window.addEventListener("orientationchange",()=>setTimeout(resize,300));
 window.drawHeadAv=drawHeadAv;
+
+$("#retreat").onclick=()=>{ G.over=true; sfx(300,.1,"sq",.1); show("scrCamp"); };
 
 /* =====================================================================
    MÀN CHÀO
@@ -1942,8 +2166,8 @@ function drawLoginArt(){
   drawLoginArt._n = drawLoginArt._n || 0;
   const cc=$("#loCar").getContext("2d");
   cc.imageSmoothingEnabled=false; cc.clearRect(0,0,222,177);
-  if(IMG.aduka) cc.drawImage(IMG.aduka,0,0,AD_CELL,AD_H,0,0,222,177);
-  /* bộ đồ đang mặc, cùng thứ tự lớp như trong trận */
+  const sp=armorSprite(P.armor);
+  if(sp) cc.drawImage(sp,0,0,AD_CELL,AD_H,0,0,222,177);
   const S=3, nx=104, ny=64;
   for(const t of ["f","b","h","g"]){
     const k=P.set[t]; if(!k) continue;
@@ -1951,13 +2175,12 @@ function drawLoginArt(){
     const i=it.f.length>>1, g=it.f[i];
     cc.drawImage(im,it.xs[i],0,g[0],g[1],nx-g[2]*S,ny-g[3]*S,g[0]*S,g[1]*S);
   }
-  /* ảnh trang bị tải xong lúc nào vẽ lúc đó — một hẹn giờ duy nhất, không chồng chuỗi */
-  clearTimeout(drawLoginArt._t);
-  if($("#scrLogin").classList.contains("on") && ++drawLoginArt._n < 20)
-    drawLoginArt._t = setTimeout(drawLoginArt, 700);
   const tc=$("#loThor").getContext("2d");
   tc.imageSmoothingEnabled=false; tc.clearRect(0,0,83,55);
   if(IMG.thor) tc.drawImage(IMG.thor,0,0,TH_CELL,TH_H,0,0,83,55);
+  clearTimeout(drawLoginArt._t);
+  if($("#scrLogin").classList.contains("on") && ++drawLoginArt._n < 20)
+    drawLoginArt._t = setTimeout(drawLoginArt, 700);
 }
 function renderSex(){
   ["m","f"].forEach(x=>$("#sex"+x.toUpperCase()).classList.toggle("on", P.sex===x));
@@ -1965,99 +2188,150 @@ function renderSex(){
 function initLogin(){
   sprinkle($("#skyLogin"),46,20260824);
   sprinkle($("#skyRew"),30,777);
+  sprinkle($("#skyStory"),34,4242);
   const inp=$("#inName");
   inp.value = P.name || "";
   $("#nameCnt").textContent = inp.value.length+"/12";
   inp.oninput = () => { $("#nameCnt").textContent = inp.value.length+"/12"; };
-  const commit = () => {
-    const v=(inp.value||"").trim().toUpperCase().slice(0,12);
-    P.name = v || "CHỈ HUY"; save();
-  };
+  const commit = () => { P.name=((inp.value||"").trim().toUpperCase().slice(0,12))||"CHỈ HUY"; save(); };
   renderSex();
   ["m","f"].forEach(x=>{
     $("#sex"+x.toUpperCase()).onclick = () => {
-      setSex(x); renderSex(); drawHeadAv(); drawLoginArt();
+      setSex(x); renderSex(); drawHeadAv(); drawLoginArt._n=0; drawLoginArt();
       sfx(x==="m"?420:620,.08,"sq",.12);
     };
   });
-  $("#btnCamp").onclick = () => { commit(); sfx(520,.1,"sq",.12); show("scrCamp"); };
+  $("#btnCamp").onclick = () => {
+    commit(); sfx(520,.1,"sq",.12);
+    if(!P.seenIntro){ P.seenIntro=1; save(); showStory("VÀNH ĐAI SAO",STORY.intro,null,"BẮT ĐẦU"); }
+    else show("scrCamp");
+  };
   $("#btnQuick").onclick = () => {
     commit(); sfx(440,.1,"sq",.12);
-    show("game"); newGame(stageOf(1+Math.floor(Math.random()*Math.min(P.unlocked,STAGES.length-1))),"quick");
+    show("game"); enterMap(1, 1+Math.floor(Math.random()*4), "quick");
   };
   $("#btnShop2").onclick = () => { commit(); show("scrShop"); };
   $("#btnWipe").onclick = () => {
     if(!confirm("Xoá toàn bộ tiến trình đã lưu?")) return;
     try{ localStorage.removeItem(SAVE_KEY); }catch(e){}
     P = DEF_PROFILE(P.sex); save(); inp.value=""; $("#nameCnt").textContent="0/12";
-    renderSex();
-    drawHeadAv();
+    renderSex(); drawHeadAv(); drawLoginArt._n=0; drawLoginArt();
   };
   drawLoginArt();
 }
 
 /* =====================================================================
-   BẢN ĐỒ CHIẾN DỊCH
+   CỐT TRUYỆN
    ===================================================================== */
-let selStage = 1;
+function showStory(title,body,armorKey,btn){
+  $("#stTitle").textContent=title;
+  $("#stBody").textContent=body;
+  $("#stOk").textContent=btn||"TIẾP TỤC";
+  const box=$("#stArmor");
+  if(armorKey){
+    box.style.display="flex";
+    $("#stArmorNm").textContent=ARMORS[armorKey].nm;
+    $("#stArmorDesc").textContent=ARMORS[armorKey].desc;
+    drawArmorPreview($("#stArmorCv"),armorKey);
+  } else box.style.display="none";
+  show("scrStory");
+}
+$("#stOk").onclick=()=>{ sfx(560,.1,"sq",.12); show("scrCamp"); };
+
+function drawArmorPreview(cv,key){
+  const c=cv.getContext("2d"); c.imageSmoothingEnabled=false;
+  c.clearRect(0,0,cv.width,cv.height);
+  const sp=armorSprite(key); if(!sp) return;
+  const s=Math.min(cv.width/AD_CELL, cv.height/AD_H);
+  c.drawImage(sp,0,0,AD_CELL,AD_H,(cv.width-AD_CELL*s)/2,(cv.height-AD_H*s)/2,AD_CELL*s,AD_H*s);
+}
+
+/* =====================================================================
+   KHO GIÁP
+   ===================================================================== */
+function renderArmor(){
+  const keys=Object.keys(ARMORS);
+  $("#armorList").innerHTML=keys.map(k=>{
+    const A=ARMORS[k], have=!!P.armors[k], on=P.armor===k;
+    return '<div class="arw'+(on?" on":"")+(have?"":" lk")+'" data-k="'+k+'">'+
+      '<canvas width="80" height="62" data-a="'+k+'"></canvas>'+
+      '<div class="tx"><b>'+A.nm+'</b><p>'+(have?A.desc:"Chưa mở khoá — hạ đối thủ đang mặc giáp này.")+'</p>'+
+      '<div class="st"><span>MÁU '+A.hp+'</span><span>SÁT THƯƠNG ×'+A.dmg.toFixed(2)+'</span><span>NHIÊN LIỆU '+A.fuel+'</span></div>'+
+      '</div></div>';
+  }).join("");
+  keys.forEach(k=>drawArmorPreview($('#armorList canvas[data-a="'+k+'"]'),k));
+  $$("#armorList .arw").forEach(el=>el.onclick=()=>{
+    const k=el.dataset.k;
+    if(!P.armors[k]){ sfx(150,.12,"saw",.12); flash("CHƯA MỞ KHOÁ"); return; }
+    P.armor=k; save(); sfx(620,.08,"sq",.12); renderArmor(); drawHeadAv();
+  });
+  $("#armorBack").onclick=()=>show("scrCamp");
+}
+
+/* =====================================================================
+   BẢN ĐỒ CHƯƠNG — 5 map nhỏ
+   ===================================================================== */
+let selMap = 1;
 function renderCamp(){
+  const CH=chapterOf(P.ch), maps=CH.maps;
   $("#campGold").textContent = P.gold.toLocaleString("vi-VN");
-  const done = Object.keys(P.stars).length;
-  $("#campBar").style.width = (done/STAGES.length*100)+"%";
-  $("#campPg").textContent = done+"/"+STAGES.length+" MÀN";
+  const cleared = maps.filter(m=>(P.kills[P.ch+"-"+m.n]||0)>=m.need).length;
+  $("#campBar").style.width=(cleared/maps.length*100)+"%";
+  $("#campPg").textContent=cleared+"/"+maps.length+" MAP";
+  $("#chapNo").textContent="CHƯƠNG "+CH.n;
+  $("#chapNm").textContent=CH.name;
 
   const map=$("#map"), svg=$("#mapsvg");
-  const W=map.clientWidth||390, H=520;
-  svg.setAttribute("width",W); svg.setAttribute("height",540); svg.setAttribute("viewBox","0 0 390 540");
-  const pts = NODEPOS.slice(0,STAGES.length);
+  svg.setAttribute("width",map.clientWidth||390); svg.setAttribute("height",520);
+  svg.setAttribute("viewBox","0 0 390 520");
+  const pts=NODEPOS.slice(0,maps.length);
   let d="M"+pts[0][0]+" "+pts[0][1];
   for(let i=1;i<pts.length;i++) d+=" L"+pts[i][0]+" "+pts[i][1];
-  const doneIdx = Math.max(0, Math.min(P.unlocked, STAGES.length) - 1);
-  let dDone="M"+pts[0][0]+" "+pts[0][1];
-  for(let i=1;i<=doneIdx;i++) dDone+=" L"+pts[i][0]+" "+pts[i][1];
-  svg.innerHTML =
+  const upto=Math.max(0,Math.min(P.unlocked,maps.length)-1);
+  let dd="M"+pts[0][0]+" "+pts[0][1];
+  for(let i=1;i<=upto;i++) dd+=" L"+pts[i][0]+" "+pts[i][1];
+  svg.innerHTML=
     '<path d="'+d+'" fill="none" stroke="#0a3a5a" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>'+
     '<path d="'+d+'" fill="none" stroke="#3d5c78" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 9"/>'+
-    (doneIdx>0?'<path d="'+dDone+'" fill="none" stroke="#ffcc00" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 9" opacity=".85"/>':"");
+    (upto>0?'<path d="'+dd+'" fill="none" stroke="#ffcc00" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 9" opacity=".85"/>':"");
 
   map.querySelectorAll(".node").forEach(e=>e.remove());
-  STAGES.forEach((st,i)=>{
+  maps.forEach((m,i)=>{
     const [x,y]=NODEPOS[i];
-    const stars=P.stars[st.n]||0;
-    const locked = st.n>P.unlocked;
-    const cur = st.n===selStage;
+    const kills=P.kills[P.ch+"-"+m.n]||0, done=kills>=m.need;
+    const locked=m.n>P.unlocked, cur=m.n===selMap;
     const el=document.createElement("div");
-    el.className="node "+(locked?"lock":(stars?"done":"cur"))+(st.boss?" boss":"")+(cur&&!locked?" cur":"");
-    const sz = el.classList.contains("boss")?64:(el.classList.contains("cur")?58:(locked?44:48));
+    el.className="node "+(locked?"lock":(done?"done":"cur"))+(m.boss?" boss":"")+((cur&&!locked)?" cur":"");
+    const sz=el.classList.contains("boss")?64:(el.classList.contains("cur")?58:(locked?44:48));
     el.style.left=(x-sz/2)+"px"; el.style.top=(y-sz/2)+"px";
     el.innerHTML = locked
       ? '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#4d7a9c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>'
-      : (st.boss
-          ? '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="'+(stars?"#3a2500":"#ff4a9d")+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 7v5c0 4.6 3.2 8.3 8 9.4 4.8-1.1 8-4.8 8-9.4V7z"/><path d="M9.5 11.5h.01M14.5 11.5h.01M9.5 15.5h5"/></svg>'
-          : '<b>'+st.n+'</b>')
-      + (stars?'<div class="stars">'+[0,1,2].map(j=>starSvg(j<stars,11)).join("")+'</div>':"");
-    if(!locked) el.onclick=()=>{ selStage=st.n; sfx(600,.05,"sq",.09); renderCamp(); };
+      : (m.boss
+          ? '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="'+(done?"#3a2500":"#ff4a9d")+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 7v5c0 4.6 3.2 8.3 8 9.4 4.8-1.1 8-4.8 8-9.4V7z"/><path d="M9.5 11.5h.01M14.5 11.5h.01M9.5 15.5h5"/></svg>'
+          : '<b>'+m.n+'</b>')
+      + (done?'<div class="stars">'+[0,1,2].map(j=>starSvg(j<(P.stars[P.ch+"-"+m.n]||(m.boss?3:2)),11)).join("")+'</div>':"");
+    if(!locked) el.onclick=()=>{ selMap=m.n; sfx(600,.05,"sq",.09); renderCamp(); };
     map.appendChild(el);
   });
 
-  if(selStage>P.unlocked) selStage=P.unlocked;
-  const st=stageOf(selStage);
-  $("#stNo").textContent="MÀN "+String(st.n).padStart(2,"0");
-  $("#stName").textContent=st.name;
-  $("#stDesc").textContent=st.desc;
-  const diff=Math.min(5,Math.max(1,Math.round(st.n/2.4)));
+  if(selMap>P.unlocked) selMap=P.unlocked;
+  const m=mapOf(P.ch,selMap), kills=P.kills[P.ch+"-"+m.n]||0;
+  $("#stNo").textContent="MAP "+String(m.n).padStart(2,"0");
+  $("#stName").textContent=m.name;
+  $("#stDesc").textContent=m.line;
+  const diff=Math.min(5,Math.max(1,m.boss?5:m.n));
   $("#stStars").innerHTML=[0,1,2,3,4].map(i=>starSvg(i<diff,14)).join("");
-  const first=!P.stars[st.n];
-  $("#stGold").textContent="+"+Math.round(st.gold*(first?1:.35)).toLocaleString("vi-VN");
-  $("#stDrop").textContent="RƠI ĐỒ "+Math.round(st.drop*100)+"%";
+  $("#stGold").textContent="+"+m.gold[0]+"–"+m.gold[1];
+  $("#stDrop").textContent="RƠI ĐỒ "+Math.round(m.drop*100)+"%";
+  $("#stKills").textContent = m.boss
+    ? (kills?"ĐÃ HẠ ×"+kills:"CHƯA HẠ")
+    : Math.min(kills,m.need)+"/"+m.need+" LẦN HẠ";
+  $("#stFoe").textContent=m.foe+" · GIÁP "+ARMORS[m.armor].nm;
+  drawArmorPreview($("#foeCv"),m.armor);
 
-  const fc=$("#foeCv").getContext("2d");
-  fc.imageSmoothingEnabled=false; fc.clearRect(0,0,52,52);
-  if(IMG.aduka){ fc.save(); fc.translate(52,0); fc.scale(-1,1);
-    fc.drawImage(IMG.aduka,0,0,AD_CELL,AD_H,-4,10,60,48); fc.restore(); }
-
-  $("#btnGo").onclick=()=>{ sfx(520,.1,"sq",.12); show("game"); newGame(stageOf(selStage),"camp"); };
+  $("#btnGo").onclick=()=>{ sfx(520,.1,"sq",.12); show("game"); enterMap(P.ch,selMap,"farm"); };
   $("#campBack").onclick=()=>show("scrLogin");
+  $("#btnArmor").onclick=()=>show("scrArmor");
 }
 
 /* =====================================================================
@@ -2075,8 +2349,7 @@ function renderShop(){
   const keys=keysOfType(shopTab);
   gridGen++;
   $("#shopgrid").innerHTML=keys.map(k=>{
-    const r=rarityOf(k), owned=!!P.owned[k], eq=P.set[shopTab]===k, pr=priceOf(k);
-    const can=P.gold>=pr;
+    const r=rarityOf(k), owned=!!P.owned[k], eq=P.set[shopTab]===k, pr=priceOf(k), can=P.gold>=pr;
     const act = eq ? '<div class="act own"><b>ĐANG MẶC</b></div>'
       : owned ? '<div class="act own"><b>MẶC VÀO</b></div>'
       : can ? '<div class="act buy"><svg viewBox="0 0 24 24" width="12" height="12"><circle cx="12" cy="12" r="9" fill="#a87400" stroke="#5a3d00" stroke-width="2"/></svg><b>'+pr.toLocaleString("vi-VN")+'</b></div>'
@@ -2085,8 +2358,7 @@ function renderShop(){
       '<div class="art"><canvas width="76" height="60" data-c="'+k+'"></canvas>'+
         '<div class="rar">'+RARITY[r].nm+'</div>'+
         (eq?'<div class="flag eq">ĐANG MẶC</div>':(owned?'<div class="flag new">ĐÃ CÓ</div>':""))+
-      '</div>'+
-      '<div class="bd"><div class="nm">'+ITEMS[k].n.replace(/^\(RARE\)\s*/,"")+'</div>'+act+'</div></div>';
+      '</div><div class="bd"><div class="nm">'+ITEMS[k].n+'</div>'+act+'</div></div>';
   }).join("");
   keys.forEach(k=>paintItem($('#shopgrid canvas[data-c="'+k+'"]'),k,76,60,gridGen));
 
@@ -2099,23 +2371,21 @@ function renderShop(){
     P.set[shopTab] = (P.set[shopTab]===k) ? "" : k;
     save(); renderShop(); drawHeadAv();
   });
-
-  $("#btnUnequip").onclick=()=>{ P.set={h:"",b:"",g:"",f:""}; save(); renderShop(); drawHeadAv(); };
+  $("#btnUnequip").onclick=()=>{
+    const d=DEFAULT_SET[P.sex];
+    P.set={h:d.h,b:d.b,g:"",f:""}; save(); renderShop(); drawHeadAv();
+  };
   $("#shopBack").onclick=()=>show(P.name?"scrCamp":"scrLogin");
   drawDress();
 }
 function drawDress(){
   const c=$("#dressCv").getContext("2d");
   c.imageSmoothingEnabled=false; c.clearRect(0,0,62,58);
-  if(IMG.aduka) c.drawImage(IMG.aduka,0,0,AD_CELL,AD_H,-3,12,68,54);
-  const nm=t=>P.set[t]?ITEMS[P.set[t]].n.replace(/^\(RARE\)\s*/,""):null;
-  const parts=[["h","ĐẦU"],["b","THÂN"],["g","KÍNH"],["f","CỜ"]]
-    .map(([t,l])=>nm(t)?nm(t):null).filter(Boolean);
-  $("#dressTx").innerHTML = parts.length
-    ? parts.join(" · ")
-    : '<s>Chưa mặc gì</s>';
+  const sp=armorSprite(P.armor);
+  if(sp) c.drawImage(sp,0,0,AD_CELL,AD_H,-3,12,68,54);
+  const parts=["h","b","g","f"].map(t=>P.set[t]?ITEMS[P.set[t]].n:null).filter(Boolean);
+  $("#dressTx").innerHTML = parts.length ? parts.join(" · ") : '<s>Chưa mặc gì</s>';
 }
-/* thông báo ngắn giữa màn hình */
 function flash(t){
   let e=$("#flashMsg");
   if(!e){ e=document.createElement("div"); e.id="flashMsg";
@@ -2128,17 +2398,6 @@ function flash(t){
 }
 
 /* =====================================================================
-   NÚT MÀN PHẦN THƯỞNG
-   ===================================================================== */
-$("#rewOk").onclick=()=>{ sfx(600,.1,"sq",.12); show("scrCamp"); };
-$("#rewNext").onclick=()=>{
-  const nx=$("#rewNext").dataset.next;
-  if(!nx){ show("scrCamp"); return; }
-  selStage=+nx; sfx(520,.1,"sq",.12);
-  show("game"); newGame(stageOf(selStage),"camp");
-};
-
-/* =====================================================================
    KHỞI ĐỘNG
    ===================================================================== */
 loadSave();
@@ -2148,7 +2407,8 @@ loadCore(p=>{
 }).then(()=>{
   [DEFAULT_SET.m,DEFAULT_SET.f,P.set].forEach(o=>["h","b","g","f"].forEach(t=>o[t]&&avImg(o[t])));
   initLogin();
-  newGame(stageOf(1),"quick");        // dựng sẵn địa hình để sân không trống
+  enterMap(1,1,"farm");            // dựng sẵn địa hình để sân không trống
+  G.over=true;
   tick();
   $("#ovLoad").classList.remove("on");
   show("scrLogin");
@@ -2156,8 +2416,10 @@ loadCore(p=>{
 $("#btnStart").onclick=()=>{ $("#ovStart").classList.remove("on"); sfx(440,.1,"sq",.12); resetTimer(); };
 $("#btnAgain").onclick=()=>{
   $("#ovEnd").classList.remove("on");
-  if(G.mode==="camp") show("scrCamp"); else newGame(G.stage,"quick");
+  if(G.mode==="quick") show("scrLogin"); else show("scrCamp");
 };
+$("#rewOk").onclick=()=>show("scrCamp");
+$("#rewNext").onclick=()=>show("scrCamp");
 </script>
 </body>
 </html>
