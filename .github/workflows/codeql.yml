@@ -1,0 +1,37 @@
+name: Quét mã nguồn (CodeQL)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # 03:00 UTC thứ Hai hằng tuần
+    - cron: "0 3 * * 1"
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  analyze:
+    name: Phân tích JavaScript
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Khởi tạo CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+          # Game là một file HTML có JS nhúng; assets là ảnh nên bỏ qua
+          config: |
+            paths-ignore:
+              - assets/**
+              - design/**
+
+      - name: Phân tích
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:javascript-typescript"

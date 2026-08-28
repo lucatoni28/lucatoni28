@@ -1,0 +1,14 @@
+# Ảnh là nhị phân — không để git đụng vào nội dung, tránh hỏng sprite
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+
+# index.html là nguồn chính, luôn dùng LF để diff sạch giữa các máy
+*.html text eol=lf
+*.md   text eol=lf
+*.json text eol=lf
+
+# Đừng tính assets vào thống kê ngôn ngữ của repo
+assets/** linguist-vendored

@@ -1,0 +1,7 @@
+# Mọi thay đổi đều cần chủ repo duyệt.
+# Chỉ có hiệu lực khi bật "Require review from Code Owners" trong branch protection.
+*                 @lucatoni28
+
+# Hai thứ dễ hỏng nhất nếu sửa ẩu
+/index.html       @lucatoni28
+/assets/          @lucatoni28
