@@ -1013,11 +1013,63 @@ function carve(wx,wy,rad){
 }
 
 /* ---- vũ khí ---- */
-const WEAPONS=[
-  { id:0, name:"ĐẠN 1",  icon:3, dmg:26, rad:48, grav:1.00, spd:1.00, kind:"ball" },
-  { id:1, name:"ĐẠN 2",  icon:4, dmg:34, rad:60, grav:1.10, spd:0.99, kind:"mobile" },
-  { id:2, name:"SS THOR",icon:0, dmg:26, rad:78, grav:1.00, spd:1.02, kind:"ss" }
-];
+/* =====================================================================
+   ĐẠN — mỗi xe một bộ ba riêng.
+     dmg  sát thương ở tâm nổ
+     rad  bán kính đào hố (px thế giới); tầm sát thương = rad * DMG_REACH
+     grav hệ số trọng lực   spd hệ số sơ tốc
+     wind mức ăn gió: 0 = miễn nhiễm, 1 = chuẩn, >1 = đạn nhẹ bị thổi mạnh
+     mul  nhân sát thương (SS dùng để gấp đôi, không gọi tính 2 lần)
+   ===================================================================== */
+const DMG_REACH = 1.25;          // sát thương với quá miệng hố 25%
+const DMG_CORE  = 0.35;          // trong 35% bán kính là ăn trọn sát thương
+
+function W1(nm,dmg,rad,grav,spd,wind,kind,extra){
+  return Object.assign({ nm, dmg, rad, grav, spd, wind, kind:kind||"ball", mul:1 }, extra||{});
+}
+const WEAPONS = {
+  /* nhẹ, bay bổng, ăn gió nặng — bù lại SS gọi được Thor */
+  aduka:    [ W1("HẠT NĂNG LƯỢNG",22,44,0.92,1.02,1.30),
+              W1("XOÁY ADUKA",    31,56,1.00,0.98,1.15,"mobile"),
+              W1("THOR STRIKE",   30,78,0.95,1.04,1.00,"ss",{mul:2}) ],
+  /* xe chuẩn — mốc để so mọi xe khác */
+  armor:    [ W1("ĐẠN PHÁO",      25,46,1.00,1.00,1.00),
+              W1("ĐẠN KÉP",       34,58,1.06,0.97,0.95,"mobile"),
+              W1("PHÁO HẠNG NẶNG",56,80,1.02,1.00,0.90,"ss") ],
+  /* đạn cong tầm xa: trọng lực thấp nên bay rất xa, đổi lại nổ nhỏ */
+  mage:     [ W1("PHI TIÊU",      23,42,0.84,1.08,1.10),
+              W1("CUNG PHÁP",     32,54,0.80,1.10,1.20,"mobile"),
+              W1("BÃO PHÁP",      52,74,0.86,1.06,1.05,"ss") ],
+  /* nhanh và phẳng, gần như không lệch gió, hố nhỏ nhưng đau */
+  lightning:[ W1("TIA SÉT",       27,38,1.18,1.16,0.45),
+              W1("SÉT KÉP",       37,48,1.22,1.14,0.40,"mobile"),
+              W1("SÉT HUỶ DIỆT",  60,66,1.20,1.15,0.35,"ss") ],
+  /* nặng nhất: hố to, rơi nhanh, gió gần như không đẩy nổi */
+  knight:   [ W1("THƯƠNG KỴ SĨ",  28,52,1.24,0.94,0.55),
+              W1("XUNG PHONG",    40,68,1.30,0.90,0.50,"mobile"),
+              W1("THÁNH KÍCH",    64,92,1.26,0.92,0.45,"ss") ],
+  /* dự phòng cho các chương sau */
+  nak:      [ W1("ĐẠN NẢY",       24,45,1.02,1.00,1.05),
+              W1("NẢY KÉP",       33,57,1.08,0.98,1.00,"mobile"),
+              W1("NAK SS",        54,78,1.04,1.00,0.95,"ss") ],
+  dino:     [ W1("ĐÁ LỬA",        26,50,1.14,0.96,0.75),
+              W1("NHAI ĐÁ",       36,64,1.20,0.93,0.70,"mobile"),
+              W1("TRICO SS",      58,86,1.16,0.95,0.65,"ss") ],
+  turtle:   [ W1("BONG BÓNG",     21,48,0.88,1.00,1.25),
+              W1("SÓNG NGẦM",     30,62,0.92,0.98,1.20,"mobile"),
+              W1("TURTLE SS",     50,84,0.90,1.00,1.10,"ss") ],
+  jd:       [ W1("ĐẠN KHOAN",     26,36,1.12,1.12,0.60),
+              W1("KHOAN KÉP",     35,46,1.16,1.10,0.55,"mobile"),
+              W1("JD SS",         57,64,1.14,1.11,0.50,"ss") ],
+  bigfoot:  [ W1("ĐẠN DÙI",       25,49,1.06,0.98,0.85),
+              W1("DÙI KÉP",       35,62,1.12,0.95,0.80,"mobile"),
+              W1("BIGFOOT SS",    55,82,1.08,0.97,0.75,"ss") ],
+  dragon:   [ W1("HƠI RỒNG",      29,54,1.10,0.98,0.70),
+              W1("VUỐT RỒNG",     41,70,1.16,0.95,0.65,"mobile"),
+              W1("RỒNG THIÊNG",   66,96,1.12,0.96,0.60,"ss") ]
+};
+const wpnSet = u => WEAPONS[(u&&u.mob)||"aduka"] || WEAPONS.aduka;
+const wpnOf  = (u,i) => wpnSet(u)[clamp(i|0,0,2)];
 
 /* ---- trạng thái ---- */
 const G={
@@ -1272,7 +1324,7 @@ function muzzle(u){
 
 /* ---- bắn ---- */
 function fire(u,power,wid){
-  const W=WEAPONS[wid];
+  const W=wpnOf(u,wid);
   if(W.kind==="ss" && G.thor.lvl<5) return false;
   const m=muzzle(u), a=u.ang*Math.PI/180, v=power*SPD_K*W.spd;
   G.proj={ x:m.x, y:m.y, vx:Math.cos(a)*v*u.side, vy:-Math.sin(a)*v,
@@ -1286,51 +1338,54 @@ function stepProj(){
   const p=G.proj; if(!p) return;
   const SUB=4;
   for(let s=0;s<SUB;s++){
-    p.vy+=GRAV*p.w.grav/SUB; p.vx+=G.wind*WIND_K/SUB;
+    p.vy+=GRAV*p.w.grav/SUB; p.vx+=G.wind*WIND_K*p.w.wind/SUB;   // gió tác động khác nhau tuỳ đạn
     p.x+=p.vx/SUB; p.y+=p.vy/SUB;
     if(p.x<-280||p.x>WORLD_W+280||p.y>WORLD_H+400){ boom(p.x,clamp(p.y,0,WORLD_H),true); return; }
     if(p.y>0&&solidAt(p.x,p.y)){ boom(p.x,p.y); return; }
     for(const u of G.units){
       if(u.dead||u===p.owner&&p.trail.length<6) continue;
-      if(Math.abs(p.x-u.x)<24&&p.y>u.y-uH(u)&&p.y<u.y+8){ boom(p.x,p.y); return; }
+      const hw=mobOf(u).f[0][0]*0.42;                 // hộp va chạm theo bề ngang xe
+      if(Math.abs(p.x-u.x)<hw&&p.y>u.y-uH(u)&&p.y<u.y+8){ boom(p.x,p.y); return; }
     }
   }
   p.f=(p.f+0.55)%TH_N; p.rot+=0.22;
   p.trail.push({x:p.x,y:p.y}); if(p.trail.length>26) p.trail.shift();
 }
 function applyDamage(x,y,rad,base){
+  const reach=rad*DMG_REACH, core=rad*DMG_CORE;
   let total=0;
   for(const u of G.units){
     if(u.dead) continue;
     const d=Math.hypot(u.x-x,(u.y-uH(u)/2)-y);
-    if(d<rad+56){
-      const dm=Math.round(lerp(base,base*0.2,clamp(d/(rad+56),0,1)));
-      if(dm>0){ u.hp=Math.max(0,u.hp-dm); total+=dm;
-        popMsg((u.human?"BẠN ":"BOT ")+"-"+dm, u.human?"#ff6a6a":"#ffe08a");
-        if(!u.hp) u.dead=true; }
-    }
+    if(d>=reach) continue;
+    /* trong lõi ăn trọn, ra tới mép thì về 0 — không còn vùng 20% kéo dài */
+    const t=d<=core ? 0 : (d-core)/(reach-core);
+    const dm=Math.round(base*(1-t));
+    if(dm>0){ u.hp=Math.max(0,u.hp-dm); total+=dm;
+      popMsg((u.human?"BẠN ":"ĐỊCH ")+"-"+dm, u.human?"#ff6a6a":"#ffe08a");
+      if(!u.hp) u.dead=true; }
   }
   return total;
 }
 function boom(x,y,off){
-  const p=G.proj, W=p?p.w:WEAPONS[0];
+  const p=G.proj, W=(p&&p.w)||wpnOf(G.units[0],0);
   G.proj=null;
   if(!off){
-    carve(x,y,W.rad); G.shake=W.kind==="ss"?22:13;
-    const n=W.kind==="ss"?46:26;
+    carve(x,y,W.rad);
+    /* rung và mảnh vỡ tỉ lệ với cỡ hố, không còn chia cứng theo loại */
+    G.shake=clamp(W.rad*0.24,8,26);
+    const n=Math.round(clamp(W.rad*0.52,18,52));
     for(let i=0;i<n;i++)
       G.parts.push({x,y,vx:rnd(-6,6),vy:rnd(-7,2),l:rnd(18,46),
         c:["#fff2b0","#ffb03a","#ff5a2a","#ffe9a0"][i%4],r:rnd(2,7)});
-    const mul=(p&&p.owner&&p.owner.dmg)||1;
-    let dealt=applyDamage(x,y,W.rad,W.dmg*mul);
-    if(W.kind==="ss"){                                   // Thor bắn tia gấp đôi
+    const amul=(p&&p.owner&&p.owner.dmg)||1;             // hệ số của giáp
+    const dealt=applyDamage(x,y,W.rad,W.dmg*amul*(W.mul||1));
+    if(W.kind==="ss"){
       G.beams.push({x,y,l:34});
-      dealt+=applyDamage(x,y,W.rad,W.dmg*mul);
       G.thor.lvl=1; G.thor.exp=0; G.thor.flash=50;
-      popMsg("THOR STRIKE ×2!","#ff8ad8");
+      popMsg(W.mul>1?"THOR STRIKE ×2!":W.nm+"!","#ff8ad8");
       sfx(90,.5,"saw",.34);
-    } else sfx(70,.3,"saw",.3);
-    if(W.kind!=="ss") thorGain(dealt);                   // vệ tinh hút sát thương hai bên
+    } else { sfx(70,.3,"saw",.3); thorGain(dealt); }
     G.units.forEach(u=>{ if(!u.dead) settle(u,true); });
   }
   setTimeout(endTurn,660);
@@ -1631,7 +1686,7 @@ function drawGauge(){
 function drawAmmo(){
   const lv=G.thor.lvl;
   for(let i=0;i<3;i++){
-    const el=$("#am"+i), W=WEAPONS[i];
+    const el=$("#am"+i), W=wpnOf(G.units[0],i);
     const locked = W.kind==="ss" && lv<5;
     el.classList.toggle("on", G.weapon===i && !locked);
     el.classList.toggle("rdy", W.kind==="ss" && lv>=5 && G.weapon!==i);
@@ -1884,7 +1939,7 @@ function finish(win){
 
 /* ---- AI ---- */
 function solve(me,en,wid){
-  const W=WEAPONS[wid], sgn=me.side;
+  const W=wpnOf(me,wid), sgn=me.side;
   const bx=me.x+sgn*13, by=me.y-uH(me)*0.62;
   const tx=en.x, ty=en.y-uH(en)*0.5;
   let best=null;
@@ -1898,7 +1953,7 @@ function solve(me,en,wid){
       /* phai tich phan Y HET stepProj (4 buoc con) — neu khong bot lech co he thong */
       sim: for(let t=0;t<420;t++){
         for(let k=0;k<4;k++){
-          vy+=GRAV*W.grav/4; vx+=G.wind*WIND_K/4; x+=vx/4; y+=vy/4;
+          vy+=GRAV*W.grav/4; vx+=G.wind*WIND_K*W.wind/4; x+=vx/4; y+=vy/4;
           const d=Math.hypot(x-tx,y-ty); if(d<md) md=d;
           if(d<26) break sim;
           if(x<-200||x>WORLD_W+200||y>WORLD_H+200) break sim;
@@ -2027,7 +2082,7 @@ function powEnd(e){
   $("#gtip").textContent="KÉO ĐỂ CHỈNH LỰC · NHẢ RA ĐỂ BẮN";
   if(cancel){ showMode("ĐÃ HUỶ"); return; }
   if(G.turn!==0||G.over||G.phase==="fly") return;
-  const W=WEAPONS[G.weapon];
+  const W=wpnOf(G.units[0],G.weapon);
   if(W.kind==="ss"&&G.thor.lvl<5){ popMsg("THOR CHƯA ĐỦ CẤP 5","#ff6a8a"); return; }
   fire(G.units[0],G.power,G.weapon);
   syncHud();
@@ -2062,10 +2117,10 @@ function move(d){
 hold("bl",()=>move(-1)); hold("br",()=>move(1));
 [0,1,2].forEach(i=>{
   $("#am"+i).onclick=()=>{
-    const W=WEAPONS[i];
+    const W=wpnOf(G.units[0],i);
     if(W.kind==="ss"&&G.thor.lvl<5){ popMsg("THOR CHƯA ĐỦ CẤP 5","#ff6a8a"); sfx(180,.08,"sq",.1); return; }
     G.weapon=i; drawAmmo(); sfx(560,.05,"sq",.1);
-    popMsg(W.name,"#ffe08a");
+    popMsg(W.nm,"#ffe08a");
   };
 });
 $("#zin").onclick=()=>{G.cam.z=clamp(G.cam.z*1.3,.30,1.8);camClamp();};
