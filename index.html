@@ -108,15 +108,15 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .fld input::placeholder{color:#3d6b8c;letter-spacing:.04em}
 .fld .cnt{font-family:Orbitron,sans-serif;font-weight:700;font-size:10px;color:var(--dim)}
 .foot{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;font-size:10px;color:var(--dim)}
-.sexrow{display:flex;gap:8px;margin-bottom:12px}
-.sexb{flex:1;height:52px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:5px;
+.modelrow{display:flex;gap:8px;margin-bottom:12px}
+.modelb{flex:1;height:52px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:5px;
   border:2px solid var(--stroke);background:linear-gradient(180deg,rgba(13,74,112,.6),rgba(6,44,70,.85));
   box-shadow:0 3px 0 var(--deep)}
-.sexb span{font-family:Orbitron,sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;color:var(--dim)}
-.sexb.on{border-color:var(--gold);background:linear-gradient(180deg,rgba(255,204,0,.16),rgba(6,44,70,.9));
+.modelb span{font-family:Orbitron,sans-serif;font-weight:700;font-size:12px;letter-spacing:.1em;color:var(--dim)}
+.modelb.on{border-color:var(--gold);background:linear-gradient(180deg,rgba(255,204,0,.16),rgba(6,44,70,.9));
   box-shadow:0 3px 0 var(--deep),0 0 12px rgba(255,204,0,.35)}
-.sexb.on span{font-weight:900;color:var(--gold)}
-.sexb.on svg{stroke:var(--gold)}
+.modelb.on span{font-weight:900;color:var(--gold)}
+.modelb.on svg{stroke:var(--gold)}
 
 /* ============ CHIẾN DỊCH ============ */
 #scrCamp{background:linear-gradient(180deg,#04121f 0%,#061c2e 55%,#04121f 100%)}
@@ -514,12 +514,12 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
       </div>
     </div>
 
-    <div class="sexrow">
-      <button class="sexb on" id="sexM" data-s="m">
+    <div class="modelrow">
+      <button class="modelb on" id="modelM" data-s="m">
         <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#5d8aa8" stroke-width="2.2" stroke-linecap="round"><circle cx="10" cy="14" r="6"/><path d="M14.5 9.5 21 3M15 3h6v6"/></svg>
         <span>NAM</span>
       </button>
-      <button class="sexb" id="sexF" data-s="f">
+      <button class="modelb" id="modelF" data-s="f">
         <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#5d8aa8" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="9" r="6"/><path d="M12 15v6M9 18h6"/></svg>
         <span>NỮ</span>
       </button>
@@ -827,7 +827,7 @@ function framesX(f,gap){ const o=[]; let x=0; for(const g of f){ o.push(x); x+=g
 for (const k in ITEMS) ITEMS[k].xs = framesX(ITEMS[k].f, ITEMS[k].g);
 
 /* nam không mặc được đồ nữ và ngược lại; đồ "a" là đồ dùng chung */
-const canWear = (k,sex) => !!ITEMS[k] && (ITEMS[k].s===sex || ITEMS[k].s==="a");
+const canWear = (k,model) => !!ITEMS[k] && (ITEMS[k].s===model || ITEMS[k].s==="a");
 
 /* bộ mặc định */
 const DEFAULT_SET = {
@@ -1064,7 +1064,7 @@ function placeUnits(){
   const pa=ARMORS[P.armor]||ARMORS.aduka;
   const you=mkUnit(px,1,true,P.set,Math.round(pa.hp*(1+(P.lv-1)*.06)),P.armor);
   you.dmg=pa.dmg; you.fuelMax=pa.fuel;
-  const foe=mkUnit(bx,-1,false,M.boss?DEFAULT_SET[P.sex==="m"?"f":"m"]:null,M.hp,M.armor);
+  const foe=mkUnit(bx,-1,false,M.boss?DEFAULT_SET[P.model==="m"?"f":"m"]:null,M.hp,M.armor);
   foe.dmg=(ARMORS[M.armor]||ARMORS.aduka).dmg; foe.fuelMax=100;
   foe.boss=!!M.boss;
   G.units=[you,foe];
@@ -1084,13 +1084,18 @@ function rollWind(){
 /* =====================================================================
    HỒ SƠ NGƯỜI CHƠI — lưu trên máy
    ===================================================================== */
-const SAVE_KEY = "starArena.v2";
+/* v3: bang mon do, map, xe va giap deu thay moi, va truong "sex" doi ten thanh
+   "model" — ho so v2 khong con doc duoc nen dung han khoa cu. */
+const SAVE_KEY = "starArena.v3";
 const EXP_PER_LV = lv => 220 + (lv - 1) * 130;
-const DEF_PROFILE = (sex) => {
-  sex = sex || "m";
-  const d = DEFAULT_SET[sex];
+/* model = mau nhan vat nguoi choi chon ("m" hoac "f"), quyet dinh bo sprite va
+   mon do mac duoc. Day la lua chon tao hinh trong game, khong phai thong tin
+   ca nhan cua nguoi choi. */
+const DEF_PROFILE = (model) => {
+  model = model || "m";
+  const d = DEFAULT_SET[model];
   return {
-    name:"", sex, gold:1500, lv:1, exp:0, seenTips:0,
+    name:"", model, gold:1500, lv:1, exp:0, seenTips:0,
     ch:1, unlocked:1,                                  // chương hiện tại, map đã mở
     kills:{},                                          // {"1-3": số lần hạ}
     armor:"aduka", armors:{aduka:1},                   // giáp đang mặc / đã mở khoá
@@ -1101,13 +1106,13 @@ const DEF_PROFILE = (sex) => {
   };
 };
 /* đổi giới tính: giữ vàng/cấp/tiến trình, đổi lại bộ đang mặc cho hợp lệ */
-function setSex(sex){
-  if(P.sex===sex) return;
-  P.sex=sex;
-  const d=DEFAULT_SET[sex];
+function setModel(model){
+  if(P.model===model) return;
+  P.model=model;
+  const d=DEFAULT_SET[model];
   P.owned[d.h]=1; P.owned[d.b]=1;
   for(const t of ["h","b","g","f"]){
-    if(P.set[t] && !canWear(P.set[t],sex)) P.set[t] = (t==="h"||t==="b") ? d[t] : "";
+    if(P.set[t] && !canWear(P.set[t],model)) P.set[t] = (t==="h"||t==="b") ? d[t] : "";
   }
   if(!P.set.h) P.set.h=d.h;
   if(!P.set.b) P.set.b=d.b;
@@ -1117,10 +1122,10 @@ let P = DEF_PROFILE();
 function loadSave(){
   try{
     const raw = localStorage.getItem(SAVE_KEY);
-    if(raw){ const o=JSON.parse(raw); if(o && typeof o==="object") P=Object.assign(DEF_PROFILE(o.sex),o); }
+    if(raw){ const o=JSON.parse(raw); if(o && typeof o==="object") P=Object.assign(DEF_PROFILE(o.model),o); }
   }catch(e){ P = DEF_PROFILE(); }
-  if(P.sex!=="m"&&P.sex!=="f") P.sex="m";
-  if(!P.set) P.set=Object.assign({},DEFAULT_SET[P.sex]);
+  if(P.model!=="m"&&P.model!=="f") P.model="m";
+  if(!P.set) P.set=Object.assign({},DEFAULT_SET[P.model]);
   if(!P.owned) P.owned={};
   if(!P.stars) P.stars={};
   if(!P.kills) P.kills={};
@@ -1129,7 +1134,7 @@ function loadSave(){
   /* bỏ mọi khoá lạ trong file lưu: chỉ giữ món có thật và mặc được */
   for(const t of ["h","b","g","f"]){
     const k=P.set[t];
-    if(k && !(has(ITEMS,k) && ITEMS[k].t===t && canWear(k,P.sex))) P.set[t]="";
+    if(k && !(has(ITEMS,k) && ITEMS[k].t===t && canWear(k,P.model))) P.set[t]="";
   }
   const own={}; for(const k in P.owned) if(has(ITEMS,k)) own[k]=1; P.owned=own;
   const arm={aduka:1}; for(const k in P.armors) if(has(ARMORS,k)) arm[k]=1; P.armors=arm;
@@ -1248,13 +1253,13 @@ const TAB_ICON = {
   f:'<path d="M6 3v18"/><path d="M6 4h12l-2.6 4L18 12H6z"/>'
 };
 /* chỉ liệt kê món giới tính hiện tại mặc được */
-const keysOfType = t => Object.keys(ITEMS).filter(k=>ITEMS[k].t===t && canWear(k,P.sex));
+const keysOfType = t => Object.keys(ITEMS).filter(k=>ITEMS[k].t===t && canWear(k,P.model));
 
 /* quay đồ rơi: chưa sở hữu, mặc được, ưu tiên bậc thấp.
    bonus > 1 kéo tỉ lệ về phía đồ hiếm (dùng khi hạ trùm / chơi lại) */
 function rollDrop(bonus){
   bonus = bonus || 1;
-  const pool = Object.keys(ITEMS).filter(k=>!has(P.owned,k) && canWear(k,P.sex));
+  const pool = Object.keys(ITEMS).filter(k=>!has(P.owned,k) && canWear(k,P.model));
   if(!pool.length) return null;
   const w = pool.map(k=>{
     const r=ITEMS[k].r;
@@ -2256,8 +2261,8 @@ function drawLoginArt(){
   if($("#scrLogin").classList.contains("on") && ++drawLoginArt._n < 20)
     drawLoginArt._t = setTimeout(drawLoginArt, 700);
 }
-function renderSex(){
-  ["m","f"].forEach(x=>$("#sex"+x.toUpperCase()).classList.toggle("on", P.sex===x));
+function renderModel(){
+  ["m","f"].forEach(x=>$("#model"+x.toUpperCase()).classList.toggle("on", P.model===x));
 }
 function initLogin(){
   sprinkle($("#skyLogin"),46,20260824);
@@ -2267,10 +2272,10 @@ function initLogin(){
   $("#nameCnt").textContent = inp.value.length+"/12";
   inp.oninput = () => { $("#nameCnt").textContent = inp.value.length+"/12"; };
   const commit = () => { P.name=((inp.value||"").trim().toUpperCase().slice(0,12))||"CHỈ HUY"; save(); };
-  renderSex();
+  renderModel();
   ["m","f"].forEach(x=>{
-    $("#sex"+x.toUpperCase()).onclick = () => {
-      setSex(x); renderSex(); drawHeadAv(); drawLoginArt._n=0; drawLoginArt();
+    $("#model"+x.toUpperCase()).onclick = () => {
+      setModel(x); renderModel(); drawHeadAv(); drawLoginArt._n=0; drawLoginArt();
       sfx(x==="m"?420:620,.08,"sq",.12);
     };
   });
@@ -2287,8 +2292,8 @@ function initLogin(){
   $("#btnWipe").onclick = () => {
     if(!confirm("Xoá toàn bộ tiến trình đã lưu?")) return;
     try{ localStorage.removeItem(SAVE_KEY); }catch(e){}
-    P = DEF_PROFILE(P.sex); save(); inp.value=""; $("#nameCnt").textContent="0/12";
-    renderSex(); drawHeadAv(); drawLoginArt._n=0; drawLoginArt();
+    P = DEF_PROFILE(P.model); save(); inp.value=""; $("#nameCnt").textContent="0/12";
+    renderModel(); drawHeadAv(); drawLoginArt._n=0; drawLoginArt();
   };
   drawLoginArt();
 }
@@ -2467,7 +2472,7 @@ function renderShop(){
     save(); renderShop(); drawHeadAv();
   });
   $("#btnUnequip").onclick=()=>{
-    const d=DEFAULT_SET[P.sex];
+    const d=DEFAULT_SET[P.model];
     P.set={h:d.h,b:d.b,g:"",f:""}; save(); renderShop(); drawHeadAv();
   };
   $("#shopBack").onclick=()=>show(P.name?"scrCamp":"scrLogin");
