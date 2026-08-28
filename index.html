@@ -8,7 +8,12 @@
 <title>STAR ARENA — Aduka vs Bot</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Be+Vietnam+Pro:wght@500;600;700&display=swap" rel="stylesheet">
+<!-- font tải không chặn render: mạng chậm hoặc chặn ngoài thì game vẫn vào ngay,
+     chữ dùng font dự phòng rồi tự đổi khi Orbitron về -->
+<link rel="stylesheet" media="print" onload="this.media='all'"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Be+Vietnam+Pro:wght@500;600;700&display=swap">
+<noscript><link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Be+Vietnam+Pro:wght@500;600;700&display=swap"></noscript>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;
   -webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -731,70 +736,6 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 </div>
 
 <!-- ============ PHẦN THƯỞNG ============ -->
-<div class="scr" id="ovRew">
-  <div class="sky" id="skyRew"></div>
-  <div class="in">
-    <div class="rbanner">
-      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#4aff8a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5.5 5.5L20 7"/></svg>
-      <span id="rewStage">MÀN 01 HOÀN THÀNH</span>
-    </div>
-    <h1 id="rewTitle">CHIẾN THẮNG</h1>
-    <div class="stars3" id="rewStars"></div>
-
-    <div class="crate">
-      <div class="beam"></div>
-      <div class="box">
-        <i></i>
-        <u style="left:14px;top:14px"></u><u style="right:14px;top:14px"></u>
-        <u style="left:14px;bottom:14px"></u><u style="right:14px;bottom:14px"></u>
-        <b>?</b>
-      </div>
-    </div>
-
-    <div class="rgrid">
-      <div style="display:flex;gap:8px">
-        <div class="rtile g" style="flex:1">
-          <svg viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="9.5" fill="#ffcc00" stroke="#8a6a00" stroke-width="2"/><circle cx="12" cy="12" r="5.4" fill="none" stroke="#8a6a00" stroke-width="1.7"/></svg>
-          <div><i>VÀNG</i><b id="rewGold">+0</b></div>
-        </div>
-        <div class="rtile x" style="flex:1">
-          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#6bdbff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5z"/><path d="M3 13.5 12 18.5l9-5"/></svg>
-          <div><i>KINH NGHIỆM</i><b id="rewExp">+0</b></div>
-        </div>
-      </div>
-      <div class="lvrow">
-        <b id="rewLvA">Lv 1</b>
-        <div class="bar"><i id="rewExpBar" style="width:0"></i><u id="rewExpGain" style="left:0;width:0"></u></div>
-        <s id="rewLvB">Lv 2</s>
-      </div>
-      <div class="drop" id="rewDrop" style="display:none">
-        <div class="rib">MỚI</div>
-        <div class="art"><canvas id="rewDropCv" width="68" height="68"></canvas></div>
-        <div style="flex:1;min-width:0">
-          <div class="tag" id="rewDropRar">HIẾM</div>
-          <div class="nm" id="rewDropNm">—</div>
-          <div class="sub" id="rewDropSub">—</div>
-        </div>
-      </div>
-      <div class="note" id="rewNote">
-        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#5d8aa8" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.6v.6"/></svg>
-        <span id="rewNoteTx"></span>
-      </div>
-    </div>
-
-    <div class="acts">
-      <button class="btn pri" id="rewOk">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#3a2500" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4v13h16z"/><path d="M12 7v13M4 11h16"/><path d="M7.5 7C5.6 7 5 3.6 7.5 3.6S12 7 12 7s2-3.4 4.5-3.4S18.4 7 16.5 7"/></svg>
-        <span>NHẬN THƯỞNG</span>
-      </button>
-      <button class="btn" id="rewNext" style="height:48px">
-        <span id="rewNextTx">MÀN TIẾP THEO</span>
-        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#6bdbff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
-      </button>
-    </div>
-  </div>
-</div>
-
 <!-- ============ CỐT TRUYỆN ============ -->
 <div class="scr" id="scrStory">
   <div class="sky" id="skyStory"></div>
@@ -828,7 +769,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 </div>
 
 <div class="ov" id="ovStart">
-  <h1>STAR ARENA</h1><h2 id="startSub">BẠN vs BOT</h2>
+  <h1>CÁCH CHƠI</h1><h2 id="startSub">Vuốt để ngắm · kéo thanh lực để bắn</h2>
   <div class="tips">
     <div class="tip"><i>VUỐT DỌC</i><span>Kéo lên xuống trên sân để chỉnh góc bắn</span></div>
     <div class="tip"><i>VUỐT NGANG</i><span>Kéo ngang để xem bản đồ · chụm 2 ngón để phóng</span></div>
@@ -936,16 +877,35 @@ function loadImg(key,src){
     i.src=src;
   });
 }
+/* nạp một danh sách [key,url] song song, báo tiến trình theo số file xong */
+async function loadMany(list,onp){
+  let d=0; const tot=list.length||1;
+  await Promise.all(list.map(async ([k,src])=>{
+    await loadImg(k,src);
+    if(onp) onp(++d/tot);
+  }));
+}
+const mapFiles = k => [["map_"+k+"_fg", ASSET+"maps/"+k+"_fg.jpg"],
+                       ["map_"+k+"_bg", ASSET+"maps/"+k+"_bg.jpg"]];
+
+/* chỉ nạp thứ cần để vào được màn chào: HUD + sprite xe.
+   Ảnh map nặng gấp bốn lần phần này nên để nạp nền sau. */
 async function loadCore(onp){
-  const ks=Object.keys(FILES), ms=Object.keys(RAWMOB), mp=Object.keys(RAWMAP);
-  const tot=ks.length+ms.length+mp.length; let d=0;
-  for (const k of ks){ await loadImg(k, ASSET+FILES[k]); onp(++d/tot); }
-  for (const m of ms){ await loadImg("mob_"+m, ASSET+"mobiles/"+m+".png"); onp(++d/tot); }
-  for (const k of mp){
-    await loadImg("map_"+k+"_fg", ASSET+"maps/"+k+"_fg.jpg");
-    await loadImg("map_"+k+"_bg", ASSET+"maps/"+k+"_bg.jpg");
-    onp(++d/tot);
-  }
+  const list=[];
+  for (const k in FILES)  list.push([k, ASSET+FILES[k]]);
+  for (const m in RAWMOB) list.push(["mob_"+m, ASSET+"mobiles/"+m+".png"]);
+  await loadMany(list,onp);
+}
+/* nạp nền toàn bộ map của chương, không chặn giao diện */
+function preloadMaps(){
+  const list=[];
+  for (const k in RAWMAP) for(const f of mapFiles(k)) if(IMG[f[0]]===undefined) list.push(f);
+  if(list.length) loadMany(list);
+}
+/* bảo đảm map sắp vào đã có ảnh; thường đã xong nhờ preload nên trả về ngay */
+async function ensureMap(mk){
+  const need=mapFiles(mk).filter(f=>IMG[f[0]]===undefined);
+  if(need.length) await loadMany(need);
 }
 const avPending={};
 function avImg(key){
@@ -1124,7 +1084,7 @@ const DEF_PROFILE = (sex) => {
   sex = sex || "m";
   const d = DEFAULT_SET[sex];
   return {
-    name:"", sex, gold:1500, lv:1, exp:0,
+    name:"", sex, gold:1500, lv:1, exp:0, seenTips:0,
     ch:1, unlocked:1,                                  // chương hiện tại, map đã mở
     kills:{},                                          // {"1-3": số lần hạ}
     armor:"aduka", armors:{aduka:1},                   // giáp đang mặc / đã mở khoá
@@ -1291,7 +1251,7 @@ function rollDrop(bonus){
 /* =====================================================================
    CHUYỂN MÀN HÌNH
    ===================================================================== */
-const SCREENS = ["scrLogin","scrCamp","scrShop","scrStory","scrArmor","ovRew"];
+const SCREENS = ["scrLogin","scrCamp","scrShop","scrStory","scrArmor"];
 function show(id){
   SCREENS.forEach(x=>$("#"+x).classList.toggle("on", x===id));
   $("#game").classList.toggle("on", id==="game");
@@ -1475,6 +1435,7 @@ function resize(){
   camClamp();
 }
 function draw(){
+  if(!terrCv) return;                 // chưa vào map nào thì chưa có gì để vẽ
   const c=cx;
   c.setTransform(DPR,0,0,DPR,0,0); c.imageSmoothingEnabled=false;
   c.clearRect(0,0,VW,VH);
@@ -2227,11 +2188,14 @@ function tick(){
   if(G.t%30===0) drawAmmo();
   draw();
 }
-function enterMap(ch,mapNo,mode){
+async function enterMap(ch,mapNo,mode){
   G.mode = mode || "farm";
   G.ch = ch; G.map = mapOf(ch,mapNo);
   G.mapKey = G.map.map || "star";
   P.ch = ch; save();
+  G.over = true;                      // khoá thao tác trong lúc chờ ảnh map
+  await ensureMap(G.mapKey);
+  G.over = false;
   buildTerrain(G.mapKey); placeUnits();
   G.turn=0; G.round=1; G.over=false; G.phase="aim"; G.weapon=0;
   G.power=40; G.proj=null; G.parts=[]; G.beams=[]; lastPow=null;
@@ -2280,7 +2244,6 @@ function renderSex(){
 }
 function initLogin(){
   sprinkle($("#skyLogin"),46,20260824);
-  sprinkle($("#skyRew"),30,777);
   sprinkle($("#skyStory"),34,4242);
   const inp=$("#inName");
   inp.value = P.name || "";
@@ -2441,7 +2404,10 @@ function renderCamp(){
   $("#stFoe").textContent=m.foe+" · GIÁP "+ARMORS[m.armor].nm;
   drawArmorPreview($("#foeCv"),m.armor);
 
-  $("#btnGo").onclick=()=>{ sfx(520,.1,"sq",.12); show("game"); enterMap(P.ch,selMap,"farm"); };
+  $("#btnGo").onclick=()=>{
+    sfx(520,.1,"sq",.12); show("game"); enterMap(P.ch,selMap,"farm");
+    if(!P.seenTips){ P.seenTips=1; save(); $("#ovStart").classList.add("on"); }
+  };
   $("#campBack").onclick=()=>show("scrLogin");
   $("#btnArmor").onclick=()=>show("scrArmor");
 }
@@ -2518,19 +2484,16 @@ loadCore(p=>{
 }).then(()=>{
   [DEFAULT_SET.m,DEFAULT_SET.f,P.set].forEach(o=>["h","b","g","f"].forEach(t=>o[t]&&avImg(o[t])));
   initLogin();
-  enterMap(1,1,"farm");            // dựng sẵn địa hình để sân không trống
-  G.over=true;
   tick();
   $("#ovLoad").classList.remove("on");
   show("scrLogin");
+  preloadMaps();                   // ảnh map tải nền, không bắt người chơi đợi
 });
 $("#btnStart").onclick=()=>{ $("#ovStart").classList.remove("on"); sfx(440,.1,"sq",.12); resetTimer(); };
 $("#btnAgain").onclick=()=>{
   $("#ovEnd").classList.remove("on");
   if(G.mode==="quick") show("scrLogin"); else show("scrCamp");
 };
-$("#rewOk").onclick=()=>show("scrCamp");
-$("#rewNext").onclick=()=>show("scrCamp");
 </script>
 </body>
 </html>
