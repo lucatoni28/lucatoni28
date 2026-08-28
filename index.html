@@ -915,8 +915,10 @@ function loadImg(key,src){
   });
 }
 async function loadCore(onp){
-  const ks=Object.keys(FILES); let d=0;
-  for (const k of ks){ await loadImg(k, ASSET+FILES[k]); onp(++d/ks.length); }
+  const ks=Object.keys(FILES), ms=Object.keys(RAWMOB);
+  const tot=ks.length+ms.length; let d=0;
+  for (const k of ks){ await loadImg(k, ASSET+FILES[k]); onp(++d/tot); }
+  for (const m of ms){ await loadImg("mob_"+m, ASSET+"mobiles/"+m+".png"); onp(++d/tot); }
 }
 const avPending={};
 function avImg(key){
@@ -995,10 +997,10 @@ function thorGain(v){
   while(T.lvl<5 && T.exp>=THOR_NEED[T.lvl]){ T.exp-=THOR_NEED[T.lvl]; T.lvl++; T.flash=40;
     popMsg("THOR CẤP "+T.lvl, "#8ad8ff"); }
 }
-function mkUnit(x,side,human,set,maxHp){
-  maxHp = maxHp || 100;
+function mkUnit(x,side,human,set,maxHp,armor){
+  maxHp = maxHp || 100; armor = armor || "aduka";
   return { x, y:0, hp:maxHp, maxHp, fuel:100, side, human, ang:45, angF:45, dead:false,
-           anim:0, fireT:0, set:Object.assign({},set) };
+           anim:0, fireT:0, armor, mob:armorMob(armor), set:Object.assign({},set) };
 }
 function placeUnits(){
   let px=WORLD_W*0.16, bx=WORLD_W*0.84;
@@ -1006,10 +1008,10 @@ function placeUnits(){
   px=clamp(px,90,WORLD_W-90); bx=clamp(bx,90,WORLD_W-90);
   const M=G.map||mapOf(1,1);
   const pa=ARMORS[P.armor]||ARMORS.aduka;
-  const you=mkUnit(px,1,true,P.set,Math.round(pa.hp*(1+(P.lv-1)*.06)));
-  you.armor=P.armor; you.dmg=pa.dmg; you.fuelMax=pa.fuel;
-  const foe=mkUnit(bx,-1,false,M.boss?DEFAULT_SET[P.sex==="m"?"f":"m"]:null,M.hp);
-  foe.armor=M.armor; foe.dmg=(ARMORS[M.armor]||ARMORS.aduka).dmg; foe.fuelMax=100;
+  const you=mkUnit(px,1,true,P.set,Math.round(pa.hp*(1+(P.lv-1)*.06)),P.armor);
+  you.dmg=pa.dmg; you.fuelMax=pa.fuel;
+  const foe=mkUnit(bx,-1,false,M.boss?DEFAULT_SET[P.sex==="m"?"f":"m"]:null,M.hp,M.armor);
+  foe.dmg=(ARMORS[M.armor]||ARMORS.aduka).dmg; foe.fuelMax=100;
   foe.boss=!!M.boss;
   G.units=[you,foe];
   G.units.forEach(u=>settle(u));
@@ -1081,34 +1083,39 @@ function addExp(v){
 }
 
 /* =====================================================================
-   GIÁP — mỗi loại là một biến đổi màu trên sprite xe, đổi được ngay
-   khi có sprite riêng (chỉ cần thay fx bằng img)
+   XE — sprite thật lấy từ bộ mobiles, mỗi khung có [w,h,cx,cy];
+   (cx,cy) là điểm chạm đất, (px,py) là chỗ đặt cổ nhân vật ngồi trên.
+   ===================================================================== */
+const RAWMOB = {"armor":{"nm":"Armor","px":17,"py":-28,"f":"36,40,21,37*20"},"aduka":{"nm":"Aduka","px":-7,"py":-24,"f":"56,39,23,34|56,38,23,33|56,36,24,31|56,34,24,29|55,35,24,30*2|56,37,24,32|56,39,24,34|56,40,24,35*3|56,39,24,34|55,37,24,32|55,35,24,30*2|56,34,24,29|57,36,24,31|56,37,23,32|56,38,23,33*2"},"mage":{"nm":"Mage","px":4,"py":-36,"f":"46,41,25,44|46,40,25,43*5|47,40,25,43*10|46,40,25,43|46,41,25,44*3"},"lightning":{"nm":"Lightning","px":10,"py":-34,"f":"42,37,19,35*20"},"knight":{"nm":"Knight","px":-6,"py":-38,"f":"58,51,35,49*2|59,51,36,49|60,50,37,48*2|62,50,38,48*3|63,50,38,48|64,50,39,48|63,50,38,48|62,50,38,48|61,51,37,49*2|60,51,36,49*3|58,51,35,49*3"},"nak":{"nm":"Nak","px":-5,"py":-26,"f":"51,33,23,30|50,34,23,31*3|51,34,24,31*9|50,34,23,31*5|51,33,23,30*2"},"dino":{"nm":"Dino","px":-5,"py":-41,"f":"60,52,33,51*2|60,51,33,50*3|60,50,33,49|60,51,33,50*2|60,52,33,51*7"},"turtle":{"nm":"Turtle","px":-1,"py":-35,"f":"49,48,26,46*4|50,48,26,46*12|49,48,26,46*3|50,47,27,45"},"jd":{"nm":"J.D","px":11,"py":-34,"f":"35,45,17,43*2|34,45,17,43|35,45,18,43*7|34,45,17,43|35,45,17,43*2|35,44,17,42*4|35,45,17,43*3"},"bigfoot":{"nm":"BigFoot","px":-2,"py":-31,"f":"49,45,24,41*5|50,45,25,41*2|49,45,24,41*4|49,46,24,42*9"},"dragon":{"nm":"Dragon","px":14,"py":-41,"f":"77,76,32,75*16"}};
+const MOB={};
+for(const k in RAWMOB){
+  const q=RAWMOB[k], f=decF(q.f);
+  MOB[k]={ nm:q.nm, px:q.px, py:q.py, f, xs:framesX(f,1), n:f.length,
+           cy0:f[0][3], h0:f[0][1] };
+}
+const mobOf = u => MOB[(u&&u.mob)||"aduka"] || MOB.aduka;
+const uH = u => mobOf(u).cy0;                    // chiều cao thân trên mặt đất
+
+/* =====================================================================
+   GIÁP — mỗi giáp gắn với một xe thật
    ===================================================================== */
 const ARMORS = {
-  aduka:  { nm:"ADUKA",    fx:"",                                              hp:100, dmg:1.00, fuel:100,
-            desc:"Khung cũ nhặt ở bãi phế liệu. Không mạnh, nhưng là của bạn." },
-  scrap:  { nm:"PHẾ LIỆU", fx:"grayscale(.75) brightness(.8)",                 hp:80,  dmg:0.85, fuel:130,
-            desc:"Ghép từ xác drone. Mỏng nhưng đi được xa." },
-  vesper: { nm:"VESPER",   fx:"hue-rotate(260deg) saturate(1.35)",             hp:135, dmg:1.10, fuel:85,
-            desc:"Giáp tuần tra Vành Đai. Dày, chậm." },
-  crimson:{ nm:"CRIMSON",  fx:"hue-rotate(120deg) saturate(1.6)",              hp:110, dmg:1.28, fuel:80,
-            desc:"Giáp xung kích. Đánh rất đau, chịu đòn kém." },
-  noctis: { nm:"NOCTIS",   fx:"hue-rotate(60deg) saturate(1.7) brightness(.82)", hp:155, dmg:1.18, fuel:95,
-            desc:"Giáp của Lõi Sao. Thứ không nên tồn tại." }
+  aduka:    { nm:"ADUKA",     mob:"aduka",     hp:100, dmg:1.00, fuel:100,
+              desc:"Khung cũ nhặt ở bãi phế liệu. Không mạnh, nhưng là của bạn." },
+  armor:    { nm:"ARMOR",     mob:"armor",     hp:85,  dmg:0.88, fuel:120,
+              desc:"Xe tuần tiêu chuẩn của trạm. Nhẹ, đi xa." },
+  mage:     { nm:"MAGE",      mob:"mage",      hp:120, dmg:1.12, fuel:90,
+              desc:"Khung pháp sư. Đạn cong, sát thương khá." },
+  lightning:{ nm:"LIGHTNING", mob:"lightning", hp:105, dmg:1.30, fuel:80,
+              desc:"Khung xung kích. Đánh rất đau, chịu đòn kém." },
+  knight:   { nm:"KNIGHT",    mob:"knight",    hp:160, dmg:1.20, fuel:95,
+              desc:"Giáp kỵ sĩ của Lõi Sao. Dày và nặng." }
 };
-/* sprite đã nhuộm màu, dựng một lần rồi dùng lại */
-const armorCache = {};
 function armorSprite(key){
   const A=ARMORS[key]||ARMORS.aduka;
-  if(!A.fx) return IMG.aduka || null;
-  if(armorCache[key]) return armorCache[key];
-  if(!IMG.aduka) return null;
-  const c=document.createElement("canvas");
-  c.width=IMG.aduka.width; c.height=IMG.aduka.height;
-  const x=c.getContext("2d");
-  x.filter=A.fx; x.drawImage(IMG.aduka,0,0); x.filter="none";
-  armorCache[key]=c; return c;
+  return IMG["mob_"+A.mob] || null;
 }
+const armorMob = key => (ARMORS[key]||ARMORS.aduka).mob;
 
 /* =====================================================================
    CỐT TRUYỆN + CHƯƠNG
@@ -1124,28 +1131,30 @@ const STORY = {
     "Bắn thủng đường vào lõi. Nhặt giáp trên xác thứ mình hạ. Xem ai đang "+
     "ngồi trong đó.",
   chapterDone:
-    "Chỉ huy Vesper tháo mũ trước khi khung giáp tắt hẳn.\n\n"+
-    "«Ngươi tưởng bọn ta phát điên à? Bọn ta nghe lệnh. Lệnh từ lõi.»\n\n"+
-    "Giáp Vesper giờ là của bạn. Cửa vào vành trong đã mở."
+    "Kỵ sĩ tháo mũ trước khi khung giáp tắt hẳn. Bên trong là người thật — "+
+    "một kỹ sư trạm, mặt hốc hác.\n\n"+
+    "«Ngươi tưởng bọn ta phát điên à? Bọn ta nghe lệnh. Lệnh vẫn phát ra "+
+    "từ lõi, đều đặn, bốn mươi giây một lần. Bọn ta chỉ không tắt được nó.»\n\n"+
+    "Giáp KNIGHT giờ là của bạn. Cửa vào vành trong đã mở."
 };
 
 const CHAPTERS = [{
   n:1, name:"VÀNH ĐAI SAO",
   maps:[
-    { n:1, name:"BÃI PHẾ LIỆU",  foe:"DRONE CÀO",    armor:"scrap",   hp:60,  aim:12, wind:6,
-      gold:[35,60],   exp:[16,26],  drop:.05, need:3,
+    { n:1, name:"BÃI PHẾ LIỆU",  foe:"DRONE CÀO",     armor:"armor",     hp:60,  aim:12, wind:6,
+      gold:[35,60],   exp:[16,26],  drop:.05, need:3, unlock:"armor",
       line:"Drone cào rác. Chậm, bắn ẩu. Chỗ tốt để làm quen tay." },
-    { n:2, name:"VÀNH NGOÀI",    foe:"DRONE TUẦN",   armor:"scrap",   hp:80,  aim:10, wind:9,
+    { n:2, name:"VÀNH NGOÀI",    foe:"DRONE TUẦN",    armor:"armor",     hp:80,  aim:10, wind:9,
       gold:[55,90],   exp:[24,38],  drop:.06, need:3,
       line:"Bọn này bay theo tuyến cũ. Gió ngoài vành mạnh hơn trong bãi." },
-    { n:3, name:"THÁP TÍN HIỆU", foe:"DRONE NẶNG",   armor:"vesper",  hp:110, aim:8,  wind:12,
-      gold:[85,140],  exp:[36,56],  drop:.08, need:4,
-      line:"Khung dày hơn hẳn. Đây là lần đầu bạn thấy giáp Vesper." },
-    { n:4, name:"HÀNH LANG BĂNG",foe:"DRONE BẮN TỈA",armor:"crimson", hp:95,  aim:6,  wind:16,
-      gold:[120,190], exp:[50,76],  drop:.10, need:4,
+    { n:3, name:"THÁP TÍN HIỆU", foe:"DRONE PHÁP SƯ", armor:"mage",      hp:110, aim:8,  wind:12,
+      gold:[85,140],  exp:[36,56],  drop:.08, need:4, unlock:"mage",
+      line:"Khung MAGE bắn đạn cong. Núp sau cột đá không ăn thua." },
+    { n:4, name:"HÀNH LANG BĂNG",foe:"DRONE XUNG KÍCH",armor:"lightning",hp:95,  aim:6,  wind:16,
+      gold:[120,190], exp:[50,76],  drop:.10, need:4, unlock:"lightning",
       line:"Ngắm rất chuẩn và đánh rất đau. Đừng đứng yên một chỗ." },
-    { n:5, name:"LÕI TRẠM",      foe:"CHỈ HUY VESPER",armor:"vesper", hp:240, aim:4,  wind:14,
-      gold:[420,620], exp:[190,280],drop:.34, need:1, boss:true, unlock:"vesper",
+    { n:5, name:"LÕI TRẠM",      foe:"KỴ SĨ LÕI SAO", armor:"knight",    hp:240, aim:4,  wind:14,
+      gold:[420,620], exp:[190,280],drop:.34, need:1, boss:true, unlock:"knight",
       line:"Có người thật ngồi trong khung này. Hạ được thì lấy luôn giáp." }
   ]
 }];
@@ -1221,7 +1230,7 @@ const starSvg = (on,sz)=>`<svg viewBox="0 0 24 24" width="${sz}" height="${sz}" 
 
 function muzzle(u){
   const a=u.ang*Math.PI/180;
-  const bx=u.x+u.side*13, by=u.y-AD_H*0.52;
+  const bx=u.x+u.side*13, by=u.y-uH(u)*0.62;
   return { x:bx+Math.cos(a)*26*u.side, y:by-Math.sin(a)*26, bx, by };
 }
 
@@ -1247,7 +1256,7 @@ function stepProj(){
     if(p.y>0&&solidAt(p.x,p.y)){ boom(p.x,p.y); return; }
     for(const u of G.units){
       if(u.dead||u===p.owner&&p.trail.length<6) continue;
-      if(Math.abs(p.x-u.x)<24&&p.y>u.y-AD_H&&p.y<u.y+8){ boom(p.x,p.y); return; }
+      if(Math.abs(p.x-u.x)<24&&p.y>u.y-uH(u)&&p.y<u.y+8){ boom(p.x,p.y); return; }
     }
   }
   p.f=(p.f+0.55)%TH_N; p.rot+=0.22;
@@ -1257,7 +1266,7 @@ function applyDamage(x,y,rad,base){
   let total=0;
   for(const u of G.units){
     if(u.dead) continue;
-    const d=Math.hypot(u.x-x,(u.y-AD_H/2)-y);
+    const d=Math.hypot(u.x-x,(u.y-uH(u)/2)-y);
     if(d<rad+56){
       const dm=Math.round(lerp(base,base*0.2,clamp(d/(rad+56),0,1)));
       if(dm>0){ u.hp=Math.max(0,u.hp-dm); total+=dm;
@@ -1345,7 +1354,8 @@ function avFrame(item,tick){
 }
 function drawAvatar(c,u,z,tick){
   const st=u.human?P.set:u.set;
-  const nx=u.x-u.side*2, ny=u.y-AD_H*0.60;                  // điểm cổ, ngay trên thân xe
+  const M=mobOf(u);
+  const nx=u.x+M.px*u.side, ny=u.y+M.py;                    // điểm gắn cổ do sprite xe quy định
   const p=w2s(nx,ny), S=z*AV_SC;
   const order=["f","b","h","g"];                            // cờ → thân → đầu → kính
   for(const t of order){
@@ -1426,9 +1436,10 @@ function draw(){
 function drawProj(c,z){
   const p=G.proj, s=w2s(p.x,p.y);
   if(p.w.kind==="mobile"){                       // đạn 2 = chính chiếc xe
-    const w=AD_CELL*z*.72,h=AD_H*z*.72, sp=armorSprite((p.owner&&p.owner.armor)||"aduka");
+    const M=mobOf(p.owner), g=M.f[0], im=IMG["mob_"+M_key(p.owner)];
+    const w=g[0]*z*.8,h=g[1]*z*.8;
     c.save(); c.translate(s.x,s.y); c.rotate(p.rot);
-    if(sp) c.drawImage(sp,0,0,AD_CELL,AD_H,-w/2,-h/2,w,h); c.restore();
+    if(im) c.drawImage(im,M.xs[0],0,g[0],g[1],-w/2,-h/2,w,h); c.restore();
   } else if(p.w.kind==="ss"){                    // SS = đĩa Thor
     const w=TH_CELL*z*1.05,h=TH_H*z*1.05;
     c.drawImage(IMG.thor,Math.floor(p.f)*TH_CELL,0,TH_CELL,TH_H,s.x-w/2,s.y-h/2,w,h);
@@ -1464,20 +1475,19 @@ function drawThor(c,z){
 }
 function drawUnit(c,u,z){
   if(u.dead) return;
-  const p=w2s(u.x,u.y), w=AD_CELL*z, h=AD_H*z;
-  let fi;
-  if(u.fireT>0){ fi=7+Math.min(6,Math.floor((26-u.fireT)/4)); u.fireT--; }
-  else fi=Math.floor(u.anim)%7;
+  const M=mobOf(u), p=w2s(u.x,u.y);
+  const fi=Math.floor(u.anim)%M.n, g=M.f[fi];
+  const w=g[0]*z, h=g[1]*z, cx=g[2]*z, cy=g[3]*z;
+  if(u.fireT>0) u.fireT--;
   c.globalAlpha=.3; c.fillStyle="#000";
-  c.beginPath(); c.ellipse(p.x,p.y,20*z,6*z,0,0,7); c.fill(); c.globalAlpha=1;
-  const sp=armorSprite(u.armor||"aduka");
+  c.beginPath(); c.ellipse(p.x,p.y,w*.34,5*z,0,0,7); c.fill(); c.globalAlpha=1;
+  const im=IMG["mob_"+M_key(u)];
   c.save(); c.translate(p.x,p.y);
   if(u.side<0) c.scale(-1,1);
-  if(sp) c.drawImage(sp,fi*AD_CELL,0,AD_CELL,AD_H,-w/2,-h,w,h);
+  if(im) c.drawImage(im,M.xs[fi],0,g[0],g[1],-cx,-cy,w,h);
   c.restore();
-  /* chỉ người và trùm mới có avatar ngồi trên; drone thì không */
   if(u.human||u.boss) drawAvatar(c,u,z,G.t);
-  const bw=34*z, bx=p.x-bw/2, by=p.y-h-30*z;
+  const bw=36*z, bx=p.x-bw/2, by=p.y-uH(u)*z-16*z;
   c.fillStyle="rgba(0,0,0,.7)"; c.fillRect(bx-1,by-1,bw+2,5*z+2);
   c.fillStyle=u.human?"#4aff8a":"#ff5a6a"; c.fillRect(bx,by,bw*(u.hp/u.maxHp),5*z);
   if(u===G.units[G.turn]&&!G.over){
@@ -1486,6 +1496,7 @@ function drawUnit(c,u,z){
     c.beginPath(); c.moveTo(p.x,ty+8*z); c.lineTo(p.x-6*z,ty); c.lineTo(p.x+6*z,ty); c.fill();
   }
 }
+const M_key = u => (u&&u.mob)||"aduka";
 function drawAim(c){
   const u=G.units[G.turn]; if(!u||u.dead||!u.human) return;
   const m=muzzle(u), p=w2s(m.bx,m.by), R=25, a=u.ang*Math.PI/180;
@@ -1614,10 +1625,9 @@ function drawHeadAv(){
       c.save(); if(i===1){c.translate(40,0);c.scale(-1,1);}
       c.drawImage(im,it.xs[it.f.length>>1],0,g[0],g[1],(40-g[0]*s)/2,(40-g[1]*s)/2,g[0]*s,g[1]*s);
       c.restore();
-    } else if(IMG.aduka){
-      const s=40/AD_CELL*1.3;
-      c.save(); if(i===1){c.translate(40,0);c.scale(-1,1);}
-      c.drawImage(IMG.aduka,0,0,AD_CELL,AD_H,(40-AD_CELL*s)/2,40-AD_H*s-2,AD_CELL*s,AD_H*s);
+    } else {
+      c.save(); if(i===1){c.translate(44,0);c.scale(-1,1);}
+      drawMob(c,u.armor||"aduka",22,40,.62);
       c.restore();
     }
   });
@@ -1728,7 +1738,9 @@ function foeDown(){
 
   /* hạ trùm thì lấy luôn giáp nó đang mặc */
   let newArmor=null;
-  if(M.unlock && !P.armors[M.unlock]){ P.armors[M.unlock]=1; newArmor=M.unlock; }
+  if(M.unlock && !P.armors[M.unlock] && (M.boss || kills>=M.need)){
+    P.armors[M.unlock]=1; newArmor=M.unlock;
+  }
   save();
 
   showLoot({gold,exp,drop,ups,newArmor,kills,need:M.need,boss:M.boss});
@@ -1836,8 +1848,8 @@ function finish(win){
 /* ---- AI ---- */
 function solve(me,en,wid){
   const W=WEAPONS[wid], sgn=me.side;
-  const bx=me.x+sgn*13, by=me.y-AD_H*0.52;
-  const tx=en.x, ty=en.y-AD_H*0.42;
+  const bx=me.x+sgn*13, by=me.y-uH(me)*0.62;
+  const tx=en.x, ty=en.y-uH(en)*0.5;
   let best=null;
   for(let ang=14;ang<=84;ang+=3){
     const a=ang*Math.PI/180;
@@ -2095,15 +2107,9 @@ function paintItem(cvs,key,W,H,gen,tries){
 function renderPrev(){
   const me={set:P.set}, c=$("#invcv").getContext("2d");
   c.imageSmoothingEnabled=false; c.clearRect(0,0,86,86);
-  const S=1.15;
-  if(IMG.aduka) c.drawImage(IMG.aduka,0,0,AD_CELL,AD_H,43-AD_CELL*S*.5,86-AD_H*S-2,AD_CELL*S,AD_H*S);
-  const nx=43, ny=86-AD_H*S-2+AD_H*S*0.40;
-  for(const t of ["f","b","h","g"]){
-    const k=me.set[t]; if(!k) continue;
-    const it=ITEMS[k], im=avImg(k); if(!it||!im) continue;
-    const i=it.f.length>>1, g=it.f[i];
-    c.drawImage(im,it.xs[i],0,g[0],g[1],nx-g[2]*S,ny-g[3]*S,g[0]*S,g[1]*S);
-  }
+  const S=1.3;
+  const mt=drawMob(c,P.armor,43,80,S);
+  if(mt) drawSetAt(c,me.set,mt.x,mt.y,S);
   const nm=t=>me.set[t]?ITEMS[me.set[t]].n:"—";
   $("#invtxt").innerHTML=`<b>ĐẦU</b> ${nm("h")}<br><b>THÂN</b> ${nm("b")}<br><b>KÍNH</b> ${nm("g")} · <b>CỜ</b> ${nm("f")}`;
 }
@@ -2166,15 +2172,9 @@ function drawLoginArt(){
   drawLoginArt._n = drawLoginArt._n || 0;
   const cc=$("#loCar").getContext("2d");
   cc.imageSmoothingEnabled=false; cc.clearRect(0,0,222,177);
-  const sp=armorSprite(P.armor);
-  if(sp) cc.drawImage(sp,0,0,AD_CELL,AD_H,0,0,222,177);
-  const S=3, nx=104, ny=64;
-  for(const t of ["f","b","h","g"]){
-    const k=P.set[t]; if(!k) continue;
-    const it=ITEMS[k], im=avImg(k); if(!it||!im) continue;
-    const i=it.f.length>>1, g=it.f[i];
-    cc.drawImage(im,it.xs[i],0,g[0],g[1],nx-g[2]*S,ny-g[3]*S,g[0]*S,g[1]*S);
-  }
+  const S=2.6;
+  const mt=drawMob(cc,P.armor,111,160,S);
+  if(mt) drawSetAt(cc,P.set,mt.x,mt.y,S);
   const tc=$("#loThor").getContext("2d");
   tc.imageSmoothingEnabled=false; tc.clearRect(0,0,83,55);
   if(IMG.thor) tc.drawImage(IMG.thor,0,0,TH_CELL,TH_H,0,0,83,55);
@@ -2238,12 +2238,31 @@ function showStory(title,body,armorKey,btn){
 }
 $("#stOk").onclick=()=>{ sfx(560,.1,"sq",.12); show("scrCamp"); };
 
-function drawArmorPreview(cv,key){
+/* vẽ xe vào một canvas, neo tại (ax,ay); trả về điểm gắn cổ đã nhân tỉ lệ */
+function drawMob(c,key,ax,ay,S){
+  const M=MOB[armorMob(key)], im=armorSprite(key);
+  if(!M||!im) return null;
+  const g=M.f[0];
+  c.drawImage(im,M.xs[0],0,g[0],g[1],ax-g[2]*S,ay-g[3]*S,g[0]*S,g[1]*S);
+  return { x:ax+M.px*S, y:ay+M.py*S };
+}
+/* xếp bộ đồ đang mặc lên điểm gắn cổ */
+function drawSetAt(c,set,nx,ny,S){
+  for(const t of ["f","b","h","g"]){
+    const k=set[t]; if(!k) continue;
+    const it=ITEMS[k], im=avImg(k); if(!it||!im) continue;
+    const i=it.f.length>>1, g=it.f[i];
+    c.drawImage(im,it.xs[i],0,g[0],g[1],nx-g[2]*S,ny-g[3]*S,g[0]*S,g[1]*S);
+  }
+}
+function drawArmorPreview(cv,key,scale){
+  if(!cv) return;
   const c=cv.getContext("2d"); c.imageSmoothingEnabled=false;
   c.clearRect(0,0,cv.width,cv.height);
-  const sp=armorSprite(key); if(!sp) return;
-  const s=Math.min(cv.width/AD_CELL, cv.height/AD_H);
-  c.drawImage(sp,0,0,AD_CELL,AD_H,(cv.width-AD_CELL*s)/2,(cv.height-AD_H*s)/2,AD_CELL*s,AD_H*s);
+  const M=MOB[armorMob(key)], im=armorSprite(key); if(!M||!im) return;
+  const g=M.f[0];
+  const s=scale || Math.min(cv.width/(g[0]+8), cv.height/(g[1]+8), 2);
+  c.drawImage(im,M.xs[0],0,g[0],g[1],(cv.width-g[0]*s)/2,(cv.height-g[1]*s)/2,g[0]*s,g[1]*s);
 }
 
 /* =====================================================================
@@ -2381,8 +2400,7 @@ function renderShop(){
 function drawDress(){
   const c=$("#dressCv").getContext("2d");
   c.imageSmoothingEnabled=false; c.clearRect(0,0,62,58);
-  const sp=armorSprite(P.armor);
-  if(sp) c.drawImage(sp,0,0,AD_CELL,AD_H,-3,12,68,54);
+  drawMob(c,P.armor,31,52,.9);
   const parts=["h","b","g","f"].map(t=>P.set[t]?ITEMS[P.set[t]].n:null).filter(Boolean);
   $("#dressTx").innerHTML = parts.length ? parts.join(" · ") : '<s>Chưa mặc gì</s>';
 }
