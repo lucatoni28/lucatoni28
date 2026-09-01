@@ -95,7 +95,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
   box-shadow:0 0 22px rgba(0,229,229,.32),inset 0 2px 0 rgba(255,255,255,.14)}
 .hero .halo{position:absolute;bottom:8px;width:236px;height:64px;border-radius:50%;
   background:radial-gradient(ellipse,rgba(0,229,229,.24) 0%,rgba(0,229,229,0) 72%)}
-.hero canvas{image-rendering:pixelated;display:block;position:relative;
+.hero canvas{display:block;position:relative;
   filter:drop-shadow(0 8px 14px rgba(2,10,20,.75))}
 .fld{display:flex;flex-direction:column;gap:7px;margin-bottom:12px}
 .fld .lb{display:flex;align-items:center;gap:7px;font-family:Orbitron,sans-serif;font-weight:700;
@@ -156,7 +156,6 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .sheet .top{display:flex;align-items:center;gap:11px}
 .sheet .por{position:relative;width:56px;height:56px;flex:0 0 auto;display:grid;place-items:center;
   border-radius:6px;border:2px solid var(--bad);background:linear-gradient(135deg,#0a3a5a,var(--deep));overflow:hidden}
-.sheet .por canvas{image-rendering:pixelated}
 .sheet .ttl{display:flex;align-items:baseline;gap:7px}
 .sheet .ttl i{font-family:Orbitron,sans-serif;font-weight:700;font-size:10px;letter-spacing:.18em;color:var(--org);font-style:normal}
 .sheet .ttl b{font-family:Orbitron,sans-serif;font-weight:900;font-size:15px}
@@ -191,7 +190,6 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .card.r .art{background:radial-gradient(circle at 50% 40%,rgba(154,106,224,.26),rgba(12,6,24,.85) 72%)}
 .card.e .art{background:radial-gradient(circle at 50% 40%,rgba(255,140,42,.26),rgba(18,10,4,.85) 72%)}
 .card.u .art{background:radial-gradient(circle at 50% 40%,rgba(255,204,0,.26),rgba(18,14,0,.85) 72%)}
-.card .art canvas{image-rendering:pixelated}
 .card .rar{position:absolute;left:6px;top:6px;padding:2px 6px;border-radius:3px;background:rgba(2,14,26,.82);
   border:1px solid var(--rc);font-family:Orbitron,sans-serif;font-weight:700;font-size:7.5px;letter-spacing:.1em;color:var(--ice)}
 .card.r .rar{border-color:#9a6ae0;color:#c9a6ff}
@@ -215,7 +213,6 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
   background:linear-gradient(180deg,#0a3a5a,#062033);border-top:3px solid var(--cy);box-shadow:0 -4px 0 var(--deep)}
 .dress .pv{width:66px;height:62px;flex:0 0 auto;display:grid;place-items:center;border-radius:5px;
   border:2px solid var(--stroke);background:radial-gradient(circle at 50% 70%,#0d4a70,#041d30 76%);overflow:hidden}
-.dress .pv canvas{image-rendering:pixelated}
 .dress .tx{flex:1;min-width:0}
 .dress .tx i{font-family:Orbitron,sans-serif;font-weight:700;font-size:8.5px;letter-spacing:.18em;color:var(--dim);font-style:normal}
 .dress .tx p{margin-top:4px;font-size:11px;line-height:1.45;color:var(--txt2)}
@@ -267,7 +264,6 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
   background:linear-gradient(180deg,#ff6a9d,#d61e63);font-family:Orbitron,sans-serif;font-weight:900;font-size:9px;letter-spacing:.1em}
 .drop .art{width:74px;height:74px;flex:0 0 auto;display:grid;place-items:center;border-radius:5px;
   border:2px solid #9a6ae0;background:radial-gradient(circle at 50% 36%,#3a1a6e,#150a2c 72%)}
-.drop .art canvas{image-rendering:pixelated}
 .drop .nm{margin-top:6px;font-family:Orbitron,sans-serif;font-weight:900;font-size:13px;line-height:1.3}
 .drop .sub{margin-top:4px;font-size:11px;color:#b9a6dd}
 .drop .tag{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:3px;
@@ -286,7 +282,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
   box-shadow:inset 0 1px 0 rgba(255,255,255,.16)}
 .avf.act{border-color:var(--gold);box-shadow:0 0 10px rgba(255,204,0,.7),inset 0 1px 0 rgba(255,255,255,.16)}
 .avf.foe{border-color:var(--bad)}
-.avf canvas{width:100%;height:100%;image-rendering:pixelated;display:block}
+.avf canvas{display:block}
 .avf .lvp{position:absolute;left:-1px;bottom:-1px;padding:0 4px;border-radius:3px 0 3px 0;background:var(--gold);
   font-family:Orbitron,sans-serif;font-weight:900;font-size:8px;color:#3a2500;font-style:normal}
 .avf.foe .lvp{left:auto;right:-1px;border-radius:3px 0 3px 0;background:var(--bad);color:#2a0008}
@@ -409,12 +405,11 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
   background:linear-gradient(180deg,#0d4a70,#062c46);box-shadow:0 2px 0 #041e30}
 .icell.on{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 2px 0 #041e30}
 .icell .px{height:58px;display:grid;place-items:center;background:rgba(2,14,26,.6)}
-.icell canvas{image-rendering:pixelated}
 .icell .nm{height:28px;padding:4px;overflow:hidden;background:rgba(0,0,0,.35);color:var(--txt2);
   font-size:9px;line-height:1.25;text-align:center}
 #invprev{display:flex;align-items:center;gap:10px;padding:9px 12px;
   background:rgba(0,43,72,.75);border-top:2px solid var(--cy)}
-#invprev canvas{background:rgba(2,14,26,.6);border:1px solid var(--stroke);image-rendering:pixelated}
+#invprev canvas{background:rgba(2,14,26,.6);border:1px solid var(--stroke)}
 #invprev .txt{flex:1;font-size:10px;color:var(--txt);line-height:1.5}
 #invprev .txt b{color:var(--gold)}
 
@@ -457,7 +452,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 #stArmor{display:none;align-items:center;gap:12px;padding:12px;border-radius:6px;border:2px solid var(--pink);
   background:linear-gradient(135deg,rgba(58,10,44,.85),rgba(20,6,24,.95));
   box-shadow:0 3px 0 var(--deep),0 0 20px rgba(255,74,157,.28)}
-#stArmor canvas{image-rendering:pixelated;flex:0 0 auto}
+#stArmor canvas{flex:0 0 auto}
 #stArmor .tx i{font-family:Orbitron,sans-serif;font-weight:700;font-size:8.5px;letter-spacing:.18em;
   color:#ff8ad8;font-style:normal}
 #stArmor .tx b{display:block;margin-top:3px;font-family:Orbitron,sans-serif;font-weight:900;font-size:15px}
@@ -469,7 +464,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
   background:linear-gradient(180deg,#0d4a70,#062c46);box-shadow:0 2px 0 #041e30}
 .arw.on{border-color:var(--gold);box-shadow:0 2px 0 #041e30,0 0 0 1px var(--gold)}
 .arw.lk{opacity:.45}
-.arw canvas{image-rendering:pixelated;flex:0 0 auto}
+.arw canvas{flex:0 0 auto}
 .arw .tx{flex:1;min-width:0}
 .arw .tx b{font-family:Orbitron,sans-serif;font-weight:900;font-size:12px}
 .arw .tx p{margin-top:3px;font-size:10.5px;line-height:1.45;color:var(--txt)}
@@ -790,12 +785,23 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 "use strict";
 /* =====================================================================
    STAR ARENA — Aduka vs Bot
-   Ảnh nằm ở thư mục ./assets/  (không nhúng base64)
+   Ảnh nằm ở thư mục ./img/  (không nhúng base64)
    Trang bị avatar tải theo URL kho mã nguồn mở DragonBound
    ===================================================================== */
 
-const ASSET = "assets/";                                   // đổi sang URL khác nếu muốn
-const AV_CDN = "assets/ava/";            // ảnh trang bị nằm trong repo, chạy offline
+/* Nguồn tài nguyên. Đổi đúng dòng SRC dưới đây là chuyển được cả game:
+     "local"  — đọc thư mục img/ và data/ nằm cạnh file này
+     "github" — đọc thẳng từ repo, index.html tự chạy một mình, không cần thư mục đi kèm
+   Cả hai host đều trả access-control-allow-origin:* nên canvas không bị nhiễm bẩn,
+   điều bắt buộc vì buildTerrain() phải đọc pixel bằng getImageData(). */
+const SRC  = "local";
+const ROOT = {
+  local:  "",
+  github: "https://raw.githubusercontent.com/lucatoni28/lucatoni28/claude/chao-rw7ej9/"
+}[SRC];
+const ASSET = ROOT + "img/";        // ảnh: map, xe, HUD
+const AVA   = ROOT + "img/ava/";    // ảnh trang bị avatar
+const DATA  = ROOT + "data/";       // bảng dữ liệu JSON
 
 const FILES = {
   aduka:"aduka.png", thor:"thor.png", bg:"bg.jpg",
@@ -807,7 +813,6 @@ const FILES = {
 };
 
 /* danh mục trang bị: n=tên t=loại s=giới tính r=độ hiếm p=giá g=khe giữa khung */
-const RAWITEMS = {"mh00000":{"n":"Default","t":"h","s":"m","r":"c","p":0,"g":1,"f":"24,23,0,24|24,23,1,24*4|25,23,2,24|24,23,2,24*5|26,24,3,24*7|25,24,3,24|26,24,4,24*3"},"mb00000":{"n":"Default","t":"b","s":"m","r":"c","p":0,"g":1,"f":"25,26,9,6|25,27,9,7*10"},"fh00000":{"n":"Default","t":"h","s":"f","r":"c","p":0,"g":1,"f":"26,25,-1,25|26,26,0,26|26,25,1,25*3|27,25,2,25|28,25,2,25*3|27,25,2,25*2|26,25,2,25*5|27,25,2,25*6"},"fb00000":{"n":"Default","t":"b","s":"f","r":"c","p":0,"g":1,"f":"25,26,9,6*4|24,26,9,6*14|25,26,9,6*4"},"mh00001":{"n":"Space Marine","t":"h","s":"m","r":"c","p":500,"g":1,"f":"26,23,2,24|27,23,3,24*4|27,23,4,24*6|28,25,4,25*4|27,25,4,25*7"},"mh00013":{"n":"Cowboy Hat","t":"h","s":"m","r":"c","p":500,"g":1,"f":"39,28,7,26|38,29,7,27|39,29,8,27|38,29,8,27*2|38,29,9,27*3|39,28,10,27|38,28,10,27*2|36,29,5,27|37,29,6,27|36,29,6,27*3|36,30,6,27|35,30,6,27*5"},"mh00028":{"n":"Magician Hat","t":"h","s":"m","r":"c","p":500,"g":1,"f":"41,36,9,37|40,36,9,37|41,36,10,37*4|41,36,11,37*5|41,36,9,36|40,36,9,36*2|41,36,9,36|40,36,9,36*3|41,36,10,36*4"},"mh00025":{"n":"Laurel Crown","t":"h","s":"m","r":"c","p":500,"g":1,"f":"33,33,2,32|35,33,5,32|33,33,5,32*2|34,33,6,32|33,33,6,32*2|33,33,7,32*4|33,31,6,30*6|34,31,7,30*2|33,31,7,30*3"},"mh00039":{"n":"Santa","t":"h","s":"m","r":"r","p":2200,"g":1,"f":"37,35,2,33|32,34,4,33|31,34,4,33*2|32,34,5,33*2|31,34,5,33*2|32,35,6,34*3|40,34,3,34*4|39,34,3,34*2|40,34,4,34*3|39,34,4,34*2"},"mb00001":{"n":"Space Marine","t":"b","s":"m","r":"c","p":450,"g":1,"f":"25,27,9,7*5|24,27,9,7*12|25,27,9,7|25,26,9,6*4"},"mb00012":{"n":"Cowboy","t":"b","s":"m","r":"c","p":450,"g":1,"f":"27,28,9,6|27,29,9,7|26,29,9,7*9"},"mb00026":{"n":"Magician A","t":"b","s":"m","r":"c","p":450,"g":1,"f":"29,27,9,6*3|29,28,9,7*2|28,28,9,7*6"},"mb00039":{"n":"Golden Armor","t":"b","s":"m","r":"u","p":16200,"g":1,"f":"28,27,9,7*2|27,27,9,7*9"},"mb00018":{"n":"Arch Angel","t":"b","s":"m","r":"u","p":16200,"g":1,"f":"43,37,8,16|43,38,8,17|44,38,8,17|44,37,8,16*2|45,37,8,16|45,36,8,15*2|46,36,8,15|46,35,8,15*2"},"mg00008":{"n":"Sunglasses","t":"g","s":"m","r":"c","p":350,"g":1,"f":"19,8,0,13|21,8,0,13|22,8,1,13*4|21,8,1,13|22,8,2,13|22,9,2,13*3|13,8,0,12*2|13,9,0,13*2|12,9,0,13*7"},"mg00030":{"n":"M. Sunglasses","t":"g","s":"m","r":"r","p":1550,"g":1,"f":"16,8,1,13|19,8,0,13|21,8,0,13*3|20,8,0,13*2|21,8,1,13*2|21,9,1,13*2|16,8,1,13*3|16,7,1,13|15,7,1,13*6|16,7,2,13"},"mg00019":{"n":"Orbiting Moon","t":"g","s":"m","r":"u","p":12600,"g":1,"f":"13,33,-5,25|24,30,1,25|33,27,6,24|41,21,10,21|45,16,12,19|47,13,13,17|47,18,13,19|42,22,10,20|36,24,7,20|27,25,2,19|17,25,-3,18|16,22,-4,15|26,18,1,12|35,14,5,10|41,14,8,10|45,19,10,12|45,24,10,15|43,30,10,19|38,34,7,22|30,34,3,23|21,35,-1,25|13,33,-5,25|14,34,-4,25|25,32,2,25|34,28,7,24|41,22,11,21|47,17,14,19|49,13,15,17|48,18,15,19|43,23,12,21|37,25,9,21|28,27,4,21|18,27,-1,20|15,24,-3,17|25,20,2,14|34,15,6,11|40,13,9,10|43,18,10,12|44,25,11,16|42,30,10,19|36,34,7,22|28,35,3,23|20,36,-1,25|14,34,-4,25"},"mf00051":{"n":"Golden Hammer","t":"f","s":"m","r":"c","p":400,"g":1,"f":"36,34,-10,31*5|37,34,-10,31*7"},"mf00057":{"n":"Radar","t":"f","s":"m","r":"c","p":400,"g":1,"f":"29,38,-15,35*2|28,38,-15,35|26,38,-15,35|24,38,-15,35|25,38,-15,35|26,39,-14,37|25,40,-14,38|25,42,-14,40|24,43,-14,41*4|24,42,-14,40|25,41,-14,39|25,39,-14,37|24,38,-15,35*2|26,38,-15,35|27,38,-15,35|28,38,-15,35|29,38,-15,35"},"mf00059":{"n":"GM Hammer","t":"f","s":"m","r":"u","p":14400,"g":1,"f":"23,33,-13,34*2|24,33,-13,34*2|25,33,-13,34*3|26,33,-13,34*3|27,33,-13,34"},"fh00009":{"n":"Rabbit Hair","t":"h","s":"f","r":"c","p":500,"g":1,"f":"35,45,6,39|36,45,8,39|35,43,6,37|34,44,5,38|33,43,5,38|32,44,6,39|31,45,7,40|32,46,8,41|33,47,9,42|34,48,10,43|36,48,11,43|29,45,1,40|29,44,1,39|30,43,1,39*2|31,43,1,39*3|30,44,1,39*2|29,44,1,39*2"},"fh00014":{"n":"Magician Hat","t":"h","s":"f","r":"r","p":2200,"g":1,"f":"37,33,3,30|35,33,3,30|43,33,9,30|43,31,10,29*3|43,32,11,29|43,31,11,28*4|40,32,6,30*2|39,32,5,30*3|39,31,5,29*2|39,32,5,29*4"},"fh00047":{"n":"Bride Hair","t":"h","s":"f","r":"u","p":18000,"g":1,"f":"30,39,-1,34|30,39,1,34|29,39,2,34|29,39,3,34|29,40,3,34*7|32,41,0,35|32,40,0,35*5|31,40,-1,35*4|32,40,-1,35"},"fh00055":{"n":"Golden Helmet","t":"h","s":"f","r":"e","p":7000,"g":1,"f":"31,27,1,26|38,27,9,26|51,26,16,26*3|50,27,16,26*3|51,27,17,26*3|30,26,2,26|31,26,2,26*10"},"fh00068":{"n":"Elf Hair","t":"h","s":"f","r":"e","p":7000,"g":1,"f":"25,29,0,26|25,29,1,26|25,30,1,27*3|26,30,2,27|25,30,2,27*3|26,30,3,27*2|25,29,0,26*3|26,29,0,26*8"},"fb00037":{"n":"Red Dress","t":"b","s":"f","r":"r","p":2000,"g":1,"f":"27,26,9,7*6|27,27,9,7|27,26,9,7*3|27,27,9,7"},"fb00034":{"n":"Devil Clothing","t":"b","s":"f","r":"r","p":2000,"g":1,"f":"44,34,10,14*3|45,34,10,14*2|45,33,10,13*4|45,32,10,12|46,32,10,12"},"fb00045":{"n":"Wedding Dress","t":"b","s":"f","r":"u","p":16200,"g":1,"f":"23,23,5,6*11"},"fb00053":{"n":"Golden Armor","t":"b","s":"f","r":"u","p":16200,"g":1,"f":"25,27,9,7*11"},"fb00071":{"n":"Panda Clothing","t":"b","s":"f","r":"e","p":6300,"g":1,"f":"25,27,8,7*2|25,26,8,6|26,26,8,6*5|27,26,8,6*3"},"fg00006":{"n":"Sunglasses","t":"g","s":"f","r":"c","p":350,"g":1,"f":"21,8,1,14|23,9,1,14*3|24,9,2,14|23,9,2,14*6|11,8,-1,13*2|10,8,-2,13|10,7,-2,12*3|11,7,-2,12*5"},"fg00030":{"n":"M. Sunglasses","t":"g","s":"f","r":"r","p":1550,"g":1,"f":"12,7,0,13|17,8,-1,13|20,8,-1,13*3|21,8,0,13|20,8,0,13*5|12,7,0,13*7|12,8,0,13|13,8,0,13*3"},"fg00019":{"n":"Orbiting Moon","t":"g","s":"f","r":"u","p":12600,"g":1,"f":"13,33,-5,25|24,30,1,25|33,27,6,24|41,21,10,21|45,16,12,19|47,13,13,17|47,18,13,19|42,22,10,20|36,24,7,20|27,25,2,19|17,25,-3,18|16,22,-4,15|26,18,1,12|35,14,5,10|41,14,8,10|45,19,10,12|45,24,10,15|43,30,10,19|38,34,7,22|30,34,3,23|21,35,-1,25|13,33,-5,25|14,34,-4,25|25,32,2,25|34,28,7,24|41,22,11,21|47,17,14,19|49,13,15,17|48,18,15,19|43,23,12,21|37,25,9,21|28,27,4,21|18,27,-1,20|15,24,-3,17|25,20,2,14|34,15,6,11|40,13,9,10|43,18,10,12|44,25,11,16|42,30,10,19|36,34,7,22|28,35,3,23|20,36,-1,25|14,34,-4,25"},"ah03265":{"n":"Angel","t":"h","s":"a","r":"r","p":2200,"g":1,"f":"27,47,2,31|32,47,4,31|30,46,3,31|32,46,3,31*2|32,45,4,31|33,46,4,31*3|34,46,4,31*5|34,47,4,31*4|35,47,4,31|36,47,4,31|41,47,10,31|37,47,4,31|30,46,2,33|31,46,2,33|32,45,2,33*4|33,45,3,33*2|32,45,3,33*2|31,45,3,33*2|31,46,3,33*2|31,45,3,33|32,46,3,33|31,49,2,33|32,51,2,33|32,52,2,33|32,53,2,33|33,54,2,33|33,55,2,33"},"ah03319":{"n":"Space Adventurer","t":"h","s":"a","r":"u","p":18000,"g":1,"f":"28,44,2,24|31,44,4,24|28,44,4,24*2|29,44,5,24|28,44,5,24*2|29,43,5,24|30,44,6,24|30,43,6,24*2|30,44,6,24|30,43,6,24|30,44,6,24*2|29,44,5,24*4|28,44,4,24*3|27,44,2,25|27,43,2,25*2|27,44,2,25*2|27,43,2,25*4|28,43,3,25|27,43,3,25*3|28,43,3,25|27,43,2,25*5|27,44,2,25*3"},"ab03264":{"n":"Angel","t":"b","s":"a","r":"r","p":2000,"g":1,"f":"26,24,8,6*8|26,25,8,7*4|26,24,8,6|26,25,8,7|26,24,8,6*8"},"ab03318":{"n":"Space Adventurer","t":"b","s":"a","r":"u","p":16200,"g":1,"f":"42,24,10,6*7|41,24,10,6*9|42,24,10,6*6"},"ag00061":{"n":"Blue Phoenix","t":"g","s":"a","r":"r","p":1550,"g":1,"f":"69,84,12,61|72,83,13,61|72,83,13,59|74,83,14,58|75,83,13,59|75,84,13,60|68,83,14,59|76,83,14,60|76,82,14,58|71,85,15,60|69,84,15,60|72,86,17,61|74,85,18,61|75,86,19,62|76,85,19,60|78,85,20,60|79,84,21,60|79,82,21,58|71,84,12,59|72,85,13,60|73,84,13,59|71,83,13,59|69,84,12,61|72,83,13,61|72,83,13,59|74,83,14,58|75,83,13,59|75,84,13,60|68,83,14,59|76,83,14,60|76,82,14,58|71,85,15,60|69,84,15,60|72,86,17,61|74,85,18,61|75,86,19,62|76,85,19,60|78,85,20,60|79,84,21,60|79,82,21,58|71,84,12,59|72,85,13,60|73,84,13,59|71,83,13,59"},"ag03068":{"n":"D-Balls","t":"g","s":"a","r":"u","p":12600,"g":1,"f":"13,33,-5,25|24,30,1,25|33,27,6,24|41,21,10,21|45,16,12,19|47,13,13,17|47,18,13,19|42,22,10,20|36,24,7,20|27,25,2,19|17,25,-3,18|16,22,-4,15|26,18,1,12|35,14,5,10|41,14,8,10|45,19,10,12|45,24,10,15|43,30,10,19|38,34,7,22|30,34,3,23|21,35,-1,25|13,33,-5,25|14,34,-4,25|25,32,2,25|34,28,7,24|41,22,11,21|47,17,14,19|49,13,15,17|48,18,15,19|43,23,12,21|37,25,9,21|28,27,4,21|18,27,-1,20|15,24,-3,17|25,20,2,14|34,15,6,11|40,13,9,10|43,18,10,12|44,25,11,16|42,30,10,19|36,34,7,22|28,35,3,23|20,36,-1,25|14,34,-4,25"},"af03041":{"n":"Rocker Boy","t":"f","s":"a","r":"u","p":14400,"g":1,"f":"46,52,-9,42*4|46,51,-9,41*4|47,51,-9,41*2|47,50,-9,40"},"af03042":{"n":"Pala","t":"f","s":"a","r":"e","p":5600,"g":1,"f":"34,60,-5,45*6"},"af03043":{"n":"Dragon Murk","t":"f","s":"a","r":"r","p":1750,"g":0,"f":"83,60,7,55*5"},"af00073":{"n":"Easter Chicken","t":"f","s":"a","r":"u","p":14400,"g":1,"f":"35,79,-21,53|35,79,-20,53|35,80,-19,54|35,80,-18,54|34,80,-18,54|35,79,-17,53*3|36,79,-16,53|35,79,-16,53|36,79,-15,53"}};
 function decF(s){
   const o=[];
   for (const p of s.split("|")){
@@ -817,14 +822,23 @@ function decF(s){
   }
   return o;
 }
-const ITEMS = {};
-for (const k in RAWITEMS){
-  const q=RAWITEMS[k];
-  ITEMS[k] = { n:q.n, t:q.t, s:q.s, r:q.r, p:q.p, g:q.g, f:decF(q.f) };
-}
 /* vài dải sprite xếp sát nhau, vài dải chừa 1px — g cho biết dải nào là dải nào */
 function framesX(f,gap){ const o=[]; let x=0; for(const g of f){ o.push(x); x+=g[0]+gap; } return o; }
-for (const k in ITEMS) ITEMS[k].xs = framesX(ITEMS[k].f, ITEMS[k].g);
+
+/* Bảng 43 món đồ nằm ở data/items.json cho index.html nhẹ bớt.
+   ITEMS rỗng cho tới khi nạp xong, nên mọi thứ đọc nó phải chạy sau loadItems(). */
+const ITEMS = {};
+async function loadItems(){
+  const url = DATA+"items.json";
+  const r = await fetch(url, {cache:"no-cache"});
+  if(!r.ok) throw new Error("HTTP "+r.status+" khi tải "+url);
+  const RAWITEMS = await r.json();
+  for (const k in RAWITEMS){
+    const q=RAWITEMS[k];
+    ITEMS[k] = { n:q.n, t:q.t, s:q.s, r:q.r, p:q.p, g:q.g, f:decF(q.f) };
+  }
+  for (const k in ITEMS) ITEMS[k].xs = framesX(ITEMS[k].f, ITEMS[k].g);
+}
 
 /* nam không mặc được đồ nữ và ngược lại; đồ "a" là đồ dùng chung */
 const canWear = (k,model) => !!ITEMS[k] && (ITEMS[k].s===model || ITEMS[k].s==="a");
@@ -910,7 +924,7 @@ const avPending={};
 function avImg(key){
   if (!key) return null;
   if (IMG[key] !== undefined) return IMG[key];
-  if (!avPending[key]){ avPending[key]=1; loadImg(key, AV_CDN+key+".png"); }
+  if (!avPending[key]){ avPending[key]=1; loadImg(key, AVA+key+".png"); }
   return null;
 }
 /* đã thử tải và hỏng hẳn — khác với “đang tải” */
@@ -927,7 +941,7 @@ function buildTerrain(mk){
   const mp=RAWMAP[mk]||RAWMAP.star;
   setGeom(mk);
   maskW=TERR_W; maskH=TERR_H;
-  /* mặt nạ va chạm đọc từ assets/maps/<map>_mask.png — trắng là đất đặc.
+  /* mặt nạ va chạm đọc từ img/maps/<map>_mask.png — trắng là đất đặc.
      Vẽ lại file đó bằng trình vẽ bất kỳ là đổi được địa hình của map. */
   mask=new Uint8Array(TERR_W*TERR_H);
   const c=document.createElement("canvas"); c.width=TERR_W; c.height=TERR_H;
@@ -1446,8 +1460,27 @@ function drawAvatar(c,u,z,tick){
 }
 
 /* ---- render ---- */
+/* Canvas giao diện: nền ảnh nhân theo DPR, còn toạ độ vẽ vẫn tính bằng pixel CSS.
+   Thiếu bước này thì bitmap 1x bị màn hình 2-3x kéo giãn, sprite nhoè và răng cưa. */
+function uiCx(cvs,W,H){
+  W = W || +cvs.dataset.lw || cvs.width;
+  H = H || +cvs.dataset.lh || cvs.height;
+  cvs.dataset.lw=W; cvs.dataset.lh=H;
+  const bw=Math.round(W*DPR), bh=Math.round(H*DPR);
+  if(cvs.width!==bw||cvs.height!==bh){
+    cvs.width=bw; cvs.height=bh;
+    cvs.style.width=W+"px"; cvs.style.height=H+"px";
+  }
+  const c=cvs.getContext("2d");
+  c.setTransform(DPR,0,0,DPR,0,0);
+  c.imageSmoothingEnabled=true; c.imageSmoothingQuality="high";
+  c.clearRect(0,0,W,H);
+  return c;
+}
+const uiW=cvs=>+cvs.dataset.lw||cvs.width, uiH=cvs=>+cvs.dataset.lh||cvs.height;
+
 const cv=$("#cv"), cx=cv.getContext("2d");
-let DPR=1;
+let DPR=clamp(window.devicePixelRatio||1,1,3);
 function resize(){
   const r=$("#stage").getBoundingClientRect();
   VW=Math.max(1,Math.round(r.width)); VH=Math.max(1,Math.round(r.height));
@@ -1458,7 +1491,7 @@ function resize(){
 function draw(){
   if(!terrCv) return;                 // chưa vào map nào thì chưa có gì để vẽ
   const c=cx;
-  c.setTransform(DPR,0,0,DPR,0,0); c.imageSmoothingEnabled=false;
+  c.setTransform(DPR,0,0,DPR,0,0); c.imageSmoothingEnabled=true; c.imageSmoothingQuality="high";
   c.clearRect(0,0,VW,VH);
   let sx=0,sy=0;
   if(G.shake>0){ sx=rnd(-G.shake,G.shake); sy=rnd(-G.shake,G.shake); G.shake*=.86; if(G.shake<.4)G.shake=0; }
@@ -1595,8 +1628,7 @@ function drawAim(c){
 /* ---- HUD gió: la bàn vẽ tay ---- */
 const wcv=$("#windbox canvas"), wcx=wcv.getContext("2d");
 function drawWind(){
-  const c=wcx,W=80,H=80,cx0=W/2,cy0=H/2,R=31;
-  c.clearRect(0,0,W,H);
+  const W=80,H=80,c=uiCx(wcv,W,H),cx0=W/2,cy0=H/2,R=31;
   const g=c.createRadialGradient(cx0,cy0*.68,2,cx0,cy0,R+8);
   g.addColorStop(0,"#0d4a70"); g.addColorStop(1,"#041d30");
   c.fillStyle=g; c.beginPath(); c.arc(cx0,cy0,R+8,0,7); c.fill();
@@ -1691,25 +1723,23 @@ function drawFuel(){
 function drawHeadAv(){
   [0,1].forEach(i=>{
     const u=G.units[i]; if(!u) return;
-    const c=$("#av"+i+" canvas").getContext("2d");
-    c.imageSmoothingEnabled=false; c.clearRect(0,0,40,40);
+    const A=36, c=uiCx($("#av"+i+" canvas"),A,A);
     const st=(i===0?P.set:u.set), key=st.h, it=key?ITEMS[key]:null, im=key?avImg(key):null;
     if(it&&im){
-      const g=it.f[it.f.length>>1], s=Math.min(36/g[0],36/g[1],1.4);
-      c.save(); if(i===1){c.translate(40,0);c.scale(-1,1);}
-      c.drawImage(im,it.xs[it.f.length>>1],0,g[0],g[1],(40-g[0]*s)/2,(40-g[1]*s)/2,g[0]*s,g[1]*s);
+      const g=it.f[it.f.length>>1], s=Math.min(A/g[0],A/g[1],1.4);
+      c.save(); if(i===1){c.translate(A,0);c.scale(-1,1);}
+      c.drawImage(im,it.xs[it.f.length>>1],0,g[0],g[1],(A-g[0]*s)/2,(A-g[1]*s)/2,g[0]*s,g[1]*s);
       c.restore();
     } else {
-      c.save(); if(i===1){c.translate(44,0);c.scale(-1,1);}
-      drawMob(c,u.armor||"aduka",22,40,.62);
+      c.save(); if(i===1){c.translate(A,0);c.scale(-1,1);}
+      drawMob(c,u.armor||"aduka",A/2,A,.62);
       c.restore();
     }
   });
 }
 const tcv=$("#thorbox canvas"), tcx=tcv.getContext("2d");
 function drawThorBadge(){
-  const c=tcx,W=80,H=86,T=G.thor;
-  c.clearRect(0,0,W,H); c.imageSmoothingEnabled=false;
+  const W=80,H=86,c=uiCx(tcv,W,H),T=G.thor;
   const cx0=W/2, cy0=36, R=29, max=T.lvl>=5;
   c.fillStyle="rgba(2,18,34,.78)"; c.beginPath(); c.arc(cx0,cy0,R+5,0,7); c.fill();
   if(IMG.thor){
@@ -2166,8 +2196,7 @@ function paintItem(cvs,key,W,H,gen,tries){
   if(!cvs) return;
   if(gen!==undefined && gen!==gridGen) return;  // lưới đã đổi, bỏ lượt chờ này
   const it=ITEMS[key], im=avImg(key);
-  const c=cvs.getContext("2d"); c.imageSmoothingEnabled=false;
-  c.clearRect(0,0,W,H);
+  const c=uiCx(cvs,W,H);
   if(!im){
     tries=tries||0;
     if(avFailed(key)||tries>=MAX_TRY){ itemPlaceholder(c,key,W,H); avWarnOnce(); return; }
@@ -2179,8 +2208,7 @@ function paintItem(cvs,key,W,H,gen,tries){
   c.drawImage(im,it.xs[i],0,g[0],g[1],(W-g[0]*s)/2,(H-g[1]*s)/2,g[0]*s,g[1]*s);
 }
 function renderPrev(){
-  const me={set:P.set}, c=$("#invcv").getContext("2d");
-  c.imageSmoothingEnabled=false; c.clearRect(0,0,86,86);
+  const me={set:P.set}, c=uiCx($("#invcv"),86,86);
   const S=1.3;
   const mt=drawMob(c,P.armor,43,80,S);
   if(mt) drawSetAt(c,me.set,mt.x,mt.y,S);
@@ -2248,13 +2276,11 @@ $("#retreat").onclick=()=>{ G.over=true; sfx(300,.1,"sq",.1); show("scrCamp"); }
    ===================================================================== */
 function drawLoginArt(){
   drawLoginArt._n = drawLoginArt._n || 0;
-  const cc=$("#loCar").getContext("2d");
-  cc.imageSmoothingEnabled=false; cc.clearRect(0,0,222,177);
+  const cc=uiCx($("#loCar"),222,177);
   const S=2.6;
   const mt=drawMob(cc,P.armor,111,160,S);
   if(mt) drawSetAt(cc,P.set,mt.x,mt.y,S);
-  const tc=$("#loThor").getContext("2d");
-  tc.imageSmoothingEnabled=false; tc.clearRect(0,0,83,55);
+  const tc=uiCx($("#loThor"),83,55);
   if(IMG.thor) tc.drawImage(IMG.thor,0,0,TH_CELL,TH_H,0,0,83,55);
   clearTimeout(drawLoginArt._t);
   if($("#scrLogin").classList.contains("on") && ++drawLoginArt._n < 20)
@@ -2334,12 +2360,11 @@ function drawSetAt(c,set,nx,ny,S){
 }
 function drawArmorPreview(cv,key,scale){
   if(!cv) return;
-  const c=cv.getContext("2d"); c.imageSmoothingEnabled=false;
-  c.clearRect(0,0,cv.width,cv.height);
+  const W=uiW(cv), H=uiH(cv), c=uiCx(cv,W,H);
   const M=MOB[armorMob(key)], im=armorSprite(key); if(!M||!im) return;
   const g=M.f[0];
-  const s=scale || Math.min(cv.width/(g[0]+8), cv.height/(g[1]+8), 2);
-  c.drawImage(im,M.xs[0],0,g[0],g[1],(cv.width-g[0]*s)/2,(cv.height-g[1]*s)/2,g[0]*s,g[1]*s);
+  const s=scale || Math.min(W/(g[0]+8), H/(g[1]+8), 2);
+  c.drawImage(im,M.xs[0],0,g[0],g[1],(W-g[0]*s)/2,(H-g[1]*s)/2,g[0]*s,g[1]*s);
 }
 
 /* =====================================================================
@@ -2478,8 +2503,7 @@ function renderShop(){
   drawDress();
 }
 function drawDress(){
-  const c=$("#dressCv").getContext("2d");
-  c.imageSmoothingEnabled=false; c.clearRect(0,0,62,58);
+  const c=uiCx($("#dressCv"),62,58);
   drawMob(c,P.armor,31,52,.9);
   const parts=["h","b","g","f"].map(t=>has(ITEMS,P.set[t])?ITEMS[P.set[t]].n:null).filter(Boolean);
   $("#dressTx").innerHTML = parts.length ? esc(parts.join(" · ")) : '<s>Chưa mặc gì</s>';
@@ -2498,10 +2522,13 @@ function flash(t){
 /* =====================================================================
    KHỞI ĐỘNG
    ===================================================================== */
-loadSave();
-loadCore(p=>{
-  $("#ldfill").style.width=Math.round(p*100)+"%";
-  $("#ldtx").textContent="Đang nạp tài nguyên… "+Math.round(p*100)+"%";
+$("#ldtx").textContent="Đang nạp bảng dữ liệu…";
+loadItems().then(()=>{
+  loadSave();                      // lọc hồ sơ cần ITEMS nên phải đợi bảng đồ
+  return loadCore(p=>{
+    $("#ldfill").style.width=Math.round(p*100)+"%";
+    $("#ldtx").textContent="Đang nạp tài nguyên… "+Math.round(p*100)+"%";
+  });
 }).then(()=>{
   [DEFAULT_SET.m,DEFAULT_SET.f,P.set].forEach(o=>["h","b","g","f"].forEach(t=>o[t]&&avImg(o[t])));
   initLogin();
@@ -2509,6 +2536,12 @@ loadCore(p=>{
   $("#ovLoad").classList.remove("on");
   show("scrLogin");
   preloadMaps();                   // ảnh map tải nền, không bắt người chơi đợi
+}).catch(err=>{
+  /* Hỏng ở bước này là màn hình trắng, nên phải nói rõ hỏng ở đâu và sửa thế nào. */
+  $("#ldfill").style.width="100%";
+  $("#ldtx").innerHTML = 'Không tải được <b>'+esc(DATA)+'items.json</b><br>'+esc(String(err.message||err))+
+    '<br><br>Mở bằng <b>file://</b> thì trình duyệt chặn fetch. Chạy một máy chủ tĩnh '+
+    '(<b>python3 -m http.server</b>) hoặc đổi <b>SRC = "github"</b> ở đầu mã.';
 });
 $("#btnStart").onclick=()=>{ $("#ovStart").classList.remove("on"); sfx(440,.1,"sq",.12); resetTimer(); };
 $("#btnAgain").onclick=()=>{

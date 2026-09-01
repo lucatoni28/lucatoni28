@@ -11,4 +11,4 @@
 *.json text eol=lf
 
 # Đừng tính assets vào thống kê ngôn ngữ của repo
-assets/** linguist-vendored
+img/** linguist-vendored

@@ -28,7 +28,7 @@ jobs:
           # Game là một file HTML có JS nhúng; assets là ảnh nên bỏ qua
           config: |
             paths-ignore:
-              - assets/**
+              - img/**
               - design/**
 
       - name: Phân tích
