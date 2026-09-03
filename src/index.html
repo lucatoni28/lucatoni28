@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi-VN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Ani">
+<meta name="theme-color" content="#07060c">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="Ani — bạn đồng hành 3D thời gian thực, chạy hoàn toàn trong một file HTML.">
+<title>Ani — Companion 3D</title>
+
+<!-- 1. Fonts (CDN công khai, có fallback hệ thống iOS) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap">
+
+<!-- 2. CSS nội bộ -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ====================================================== SÂN KHẤU 3D ==== -->
+<div id="stage">
+  <canvas id="bgc"></canvas>          <!-- nền Paris vẽ bằng Canvas 2D -->
+  <canvas id="spark"></canvas>        <!-- đèn nhấp nháy tháp Eiffel -->
+  <div id="bgTint"></div>
+  <div id="charGlow"></div>
+  <canvas id="gl"></canvas>           <!-- WebGL: nhân vật 3D -->
+  <canvas id="dust"></canvas>         <!-- bụi sáng lơ lửng -->
+  <div id="grain"></div>
+  <div id="vignette"></div>
+</div>
+
+<!-- ========================================================= LỚP CHAT ==== -->
+<div id="chatLayer"><div id="bubbles"></div></div>
+
+<!-- ============================================================== HUD ==== -->
+<div id="hud">
+  <div id="topBar">
+    <button class="chip" id="btnFrame" aria-label="Đổi khung hình">
+      <svg viewBox="0 0 24 24"><path d="M4 9V5a1 1 0 0 1 1-1h4M20 9V5a1 1 0 0 0-1-1h-4M4 15v4a1 1 0 0 0 1 1h4M20 15v4a1 1 0 0 1-1 1h-4"/></svg>
+      <span id="frameLabel">Bán thân</span>
+    </button>
+    <button class="chip" id="btnOutfit" aria-label="Đổi trang phục">
+      <svg viewBox="0 0 24 24"><path d="M9 4l3 2 3-2 4 3-2 3v8a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-8L5 7z"/></svg>
+      <span id="outfitLabel">Váy gothic</span>
+    </button>
+    <div class="spacer"></div>
+    <button class="chip icon" id="btnStats" aria-label="Hiệu năng">
+      <svg viewBox="0 0 24 24"><path d="M4 19V10M9.3 19V5M14.7 19v-6M20 19V8"/></svg>
+    </button>
+    <button class="chip icon" id="btnSettings" aria-label="Cài đặt">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M4.6 7.2l1.7 1M17.7 15.8l1.7 1M4.6 16.8l1.7-1M17.7 8.2l1.7-1"/></svg>
+    </button>
+  </div>
+
+  <div id="moodBar">
+    <button class="mood" data-mood="neutral">Bình thản</button>
+    <button class="mood" data-mood="happy">Vui</button>
+    <button class="mood" data-mood="playful">Tinh nghịch</button>
+    <button class="mood" data-mood="shy">Ngại</button>
+    <button class="mood" data-mood="curious">Tò mò</button>
+    <button class="mood" data-mood="sad">Buồn</button>
+  </div>
+
+  <div id="inputBar">
+    <button class="round" id="btnMic" aria-label="Nói">
+      <svg viewBox="0 0 24 24"><rect x="9.5" y="3" width="5" height="10" rx="2.5"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/></svg>
+    </button>
+    <div id="inputWrap">
+      <input id="msg" type="text" autocomplete="off" autocapitalize="sentences" enterkeyhint="send" placeholder="Nói gì với Ani đi…">
+    </div>
+    <button class="round send" id="btnSend" aria-label="Gửi">
+      <svg viewBox="0 0 24 24"><path d="M4 12l16-8-6 8 6 8z"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ======================================================= BẢNG THỐNG KÊ = -->
+<div id="stats" class="hidden">
+  <div class="row"><b id="stFps">0</b><span>fps</span></div>
+  <div class="row"><b id="stSim">0.00</b><span>ms motion</span></div>
+  <div class="row"><b id="stStep">0</b><span>substep</span></div>
+  <div class="row"><b id="stSpring">0</b><span>spring bones</span></div>
+  <div class="row"><b id="stTri">0</b><span>k tris</span></div>
+</div>
+
+<!-- ========================================================== CÀI ĐẶT ==== -->
+<div id="sheet" class="hidden">
+  <div id="sheetCard">
+    <div class="sheetHead">
+      <h2>Cài đặt</h2>
+      <button class="chip icon" id="btnCloseSheet" aria-label="Đóng">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="sheetBody">
+      <label class="fld">
+        <span>Tính cách (persona)</span>
+        <textarea id="fPersona" rows="5" spellcheck="false"></textarea>
+      </label>
+
+      <div class="sep"></div>
+      <h3>Giọng nói</h3>
+      <label class="fld"><span>Giọng đọc</span><select id="fVoice"></select></label>
+      <label class="fld range"><span>Tốc độ <b id="lblRate">1.05</b></span><input id="fRate" type="range" min="0.6" max="1.8" step="0.05"></label>
+      <label class="fld range"><span>Cao độ <b id="lblPitch">1.25</b></span><input id="fPitch" type="range" min="0.5" max="2" step="0.05"></label>
+      <button class="btnWide ghost" id="btnTestVoice">Thử giọng</button>
+
+      <div class="sep"></div>
+      <h3>Bộ não trả lời</h3>
+      <label class="fld"><span>API endpoint (tuỳ chọn)</span><input id="fEndpoint" type="text" placeholder="https://api.openai.com/v1/chat/completions" spellcheck="false"></label>
+      <label class="fld"><span>API key</span><input id="fKey" type="password" placeholder="sk-…" spellcheck="false"></label>
+      <label class="fld"><span>Model</span><input id="fModel" type="text" placeholder="gpt-4o-mini" spellcheck="false"></label>
+      <p class="hint" id="brainHint"></p>
+
+      <div class="sep"></div>
+      <h3>Chuyển động &amp; hình ảnh</h3>
+      <label class="fld range"><span>Ngân sách motion <b id="lblBudget">2.5</b> ms/khung</span><input id="fBudget" type="range" min="1" max="6" step="0.1"></label>
+      <label class="fld"><span>Tần số mô phỏng</span>
+        <select id="fHz">
+          <option value="90">90 Hz — nhẹ pin</option>
+          <option value="120">120 Hz — cân bằng (khuyên dùng)</option>
+          <option value="180">180 Hz — mượt tối đa</option>
+        </select>
+      </label>
+      <label class="chk"><input id="fSpring" type="checkbox" checked><span>Vật lý tóc / váy (spring-bone)</span></label>
+      <label class="chk"><input id="fDust" type="checkbox" checked><span>Hạt bụi lấp lánh</span></label>
+      <label class="chk"><input id="fGrain" type="checkbox" checked><span>Grain phim</span></label>
+      <label class="chk"><input id="fSparkle" type="checkbox" checked><span>Tháp Eiffel nhấp nháy</span></label>
+      <label class="fld range"><span>Độ mờ bong bóng <b id="lblOpa">0.82</b></span><input id="fOpa" type="range" min="0.35" max="1" step="0.01"></label>
+      <button class="btnWide ghost" id="btnClear">Xoá hội thoại</button>
+      <p class="hint">Ani chạy 100% trong file này — không cần server, không cần mạng. Mở bằng Safari trên iPhone rồi “Thêm vào MH chính” để dùng như app.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================================================== MÀN HÌNH KHỞI ==== -->
+<div id="boot">
+  <div class="glow g1"></div>
+  <div class="glow g2"></div>
+  <div class="glow g3"></div>
+  <div id="bootCore">
+    <svg id="bootRing" viewBox="0 0 200 200">
+      <circle class="track" cx="100" cy="100" r="92"/>
+      <circle class="arc" cx="100" cy="100" r="92"/>
+    </svg>
+    <div id="bootAva"><img id="bootAvaImg" alt=""></div>
+  </div>
+  <div id="bootFoot">
+    <div id="bootTap" class="hidden">Chạm để bắt đầu</div>
+    <div id="bootErr" class="hidden"></div>
+  </div>
+</div>
+
+<!-- 4. Dữ liệu gốc + engine (nhúng thẳng, không cần build) -->
+<script src="data/ani-data.js"></script>
+<script src="vendor/three.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
