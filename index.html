@@ -1135,6 +1135,22 @@ function thorGain(v){
   while(T.lvl<5 && T.exp>=THOR_NEED[T.lvl]){ T.exp-=THOR_NEED[T.lvl]; T.lvl++; T.flash=40;
     popMsg("THOR CẤP "+T.lvl, "#8ad8ff"); }
 }
+/* Bộ đồ của NPC: chọn từ kho theo hạt giống của màn nên mỗi màn một người khác nhau,
+   nhưng vào lại cùng màn thì vẫn là người đó chứ không nhấp nháy mỗi khung hình. */
+function foeOutfit(M){
+  const model = M.boss ? (P.model==="m"?"f":"m") : (((M.n*7+P.ch*13)%2) ? "m" : "f");
+  const base  = Object.assign({}, DEFAULT_SET[model]);
+  let seed = (P.ch*1000 + M.n*37 + 11) >>> 0;
+  const rnd = () => (seed = (seed*1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
+  for(const t of ["h","b","g","f"]){
+    const pool = Object.keys(ITEMS).filter(k => ITEMS[k].t===t && canWear(k,model));
+    if(!pool.length) continue;
+    const k = pool[Math.floor(rnd()*pool.length)];
+    /* mũ và thân luôn có; kính và cờ thì thưa hơn cho đỡ rối */
+    if(t==="h"||t==="b" || rnd()<0.55) base[t]=k;
+  }
+  return base;
+}
 function mkUnit(x,side,human,set,maxHp,armor){
   maxHp = maxHp || 100; armor = armor || "aduka";
   return { x, y:0, hp:maxHp, maxHp, fuel:100, side, human, ang:45, angF:45, dead:false,
@@ -1148,7 +1164,7 @@ function placeUnits(){
   const pa=ARMORS[P.armor]||ARMORS.aduka;
   const you=mkUnit(px,1,true,P.set,Math.round(pa.hp*(1+(P.lv-1)*.06)),P.armor);
   you.dmg=pa.dmg; you.fuelMax=pa.fuel;
-  const foe=mkUnit(bx,-1,false,M.boss?DEFAULT_SET[P.model==="m"?"f":"m"]:null,M.hp,M.armor);
+  const foe=mkUnit(bx,-1,false,foeOutfit(M),M.hp,M.armor);
   foe.dmg=(ARMORS[M.armor]||ARMORS.aduka).dmg; foe.fuelMax=100;
   foe.boss=!!M.boss;
   G.units=[you,foe];
@@ -1512,7 +1528,8 @@ function avFrame(item,tick){
 function drawAvatar(c,u,z,tick){
   const st=u.human?P.set:u.set;
   const M=mobOf(u);
-  const nx=u.x+M.px*u.side, ny=u.y+M.py;                    // điểm gắn cổ do sprite xe quy định
+  const fl=flipOf(u), sg=fl?1:-1;                           // hướng ngồi phải khớp hướng xe
+  const nx=u.x+M.px*sg, ny=u.y+M.py;                        // điểm gắn cổ do sprite xe quy định
   const p=w2s(nx,ny), S=z*AV_SC;
   const order=["f","b","h","g"];                            // cờ → thân → đầu → kính
   for(const t of order){
@@ -1521,10 +1538,10 @@ function drawAvatar(c,u,z,tick){
     const im=avImg(key); if(!im) continue;
     const i=avFrame(it,tick)%it.f.length, g=it.f[i];
     const w=g[0],h=g[1],cx=g[2],cy=g[3],sx=it.xs[i];
-    const bx=p.x+(u.side>0? -cx*S : (cx-w)*S), by=p.y-cy*S;
+    const bx=p.x+(fl? -cx*S : (cx-w)*S), by=p.y-cy*S;
     c.save();
-    c.translate(bx+(u.side>0?0:w*S),by);
-    if(u.side<0) c.scale(-1,1);
+    c.translate(bx+(fl?0:w*S),by);
+    if(!fl) c.scale(-1,1);
     c.drawImage(im,sx,0,w,h,0,0,w*S,h*S);
     c.restore();
   }
@@ -1661,10 +1678,10 @@ function drawUnit(c,u,z){
   c.beginPath(); c.ellipse(p.x,p.y,w*.34,5*z,0,0,7); c.fill(); c.globalAlpha=1;
   const im=IMG["mob_"+M_key(u)];
   c.save(); c.translate(p.x,p.y);
-  if(u.side<0) c.scale(-1,1);
+  if(flipOf(u)) c.scale(-1,1);
   if(im) c.drawImage(im,M.xs[fi],0,g[0],g[1],-cx,-cy,w,h);
   c.restore();
-  if(u.human||u.boss) drawAvatar(c,u,z,G.t);
+  drawAvatar(c,u,z,G.t);                       // mọi tay lái đều là người, không riêng gì boss
   const bw=36*z, bx=p.x-bw/2, by=p.y-uH(u)*z-16*z;
   c.fillStyle="rgba(0,0,0,.7)"; c.fillRect(bx-1,by-1,bw+2,5*z+2);
   c.fillStyle=u.human?"#4aff8a":"#ff5a6a"; c.fillRect(bx,by,bw*(u.hp/u.maxHp),5*z);
@@ -1675,6 +1692,11 @@ function drawUnit(c,u,z){
   }
 }
 const M_key = u => (u&&u.mob)||"aduka";
+/* Sprite xe đều vẽ sẵn quay TRÁI (kiểm bằng mắt: sừng Knight nằm bên trái khung).
+   Nên con đứng bên trái (side>0) phải lật mới quay mặt sang địch; con bên phải giữ nguyên.
+   Aduka bắn bằng đuôi nên nó quay ngược lại phần còn lại — cờ back trong RAWMOB. */
+const facesBack = u => !!(mobOf(u)||{}).back;
+const flipOf = u => (u.side>0) !== facesBack(u);
 function drawAim(c){
   const u=G.units[G.turn]; if(!u||u.dead||!u.human) return;
   const m=muzzle(u), p=w2s(m.bx,m.by), R=25, a=u.ang*Math.PI/180;
@@ -1754,9 +1776,9 @@ function drawGauge(){
   for(let i=1;i<10;i++) c.fillRect(x0+w0*i/10-1,y0,2,h0);
   if(lastPow!==null){
     const lx=x0+w0*clamp(lastPow,0,100)/100;
-    c.fillStyle="rgba(255,255,255,.5)"; c.fillRect(lx-1,y0,2,h0);
-    c.font="700 13px Orbitron"; c.textAlign="center"; c.fillStyle="rgba(255,255,255,.72)";
-    c.fillText("LẦN TRƯỚC",clamp(lx,58,W-58),y0+15);
+    /* lực phát trước: kẻ mảnh màu đỏ để ngắm lại cho nhanh */
+    c.fillStyle="#ff2a2a"; c.fillRect(lx-0.5,y0,1.5,h0);
+    c.fillStyle="rgba(255,42,42,.35)"; c.fillRect(lx-2,y0,5,2); c.fillRect(lx-2,y0+h0-2,5,2);
   }
   const px=x0+w0*p;
   c.fillStyle="#fff"; c.fillRect(px-2,y0-4,4,h0+8);
@@ -2062,7 +2084,7 @@ function botTurn(){
   const iv=setInterval(()=>{
     t+=4; G.power=Math.min(pw,t); drawGauge();
     if(G.power>=pw){ clearInterval(iv);
-      setTimeout(()=>{ fire(me,pw,wid); G.power=40; drawGauge(); },240); }
+      setTimeout(()=>{ fire(me,pw,wid); G.power=0; drawGauge(); },240); }
   },26);
 }
 
@@ -2322,7 +2344,7 @@ async function enterMap(ch,mapNo,mode){
   G.over = false;
   buildTerrain(G.mapKey); placeUnits();
   G.turn=0; G.round=1; G.over=false; G.phase="aim"; G.weapon=0;
-  G.power=40; G.proj=null; G.parts=[]; G.beams=[]; lastPow=null;
+  G.power=0; G.proj=null; G.parts=[]; G.beams=[]; lastPow=null;
   G.thor={x:WORLD_W/2,y:thorY(),lvl:1,exp:0,f:0,flash:0};
   G.units.forEach(u=>{u.ang=45;u.angF=45;});
   rollWind(); drawWind(); drawGauge(); drawAmmo(); drawFuel(); drawHeadAv(); drawThorBadge();
