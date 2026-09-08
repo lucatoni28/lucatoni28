@@ -24,6 +24,10 @@ html,body{width:100%;height:100%;overflow:hidden;background:#04121f;
   --org:#ff8c2a; --pink:#ff4a9d; --ink:#04121f; --stroke:#0a5c8c;
   --txt:#9fc4dd; --txt2:#bfe4ff; --dim:#5d8aa8; --ok:#4aff8a; --bad:#ff5a6a;
   --rc:#0a5c8c; --rr:#7a4ad0; --re:#ff8c2a; --rl:#ffcc00;
+  /* Khung vật phẩm dựng theo hai panel dưới thanh Password trong sheet:
+     đỉnh sóng + lòng khung + dải tên. Lòng trắng cho món thường, vảy rồng cho unique. */
+  --fr-edge:#0b3f66; --fr-white:#fff; --sc-lo:#2f93c8; --sc-hi:#86d4ef;
+  --tier:#1fa3e0;
   --sb:env(safe-area-inset-bottom,0px); --st:env(safe-area-inset-top,0px)}
 .or{font-family:Orbitron,sans-serif}
 button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
@@ -179,29 +183,46 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .tab.on span{font-weight:900;color:var(--gold)}
 #shopgrid{flex:1;overflow-y:auto;padding:0 14px 14px;display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:max-content;gap:9px;align-content:start}
-.card{border-radius:6px;border:2px solid var(--rc);overflow:hidden;box-shadow:0 3px 0 #041e30;
-  background:linear-gradient(180deg,#0d4a70,#062c46)}
-.card.r{border-color:var(--rr);background:linear-gradient(180deg,#2a1450,#150a2c)}
-.card.e{border-color:var(--re);background:linear-gradient(180deg,#4a2400,#1e1006)}
-.card.u{border-color:var(--rl);background:linear-gradient(180deg,#4a3a00,#1e1800);box-shadow:0 3px 0 #041e30,0 0 16px rgba(255,204,0,.18)}
-.card.eq{box-shadow:0 3px 0 #041e30,0 0 0 2px var(--gold)}
-.card .art{position:relative;height:84px;display:grid;place-items:center;
-  background:radial-gradient(circle at 50% 40%,rgba(107,219,255,.14),rgba(2,14,26,.75) 72%)}
-.card.r .art{background:radial-gradient(circle at 50% 40%,rgba(154,106,224,.26),rgba(12,6,24,.85) 72%)}
-.card.e .art{background:radial-gradient(circle at 50% 40%,rgba(255,140,42,.26),rgba(18,10,4,.85) 72%)}
-.card.u .art{background:radial-gradient(circle at 50% 40%,rgba(255,204,0,.26),rgba(18,14,0,.85) 72%)}
-.card .rar{position:absolute;left:6px;top:6px;padding:2px 6px;border-radius:3px;background:rgba(2,14,26,.82);
-  border:1px solid var(--rc);font-family:Orbitron,sans-serif;font-weight:700;font-size:7.5px;letter-spacing:.1em;color:var(--ice)}
-.card.r .rar{border-color:#9a6ae0;color:#c9a6ff}
-.card.e .rar{border-color:var(--re);color:#ffb03a}
-.card.u .rar{border-color:var(--rl);color:#ffe98a}
-.card .flag{position:absolute;right:6px;top:6px;padding:2px 7px;border-radius:3px;
-  font-family:Orbitron,sans-serif;font-weight:900;font-size:7.5px}
-.card .flag.eq{background:var(--gold);color:#3a2500}
-.card .flag.new{background:rgba(74,255,138,.18);border:1px solid var(--ok);color:var(--ok)}
-.card .bd{padding:7px 9px 9px;background:rgba(0,0,0,.28)}
-.card .nm{font-size:11px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.card .act{display:flex;align-items:center;justify-content:center;gap:6px;height:30px;margin-top:7px;border-radius:4px}
+/* ---- khung vật phẩm dùng chung cho cửa hàng và tủ đồ ---- */
+.frame{position:relative;border:2px solid var(--fr-edge);border-radius:7px;overflow:hidden;
+  background:var(--ink);box-shadow:0 3px 0 #041e30}
+.frame.r{--tier:#9b6bff} .frame.e{--tier:#ff8c2a} .frame.u{--tier:#ffcc00}
+.frame .crest{height:10px;background:var(--tier);position:relative}
+/* đỉnh sóng: gradient tròn lặp ngang, vector nên nét ở mọi mật độ điểm ảnh */
+.frame .crest::after{content:"";position:absolute;inset:auto 0 -1px;height:8px;
+  background:radial-gradient(circle at 50% 100%,var(--well) 0 48%,transparent 49%) 0 0/12px 8px repeat-x}
+.frame .well{position:relative;display:grid;place-items:center;background:var(--well);
+  border-bottom:2px solid var(--fr-edge)}
+/* món thường: lòng trắng phẳng, sprite nào cũng tách nền rõ */
+.frame{--well:var(--fr-white)}
+/* món unique: vân vảy rồng xanh phủ sát cạnh trong viền */
+.frame.u{--well:var(--sc-lo)}
+.frame.u .well{background-color:var(--sc-lo);
+  background-image:
+    radial-gradient(circle at 50% 112%,var(--sc-hi) 0 44%,transparent 45%),
+    radial-gradient(circle at 50% 112%,rgba(255,255,255,.30) 0 30%,transparent 31%),
+    radial-gradient(circle at 50% 112%,var(--sc-hi) 0 44%,transparent 45%),
+    radial-gradient(circle at 50% 112%,rgba(255,255,255,.30) 0 30%,transparent 31%),
+    linear-gradient(180deg,rgba(255,255,255,.16),rgba(4,40,64,.30));
+  background-size:20px 13px,20px 13px,20px 13px,20px 13px,100% 100%;
+  background-position:0 0,0 0,10px 6.5px,10px 6.5px,0 0}
+.frame.u .crest::after{background:radial-gradient(circle at 50% 100%,var(--sc-hi) 0 48%,transparent 49%) 0 0/12px 8px repeat-x}
+.frame .band{background:var(--tier);padding:6px 8px 7px;border-top:1px solid rgba(255,255,255,.28)}
+.frame .band .nm{font-size:11px;font-weight:700;color:#04202f;line-height:1.25;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.frame .band .rar{display:block;font-family:Orbitron,sans-serif;font-weight:700;font-size:7.5px;
+  letter-spacing:.14em;color:rgba(4,32,47,.66);margin-top:1px}
+.frame .flag{position:absolute;right:0;top:10px;z-index:2;padding:2px 6px;border-radius:0 0 0 5px;
+  font-family:Orbitron,sans-serif;font-weight:900;font-size:7.5px;letter-spacing:.08em}
+.frame .flag.eq{background:var(--gold);color:#3a2500}
+.frame .flag.new{background:#062c46;border:1px solid var(--ok);border-top:0;border-right:0;color:var(--ok)}
+.frame.eq{box-shadow:0 3px 0 #041e30,0 0 0 2px var(--gold)}
+.frame.u{box-shadow:0 3px 0 #041e30,0 0 14px rgba(255,204,0,.20)}
+.frame.u.eq{box-shadow:0 3px 0 #041e30,0 0 14px rgba(255,204,0,.20),0 0 0 2px var(--gold)}
+
+.card .well{height:84px}
+.card .bd{padding:7px 8px 8px;background:rgba(0,0,0,.30)}
+.card .act{display:flex;align-items:center;justify-content:center;gap:6px;height:30px;border-radius:4px}
 .card .act.buy{border:2px solid #7a5a00;background:linear-gradient(180deg,#ffe27a,var(--gold) 46%,#f0a400);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.55)}
 .card .act.buy b{font-family:Orbitron,sans-serif;font-weight:900;font-size:10.5px;color:#3a2500}
@@ -401,12 +422,16 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 #invh h2{flex:1;font-family:Orbitron,sans-serif;font-weight:900;font-size:13px;letter-spacing:.08em;color:var(--gold)}
 #invgrid{flex:1;overflow-y:auto;padding:10px;display:grid;
   grid-template-columns:repeat(auto-fill,minmax(92px,1fr));grid-auto-rows:max-content;gap:8px;align-content:start}
-.icell{border-radius:5px;border:2px solid var(--stroke);overflow:hidden;cursor:pointer;
-  background:linear-gradient(180deg,#0d4a70,#062c46);box-shadow:0 2px 0 #041e30}
-.icell.on{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 2px 0 #041e30}
-.icell .px{height:58px;display:grid;place-items:center;background:rgba(2,14,26,.6)}
-.icell .nm{height:28px;padding:4px;overflow:hidden;background:rgba(0,0,0,.35);color:var(--txt2);
-  font-size:9px;line-height:1.25;text-align:center}
+.icell{cursor:pointer}
+.icell .well{height:58px}
+.icell .band{padding:5px 7px 6px}
+.icell .band .nm{font-size:9.5px}
+/* ô "không mặc" không phải món đồ nên giữ nền tối, không dùng lòng trắng */
+.icell.none{border-color:var(--stroke);background:linear-gradient(180deg,#0d4a70,#062c46)}
+.icell.none .well{background:rgba(2,14,26,.55);border-bottom-color:var(--stroke);
+  color:#6b8ca6;font-family:Orbitron,sans-serif;font-weight:700;font-size:10px}
+.icell.none .band{background:rgba(0,0,0,.35)}
+.icell.none .band .nm{color:var(--txt2);font-weight:600}
 #invprev{display:flex;align-items:center;gap:10px;padding:9px 12px;
   background:rgba(0,43,72,.75);border-top:2px solid var(--cy)}
 #invprev canvas{background:rgba(2,14,26,.6);border:1px solid var(--stroke)}
@@ -794,14 +819,26 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
      "github" — đọc thẳng từ repo, index.html tự chạy một mình, không cần thư mục đi kèm
    Cả hai host đều trả access-control-allow-origin:* nên canvas không bị nhiễm bẩn,
    điều bắt buộc vì buildTerrain() phải đọc pixel bằng getImageData(). */
-const SRC  = "local";
-const ROOT = {
-  local:  "",
-  github: "https://raw.githubusercontent.com/lucatoni28/lucatoni28/claude/chao-rw7ej9/"
-}[SRC];
-const ASSET = ROOT + "img/";        // ảnh: map, xe, HUD
-const AVA   = ROOT + "img/ava/";    // ảnh trang bị avatar
-const DATA  = ROOT + "data/";       // bảng dữ liệu JSON
+/* Hai gốc tài nguyên. Mỗi thứ nạp đều thử gốc chính trước, hỏng thì tự lùi
+   sang gốc kia — nên thiếu mạng vẫn chạy bằng thư mục cạnh file, và thiếu
+   thư mục vẫn chạy bằng CDN. Đổi SRC để đảo thứ tự ưu tiên.
+   Cả hai gốc phải trả access-control-allow-origin:* vì buildTerrain() đọc
+   pixel bằng getImageData(); thiếu header đó là canvas nhiễm bẩn và cả màn chơi chết. */
+const SRC = "cdn";                          // "cdn" ưu tiên CDN · "local" ưu tiên thư mục cạnh file
+const CDN_ROOT   = "https://raw.githubusercontent.com/lucatoni28/lucatoni28/claude/chao-rw7ej9/";
+const LOCAL_ROOT = "";
+const ROOT     = SRC==="cdn" ? CDN_ROOT   : LOCAL_ROOT;
+const ROOT_ALT = SRC==="cdn" ? LOCAL_ROOT : CDN_ROOT;
+
+let ASSET, AVA, DATA, SND, ASSET_ALT, AVA_ALT, DATA_ALT, SND_ALT;
+function setRoots(a,b){
+  ASSET=a+"img/";        AVA=a+"img/ava/";        DATA=a+"data/";        SND=a+"img/sounds/";
+  ASSET_ALT=b+"img/";    AVA_ALT=b+"img/ava/";    DATA_ALT=b+"data/";    SND_ALT=b+"img/sounds/";
+}
+setRoots(ROOT, ROOT_ALT);
+
+/* đếm số lượt phải lùi gốc, hiện ở màn hình tải để còn biết mà sửa */
+const FB = { root:0, img:0 };
 
 const FILES = {
   aduka:"aduka.png", thor:"thor.png", bg:"bg.jpg",
@@ -828,18 +865,19 @@ function framesX(f,gap){ const o=[]; let x=0; for(const g of f){ o.push(x); x+=g
 /* Bảng 43 món đồ nằm ở data/items.json cho index.html nhẹ bớt.
    ITEMS rỗng cho tới khi nạp xong, nên mọi thứ đọc nó phải chạy sau loadItems(). */
 const ITEMS = {};
+/* Bản đồ đường dẫn của toàn bộ kho: 2.702 món avatar + 8 file âm thanh.
+   Tách khỏi items.json vì đây là danh mục kho, còn items.json là bảng món chơi được. */
+let ASSETS = null;
+async function loadAssets(){ ASSETS = await pickRoot(); }
+/* đường dẫn thật của một khoá trong kho, kèm đường lùi gốc */
+const avaURL = ref => [AVA+ref+".png", AVA_ALT+ref+".png"];
+const sndURL = key => {
+  const f = ASSETS && ASSETS.snd && ASSETS.snd[key];
+  return f ? [SND+f, SND_ALT+f] : null;
+};
+
 async function loadItems(){
-  const url = DATA+"items.json";
-  /* Mạng chặn thì fetch treo chứ không báo lỗi, và màn hình tải đứng im mãi.
-     Hạn giờ để hỏng cho ra hỏng, còn kịp hiện hướng dẫn cho người chơi. */
-  const ac = new AbortController();
-  const t = setTimeout(()=>ac.abort(), 15000);
-  let r;
-  try{ r = await fetch(url, {cache:"no-cache", signal:ac.signal}); }
-  catch(e){ throw new Error(ac.signal.aborted ? "quá 15 giây không phản hồi" : String(e.message||e)); }
-  finally{ clearTimeout(t); }
-  if(!r.ok) throw new Error("HTTP "+r.status+" khi tải "+url);
-  const RAWITEMS = await r.json();
+  const RAWITEMS = await getJSON(DATA+"items.json");   // gốc đã chốt ở pickRoot()
   for (const k in RAWITEMS){
     const q=RAWITEMS[k];
     ITEMS[k] = { n:q.n, t:q.t, s:q.s, r:q.r, p:q.p, g:q.g, f:decF(q.f) };
@@ -887,33 +925,59 @@ const thorY = () => Math.round(GROUND_Y*0.42);             // độ cao vệ tin
 
 /* ---- tải ảnh ---- */
 const IMG={};
-function loadImg(key,src){
+function loadImg(key,src,alt){
   return new Promise(res=>{
     const i=new Image(); i.crossOrigin="anonymous";
     i.onload=()=>{IMG[key]=i; if(window.drawHeadAv) drawHeadAv(); res(true)};
-    i.onerror=()=>{IMG[key]=null;res(false)};
+    i.onerror=()=>{
+      if(alt){ FB.img++; loadImg(key,alt,null).then(res); return; }   // lùi gốc, chỉ một lần
+      IMG[key]=null; res(false);
+    };
     i.src=src;
   });
+}
+async function getJSON(url,ms){
+  const ac = new AbortController(), t = setTimeout(()=>ac.abort(), ms||10000);
+  try{
+    const r = await fetch(url, {cache:"no-cache", signal:ac.signal});
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    return await r.json();
+  } catch(e){
+    throw new Error(url+" — "+(ac.signal.aborted ? "quá hạn không phản hồi" : (e.message||e)));
+  } finally{ clearTimeout(t); }
+}
+/* Thăm dò gốc ĐÚNG MỘT LẦN bằng chính file bản đồ đường dẫn, rồi chốt cho cả phiên.
+   Nếu để mỗi ảnh tự lùi gốc thì khi CDN bị chặn, từng file một phải trả giá hết hạn
+   chờ — đo được 40 giây mà mới xong 19%. Một lần thăm dò đổi lấy toàn bộ phần còn lại. */
+async function pickRoot(){
+  try{ return await getJSON(DATA+"assets.json"); }
+  catch(e1){
+    if(ROOT_ALT===ROOT) throw e1;
+    FB.root++; setRoots(ROOT_ALT, ROOT);          // đảo gốc cho mọi thứ nạp sau
+    try{ return await getJSON(DATA+"assets.json"); }
+    catch(e2){ throw new Error(e1.message+"  ·  "+e2.message); }
+  }
 }
 /* nạp một danh sách [key,url] song song, báo tiến trình theo số file xong */
 async function loadMany(list,onp){
   let d=0; const tot=list.length||1;
-  await Promise.all(list.map(async ([k,src])=>{
-    await loadImg(k,src);
+  await Promise.all(list.map(async ([k,src,alt])=>{
+    await loadImg(k,src,alt);
     if(onp) onp(++d/tot);
   }));
 }
 /* _mask.png la anh den/trang: trang = dat dac. Sua map bang bat ky trinh ve nao. */
-const mapFiles = k => [["map_"+k+"_fg",   ASSET+"maps/"+k+"_fg.jpg"],
-                       ["map_"+k+"_bg",   ASSET+"maps/"+k+"_bg.jpg"],
-                       ["map_"+k+"_mask", ASSET+"maps/"+k+"_mask.png"]];
+const mapFiles = k => [
+  ["map_"+k+"_fg",   ASSET+"maps/"+k+"_fg.jpg",   ASSET_ALT+"maps/"+k+"_fg.jpg"],
+  ["map_"+k+"_bg",   ASSET+"maps/"+k+"_bg.jpg",   ASSET_ALT+"maps/"+k+"_bg.jpg"],
+  ["map_"+k+"_mask", ASSET+"maps/"+k+"_mask.png", ASSET_ALT+"maps/"+k+"_mask.png"]];
 
 /* chỉ nạp thứ cần để vào được màn chào: HUD + sprite xe.
    Ảnh map nặng gấp bốn lần phần này nên để nạp nền sau. */
 async function loadCore(onp){
   const list=[];
-  for (const k in FILES)  list.push([k, ASSET+FILES[k]]);
-  for (const m in RAWMOB) list.push(["mob_"+m, ASSET+"mobiles/"+m+".png"]);
+  for (const k in FILES)  list.push([k, ASSET+FILES[k], ASSET_ALT+FILES[k]]);
+  for (const m in RAWMOB) list.push(["mob_"+m, ASSET+"mobiles/"+m+".png", ASSET_ALT+"mobiles/"+m+".png"]);
   await loadMany(list,onp);
 }
 /* nạp nền toàn bộ map của chương, không chặn giao diện */
@@ -931,7 +995,7 @@ const avPending={};
 function avImg(key){
   if (!key) return null;
   if (IMG[key] !== undefined) return IMG[key];
-  if (!avPending[key]){ avPending[key]=1; loadImg(key, AVA+key+".png"); }
+  if (!avPending[key]){ avPending[key]=1; loadImg(key, AVA+key+".png", AVA_ALT+key+".png"); }
   return null;
 }
 /* đã thử tải và hỏng hẳn — khác với “đang tải” */
@@ -2170,13 +2234,17 @@ function renderGrid(){
   const keys=keysOfType(INV.tab).filter(k=>has(P.owned,k));
   gridGen++;
   $("#invgrid").innerHTML =
-    '<div class="icell'+(P.set[INV.tab]?"":" on")+'" data-k=""><div class="px" '+
-      'style="color:#6b8ca6;font-size:10px;font-family:Orbitron">TRỐNG</div>'+
-      '<div class="nm">Không mặc</div></div>' +
+    '<div class="frame icell none'+(P.set[INV.tab]?"":" eq")+'" data-k="">'+
+      '<div class="crest"></div><div class="well">TRỐNG</div>'+
+      '<div class="band"><div class="nm">Không mặc</div></div></div>' +
     (keys.length
-      ? keys.map(k=>'<div class="icell'+(P.set[INV.tab]===k?" on":"")+'" data-k="'+k+'">'+
-          '<div class="px"><canvas width="76" height="52" data-c="'+k+'"></canvas></div>'+
-          '<div class="nm">'+esc(ITEMS[k].n.replace(/^\(RARE\)\s*/,""))+'</div></div>').join("")
+      ? keys.map(k=>{ const r=rarityOf(k);
+          return '<div class="frame icell '+r+(P.set[INV.tab]===k?" eq":"")+'" data-k="'+k+'">'+
+          '<div class="crest"></div>'+
+          (P.set[INV.tab]===k?'<div class="flag eq">ĐANG MẶC</div>':'')+
+          '<div class="well"><canvas width="76" height="52" data-c="'+k+'"></canvas></div>'+
+          '<div class="band"><div class="nm">'+esc(ITEMS[k].n.replace(/^\(RARE\)\s*/,""))+'</div>'+
+            '<i class="rar">'+esc(RARITY[r].nm)+'</i></div></div>'; }).join("")
       : '<div style="grid-column:1/-1;padding:22px 8px;text-align:center;font-size:11px;color:#5d8aa8">'+
         'Chưa có món nào loại này.<br>Mua ở cửa hàng hoặc chờ rơi đồ sau mỗi màn.</div>');
   keys.forEach(k=>paintItem($('#invgrid canvas[data-c="'+k+'"]'),k,76,52,gridGen));
@@ -2485,11 +2553,13 @@ function renderShop(){
       : owned ? '<div class="act own"><b>MẶC VÀO</b></div>'
       : can ? '<div class="act buy"><svg viewBox="0 0 24 24" width="12" height="12"><circle cx="12" cy="12" r="9" fill="#a87400" stroke="#5a3d00" stroke-width="2"/></svg><b>'+pr.toLocaleString("vi-VN")+'</b></div>'
             : '<div class="act no"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#8a7a4a" stroke-width="2.2" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><b>'+pr.toLocaleString("vi-VN")+'</b></div>';
-    return '<div class="card '+r+(eq?" eq":"")+'" data-k="'+k+'">'+
-      '<div class="art"><canvas width="76" height="60" data-c="'+k+'"></canvas>'+
-        '<div class="rar">'+esc(RARITY[r].nm)+'</div>'+
-        (eq?'<div class="flag eq">ĐANG MẶC</div>':(owned?'<div class="flag new">ĐÃ CÓ</div>':""))+
-      '</div><div class="bd"><div class="nm">'+esc(ITEMS[k].n)+'</div>'+act+'</div></div>';
+    return '<div class="frame card '+r+(eq?" eq":"")+'" data-k="'+k+'">'+
+      '<div class="crest"></div>'+
+      (eq?'<div class="flag eq">ĐANG MẶC</div>':(owned?'<div class="flag new">ĐÃ CÓ</div>':""))+
+      '<div class="well"><canvas width="76" height="60" data-c="'+k+'"></canvas></div>'+
+      '<div class="band"><div class="nm">'+esc(ITEMS[k].n)+'</div>'+
+        '<i class="rar">'+esc(RARITY[r].nm)+'</i></div>'+
+      '<div class="bd">'+act+'</div></div>';
   }).join("");
   keys.forEach(k=>paintItem($('#shopgrid canvas[data-c="'+k+'"]'),k,76,60,gridGen));
 
@@ -2530,7 +2600,7 @@ function flash(t){
    KHỞI ĐỘNG
    ===================================================================== */
 $("#ldtx").textContent="Đang nạp bảng dữ liệu…";
-loadItems().then(()=>{
+loadAssets().then(loadItems).then(()=>{
   loadSave();                      // lọc hồ sơ cần ITEMS nên phải đợi bảng đồ
   return loadCore(p=>{
     $("#ldfill").style.width=Math.round(p*100)+"%";
@@ -2546,9 +2616,10 @@ loadItems().then(()=>{
 }).catch(err=>{
   /* Hỏng ở bước này là màn hình trắng, nên phải nói rõ hỏng ở đâu và sửa thế nào. */
   $("#ldfill").style.width="100%";
-  $("#ldtx").innerHTML = 'Không tải được <b>'+esc(DATA)+'items.json</b><br>'+esc(String(err.message||err))+
-    '<br><br>Mở bằng <b>file://</b> thì trình duyệt chặn fetch. Chạy một máy chủ tĩnh '+
-    '(<b>python3 -m http.server</b>) hoặc đổi <b>SRC = "github"</b> ở đầu mã.';
+  $("#ldtx").innerHTML = 'Không tải được bảng dữ liệu — đã thử cả hai gốc.<br>'+
+    esc(String(err.message||err))+
+    '<br><br>Mở bằng <b>file://</b> thì trình duyệt chặn fetch ở cả hai gốc. '+
+    'Chạy một máy chủ tĩnh (<b>python3 -m http.server</b>) là xong.';
 });
 $("#btnStart").onclick=()=>{ $("#ovStart").classList.remove("on"); sfx(440,.1,"sq",.12); resetTimer(); };
 $("#btnAgain").onclick=()=>{
