@@ -222,6 +222,12 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 
 .card .well{height:84px}
 .card .bd{padding:7px 8px 8px;background:rgba(0,0,0,.30)}
+.stats{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:6px}
+.stats .stv{font-family:Orbitron,sans-serif;font-weight:700;font-size:8px;letter-spacing:.04em;
+  font-style:normal;padding:1px 4px;border-radius:3px;white-space:nowrap}
+.stats .stv.up{background:rgba(74,255,138,.14);border:1px solid rgba(74,255,138,.5);color:#8dffb8}
+.stats .stv.dn{background:rgba(255,90,106,.14);border:1px solid rgba(255,90,106,.5);color:#ff9aa4}
+#invtxt .stats{margin-top:6px;margin-bottom:0}
 .card .act{display:flex;align-items:center;justify-content:center;gap:6px;height:30px;border-radius:4px}
 .card .act.buy{border:2px solid #7a5a00;background:linear-gradient(180deg,#ffe27a,var(--gold) 46%,#f0a400);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.55)}
@@ -880,7 +886,7 @@ async function loadItems(){
   const RAWITEMS = await getJSON(DATA+"items.json");   // gốc đã chốt ở pickRoot()
   for (const k in RAWITEMS){
     const q=RAWITEMS[k];
-    ITEMS[k] = { n:q.n, t:q.t, s:q.s, r:q.r, p:q.p, g:q.g, f:decF(q.f) };
+    ITEMS[k] = { n:q.n, t:q.t, s:q.s, r:q.r, p:q.p, g:q.g, f:decF(q.f), st:q.st||null };
   }
   for (const k in ITEMS) ITEMS[k].xs = framesX(ITEMS[k].f, ITEMS[k].g);
 }
@@ -1071,6 +1077,48 @@ function carve(wx,wy,rad){
      wind mức ăn gió: 0 = miễn nhiễm, 1 = chuẩn, >1 = đạn nhẹ bị thổi mạnh
      mul  nhân sát thương (SS dùng để gấp đôi, không gọi tính 2 lần)
    ===================================================================== */
+/* ===== CHỈ SỐ TRANG BỊ (theo mô hình Gunbound) =====
+   Mỗi món mang mảng st = [atk, def, life, shld, item, dig, time, pop].
+   Cộng cả bốn ô đang mặc ra tổng, rồi quy đổi sang hiệu ứng trong trận.
+   Mẫu số chọn để tổng +50 là mức đáng kể mà chưa phá cân bằng:
+     atk +50 → sát thương  ×1,25      def  +50 → nhận  ×0,80
+     life+50 → máu tối đa +50          shld +50 → chắn 25% phát đầu mỗi lượt
+     dig +50 → hố rộng  ×1,17          item +50 → tỉ lệ rơi ×1,50
+     time+50 → chờ lượt  ×0,83         pop      → chỉ để khoe, không vào trận */
+const STAT_KEYS = ["atk","def","life","shld","item","dig","time","pop"];
+const ZERO_STATS = () => ({atk:0,def:0,life:0,shld:0,item:0,dig:0,time:0,pop:0});
+function setStats(set){
+  const t = ZERO_STATS();
+  if(!set) return t;
+  for(const slot of ["h","b","g","f"]){
+    const k = set[slot]; if(!k || !has(ITEMS,k)) continue;
+    const v = ITEMS[k].st; if(!v) continue;
+    for(let i=0;i<STAT_KEYS.length;i++) t[STAT_KEYS[i]] += (+v[i]||0);
+  }
+  /* kẹp lại vì kho có vài món lẻ giá trị rất lớn, cộng vào là vỡ trận */
+  for(const k of STAT_KEYS) t[k] = clamp(t[k], -120, 200);
+  return t;
+}
+const uStats = u => u.stats || (u.stats = setStats(u.human ? P.set : u.set));
+const STAT_NM = {atk:"CÔNG",def:"THỦ",life:"MÁU",shld:"CHẮN",item:"ĐỒ",dig:"ĐÀO",time:"CHỜ",pop:"SAO"};
+/* một dòng chỉ số: chỉ hiện thứ khác 0, xanh là lợi, đỏ là hại */
+function statLine(t){
+  const parts=[];
+  for(const k of STAT_KEYS){
+    const v=t[k]; if(!v) continue;
+    parts.push('<i class="stv '+(v>0?"up":"dn")+'">'+STAT_NM[k]+" "+(v>0?"+":"")+v+"</i>");
+  }
+  return parts.length ? '<div class="stats">'+parts.join("")+"</div>" : "";
+}
+const itemStats = k => {
+  const t=ZERO_STATS(), v=has(ITEMS,k)&&ITEMS[k].st;
+  if(v) for(let i=0;i<STAT_KEYS.length;i++) t[STAT_KEYS[i]]=(+v[i]||0);
+  return t;
+};
+const atkMul = u => 1 + uStats(u).atk/200;
+const defMul = u => 1 - uStats(u).def/250;
+const digMul = u => 1 + uStats(u).dig/300;
+
 const DMG_REACH = 1.25;          // sát thương với quá miệng hố 25%
 const DMG_CORE  = 0.35;          // trong 35% bán kính là ăn trọn sát thương
 
@@ -1162,9 +1210,11 @@ function placeUnits(){
   px=clamp(px,90,WORLD_W-90); bx=clamp(bx,90,WORLD_W-90);
   const M=G.map||mapOf(1,1);
   const pa=ARMORS[P.armor]||ARMORS.aduka;
-  const you=mkUnit(px,1,true,P.set,Math.round(pa.hp*(1+(P.lv-1)*.06)),P.armor);
+  const youHp = Math.round(pa.hp*(1+(P.lv-1)*.06)) + Math.max(0, setStats(P.set).life);
+  const you=mkUnit(px,1,true,P.set,youHp,P.armor);
   you.dmg=pa.dmg; you.fuelMax=pa.fuel;
-  const foe=mkUnit(bx,-1,false,foeOutfit(M),M.hp,M.armor);
+  const foeSet=foeOutfit(M);
+  const foe=mkUnit(bx,-1,false,foeSet,M.hp+Math.max(0,setStats(foeSet).life),M.armor);
   foe.dmg=(ARMORS[M.armor]||ARMORS.aduka).dmg; foe.fuelMax=100;
   foe.boss=!!M.boss;
   G.units=[you,foe];
@@ -1226,6 +1276,7 @@ function loadSave(){
   }catch(e){ P = DEF_PROFILE(); }
   if(P.model!=="m"&&P.model!=="f") P.model="m";
   if(!P.set) P.set=Object.assign({},DEFAULT_SET[P.model]);
+  if(typeof G==="object" && G && G.units) G.units.forEach(u=>{ u.stats=null; });
   if(!P.owned) P.owned={};
   if(!P.stars) P.stars={};
   if(!P.kills) P.kills={};
@@ -1442,18 +1493,42 @@ function applyDamage(x,y,rad,base){
     if(d>=reach) continue;
     /* trong lõi ăn trọn, ra tới mép thì về 0 — không còn vùng 20% kéo dài */
     const t=d<=core ? 0 : (d-core)/(reach-core);
-    const dm=Math.round(base*(1-t));
+    /* atk của người bắn nhân lên, def của người trúng trừ xuống */
+    let dm=Math.round(base*(1-t)*defMul(u));
+    /* shld chắn bớt phát đầu tiên trong lượt, giống lá chắn của GB */
+    const sh=uStats(u).shld;
+    if(sh>0 && !u.shldUsed){ dm=Math.round(dm*(1-clamp(sh,0,100)/200)); u.shldUsed=true; }
+    dm=Math.max(0,dm);
     if(dm>0){ u.hp=Math.max(0,u.hp-dm); total+=dm;
       popMsg((u.human?"BẠN ":"ĐỊCH ")+"-"+dm, u.human?"#ff6a6a":"#ffe08a");
-      if(!u.hp) u.dead=true; }
+      if(!u.hp && !u.dead){ u.dead=true; deathFx(u); } }
   }
   return total;
+}
+/* Bị hạ thì người bay vọt lên trời còn xe nổ thành mảnh — hai thứ riêng biệt
+   để mảnh xe rơi xuống trong khi người vẫn còn bay lên. */
+function deathFx(u){
+  const M=mobOf(u), top=u.y-uH(u)*0.7;
+  (G.flyers||(G.flyers=[])).push({
+    x:u.x, y:top, vx:rnd(-2.2,2.2)*(u.side>0?1:-1), vy:rnd(-15,-11),
+    rot:0, spin:rnd(-0.22,0.22), l:150,
+    set:(u.human?P.set:u.set)||{}, mob:M_key(u)
+  });
+  /* mảnh xe: tối màu, bắn ra thấp và nặng hơn mảnh nổ thường */
+  for(let i=0;i<26;i++)
+    G.parts.push({x:u.x+rnd(-14,14), y:u.y-rnd(4,26), vx:rnd(-5,5), vy:rnd(-8,-1),
+      l:rnd(30,64), c:["#5a6a78","#3a4a58","#8a99a6","#ff8c2a"][i%4], r:rnd(2,6)});
+  /* khói bốc lên tại chỗ xe hỏng */
+  for(let i=0;i<14;i++)
+    G.parts.push({x:u.x+rnd(-10,10), y:u.y-rnd(0,18), vx:rnd(-1.2,1.2), vy:rnd(-2.6,-1),
+      l:rnd(50,90), c:"#2a3a48", r:rnd(5,11)});
+  G.shake=Math.max(G.shake||0, 16);
 }
 function boom(x,y,off){
   const p=G.proj, W=(p&&p.w)||wpnOf(G.units[0],0);
   G.proj=null;
   if(!off){
-    carve(x,y,W.rad);
+    carve(x,y,W.rad*((p&&p.owner)?digMul(p.owner):1));
     /* rung và mảnh vỡ tỉ lệ với cỡ hố, không còn chia cứng theo loại */
     G.shake=clamp(W.rad*0.24,8,26);
     const n=Math.round(clamp(W.rad*0.52,18,52));
@@ -1461,7 +1536,8 @@ function boom(x,y,off){
       G.parts.push({x,y,vx:rnd(-6,6),vy:rnd(-7,2),l:rnd(18,46),
         c:["#fff2b0","#ffb03a","#ff5a2a","#ffe9a0"][i%4],r:rnd(2,7)});
     const amul=(p&&p.owner&&p.owner.dmg)||1;             // hệ số của giáp
-    const dealt=applyDamage(x,y,W.rad,W.dmg*amul*(W.mul||1));
+    const sh=(p&&p.owner) ? atkMul(p.owner) : 1;
+    const dealt=applyDamage(x,y,W.rad,W.dmg*amul*(W.mul||1)*sh);
     if(W.kind==="ss"){
       G.beams.push({x,y,l:34});
       G.thor.lvl=1; G.thor.exp=0; G.thor.flash=50;
@@ -1624,6 +1700,24 @@ function draw(){
     const p=w2s(q.x,q.y);
     c.globalAlpha=clamp(q.l/30,0,1); c.fillStyle=q.c;
     c.fillRect(p.x-q.r*z/2,p.y-q.r*z/2,q.r*z,q.r*z);
+  }
+  if(!G.flyers) G.flyers=[];
+  for(let i=G.flyers.length-1;i>=0;i--){
+    const f=G.flyers[i];
+    f.x+=f.vx; f.y+=f.vy; f.vy+=0.34; f.rot+=f.spin; f.l--;
+    if(f.l<=0){ G.flyers.splice(i,1); continue; }
+    const sp=w2s(f.x,f.y), S=z*AV_SC;
+    c.save(); c.globalAlpha=clamp(f.l/45,0,1);
+    c.translate(sp.x,sp.y); c.rotate(f.rot);
+    let ve=false;
+    for(const t of ["b","h"]){                       // thân rồi đầu, đủ nhận ra là người
+      const k=f.set[t]; if(!k||!has(ITEMS,k)) continue;
+      const it=ITEMS[k], im=avImg(k); if(!im) continue;
+      const gi=it.f.length>>1, g=it.f[gi];
+      c.drawImage(im,it.xs[gi],0,g[0],g[1],-g[2]*S,-g[3]*S,g[0]*S,g[1]*S); ve=true;
+    }
+    if(!ve){ c.fillStyle="#ffd9a0"; c.beginPath(); c.arc(0,0,7*z,0,7); c.fill(); }
+    c.restore();
   }
   c.globalAlpha=1; c.restore();
   if(G.phase==="aim"||G.phase==="power") drawAim(c);
@@ -1894,6 +1988,7 @@ function endTurn(){
   const dead=G.units.find(u=>u.dead);
   if(dead){ onDown(dead); return; }
   G.turn=1-G.turn; if(G.turn===0) G.round++;
+  G.units.forEach(u=>{ u.shldUsed=false; });      // lá chắn nạp lại mỗi lượt
   G.phase="aim"; G.follow=false;
   thorGain(6);
   rollWind(); drawWind();
@@ -2310,7 +2405,8 @@ function renderPrev(){
   const mt=drawMob(c,P.armor,43,80,S);
   if(mt) drawSetAt(c,me.set,mt.x,mt.y,S);
   const nm=t=>has(ITEMS,me.set[t])?ITEMS[me.set[t]].n:"—";
-  $("#invtxt").innerHTML=`<b>ĐẦU</b> ${esc(nm("h"))}<br><b>THÂN</b> ${esc(nm("b"))}<br><b>KÍNH</b> ${esc(nm("g"))} · <b>CỜ</b> ${esc(nm("f"))}`;
+  $("#invtxt").innerHTML=`<b>ĐẦU</b> ${esc(nm("h"))}<br><b>THÂN</b> ${esc(nm("b"))}<br><b>KÍNH</b> ${esc(nm("g"))} · <b>CỜ</b> ${esc(nm("f"))}`
+    + statLine(setStats(P.set));
 }
 $("#av0").onclick=openInv;
 $("#invClose").onclick=closeInv;
@@ -2344,7 +2440,7 @@ async function enterMap(ch,mapNo,mode){
   G.over = false;
   buildTerrain(G.mapKey); placeUnits();
   G.turn=0; G.round=1; G.over=false; G.phase="aim"; G.weapon=0;
-  G.power=0; G.proj=null; G.parts=[]; G.beams=[]; lastPow=null;
+  G.power=0; G.proj=null; G.parts=[]; G.beams=[]; G.flyers=[]; lastPow=null;
   G.thor={x:WORLD_W/2,y:thorY(),lvl:1,exp:0,f:0,flash:0};
   G.units.forEach(u=>{u.ang=45;u.angF=45;});
   rollWind(); drawWind(); drawGauge(); drawAmmo(); drawFuel(); drawHeadAv(); drawThorBadge();
@@ -2581,7 +2677,7 @@ function renderShop(){
       '<div class="well"><canvas width="76" height="60" data-c="'+k+'"></canvas></div>'+
       '<div class="band"><div class="nm">'+esc(ITEMS[k].n)+'</div>'+
         '<i class="rar">'+esc(RARITY[r].nm)+'</i></div>'+
-      '<div class="bd">'+act+'</div></div>';
+      '<div class="bd">'+statLine(itemStats(k))+act+'</div></div>';
   }).join("");
   keys.forEach(k=>paintItem($('#shopgrid canvas[data-c="'+k+'"]'),k,76,60,gridGen));
 
