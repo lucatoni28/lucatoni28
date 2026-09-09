@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Be+Vietnam+Pro:wght@500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #04121f; color: #ffffff;
+      font-family: "Be Vietnam Pro", -apple-system, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased; }
+    a { color: #6bdbff; text-decoration: none; }
+    a:hover { color: #00e5e5; }
+    .px { image-rendering: pixelated; }
+    .ic { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .ic > span { font-family: Orbitron, sans-serif; font-weight: 700; font-size: 7px;
+      letter-spacing: .06em; color: #5d8aa8; text-align: center; line-height: 1.2; }
+    .sec { font-family: Orbitron, sans-serif; font-weight: 700; font-size: 9px;
+      letter-spacing: .24em; color: #ff8c2a; }
+  </style>
+</helmet>
+
+<div style="width: 900px; height: 560px; padding: 24px 26px; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px; background: linear-gradient(160deg, #061c2e 0%, #04121f 62%, #020a14 100%);">
+
+  <div style="display: flex; align-items: flex-end; gap: 14px; padding-bottom: 12px; border-bottom: 2px solid #0a3a5a;">
+    <h1 style="margin: 0; font-family: Orbitron, sans-serif; font-weight: 900; font-size: 19px; letter-spacing: .1em; color: #ffcc00;">BỘ ICON &amp; THÀNH PHẦN HUD</h1>
+    <span style="font-size: 11px; color: #5d8aa8;">Nét 2px · lưới 24px · thay cho emoji đang dùng trong bản hiện tại</span>
+  </div>
+
+  <div style="display: flex; gap: 26px; flex-grow: 1; min-height: 0;">
+
+    <div style="flex-grow: 1.5; display: flex; flex-direction: column; gap: 14px; min-width: 0;">
+      <div class="sec">ICON HỆ THỐNG</div>
+      <div style="display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 12px 8px;">
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="#ffcc00" stroke="#8a6a00" stroke-width="2"></circle><circle cx="12" cy="12" r="5" fill="none" stroke="#8a6a00" stroke-width="1.6"></circle><path d="M12 9v6" stroke="#8a6a00" stroke-width="1.8" stroke-linecap="round"></path></svg><span>VÀNG</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M6 3h12l3 6-9 12L3 9z" fill="#ff4a9d" stroke="#7a1044" stroke-width="1.8" stroke-linejoin="round"></path><path d="M3 9h18" stroke="#7a1044" stroke-width="1.3"></path></svg><span>NGỌC</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ffcc00" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="9" width="18" height="11" rx="1.6"></rect><path d="M3 13h18M12 9v11M6.5 9C4.5 9 4 5 6.5 5S12 9 12 9s3-4 5.5-4S19.5 9 17.5 9"></path></svg><span>RƯƠNG</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="#ffcc00" aria-hidden="true"><path d="m12 2.6 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5L2.6 9.4l6.5-.9z"></path></svg><span>SAO</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#6bdbff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg><span>KHOÁ</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#6bdbff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5 8 12l7 7"></path></svg><span>QUAY LẠI</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#6bdbff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path><circle cx="9" cy="7" r="2.3" fill="#04121f"></circle><circle cx="16" cy="12" r="2.3" fill="#04121f"></circle><circle cx="8" cy="17" r="2.3" fill="#04121f"></circle></svg><span>CÀI ĐẶT</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#6bdbff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"></path><path d="M15.6 8.4a5 5 0 0 1 0 7.2"></path><path d="M18.4 5.6a9 9 0 0 1 0 12.8"></path></svg><span>ÂM THANH</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ff8c2a" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14v12H5z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2M5 13h14"></path></svg><span>TỦ ĐỒ</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#6bdbff" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h18l-1.6-5H4.6z"></path><path d="M4.8 9v11h14.4V9"></path><path d="M9.6 20v-6h4.8v6"></path></svg><span>CỬA HÀNG</span></div>
+
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#6bdbff" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6.4v13.2L9 17l6 2.6 6-2.4V4l-6 2.4z"></path><path d="M9 4v13M15 6.4v13.2"></path></svg><span>CHIẾN DỊCH</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ffcc00" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="2.6"></circle><path d="M12 1.6v4M12 18.4v4M1.6 12h4M18.4 12h4"></path></svg><span>NGẮM</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#6bdbff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 9h11.5a3 3 0 1 0-3-3"></path><path d="M3 14h15a3 3 0 1 1-3 3"></path><path d="M3 19h7"></path></svg><span>GIÓ</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#6bdbff" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s5.6 6 5.6 10a5.6 5.6 0 0 1-11.2 0C6.4 9 12 3 12 3z"></path></svg><span>NHIÊN LIỆU</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#6bdbff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13.5" r="8"></circle><path d="M12 9v4.5l3 2M9 2h6"></path></svg><span>HẸN GIỜ</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#4aff8a" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6.4v5.2c0 4.7 3.3 8.6 8 9.8 4.7-1.2 8-5.1 8-9.8V6.4z"></path></svg><span>KHIÊN</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="#ff4a9d" stroke-width="1.8" opacity=".7"></circle><path d="M13.6 3.2 5.8 14h4.6l-1.4 8.4 7.8-11h-4.6z" fill="#ff8ad8"></path></svg><span>SS THOR</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="#1d4f8c" opacity=".5"></circle><circle cx="12" cy="12" r="6.4" fill="#8ad8ff"></circle><circle cx="10" cy="10" r="2.4" fill="#ffffff"></circle></svg><span>ĐẠN 1</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ffe08a" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="7.6"></circle><path d="M12 4.4v15.2M4.4 12h15.2M6.6 6.6l10.8 10.8M17.4 6.6 6.6 17.4"></path><circle cx="12" cy="12" r="2.4" fill="#ffcc00" stroke="none"></circle></svg><span>ĐẠN 2</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ff4a9d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 7v5c0 4.6 3.2 8.3 8 9.4 4.8-1.1 8-4.8 8-9.4V7z"></path><path d="M9.5 11.5h.01M14.5 11.5h.01M9.5 15.5h5"></path></svg><span>TRÙM</span></div>
+
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#6bdbff" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 6v12M6 12h12"></path></svg><span>PHÓNG TO</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#6bdbff" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"></path></svg><span>THU NHỎ</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#6bdbff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"></path></svg><span>VỪA KHUNG</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ff5a6a" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg><span>ĐÓNG</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#4aff8a" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 5.5 5.5L20 7"></path></svg><span>XONG</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ffcc00" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 14a8 8 0 0 1 16 0v2H4z"></path><path d="M4 16h16v3H4z"></path></svg><span>ĐẦU</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ffcc00" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 4 7l2 4 2-1v10h8V10l2 1 2-4-5-3z"></path></svg><span>THÂN</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ffcc00" stroke-width="2" aria-hidden="true"><circle cx="7" cy="13" r="3.6"></circle><circle cx="17" cy="13" r="3.6"></circle><path d="M10.6 13h2.8M3.4 11 2 8M20.6 11 22 8"></path></svg><span>KÍNH</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ffcc00" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 3v18"></path><path d="M6 4h12l-2.6 4L18 12H6z"></path></svg><span>CỜ</span></div>
+        <div class="ic"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#8ad8ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.4"></circle><path d="M2.6 9.4h5v5.2h-5zM16.4 9.4h5v5.2h-5z"></path><path d="M12 5.4V2.6M12 21.4v-2.8"></path></svg><span>THOR</span></div>
+      </div>
+
+      <div class="sec" style="margin-top: 4px;">TRẠNG THÁI Ô ĐẠN</div>
+      <div style="display: flex; gap: 14px; align-items: flex-start;">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 7px;">
+          <div style="position: relative; width: 46px; height: 46px; display: grid; place-items: center; border-radius: 5px; border: 2px solid #0a5c8c; background: rgba(2,20,35,.85); box-shadow: 0 3px 0 #0a1f33;">
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="7.5" fill="#1d4f8c" opacity=".55"></circle><circle cx="12" cy="12" r="5.4" fill="#8ad8ff"></circle><circle cx="10.4" cy="10.4" r="2.1" fill="#ffffff"></circle></svg>
+            <span style="position: absolute; left: 3px; top: 1px; font-family: Orbitron, sans-serif; font-weight: 900; font-size: 8px; color: #6bdbff;">1</span>
+          </div>
+          <span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 7px; color: #5d8aa8;">THƯỜNG</span>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 7px;">
+          <div style="position: relative; width: 46px; height: 46px; display: grid; place-items: center; border-radius: 5px; border: 2px solid #ffcc00; background: rgba(2,20,35,.9); box-shadow: 0 3px 0 #0a1f33, 0 0 12px rgba(255,204,0,.55);">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ffe08a" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="6.6"></circle><path d="M12 5.4v13.2M5.4 12h13.2"></path><circle cx="12" cy="12" r="2.2" fill="#ffcc00" stroke="none"></circle></svg>
+            <span style="position: absolute; left: 3px; top: 1px; font-family: Orbitron, sans-serif; font-weight: 900; font-size: 8px; color: #ffcc00;">2</span>
+            <div style="position: absolute; left: 5px; right: 5px; bottom: -5px; height: 3px; border-radius: 2px; background: #ffcc00; box-shadow: 0 0 8px rgba(255,204,0,.9);"></div>
+          </div>
+          <span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 7px; color: #ffcc00;">ĐANG CHỌN</span>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 7px;">
+          <div style="position: relative; width: 46px; height: 46px; display: grid; place-items: center; border-radius: 5px; border: 2px solid #ff4a9d; background: rgba(28,6,22,.9); box-shadow: 0 3px 0 #0a1f33, 0 0 14px rgba(255,74,157,.7);">
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="#ff4a9d" stroke-width="1.6" opacity=".7"></circle><path d="M13.4 3.4 6.6 13h4.2l-1.2 7.6 6.8-9.6h-4.2z" fill="#ff8ad8"></path></svg>
+            <span style="position: absolute; left: 3px; top: 1px; font-family: Orbitron, sans-serif; font-weight: 900; font-size: 8px; color: #ff8ad8;">SS</span>
+          </div>
+          <span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 7px; color: #ff8ad8;">SS SẴN SÀNG</span>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 7px;">
+          <div style="position: relative; width: 46px; height: 46px; display: grid; place-items: center; border-radius: 5px; border: 2px solid #2b4a66; background: rgba(2,14,26,.92); box-shadow: 0 3px 0 #0a1f33;">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#4d7a9c" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>
+            <span style="position: absolute; left: 0; right: 0; bottom: 2px; text-align: center; font-family: Orbitron, sans-serif; font-weight: 900; font-size: 7px; color: #ff6a8a;">Lv3/5</span>
+          </div>
+          <span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 7px; color: #4d7a9c;">SS KHOÁ</span>
+        </div>
+      </div>
+
+      <div class="sec" style="margin-top: 4px;">KHUNG AVATAR</div>
+      <div style="display: flex; gap: 14px; align-items: flex-start;">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 7px;">
+          <div style="position: relative; width: 44px; height: 44px; border-radius: 6px; padding: 2px; background: linear-gradient(135deg, #0a3a5a, #0a1f33); border: 2px solid #00e5e5; overflow: hidden;">
+            <div class="px" style="width: 100%; height: 100%; background: url(./aduka.png) -5px 0 / 642px 37px no-repeat;"></div>
+          </div>
+          <span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 7px; color: #5d8aa8;">CHỜ LƯỢT</span>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 7px;">
+          <div style="position: relative; width: 44px; height: 44px; border-radius: 6px; padding: 2px; background: linear-gradient(135deg, #0a3a5a, #0a1f33); border: 2px solid #ffcc00; box-shadow: 0 0 10px rgba(255,204,0,.7); overflow: hidden;">
+            <div class="px" style="width: 100%; height: 100%; background: url(./aduka.png) -5px 0 / 642px 37px no-repeat;"></div>
+            <div style="position: absolute; left: -1px; bottom: -1px; padding: 0 4px; border-radius: 3px 0 3px 0; background: #ffcc00;"><span style="font-family: Orbitron, sans-serif; font-weight: 900; font-size: 8px; color: #3a2500;">7</span></div>
+          </div>
+          <span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 7px; color: #ffcc00;">ĐANG LƯỢT</span>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 7px;">
+          <div style="position: relative; width: 44px; height: 44px; border-radius: 6px; padding: 2px; background: linear-gradient(135deg, #17242e, #0a1218); border: 2px solid #2b4a66; overflow: hidden;">
+            <div class="px" style="width: 100%; height: 100%; filter: grayscale(1) brightness(.55); background: url(./aduka.png) -5px 0 / 642px 37px no-repeat;"></div>
+            <svg viewBox="0 0 24 24" width="20" height="20" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);" fill="none" stroke="#ff5a6a" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+          </div>
+          <span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 7px; color: #ff5a6a;">ĐÃ HẠ</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 13px; min-width: 0;">
+
+      <div class="sec">NÚT BẤM</div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px;">
+        <div style="display: grid; place-items: center; height: 44px; border-radius: 5px; border: 2px solid #7a5a00; background: linear-gradient(180deg, #ffe27a, #ffcc00 46%, #f0a400); box-shadow: 0 3px 0 #0a1f33, inset 0 2px 0 rgba(255,255,255,.55);"><span style="font-family: Orbitron, sans-serif; font-weight: 900; font-size: 11px; letter-spacing: .1em; color: #3a2500;">CHÍNH</span></div>
+        <div style="display: grid; place-items: center; height: 44px; border-radius: 5px; border: 2px solid #0a5c8c; background: linear-gradient(180deg, rgba(13,74,112,.9), rgba(6,44,70,.95)); box-shadow: 0 3px 0 #0a1f33, inset 0 1px 0 rgba(255,255,255,.14);"><span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .1em; color: #bfe4ff;">PHỤ</span></div>
+        <div style="display: grid; place-items: center; height: 44px; border-radius: 5px; border: 2px solid rgba(0,229,229,.4); background: rgba(0,43,72,.35);"><span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .1em; color: #6bdbff;">VIỀN</span></div>
+        <div style="display: grid; place-items: center; height: 44px; border-radius: 5px; border: 2px solid #1b3348; background: rgba(10,31,51,.6); opacity: .55;"><span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .1em; color: #4d7a9c;">TẮT</span></div>
+      </div>
+
+      <div class="sec" style="margin-top: 3px;">KHUNG ĐỘ HIẾM</div>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px;">
+        <div style="height: 50px; border-radius: 5px; border: 2px solid #0a5c8c; background: radial-gradient(circle at 50% 34%, rgba(107,219,255,.16), rgba(2,14,26,.8) 72%); display: grid; place-items: end center; padding-bottom: 4px;"><span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 6.5px; letter-spacing: .08em; color: #6bdbff;">THƯỜNG</span></div>
+        <div style="height: 50px; border-radius: 5px; border: 2px solid #7a4ad0; background: radial-gradient(circle at 50% 34%, rgba(154,106,224,.26), rgba(12,6,24,.85) 72%); display: grid; place-items: end center; padding-bottom: 4px;"><span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 6.5px; letter-spacing: .08em; color: #c9a6ff;">HIẾM</span></div>
+        <div style="height: 50px; border-radius: 5px; border: 2px solid #ff8c2a; background: radial-gradient(circle at 50% 34%, rgba(255,140,42,.26), rgba(18,10,4,.85) 72%); display: grid; place-items: end center; padding-bottom: 4px;"><span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 6.5px; letter-spacing: .08em; color: #ffb03a;">SỬ THI</span></div>
+        <div style="height: 50px; border-radius: 5px; border: 2px solid #ffcc00; background: radial-gradient(circle at 50% 34%, rgba(255,204,0,.26), rgba(18,14,0,.85) 72%); box-shadow: 0 0 14px rgba(255,204,0,.2); display: grid; place-items: end center; padding-bottom: 4px;"><span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 6.5px; letter-spacing: .06em; color: #ffe98a;">HUYỀN THOẠI</span></div>
+      </div>
+
+      <div class="sec" style="margin-top: 3px;">THANH CHỈ SỐ</div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="width: 52px; flex-shrink: 0; font-family: Orbitron, sans-serif; font-weight: 700; font-size: 7.5px; letter-spacing: .1em; color: #5d8aa8;">MÁU</span>
+          <div style="position: relative; flex-grow: 1; height: 13px; border: 2px solid #000000; border-radius: 2px; background: #0a1f33; box-shadow: inset 0 2px 3px rgba(0,0,0,.8); overflow: hidden;">
+            <div style="position: absolute; inset: 0 26% 0 0; background: linear-gradient(180deg, #ff8a8a, #ff3a3a 46%, #b00000);"></div>
+            <div style="position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 24px, rgba(0,0,0,.45) 24px 25px);"></div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="width: 52px; flex-shrink: 0; font-family: Orbitron, sans-serif; font-weight: 700; font-size: 7.5px; letter-spacing: .1em; color: #5d8aa8;">KN</span>
+          <div style="position: relative; flex-grow: 1; height: 13px; border: 2px solid #000000; border-radius: 2px; background: #0a1f33; box-shadow: inset 0 2px 3px rgba(0,0,0,.8); overflow: hidden;">
+            <div style="position: absolute; inset: 0 52% 0 0; background: linear-gradient(180deg, #7bf0ff, #00b8cc);"></div>
+            <div style="position: absolute; inset: 0 30% 0 48%; background: linear-gradient(180deg, #ffe98a, #ffcc00);"></div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="width: 52px; flex-shrink: 0; font-family: Orbitron, sans-serif; font-weight: 700; font-size: 7.5px; letter-spacing: .1em; color: #5d8aa8;">LỰC</span>
+          <div style="position: relative; flex-grow: 1; height: 15px; border: 2px solid #0a1f33; border-radius: 3px; background: #010810; box-shadow: inset 0 2px 4px rgba(0,0,0,.8); overflow: hidden;">
+            <div style="position: absolute; inset: 0 38% 0 0; background: linear-gradient(90deg, #4aff4a 0%, #00cc00 44%, #ffd700 72%, #ffaa00 100%);"></div>
+            <div style="position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 16px, rgba(0,0,0,.3) 16px 17px);"></div>
+            <div style="position: absolute; left: 62%; top: -2px; bottom: -2px; width: 3px; background: #ffffff;"></div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="width: 52px; flex-shrink: 0; font-family: Orbitron, sans-serif; font-weight: 700; font-size: 7.5px; letter-spacing: .1em; color: #5d8aa8;">NHIÊN LIỆU</span>
+          <div style="display: flex; gap: 2px; flex-grow: 1;">
+            <div style="flex-grow: 1; height: 12px; border-radius: 1px; background: linear-gradient(180deg, #7bf0ff, #00b8cc);"></div>
+            <div style="flex-grow: 1; height: 12px; border-radius: 1px; background: linear-gradient(180deg, #7bf0ff, #00b8cc);"></div>
+            <div style="flex-grow: 1; height: 12px; border-radius: 1px; background: linear-gradient(180deg, #7bf0ff, #00b8cc);"></div>
+            <div style="flex-grow: 1; height: 12px; border-radius: 1px; background: linear-gradient(180deg, #7bf0ff, #00b8cc);"></div>
+            <div style="flex-grow: 1; height: 12px; border-radius: 1px; background: linear-gradient(180deg, #7bf0ff, #00b8cc);"></div>
+            <div style="flex-grow: 1; height: 12px; border-radius: 1px; background: linear-gradient(180deg, #7bf0ff, #00b8cc);"></div>
+            <div style="flex-grow: 1; height: 12px; border-radius: 1px; background: linear-gradient(180deg, #7bf0ff, #00b8cc);"></div>
+            <div style="flex-grow: 1; height: 12px; border-radius: 1px; background: rgba(4,18,31,.75);"></div>
+            <div style="flex-grow: 1; height: 12px; border-radius: 1px; background: rgba(4,18,31,.75);"></div>
+            <div style="flex-grow: 1; height: 12px; border-radius: 1px; background: rgba(4,18,31,.75);"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec" style="margin-top: 3px;">BẢNG MÀU</div>
+      <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px;">
+        <div><div style="height: 26px; border-radius: 3px; background: #00e5e5; border: 1px solid rgba(0,0,0,.4);"></div><div style="margin-top: 4px; font-family: Orbitron, sans-serif; font-size: 6.5px; color: #5d8aa8;">00E5E5</div></div>
+        <div><div style="height: 26px; border-radius: 3px; background: #6bdbff; border: 1px solid rgba(0,0,0,.4);"></div><div style="margin-top: 4px; font-family: Orbitron, sans-serif; font-size: 6.5px; color: #5d8aa8;">6BDBFF</div></div>
+        <div><div style="height: 26px; border-radius: 3px; background: #ffcc00; border: 1px solid rgba(0,0,0,.4);"></div><div style="margin-top: 4px; font-family: Orbitron, sans-serif; font-size: 6.5px; color: #5d8aa8;">FFCC00</div></div>
+        <div><div style="height: 26px; border-radius: 3px; background: #ff8c2a; border: 1px solid rgba(0,0,0,.4);"></div><div style="margin-top: 4px; font-family: Orbitron, sans-serif; font-size: 6.5px; color: #5d8aa8;">FF8C2A</div></div>
+        <div><div style="height: 26px; border-radius: 3px; background: #ff4a9d; border: 1px solid rgba(0,0,0,.4);"></div><div style="margin-top: 4px; font-family: Orbitron, sans-serif; font-size: 6.5px; color: #5d8aa8;">FF4A9D</div></div>
+        <div><div style="height: 26px; border-radius: 3px; background: #0a1f33; border: 1px solid rgba(255,255,255,.18);"></div><div style="margin-top: 4px; font-family: Orbitron, sans-serif; font-size: 6.5px; color: #5d8aa8;">0A1F33</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

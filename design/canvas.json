@@ -1,0 +1,27 @@
+{
+  "artboards": [
+    { "file": "Login.dc.html",    "title": "1 · Welcome / Đăng nhập", "x": 0,    "y": 0,   "w": 390, "h": 844 },
+    { "file": "Campaign.dc.html", "title": "2 · Chiến dịch qua màn",  "x": 470,  "y": 0,   "w": 390, "h": 844 },
+    { "file": "Main.dc.html",     "title": "3 · HUD trận đấu",        "x": 940,  "y": 0,   "w": 390, "h": 844 },
+    { "file": "Reward.dc.html",   "title": "4 · Rơi đồ & phần thưởng","x": 1410, "y": 0,   "w": 390, "h": 844 },
+    { "file": "Shop.dc.html",     "title": "5 · Cửa hàng avatar",     "x": 1880, "y": 0,   "w": 390, "h": 844 },
+    { "file": "Icons.dc.html",    "title": "Bộ icon & thành phần HUD","x": 0,    "y": 964, "w": 900, "h": 560 }
+  ],
+  "annotations": [
+    {
+      "id": "hud-changes",
+      "x": 940,
+      "y": -196,
+      "w": 390,
+      "text": "HUD trận đấu — khác gì bản hiện tại:\n• Chữ to hơn hẳn (6.5–8px → 8–13px), thanh máu 13px có số và vạch chia\n• 3 ô đạn riêng 1 / 2 / SS thay vì 1 ô bấm xoay vòng\n• Thêm thanh DELAY, thanh nhiên liệu chia đốt, đồng hồ đếm lượt\n• Thanh lực có vạch mốc + con trỏ \"LẦN TRƯỚC\"\n• La bàn gió và vòng cấp Thor gộp thành cụm góc phải\n• Toàn bộ icon vẽ bằng SVG, bỏ emoji 🎒"
+    },
+    {
+      "id": "token-note",
+      "x": 0,
+      "y": -196,
+      "w": 390,
+      "text": "Bám đúng bộ token đang có trong index.html:\ncyan #00e5e5 · ice #6bdbff · deep #0a1f33 · gold #ffcc00 · org #ff8c2a · nền #04121f\nFont Orbitron 700/900 + Be Vietnam Pro 500/600/700\nBo góc 5px, viền 2px, đổ bóng cứng 0 3px 0 — giữ nguyên chất arcade."
+    }
+  ],
+  "launch": { "view": "canvas" }
+}

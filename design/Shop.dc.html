@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Be+Vietnam+Pro:wght@500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #04121f; color: #ffffff;
+      font-family: "Be Vietnam Pro", -apple-system, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased; }
+    a { color: #6bdbff; text-decoration: none; }
+    a:hover { color: #00e5e5; }
+    .px { image-rendering: pixelated; }
+    .scan::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: repeating-linear-gradient(180deg, rgba(255,255,255,.035) 0 1px, transparent 1px 3px); }
+  </style>
+</helmet>
+
+<div style="position: relative; width: 390px; height: 844px; overflow: hidden; display: flex; flex-direction: column; background: #04121f;">
+
+  <div style="display: flex; align-items: center; gap: 8px; height: 58px; padding: 0 12px; flex-shrink: 0; background: linear-gradient(180deg, #00c8d7, #0099b0); border-bottom: 3px solid #0a1f33; box-shadow: 0 3px 0 #0a1f33; z-index: 3;">
+    <div style="width: 44px; height: 44px; display: grid; place-items: center; border: 2px solid #0a1f33; border-radius: 5px; background: rgba(4,18,31,.42); box-shadow: 0 3px 0 #0a1f33;">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5 8 12l7 7"></path></svg>
+    </div>
+    <div style="flex-grow: 1; font-family: Orbitron, sans-serif; font-weight: 900; font-size: 15px; letter-spacing: .12em; color: #ffffff; text-shadow: 0 2px 0 rgba(4,18,31,.65);">CỬA HÀNG</div>
+    <div style="display: flex; align-items: center; gap: 6px; height: 32px; padding: 0 11px 0 8px; border: 2px solid #0a1f33; border-radius: 16px; background: linear-gradient(180deg, #0a3a5a, #04121f);">
+      <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="#ffcc00" stroke="#8a6a00" stroke-width="2"></circle><circle cx="12" cy="12" r="5" fill="none" stroke="#8a6a00" stroke-width="1.6"></circle></svg>
+      <span style="font-family: Orbitron, sans-serif; font-weight: 900; font-size: 12px; color: #ffcc00;">12.480</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 6px; height: 32px; padding: 0 11px 0 8px; border: 2px solid #0a1f33; border-radius: 16px; background: linear-gradient(180deg, #0a3a5a, #04121f);">
+      <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M6 3h12l3 6-9 12L3 9z" fill="#ff4a9d" stroke="#7a1044" stroke-width="1.8" stroke-linejoin="round"></path><path d="M3 9h18M9 3 6 9l6 12 6-12-3-6" fill="none" stroke="#7a1044" stroke-width="1.3"></path></svg>
+      <span style="font-family: Orbitron, sans-serif; font-weight: 900; font-size: 12px; color: #ff8ad8;">36</span>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 6px; padding: 10px 14px; flex-shrink: 0; background: rgba(0,43,72,.6);">
+    <div style="flex-grow: 1; height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; border-radius: 5px; border: 2px solid #ffcc00; background: rgba(255,204,0,.12); box-shadow: 0 2px 0 #0a1f33;">
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#ffcc00" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 14a8 8 0 0 1 16 0v2H4z"></path><path d="M4 16h16v3H4z"></path></svg>
+      <span style="font-family: Orbitron, sans-serif; font-weight: 900; font-size: 9px; letter-spacing: .1em; color: #ffcc00;">ĐẦU</span>
+    </div>
+    <div style="flex-grow: 1; height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; border-radius: 5px; border: 2px solid transparent; background: rgba(2,14,26,.4);">
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#5d8aa8" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 4 7l2 4 2-1v10h8V10l2 1 2-4-5-3z"></path></svg>
+      <span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 9px; letter-spacing: .1em; color: #5d8aa8;">THÂN</span>
+    </div>
+    <div style="flex-grow: 1; height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; border-radius: 5px; border: 2px solid transparent; background: rgba(2,14,26,.4);">
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#5d8aa8" stroke-width="2" aria-hidden="true"><circle cx="7" cy="13" r="3.6"></circle><circle cx="17" cy="13" r="3.6"></circle><path d="M10.6 13h2.8M3.4 11 2 8M20.6 11 22 8"></path></svg>
+      <span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 9px; letter-spacing: .1em; color: #5d8aa8;">KÍNH</span>
+    </div>
+    <div style="flex-grow: 1; height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; border-radius: 5px; border: 2px solid transparent; background: rgba(2,14,26,.4);">
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#5d8aa8" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 3v18"></path><path d="M6 4h12l-2.6 4L18 12H6z"></path></svg>
+      <span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 9px; letter-spacing: .1em; color: #5d8aa8;">CỜ</span>
+    </div>
+  </div>
+
+  <div style="position: relative; margin: 0 14px 10px; flex-shrink: 0; display: flex; align-items: center; gap: 12px; height: 88px; padding: 0 14px; border-radius: 6px; border: 2px solid #ff8c2a; background: linear-gradient(110deg, #5c2a00 0%, #2a1400 58%, #14243a 100%); box-shadow: 0 3px 0 #0a1f33, inset 0 1px 0 rgba(255,255,255,.12); overflow: hidden;">
+    <div style="position: absolute; right: -30px; top: -30px; width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle, rgba(255,140,42,.28) 0%, rgba(255,140,42,0) 68%);"></div>
+    <div style="position: relative; width: 62px; height: 62px; flex-shrink: 0; display: grid; place-items: center; border-radius: 5px; border: 2px solid #ffb03a; background: radial-gradient(circle at 50% 34%, #6b3400, #241000 74%);">
+      <svg viewBox="0 0 48 48" width="42" height="42" aria-hidden="true"><path d="M18 20c-2-6-1-14 2-14s3 6 2 11M30 20c2-6 1-14-2-14s-3 6-2 11" fill="#f6f2ea" stroke="#8a7a6a" stroke-width="1.6"></path><circle cx="24" cy="28" r="11" fill="#f6f2ea" stroke="#8a7a6a" stroke-width="1.8"></circle><circle cx="20" cy="26" r="1.9" fill="#1a1a1a"></circle><circle cx="28" cy="26" r="1.9" fill="#1a1a1a"></circle><path d="M22 32h4" stroke="#e0708a" stroke-width="2" stroke-linecap="round"></path></svg>
+    </div>
+    <div style="position: relative; flex-grow: 1; min-width: 0;">
+      <div style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 8.5px; letter-spacing: .2em; color: #ffb03a;">ƯU ĐÃI HÔM NAY</div>
+      <div style="margin-top: 3px; font-family: Orbitron, sans-serif; font-weight: 900; font-size: 13px; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Easter Bunny</div>
+      <div style="display: flex; align-items: center; gap: 7px; margin-top: 5px;">
+        <span style="font-family: Orbitron, sans-serif; font-weight: 900; font-size: 14px; color: #ffcc00;">3.000</span>
+        <span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 10px; color: #8a7a6a; text-decoration: line-through;">5.000</span>
+        <span style="display: flex; align-items: center; gap: 4px; font-size: 10px; color: #ffb03a;">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#ffb03a" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 2M9 2h6"></path></svg>
+          04:12:38
+        </span>
+      </div>
+    </div>
+    <div style="position: relative; width: 46px; height: 46px; flex-shrink: 0; display: grid; place-items: center; border-radius: 23px; background: linear-gradient(180deg, #ff6a9d, #d61e63); box-shadow: 0 3px 0 #0a1f33;">
+      <span style="font-family: Orbitron, sans-serif; font-weight: 900; font-size: 13px; color: #ffffff;">-40%</span>
+    </div>
+  </div>
+
+  <div style="flex-grow: 1; overflow: hidden; padding: 0 14px;">
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px;">
+
+      <div style="border-radius: 6px; border: 2px solid #ffcc00; background: linear-gradient(180deg, #0d4a70, #062c46); box-shadow: 0 3px 0 #041e30, 0 0 0 1px rgba(255,204,0,.35); overflow: hidden;">
+        <div style="position: relative; height: 84px; display: grid; place-items: center; background: radial-gradient(circle at 50% 40%, rgba(255,204,0,.16), rgba(2,14,26,.75) 72%);">
+          <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true"><circle cx="24" cy="26" r="13" fill="#f4f2ee" stroke="#1a1a1a" stroke-width="1.8"></circle><circle cx="13" cy="15" r="6" fill="#1a1a1a"></circle><circle cx="35" cy="15" r="6" fill="#1a1a1a"></circle><ellipse cx="18.5" cy="24" rx="4" ry="5" fill="#1a1a1a"></ellipse><ellipse cx="29.5" cy="24" rx="4" ry="5" fill="#1a1a1a"></ellipse><circle cx="24" cy="31" r="2.6" fill="#1a1a1a"></circle></svg>
+          <div style="position: absolute; left: 6px; top: 6px; padding: 2px 6px; border-radius: 3px; background: rgba(2,14,26,.8); border: 1px solid #0a5c8c;"><span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 7.5px; letter-spacing: .1em; color: #6bdbff;">THƯỜNG</span></div>
+          <div style="position: absolute; right: 6px; top: 6px; padding: 2px 7px; border-radius: 3px; background: #ffcc00;"><span style="font-family: Orbitron, sans-serif; font-weight: 900; font-size: 7.5px; color: #3a2500;">ĐANG MẶC</span></div>
+        </div>
+        <div style="padding: 7px 9px 9px; background: rgba(0,0,0,.28);">
+          <div style="font-size: 11px; font-weight: 600; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Panda Hat</div>
+          <div style="display: flex; align-items: center; justify-content: center; height: 28px; margin-top: 7px; border-radius: 4px; border: 1px solid #0a5c8c; background: rgba(2,14,26,.6);">
+            <span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 9.5px; letter-spacing: .08em; color: #5d8aa8;">ĐÃ SỞ HỮU</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="border-radius: 6px; border: 2px solid #7a4ad0; background: linear-gradient(180deg, #2a1450, #150a2c); box-shadow: 0 3px 0 #041e30; overflow: hidden;">
+        <div style="position: relative; height: 84px; display: grid; place-items: center; background: radial-gradient(circle at 50% 40%, rgba(154,106,224,.28), rgba(12,6,24,.8) 72%);">
+          <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true"><path d="M9 34c0-9 6.7-16 15-16s15 7 15 16z" fill="#e04a6a" stroke="#7a1030" stroke-width="1.6"></path><path d="M9 34h30v4H9z" fill="#f6f2ea" stroke="#7a1030" stroke-width="1.4"></path><circle cx="24" cy="16" r="4" fill="#ffcc00" stroke="#7a1030" stroke-width="1.4"></circle></svg>
+          <div style="position: absolute; left: 6px; top: 6px; padding: 2px 6px; border-radius: 3px; background: rgba(20,10,44,.85); border: 1px solid #9a6ae0;"><span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 7.5px; letter-spacing: .1em; color: #c9a6ff;">HIẾM</span></div>
+          <div style="position: absolute; right: 6px; top: 6px; padding: 2px 7px; border-radius: 3px; background: rgba(74,255,138,.18); border: 1px solid #4aff8a;"><span style="font-family: Orbitron, sans-serif; font-weight: 900; font-size: 7.5px; color: #4aff8a;">MỚI</span></div>
+        </div>
+        <div style="padding: 7px 9px 9px; background: rgba(0,0,0,.28);">
+          <div style="font-size: 11px; font-weight: 600; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Clown Costume</div>
+          <div style="display: flex; align-items: center; justify-content: center; height: 28px; margin-top: 7px; border-radius: 4px; border: 1px solid #0a5c8c; background: rgba(2,14,26,.6);">
+            <span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 9.5px; letter-spacing: .08em; color: #5d8aa8;">ĐÃ SỞ HỮU</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="border-radius: 6px; border: 2px solid #0a5c8c; background: linear-gradient(180deg, #0d4a70, #062c46); box-shadow: 0 3px 0 #041e30; overflow: hidden;">
+        <div style="position: relative; height: 84px; display: grid; place-items: center; background: radial-gradient(circle at 50% 40%, rgba(107,219,255,.14), rgba(2,14,26,.75) 72%);">
+          <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true"><rect x="12" y="14" width="24" height="22" rx="3" fill="#6f9a5a" stroke="#243a1c" stroke-width="1.8"></rect><rect x="12" y="10" width="24" height="6" rx="2" fill="#3a2a1c" stroke="#243a1c" stroke-width="1.6"></rect><circle cx="9" cy="24" r="3" fill="#9aa0a6" stroke="#243a1c" stroke-width="1.4"></circle><circle cx="39" cy="24" r="3" fill="#9aa0a6" stroke="#243a1c" stroke-width="1.4"></circle><circle cx="19" cy="25" r="2" fill="#1a1a1a"></circle><circle cx="29" cy="25" r="2" fill="#1a1a1a"></circle></svg>
+          <div style="position: absolute; left: 6px; top: 6px; padding: 2px 6px; border-radius: 3px; background: rgba(2,14,26,.8); border: 1px solid #0a5c8c;"><span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 7.5px; letter-spacing: .1em; color: #6bdbff;">THƯỜNG</span></div>
+        </div>
+        <div style="padding: 7px 9px 9px; background: rgba(0,0,0,.28);">
+          <div style="font-size: 11px; font-weight: 600; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Frankenstein</div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 6px; height: 28px; margin-top: 7px; border-radius: 4px; border: 2px solid #7a5a00; background: linear-gradient(180deg, #ffe27a, #ffcc00 46%, #f0a400); box-shadow: inset 0 1px 0 rgba(255,255,255,.55);">
+            <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="#a87400" stroke="#5a3d00" stroke-width="2"></circle></svg>
+            <span style="font-family: Orbitron, sans-serif; font-weight: 900; font-size: 10.5px; color: #3a2500;">900</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="border-radius: 6px; border: 2px solid #ff8c2a; background: linear-gradient(180deg, #4a2400, #1e1006); box-shadow: 0 3px 0 #041e30; overflow: hidden;">
+        <div style="position: relative; height: 84px; display: grid; place-items: center; background: radial-gradient(circle at 50% 40%, rgba(255,140,42,.24), rgba(18,10,4,.8) 72%);">
+          <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true"><path d="M24 8 20 2M24 8l4-6M24 8l-8 2M24 8l8 2" stroke="#ffcc00" stroke-width="2" stroke-linecap="round" fill="none"></path><path d="M14 12h20l-2 8H16z" fill="#d4472a" stroke="#5a1a0c" stroke-width="1.6"></path><path d="M12 20h24v6a12 12 0 0 1-24 0z" fill="#c98a5a" stroke="#5a3418" stroke-width="1.6"></path><path d="M17 26h14" stroke="#5a3418" stroke-width="1.6" stroke-linecap="round"></path></svg>
+          <div style="position: absolute; left: 6px; top: 6px; padding: 2px 6px; border-radius: 3px; background: rgba(30,16,6,.85); border: 1px solid #ff8c2a;"><span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 7.5px; letter-spacing: .1em; color: #ffb03a;">SỬ THI</span></div>
+        </div>
+        <div style="padding: 7px 9px 9px; background: rgba(0,0,0,.28);">
+          <div style="font-size: 11px; font-weight: 600; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Indian Chief Hair</div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 6px; height: 28px; margin-top: 7px; border-radius: 4px; border: 2px solid #7a5a00; background: linear-gradient(180deg, #ffe27a, #ffcc00 46%, #f0a400); box-shadow: inset 0 1px 0 rgba(255,255,255,.55);">
+            <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="#a87400" stroke="#5a3d00" stroke-width="2"></circle></svg>
+            <span style="font-family: Orbitron, sans-serif; font-weight: 900; font-size: 10.5px; color: #3a2500;">4.800</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="border-radius: 6px; border: 2px solid #ffcc00; background: linear-gradient(180deg, #4a3a00, #1e1800); box-shadow: 0 3px 0 #041e30, 0 0 16px rgba(255,204,0,.18); overflow: hidden;">
+        <div style="position: relative; height: 84px; display: grid; place-items: center; background: radial-gradient(circle at 50% 40%, rgba(255,204,0,.24), rgba(18,14,0,.8) 72%);">
+          <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true"><ellipse cx="24" cy="9" rx="9" ry="3.2" fill="none" stroke="#ffe98a" stroke-width="2.2"></ellipse><path d="M24 16c-6 0-11 4.4-11 10v8h22v-8c0-5.6-5-10-11-10z" fill="#e8eef6" stroke="#7a8ea8" stroke-width="1.6"></path><path d="M13 26C7 22 3 26 3 32c4 2 8 1 10-2M35 26c6-4 10 0 10 6-4 2-8 1-10-2" fill="#f6f9ff" stroke="#7a8ea8" stroke-width="1.5"></path></svg>
+          <div style="position: absolute; left: 6px; top: 6px; padding: 2px 6px; border-radius: 3px; background: rgba(30,24,0,.85); border: 1px solid #ffcc00;"><span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 7.5px; letter-spacing: .1em; color: #ffe98a;">HUYỀN THOẠI</span></div>
+        </div>
+        <div style="padding: 7px 9px 9px; background: rgba(0,0,0,.28);">
+          <div style="font-size: 11px; font-weight: 600; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Archangel II</div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 6px; height: 28px; margin-top: 7px; border-radius: 4px; border: 1px solid #4a3a1a; background: rgba(2,14,26,.72);">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#8a7a4a" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>
+            <span style="font-family: Orbitron, sans-serif; font-weight: 900; font-size: 10.5px; color: #8a7a4a;">12.000</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="border-radius: 6px; border: 2px solid #7a4ad0; background: linear-gradient(180deg, #2a1450, #150a2c); box-shadow: 0 3px 0 #041e30; overflow: hidden;">
+        <div style="position: relative; height: 84px; display: grid; place-items: center; background: radial-gradient(circle at 50% 40%, rgba(154,106,224,.24), rgba(12,6,24,.8) 72%);">
+          <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true"><path d="M24 12c-9 0-16 6-19 12 3 6 10 12 19 12s16-6 19-12c-3-6-10-12-19-12z" fill="#1a2e4a" stroke="#6bdbff" stroke-width="1.8"></path><circle cx="24" cy="24" r="7.5" fill="#8ad8ff" stroke="#0a3a5a" stroke-width="1.6"></circle><circle cx="24" cy="24" r="3.4" fill="#0a1f33"></circle><circle cx="21.6" cy="21.6" r="1.4" fill="#ffffff"></circle></svg>
+          <div style="position: absolute; left: 6px; top: 6px; padding: 2px 6px; border-radius: 3px; background: rgba(20,10,44,.85); border: 1px solid #9a6ae0;"><span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 7.5px; letter-spacing: .1em; color: #c9a6ff;">HIẾM</span></div>
+        </div>
+        <div style="padding: 7px 9px 9px; background: rgba(0,0,0,.28);">
+          <div style="font-size: 11px; font-weight: 600; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Observador</div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 6px; height: 28px; margin-top: 7px; border-radius: 4px; border: 2px solid #7a5a00; background: linear-gradient(180deg, #ffe27a, #ffcc00 46%, #f0a400); box-shadow: inset 0 1px 0 rgba(255,255,255,.55);">
+            <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="#a87400" stroke="#5a3d00" stroke-width="2"></circle></svg>
+            <span style="font-family: Orbitron, sans-serif; font-weight: 900; font-size: 10.5px; color: #3a2500;">3.400</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scan" style="position: relative; flex-shrink: 0; display: flex; align-items: center; gap: 11px; padding: 11px 14px 16px; background: linear-gradient(180deg, #0a3a5a, #062033); border-top: 3px solid #00e5e5; box-shadow: 0 -4px 0 #0a1f33;">
+    <div style="position: relative; width: 66px; height: 62px; flex-shrink: 0; display: grid; place-items: center; border-radius: 5px; border: 2px solid #0a5c8c; background: radial-gradient(circle at 50% 70%, #0d4a70, #041d30 76%); overflow: hidden;">
+      <div class="px" style="width: 74px; height: 59px; transform: scale(.86) translateY(4px); background: url(./aduka.png) 0 0 / 1036px 59px no-repeat;"></div>
+    </div>
+    <div style="flex-grow: 1; min-width: 0;">
+      <div style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 8.5px; letter-spacing: .18em; color: #5d8aa8;">ĐANG MẶC</div>
+      <div style="margin-top: 4px; font-size: 11px; line-height: 1.45; color: #bfe4ff;">Panda Hat · Panda Clothing<br><span style="color: #5d8aa8;">Chưa có kính · chưa có cờ</span></div>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 46px; padding: 0 16px; flex-shrink: 0; border-radius: 5px; border: 2px solid #0a5c8c; background: linear-gradient(180deg, rgba(13,74,112,.9), rgba(6,44,70,.95)); box-shadow: 0 3px 0 #0a1f33, inset 0 1px 0 rgba(255,255,255,.14);">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#6bdbff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 4 7l2 4 2-1v10h8V10l2 1 2-4-5-3z"></path></svg>
+      <span style="font-family: Orbitron, sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .1em; color: #bfe4ff;">TỦ ĐỒ</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>
