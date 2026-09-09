@@ -830,8 +830,12 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
    thư mục vẫn chạy bằng CDN. Đổi SRC để đảo thứ tự ưu tiên.
    Cả hai gốc phải trả access-control-allow-origin:* vì buildTerrain() đọc
    pixel bằng getImageData(); thiếu header đó là canvas nhiễm bẩn và cả màn chơi chết. */
-const SRC = "cdn";                          // "cdn" ưu tiên CDN · "local" ưu tiên thư mục cạnh file
-const CDN_ROOT   = "https://raw.githubusercontent.com/lucatoni28/lucatoni28/claude/chao-rw7ej9/";
+/* "local" đọc img/ và data/ nằm cạnh file — đúng cách GitHub Pages phục vụ, tức thì,
+   không chờ mạng ngoài. "cdn" trỏ qua jsDelivr (CDN thật, có cache toàn cầu) — dùng
+   khi cần index.html chạy một mình, không kèm thư mục. KHÔNG dùng raw.githubusercontent.com:
+   đó là máy chủ file thô của GitHub, không phải CDN, dễ bị giới hạn/chặn khi hotlink. */
+const SRC = "local";                        // đổi "cdn" nếu muốn tự chạy độc lập không cần thư mục kèm
+const CDN_ROOT   = "https://cdn.jsdelivr.net/gh/lucatoni28/lucatoni28@claude/chao-rw7ej9/";
 const LOCAL_ROOT = "";
 const ROOT     = SRC==="cdn" ? CDN_ROOT   : LOCAL_ROOT;
 const ROOT_ALT = SRC==="cdn" ? LOCAL_ROOT : CDN_ROOT;
@@ -1789,7 +1793,8 @@ const M_key = u => (u&&u.mob)||"aduka";
 /* Sprite xe đều vẽ sẵn quay TRÁI (kiểm bằng mắt: sừng Knight nằm bên trái khung).
    Nên con đứng bên trái (side>0) phải lật mới quay mặt sang địch; con bên phải giữ nguyên.
    Aduka bắn bằng đuôi nên nó quay ngược lại phần còn lại — cờ back trong RAWMOB. */
-const facesBack = u => !!(mobOf(u)||{}).back;
+const BACK_FIRE = {aduka:1};    // xe bắn từ đuôi: mõm nằm ngược quy ước so với xe khác
+const facesBack = u => !!BACK_FIRE[M_key(u)];
 const flipOf = u => (u.side>0) !== facesBack(u);
 function drawAim(c){
   const u=G.units[G.turn]; if(!u||u.dead||!u.human) return;
@@ -1911,14 +1916,15 @@ function drawHeadAv(){
   [0,1].forEach(i=>{
     const u=G.units[i]; if(!u) return;
     const A=36, c=uiCx($("#av"+i+" canvas"),A,A);
+    const fl = flipOf(u);                     // cùng công thức với thân xe, kể cả Aduka
     const st=(i===0?P.set:u.set), key=st.h, it=key?ITEMS[key]:null, im=key?avImg(key):null;
     if(it&&im){
       const g=it.f[it.f.length>>1], s=Math.min(A/g[0],A/g[1],1.4);
-      c.save(); if(i===1){c.translate(A,0);c.scale(-1,1);}
+      c.save(); if(fl){c.translate(A,0);c.scale(-1,1);}
       c.drawImage(im,it.xs[it.f.length>>1],0,g[0],g[1],(A-g[0]*s)/2,(A-g[1]*s)/2,g[0]*s,g[1]*s);
       c.restore();
     } else {
-      c.save(); if(i===1){c.translate(A,0);c.scale(-1,1);}
+      c.save(); if(fl){c.translate(A,0);c.scale(-1,1);}
       drawMob(c,u.armor||"aduka",A/2,A,.62);
       c.restore();
     }
