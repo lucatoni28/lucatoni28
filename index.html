@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi" translate="no" spellcheck="false">
+<head>
+<meta charset="UTF-8">
+<title>MU Mobile · Aetherfall</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#05050a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Aetherfall">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- ═══ HAI DÒNG NÀY ĐIỀU KHIỂN NƠI LẤY ASSET. Sửa thẳng ở đây. ═══
+
+     mu-source : nguồn đọc
+                 folder  đọc thẳng cây thư mục (mặc định, dùng cho bộ đầy đủ)
+                 zip     đọc trong img/assets.zip
+                 flat    đọc img/ tên phẳng (cho iOS không cho thư mục con)
+     mu-folder : gốc cây thư mục khi mu-source="folder".
+                 Tương đối so với index.html, PHẢI có dấu / ở cuối.
+                 Ví dụ: "assets/" · "data/mu/" · "../kho-asset/"
+
+     Đổi xong chỉ cần tải lại trang, không phải dựng lại img/mu.js.
+     Không có trạng thái nào nhớ ngầm trong trình duyệt: hai dòng này và
+     ?assets= / ?folder= trên URL là TẤT CẢ những gì quyết định. -->
+<meta name="mu-source" content="folder">
+<meta name="mu-folder" content="public/">
+
+<!-- ═══ ĐỌC KHO TỪ MỘT FILE ZIP TRÊN MẠNG (tuỳ chọn) ═══
+
+     Bỏ trống hoặc xoá hẳn dòng dưới  →  game chạy HOÀN TOÀN CỤC BỘ, không một
+     yêu cầu nào ra khỏi máy. Đó là mặc định.
+
+     Điền địa chỉ vào  →  kho asset đọc thẳng từ file zip ấy, KHÔNG cần thư mục
+     public/ trên máy. Đọc bằng HTTP Range nên khởi động chỉ tải bảng mục lục
+     (~1,3 MB cho zip 275 MB), sau đó mỗi asset tải đúng cỡ nó.
+
+     Máy chủ chứa zip phải có đủ hai thứ, thiếu một là không chạy:
+         accept-ranges: bytes
+         access-control-allow-origin: *
+     Mở hỏng thì game tự quay về kho cục bộ và ghi lý do vào nhật ký.
+
+     Đây là ĐƯỜNG RA MẠNG DUY NHẤT trong cả gói, và nó nằm ngay đây để bạn
+     nhìn thấy. Xoá dòng này là cắt đứt, không phải dựng lại img/mu.js.
+     Thay nhanh không cần sửa file: thêm ?zipurl=… vào cuối địa chỉ trang. -->
+<meta name="mu-zip-url" content="https://mmbsd1udibdr44nq.public.blob.vercel-storage.com/atelier/MU_js.zip">
+
+<link rel="icon" href="img/ui_favicon.svg">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<canvas class="game-canvas" width="430" height="932"></canvas>
+<div id="root"></div>
+
+<!-- Một thẻ script duy nhất, không có mã nội tuyến nào trong trang này.
+     Gỡ lỗi mặc định BẬT; tắt bằng ?debug=0 trên URL, bật lại bằng ?debug=1. -->
+<script src="img/mu.js"></script>
+</body>
+</html>

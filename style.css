@@ -1,0 +1,4159 @@
+@charset "UTF-8";
+/* css/fonts.css — SINH TỰ ĐỘNG bởi tools/fetch-fonts.mjs rồi
+   tools/fonts-to-files.mjs, đừng sửa tay.
+   Phông nằm ở các file img/font_*.woff2 — KHÔNG nhúng base64, KHÔNG data:,
+   KHÔNG gọi ra mạng. Mở bằng file:// vẫn đủ chữ. */
+
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("img/font_cinzel-400_1.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("img/font_cinzel-400_2.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("img/font_cinzel-600_1.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("img/font_cinzel-600_2.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("img/font_cinzel-700_1.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("img/font_cinzel-700_2.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("img/font_cinzel-900_1.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("img/font_cinzel-900_2.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("img/font_be-vietnam-pro-300_1.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("img/font_be-vietnam-pro-300_2.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("img/font_be-vietnam-pro-300_3.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("img/font_be-vietnam-pro-400_1.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("img/font_be-vietnam-pro-400_2.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("img/font_be-vietnam-pro-400_3.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("img/font_be-vietnam-pro-500_1.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("img/font_be-vietnam-pro-500_2.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("img/font_be-vietnam-pro-500_3.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("img/font_be-vietnam-pro-600_1.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("img/font_be-vietnam-pro-600_2.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Be Vietnam Pro';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("img/font_be-vietnam-pro-600_3.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("img/font_jetbrains-mono-400_1.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("img/font_jetbrains-mono-400_2.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("img/font_jetbrains-mono-400_3.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("img/font_jetbrains-mono-600_1.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("img/font_jetbrains-mono-600_2.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("img/font_jetbrains-mono-600_3.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ============================================================================
+   AETHERFALL — giao diện MU cho màn dọc iOS Retina Pro Max
+   ----------------------------------------------------------------------------
+   Dựng từ bản thiết kế AetherfallRPG.dc.html (430 × 932, tiếng Việt).
+   Bản mock gốc viết bằng inline style + cú pháp Claude Design (<sc-if>, {{ }});
+   file này là stylesheet thật, tách hẳn khỏi DOM, dùng cho engine.
+
+   HỆ ĐO
+   Toàn bộ kích thước tính theo --u, là "1 pixel thiết kế" quy đổi sang thiết bị:
+       --u = min(100vw / 430, 100dvh / 932)
+   Nhờ vậy tỉ lệ bản vẽ giữ nguyên trên mọi màn dọc; HUD vẫn neo vào mép thật
+   của viewport cộng safe-area nên tai thỏ / Dynamic Island / thanh Home không
+   bao giờ đè lên nút.
+
+   HAI ẢNH KHÔNG CÓ TRONG BỘ ART (art/gem.png, art/slot.png) được dựng lại
+   hoàn toàn bằng CSS + SVG inline — xem mục "GEM" và "Ô CHỨA".
+   ========================================================================== */
+
+/* ---------------------------------------------------------------- 1. FONT */
+
+@font-face {
+  font-family: 'MU Segoe';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('img/fonts_segoeuib.woff2') format('woff2'),
+       url('img/fonts_segoeuib.ttf') format('truetype');
+}
+
+/* -------------------------------------------------------------- 2. TOKEN */
+
+:root {
+  /* Đơn vị bản vẽ */
+  --design-w: 430;
+  --design-h: 932;
+  --u: min(calc(100vw / 430), calc(100vh / 932));
+
+  /* Safe-area iOS */
+  --sa-top: env(safe-area-inset-top, 0px);
+  --sa-bottom: env(safe-area-inset-bottom, 0px);
+  --sa-left: env(safe-area-inset-left, 0px);
+  --sa-right: env(safe-area-inset-right, 0px);
+
+  /* Vàng — bậc chính của giao diện */
+  --gold-100: #fffdf6;
+  --gold-200: #f0e2b6;
+  --gold-300: #e8d79f;
+  --gold-400: #e0c47c;
+  --gold-500: #c8ab6e;
+  --gold-600: #a89468;
+  --gold-700: #6d5a2e;
+  --gold-800: #3b3225;
+
+  /* Chữ phụ */
+  --ink-100: #e6dcc4;
+  --ink-200: #c9bb95;
+  --ink-300: #9a8f76;
+  --ink-400: #8d8168;
+  --ink-500: #7d7460;
+  --ink-600: #6f6858;
+  --ink-700: #4f4a3f;
+
+  /* Nền */
+  --bg-void: #05050a;
+  --bg-deep: #07070b;
+  --bg-panel: rgba(6, 6, 10, 0.78);
+  --bg-scrim: rgba(2, 2, 5, 0.66);
+
+  /* Đỏ — nút chính, thanh tiêu đề, máu */
+  --red-300: #ffe7d4;
+  --red-400: #e0543a;
+  --red-500: #b0342a;
+  --red-600: #8e3226;
+  --red-700: #5d1a14;
+  --red-800: #3a0f0b;
+  --red-line: #2b1512;
+
+  /* Xanh — mana */
+  --mana-200: #cfe6ff;
+  --mana-300: #8fd0f0;
+  --mana-500: #4f9ce8;
+  --mana-700: #1f4a86;
+
+  /* Xanh lá — kinh nghiệm, bật/tắt */
+  --lime-300: #cfe8a8;
+  --lime-500: #7ec44a;
+  --lime-700: #3d5a24;
+
+  /* Chữ */
+  --font-display: 'Cinzel', 'MU Segoe', serif;
+  --font-body: 'Be Vietnam Pro', 'MU Segoe', 'Noto Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* Viền khung — border-image từ panel-frame.png */
+  --frame-src: url('img/ui_panel-frame.png');
+  --frame-slice: 100 80 22 80;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* dvh chính xác hơn vh trên Safari iOS (thanh địa chỉ co giãn). */
+@supports (height: 100dvh) {
+  :root {
+    --u: min(calc(100vw / 430), calc(100dvh / 932));
+  }
+}
+
+/* ---------------------------------------------------------- 3. NỀN TẢNG */
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-deep);
+  color: var(--ink-100);
+  font-family: var(--font-body);
+  overscroll-behavior: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Canvas 3D của engine — nằm dưới cùng, phủ kín viewport. */
+/* ---- KHUNG SÂN KHẤU: khoá đúng tỉ lệ 430 × 932, canh giữa ----
+
+   LỖI CŨ: canvas và lớp .ae đều để `inset: 0`, tức bám sát bốn mép của vùng
+   hiển thị thật. Mọi kích thước bên trong tính bằng --u (= min(bề ngang/430,
+   bề cao/932)) nên co giãn đúng, NHƯNG khung chứa thì không — nó rộng đúng
+   bằng màn hình.
+
+   Hậu quả trên máy có vùng hiển thị khác tỉ lệ 430:932 — ví dụ ứng dụng có
+   thanh công cụ trên và thanh tab dưới, làm vùng web lùn lại: --u bị chiều
+   cao ghì xuống, nội dung co lại, nhưng khung vẫn rộng nguyên. Thứ canh trái
+   bám mép trái, thứ canh phải bám mép phải, thế là giãn toác ra hai bên —
+   đúng cảnh nút tròn và nhãn menu tràn khỏi mép phải trong ảnh chụp.
+
+   SỬA: cho cả canvas lẫn .ae một khung cứng 430u × 932u rồi canh giữa. Bên
+   trong khung, mọi thứ khớp y như thiết kế, bất kể vùng hiển thị thật bao
+   nhiêu. Thừa ra thì thành viền đen hai bên hoặc trên dưới — chấp nhận được,
+   hơn hẳn giao diện vỡ. */
+
+.ae-stage,
+.game-canvas {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: calc(430 * var(--u));
+  height: calc(932 * var(--u));
+  transform: translate(-50%, -50%);
+}
+
+.game-canvas {
+  border: none;
+  outline: none;
+  touch-action: none;
+  -ms-touch-action: none;
+  z-index: 0;
+}
+
+/* UI React gốc của bundle vẫn chạy (mobx cần nó để cập nhật Store)
+   nhưng không hiện — Aetherfall thay thế toàn bộ phần nhìn. */
+#root {
+  display: none !important;
+}
+
+/* Gốc giao diện Aetherfall. */
+/* Lớp giao diện dùng chung khung sân khấu với canvas — xem .ae-stage bên
+   trên. Không để `inset: 0` nữa, nếu không giao diện lại giãn toác. */
+.ae {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: calc(430 * var(--u));
+  height: calc(932 * var(--u));
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none;
+  font-family: var(--font-body);
+  color: var(--ink-100);
+  contain: layout style;
+}
+
+.ae * {
+  box-sizing: border-box;
+}
+
+/* Chỉ phần tử tương tác mới nhận chạm — phần còn lại để lọt xuống canvas. */
+.ae button,
+.ae .tappable,
+.ae [data-tap] {
+  pointer-events: auto;
+}
+
+.ae [hidden] {
+  display: none !important;
+}
+
+.ae-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+}
+
+.ae-screen[hidden] {
+  display: none !important;
+}
+
+/* -------------------------------------------------------- 4. GÕ CHỮ CHUNG */
+
+.ae-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.ae-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.ae-label {
+  font-size: calc(10 * var(--u));
+  letter-spacing: 0.08em;
+  color: var(--ink-400);
+}
+
+.ae-hairline {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(200, 170, 110, 0.18),
+    transparent
+  );
+}
+
+/* ------------------------------------------------------------ 5. KHUNG */
+
+/* Khung đá dùng border-image — giữ nguyên góc chạm khắc ở mọi kích thước. */
+.ae-frame {
+  border-style: solid;
+  border-color: transparent;
+  border-image-source: var(--frame-src);
+  border-image-slice: var(--frame-slice) fill;
+  border-image-repeat: stretch;
+  border-width: calc(54 * var(--u)) calc(44 * var(--u)) calc(15 * var(--u))
+    calc(44 * var(--u));
+  border-image-width: calc(54 * var(--u)) calc(44 * var(--u))
+    calc(15 * var(--u)) calc(44 * var(--u));
+}
+
+/* Khung thẻ nhỏ hơn (thẻ anh hùng). */
+.ae-frame--card {
+  border-width: calc(44 * var(--u)) calc(36 * var(--u)) calc(12 * var(--u))
+    calc(36 * var(--u));
+  border-image-width: calc(44 * var(--u)) calc(36 * var(--u))
+    calc(12 * var(--u)) calc(36 * var(--u));
+}
+
+/* Khung hộp thoại. */
+.ae-frame--modal {
+  border-width: calc(56 * var(--u)) calc(46 * var(--u)) calc(16 * var(--u))
+    calc(46 * var(--u));
+  border-image-width: calc(56 * var(--u)) calc(46 * var(--u))
+    calc(16 * var(--u)) calc(46 * var(--u));
+}
+
+/* Nội dung khung phải kéo lên đè phần chạm khắc phía trên. */
+.ae-frame__body {
+  margin-top: calc(-30 * var(--u));
+}
+
+.ae-frame--card .ae-frame__body {
+  margin-top: calc(-24 * var(--u));
+}
+
+.ae-frame--modal .ae-frame__body {
+  margin-top: calc(-32 * var(--u));
+}
+
+/* Thanh tiêu đề đỏ khảm trong khung. */
+.ae-titlebar {
+  height: calc(30 * var(--u));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(3 * var(--u));
+  background: linear-gradient(
+    180deg,
+    var(--red-500) 0%,
+    #7d1d18 52%,
+    #4d100d 100%
+  );
+  border: 1px solid var(--red-line);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 190, 170, 0.35),
+    0 2px calc(6 * var(--u)) rgba(0, 0, 0, 0.6);
+}
+
+.ae-titlebar__text {
+  font-family: var(--font-display);
+  font-size: calc(11 * var(--u));
+  letter-spacing: 0.22em;
+  color: var(--red-300);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.ae-titlebar--modal {
+  justify-content: space-between;
+  padding: 0 calc(4 * var(--u)) 0 calc(12 * var(--u));
+  flex: none;
+}
+
+.ae-titlebar__close {
+  width: calc(24 * var(--u));
+  height: calc(24 * var(--u));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(2 * var(--u));
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 190, 170, 0.25);
+  font-size: calc(12 * var(--u));
+  color: #ffd9c6;
+  cursor: pointer;
+}
+
+.ae-titlebar__close:active {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* ------------------------------------------------------------- 6. NÚT */
+
+.ae-btn {
+  height: calc(40 * var(--u));
+  padding: 0 calc(12 * var(--u));
+  border-radius: calc(3 * var(--u));
+  font-family: var(--font-display);
+  font-size: calc(11.5 * var(--u));
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  transition: filter 0.14s var(--ease-out), transform 0.08s var(--ease-out);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.ae-btn:active {
+  transform: translateY(1px);
+  filter: brightness(1.18);
+}
+
+.ae-btn:disabled {
+  filter: grayscale(0.7) brightness(0.6);
+  cursor: default;
+}
+
+.ae-btn--primary {
+  border: 1px solid var(--gold-700);
+  background: linear-gradient(
+    180deg,
+    var(--red-600) 0%,
+    var(--red-700) 55%,
+    var(--red-800) 100%
+  );
+  color: #ffe9d8;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 200, 170, 0.28),
+    0 3px calc(8 * var(--u)) rgba(0, 0, 0, 0.5);
+}
+
+.ae-btn--ghost {
+  border: 1px solid #4a4433;
+  background: linear-gradient(180deg, #3a3428 0%, #221e17 55%, #14110d 100%);
+  color: #e2d3a8;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 235, 190, 0.14),
+    0 3px calc(8 * var(--u)) rgba(0, 0, 0, 0.5);
+}
+
+.ae-btn--danger {
+  border: 1px solid #6d3028;
+  background: linear-gradient(180deg, #6d221a, var(--red-800));
+  color: #ffd9c6;
+}
+
+/* -------------------------------------------------------- 7. THANH SỐ */
+
+/* Thanh tiến độ mảnh dùng khắp nơi (chỉ số, nhiệm vụ, máu quái). */
+.ae-meter {
+  position: relative;
+  height: calc(4 * var(--u));
+  border-radius: calc(2 * var(--u));
+  background: rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.ae-meter__fill {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  transition: width 0.28s var(--ease-out);
+}
+
+.ae-meter--str .ae-meter__fill {
+  background: linear-gradient(90deg, #7d2419, var(--red-400));
+}
+.ae-meter--agi .ae-meter__fill {
+  background: linear-gradient(90deg, #245c30, #4fbf6a);
+}
+.ae-meter--sta .ae-meter__fill {
+  background: linear-gradient(90deg, var(--mana-700), var(--mana-500));
+}
+.ae-meter--ene .ae-meter__fill {
+  background: linear-gradient(90deg, #5a2a86, #a86ad0);
+}
+.ae-meter--gold .ae-meter__fill {
+  background: linear-gradient(90deg, #6d4a12, #e0a83a);
+}
+
+/* --------------------------------------------------------- 8. Ô CHỨA */
+
+/* THAY CHO art/slot.png — dựng hoàn toàn bằng CSS.
+   Ba lớp: nền lõm, viền vát kim loại, và bốn góc khắc bằng SVG mask. */
+.ae-slot {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(2 * var(--u));
+  border: 1px solid rgba(122, 100, 58, 0.55);
+  background:
+    radial-gradient(
+      120% 90% at 30% 12%,
+      rgba(216, 180, 110, 0.12),
+      transparent 62%
+    ),
+    linear-gradient(158deg, rgba(58, 50, 37, 0.62) 0%, rgba(10, 9, 7, 0.94) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(232, 215, 159, 0.16),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.75),
+    inset 0 0 calc(10 * var(--u)) rgba(0, 0, 0, 0.8),
+    0 1px 2px rgba(0, 0, 0, 0.65);
+}
+
+/* Bốn góc chạm khắc — SVG inline, không cần file ảnh. */
+.ae-slot::before {
+  content: '';
+  position: absolute;
+  inset: calc(1 * var(--u));
+  pointer-events: none;
+  border-radius: inherit;
+  background-image: url("img/ui_slot-corner.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  opacity: 0.85;
+}
+
+.ae-slot--tappable {
+  cursor: pointer;
+}
+
+.ae-slot--tappable:active {
+  filter: brightness(1.3);
+}
+
+/* Ô rỗng mờ hơn ô có đồ. */
+.ae-slot--empty {
+  opacity: 0.62;
+}
+
+/* Ô đang chọn. */
+.ae-slot--active {
+  border-color: var(--gold-400);
+  box-shadow:
+    inset 0 0 calc(10 * var(--u)) rgba(0, 0, 0, 0.7),
+    0 0 calc(10 * var(--u)) rgba(224, 196, 124, 0.45);
+}
+
+.ae-slot__icon {
+  width: 88%;
+  height: 88%;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  pointer-events: none;
+}
+
+.ae-slot__glyph {
+  font-size: calc(14 * var(--u));
+  line-height: 1;
+  pointer-events: none;
+}
+
+.ae-slot__count {
+  position: absolute;
+  right: calc(2 * var(--u));
+  bottom: 0;
+  font-family: var(--font-mono);
+  font-size: calc(7.5 * var(--u));
+  color: var(--gold-500);
+  text-shadow: 0 1px 2px #000;
+  pointer-events: none;
+}
+
+/* Vật phẩm xuất sắc phát sáng xanh, theo quy ước MU. */
+.ae-slot--excellent {
+  border-color: rgba(120, 220, 180, 0.6);
+  box-shadow:
+    inset 0 0 calc(10 * var(--u)) rgba(0, 0, 0, 0.7),
+    0 0 calc(9 * var(--u)) rgba(90, 220, 170, 0.4);
+}
+
+/* ------------------------------------------------------------- 9. GEM */
+
+/* THAY CHO art/gem.png — nút tròn menu 46×46, dựng bằng CSS + SVG.
+   Lớp nền là đá quý, lớp ::before là vòng kim loại có bốn đinh tán. */
+.ae-gem {
+  position: relative;
+  width: calc(46 * var(--u));
+  height: calc(46 * var(--u));
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  background:
+    radial-gradient(
+      circle at 34% 26%,
+      rgba(255, 244, 214, 0.42),
+      transparent 46%
+    ),
+    radial-gradient(circle at 50% 55%, #2f2540 0%, #170f22 60%, #090610 100%);
+  box-shadow:
+    inset 0 calc(1 * var(--u)) calc(3 * var(--u)) rgba(255, 236, 200, 0.22),
+    inset 0 calc(-2 * var(--u)) calc(6 * var(--u)) rgba(0, 0, 0, 0.8),
+    0 calc(3 * var(--u)) calc(8 * var(--u)) rgba(0, 0, 0, 0.65);
+  transition: filter 0.16s var(--ease-out), transform 0.09s var(--ease-out);
+}
+
+.ae-gem::before {
+  content: '';
+  position: absolute;
+  inset: calc(-2 * var(--u));
+  pointer-events: none;
+  background-image: url("img/ui_gem-ring.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.8));
+}
+
+.ae-gem:active {
+  transform: translateY(1px) scale(0.97);
+  filter: brightness(1.25);
+}
+
+.ae-gem--on {
+  filter: brightness(1.3);
+}
+
+.ae-gem--on::before {
+  filter: drop-shadow(0 0 calc(6 * var(--u)) rgba(224, 196, 124, 0.7));
+}
+
+.ae-gem__glyph {
+  font-size: calc(16 * var(--u));
+  line-height: 1;
+  color: var(--gold-200);
+  text-shadow: 0 1px calc(3 * var(--u)) rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+}
+
+/* Cột gem nằm sát mép phải nên nhãn phải đặt BÊN TRÁI viên gem, không thì
+   chữ tràn ra ngoài màn. Nền mờ để chữ đọc được trên cảnh sáng. */
+.ae-gem__label {
+  position: absolute;
+  right: calc(54 * var(--u));
+  white-space: nowrap;
+  padding: calc(2 * var(--u)) calc(6 * var(--u));
+  border-radius: calc(2 * var(--u));
+  background: rgba(4, 4, 8, 0.66);
+  font-size: calc(8.5 * var(--u));
+  letter-spacing: 0.12em;
+  color: var(--ink-200);
+  pointer-events: none;
+}
+
+.ae-gem__badge {
+  position: absolute;
+  top: calc(-1 * var(--u));
+  right: calc(-1 * var(--u));
+  min-width: calc(15 * var(--u));
+  height: calc(15 * var(--u));
+  padding: 0 calc(3 * var(--u));
+  border-radius: calc(8 * var(--u));
+  background: var(--red-500);
+  border: 1px solid var(--red-line);
+  font-family: var(--font-mono);
+  font-size: calc(8.5 * var(--u));
+  line-height: calc(13 * var(--u));
+  text-align: center;
+  color: #fff;
+  pointer-events: none;
+}
+
+.ae-gem__badge:empty {
+  display: none;
+}
+
+/* ================================================================ MÀN 1
+   KHỞI ĐẦU
+   ========================================================================= */
+
+.ae-start {
+  /* NÚM CHỈNH MÀN KHỞI ĐẦU — sửa ở đây, không phải dò khắp file.
+
+     --login-logo-w  Bề ngang ô logo MU.
+     --login-*   Bộ lọc làm nhạt màu ảnh nền. Ảnh gốc xanh tím rất gắt.
+
+     Ảnh nền nay phủ kín màn bằng background-size: cover theo yêu cầu. Ảnh gốc
+     1024 × 1536 (2:3) trên màn 430 × 932 (~1:2,17) nên cover phóng theo chiều
+     cao và cắt bớt hai bên — con thuyền tiền cảnh vì thế to hơn bản trước.
+     --login-*   Bộ lọc làm nhạt màu ảnh: bớt bão hoà, sáng lên, giảm tương
+                 phản, rồi hạ độ đục. Ảnh gốc xanh tím rất gắt. */
+  --login-logo-w: calc(226 * var(--u));
+  --login-saturate: 0.6;
+  --login-brightness: 1.14;
+  --login-contrast: 0.86;
+  --login-opacity: 0.88;
+
+  align-items: center;
+  background: linear-gradient(
+    180deg,
+    #090713 0%,
+    #1b1030 28%,
+    #2b1442 44%,
+    #101c36 60%,
+    #04070f 100%
+  );
+}
+
+.ae-start__art {
+  position: absolute;
+  inset: 0;
+  background-image: url('img/ui_login-bg.jpg');
+  /* Phủ kín màn. Neo mép trên vì phần trời và ngọn tháp nằm ở nửa trên ảnh;
+     neo giữa là cắt mất đỉnh tháp. */
+  background-size: cover;
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+  filter: saturate(var(--login-saturate)) brightness(var(--login-brightness))
+    contrast(var(--login-contrast));
+  opacity: var(--login-opacity);
+  /* Ảnh nay cao hết màn nên không còn vạch ngang ở mép dưới; vẫn tan dần một
+     phần tư dưới để khung HÀNH TRÌNH nổi chữ. */
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    #000 0%,
+    #000 72%,
+    rgba(0, 0, 0, 0.4) 88%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    #000 0%,
+    #000 72%,
+    rgba(0, 0, 0, 0.4) 88%,
+    transparent 100%
+  );
+}
+
+.ae-start__wash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    /* Màng sáng mỏng phủ nửa trên cho ảnh nhạt thêm, không làm đục chi tiết. */
+    linear-gradient(
+      180deg,
+      rgba(224, 232, 248, 0.16) 0%,
+      rgba(224, 232, 248, 0.07) 32%,
+      rgba(224, 232, 248, 0) 54%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3, 3, 8, 0.32) 0%,
+      rgba(3, 3, 8, 0.05) 22%,
+      rgba(3, 3, 8, 0.26) 58%,
+      rgba(4, 4, 10, 0.88) 84%,
+      #04040a 100%
+    );
+}
+
+.ae-start__vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 calc(120 * var(--u)) calc(40 * var(--u)) rgba(0, 0, 0, 0.55);
+}
+
+.ae-start__brand {
+  position: relative;
+  margin-top: calc(62 * var(--u) + var(--sa-top));
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Ô tiêu đề màn khởi đầu.
+   Chữ "AETHERFALL" tô vàng trước đây đã bỏ. Chỗ này nạp img/ui_title.png —
+   logo MU đã cắt sạch viền trong suốt, 1238 × 1206, tỉ lệ 1,0265. Ô chứa đặt
+   đúng tỉ lệ đó nên ảnh lấp kín, không thừa khoảng trống hai bên.
+   Chưa có file thì khung nét đứt hiện thay, ghi rõ đường dẫn và cỡ cần bỏ vào. */
+
+.ae-start__logo {
+  position: relative;
+  width: var(--login-logo-w);
+  aspect-ratio: 1238 / 1206;
+  margin: 0 auto;
+}
+
+.ae-start__logo-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 calc(2 * var(--u)) calc(10 * var(--u)) rgba(0, 0, 0, 0.9))
+    drop-shadow(0 0 calc(24 * var(--u)) rgba(224, 196, 124, 0.3));
+}
+
+.ae-start__logo-ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(5 * var(--u));
+  border: 1px dashed var(--gold-700);
+  border-radius: calc(4 * var(--u));
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(224, 196, 124, 0.05) 0 calc(6 * var(--u)),
+      rgba(224, 196, 124, 0) calc(6 * var(--u)) calc(13 * var(--u))
+    ),
+    rgba(6, 5, 10, 0.4);
+  box-shadow: inset 0 0 calc(16 * var(--u)) rgba(0, 0, 0, 0.55);
+}
+
+.ae-start__logo-ph__label {
+  font-family: var(--font-display);
+  font-size: calc(10 * var(--u));
+  letter-spacing: 0.3em;
+  color: var(--gold-500);
+}
+
+.ae-start__logo-ph__path {
+  font-family: var(--font-mono);
+  font-size: calc(8.5 * var(--u));
+  color: var(--ink-300);
+}
+
+.ae-start__logo-ph__size {
+  font-size: calc(7.5 * var(--u));
+  letter-spacing: 0.1em;
+  color: var(--ink-600);
+}
+
+.ae-start__logo-img[hidden],
+.ae-start__logo-ph[hidden] {
+  display: none !important;
+}
+
+/* Phụ đề nằm NGAY DƯỚI chữ MU.
+   Ảnh logo cao 1206 nhưng chữ MU đặc chỉ tới hàng 564 — hơn nửa dưới là phù
+   hiệu quỷ rất mờ (alpha ~1/24 so với chữ), nhìn thường không thấy. Nếu để
+   phụ đề rơi sau cả ô ảnh thì hở ra một khoảng trống to bằng nửa logo. Nên kéo
+   ngược lên đúng phần rỗng đó: 1 − 564/1206 = 0,532 chiều cao ảnh, mà chiều
+   cao = 0,9741 bề ngang, vậy khoảng rỗng = 0,518 bề ngang ô logo.
+   Phù hiệu mờ vẫn còn nguyên, nay nằm sau và dưới dòng phụ đề.
+
+   Màu lấy theo chính logo: chữ MU là crôm bạc (#f8f8f8) viền đỏ cam, nên phụ
+   đề cũng chuyển sắc bạc kèm quầng đỏ cam thay vì vàng như trước. */
+.ae-start__subtitle {
+  position: relative;
+  z-index: 1;
+  margin-top: calc(var(--login-logo-w) * -0.518 + 6 * var(--u));
+  font-family: var(--font-display);
+  font-size: calc(10 * var(--u));
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  text-transform: uppercase;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #e8e8ea 34%,
+    #9aa0a6 58%,
+    #f2f2f4 78%,
+    #b9bec4 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 calc(1 * var(--u)) calc(2 * var(--u)) rgba(0, 0, 0, 0.95))
+    drop-shadow(0 0 calc(7 * var(--u)) rgba(214, 78, 32, 0.55));
+}
+
+.ae-start__card {
+  position: relative;
+  margin-top: auto;
+  margin-bottom: calc(74 * var(--u) + var(--sa-bottom));
+  width: calc(352 * var(--u));
+  animation: ae-pin 0.4s var(--ease-out) both;
+}
+
+.ae-savebox {
+  margin-top: calc(11 * var(--u));
+  padding: calc(10 * var(--u)) calc(12 * var(--u));
+  background: linear-gradient(
+    180deg,
+    rgba(8, 7, 6, 0.86),
+    rgba(20, 17, 13, 0.7)
+  );
+  border: 1px solid var(--gold-800);
+  border-radius: calc(3 * var(--u));
+  box-shadow: inset 0 2px calc(8 * var(--u)) rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: calc(7 * var(--u));
+}
+
+.ae-savebox__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: calc(8 * var(--u));
+}
+
+.ae-savebox__value {
+  font-family: var(--font-display);
+  font-size: calc(12 * var(--u));
+  color: var(--gold-300);
+}
+
+.ae-savebox__value--plain {
+  font-family: var(--font-body);
+  font-size: calc(11 * var(--u));
+  color: var(--ink-200);
+}
+
+.ae-savebox__value--num {
+  font-family: var(--font-mono);
+  font-size: calc(11 * var(--u));
+  color: var(--ink-200);
+}
+
+.ae-start__actions {
+  margin-top: calc(12 * var(--u));
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(9 * var(--u));
+}
+
+.ae-start__build {
+  position: absolute;
+  bottom: calc(26 * var(--u) + var(--sa-bottom));
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: calc(8.5 * var(--u));
+  letter-spacing: 0.14em;
+  color: var(--ink-700);
+  pointer-events: none;
+}
+
+/* ================================================================ MÀN 2
+   CHỌN ANH HÙNG
+   ========================================================================= */
+
+.ae-heroes {
+  background:
+    radial-gradient(90% 60% at 50% 0%, rgba(96, 72, 150, 0.28), transparent 60%),
+    linear-gradient(180deg, #0c0a14 0%, #171224 44%, #06060c 100%);
+}
+
+.ae-heroes__head {
+  padding: calc(26 * var(--u) + var(--sa-top)) calc(20 * var(--u))
+    calc(12 * var(--u));
+  text-align: center;
+  flex: none;
+}
+
+.ae-heroes__title {
+  font-family: var(--font-display);
+  font-size: calc(17 * var(--u));
+  letter-spacing: 0.2em;
+  color: var(--gold-300);
+}
+
+.ae-heroes__sub {
+  margin-top: calc(5 * var(--u));
+  font-size: calc(10 * var(--u));
+  letter-spacing: 0.1em;
+  color: var(--ink-500);
+}
+
+.ae-heroes__list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: calc(6 * var(--u)) calc(16 * var(--u)) calc(4 * var(--u));
+  display: flex;
+  flex-direction: column;
+  gap: calc(14 * var(--u));
+}
+
+.ae-hero {
+  cursor: pointer;
+  filter: brightness(0.72) saturate(0.8);
+  transition: filter 0.2s var(--ease-out);
+}
+
+.ae-hero--picked {
+  filter: drop-shadow(0 0 calc(14 * var(--u)) rgba(224, 196, 124, 0.35))
+    brightness(1.12);
+}
+
+.ae-hero__top {
+  display: flex;
+  gap: calc(12 * var(--u));
+  align-items: center;
+}
+
+.ae-hero__portrait {
+  width: calc(70 * var(--u));
+  height: calc(70 * var(--u));
+  flex: none;
+  border-radius: 50%;
+  border: calc(2 * var(--u)) solid var(--gold-700);
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255, 235, 190, 0.3), transparent 58%),
+    linear-gradient(160deg, #4a3a1e, #181008);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(28 * var(--u));
+  color: var(--gold-200);
+  box-shadow: 0 calc(6 * var(--u)) calc(14 * var(--u)) rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.ae-hero__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ae-hero__name {
+  font-family: var(--font-display);
+  font-size: calc(14 * var(--u));
+  color: var(--gold-200);
+  letter-spacing: 0.06em;
+}
+
+.ae-hero__role {
+  margin-top: calc(2 * var(--u));
+  font-size: calc(9.5 * var(--u));
+  letter-spacing: 0.1em;
+  color: var(--ink-400);
+}
+
+.ae-hero__stats {
+  margin-top: calc(8 * var(--u));
+  display: flex;
+  flex-direction: column;
+  gap: calc(5 * var(--u));
+}
+
+.ae-hero__stat {
+  display: flex;
+  align-items: center;
+  gap: calc(6 * var(--u));
+}
+
+.ae-hero__stat > span:first-child {
+  width: calc(30 * var(--u));
+  font-size: calc(8.5 * var(--u));
+  color: var(--ink-500);
+}
+
+.ae-hero__stat .ae-meter {
+  flex: 1;
+}
+
+.ae-hero__desc {
+  margin-top: calc(9 * var(--u));
+  font-size: calc(10 * var(--u));
+  line-height: 1.5;
+  color: var(--ink-300);
+  text-wrap: pretty;
+}
+
+.ae-heroes__foot {
+  flex: none;
+  padding: calc(10 * var(--u)) calc(18 * var(--u))
+    calc(22 * var(--u) + var(--sa-bottom));
+  display: grid;
+  grid-template-columns: calc(96 * var(--u)) 1fr;
+  gap: calc(10 * var(--u));
+}
+
+.ae-heroes__foot .ae-btn {
+  height: calc(44 * var(--u));
+}
+
+/* ================================================================ MÀN 3
+   HUD TRONG GAME
+   ========================================================================= */
+
+.ae-hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ---- góc trên trái: tên, toạ độ, buff ---- */
+
+.ae-hud__topleft {
+  position: absolute;
+  top: calc(12 * var(--u) + var(--sa-top));
+  left: calc(12 * var(--u) + var(--sa-left));
+  display: flex;
+  flex-direction: column;
+  gap: calc(5 * var(--u));
+  align-items: flex-start;
+}
+
+.ae-chip {
+  padding: calc(4 * var(--u)) calc(9 * var(--u));
+  border-radius: calc(3 * var(--u));
+  background: rgba(6, 6, 10, 0.74);
+  border: 1px solid rgba(216, 180, 110, 0.24);
+  -webkit-backdrop-filter: blur(calc(6 * var(--u)));
+  backdrop-filter: blur(calc(6 * var(--u)));
+  font-family: var(--font-display);
+  font-size: calc(10.5 * var(--u));
+  color: var(--gold-300);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.ae-chip--muted {
+  padding: calc(3 * var(--u)) calc(9 * var(--u));
+  background: rgba(6, 6, 10, 0.6);
+  border-color: rgba(255, 255, 255, 0.07);
+  font-family: var(--font-body);
+  font-size: calc(9 * var(--u));
+  color: var(--ink-300);
+  letter-spacing: 0.04em;
+}
+
+.ae-chip__dim {
+  color: var(--ink-400);
+}
+
+/* Huy hiệu gộp góc trái trên: nút tròn, chạm mới bung bảng đồ + tiền + tự động. */
+
+.ae-badge__wrap {
+  position: relative;
+  margin-top: calc(2 * var(--u));
+}
+
+.ae-badge {
+  width: calc(40 * var(--u));
+  height: calc(40 * var(--u));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255, 236, 190, 0.22), transparent 58%),
+    linear-gradient(160deg, #241b30, #0d0a16);
+  border: 1px solid var(--gold-700);
+  box-shadow: 0 calc(2 * var(--u)) calc(6 * var(--u)) rgba(0, 0, 0, 0.6);
+}
+
+.ae-badge--on {
+  border-color: var(--gold-400);
+  box-shadow: 0 0 calc(9 * var(--u)) rgba(224, 196, 124, 0.5);
+}
+
+.ae-badge__glyph {
+  font-size: calc(17 * var(--u));
+  color: var(--gold-300);
+}
+
+.ae-badge__pop {
+  position: absolute;
+  top: calc(100% + 6 * var(--u));
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(7 * var(--u));
+  animation: ae-pin 0.18s var(--ease-out) both;
+}
+
+.ae-buffs {
+  display: flex;
+  gap: calc(4 * var(--u));
+  margin-top: calc(2 * var(--u));
+}
+
+.ae-buff {
+  width: calc(24 * var(--u));
+  height: calc(24 * var(--u));
+  border-radius: calc(4 * var(--u));
+  background: linear-gradient(150deg, #2a2038, #120c1c);
+  border: 1px solid #4a3a58;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(11 * var(--u));
+  box-shadow: 0 2px calc(5 * var(--u)) rgba(0, 0, 0, 0.5);
+}
+
+/* ---- góc trên phải: chỉ một khung tên bản đồ + toạ độ ---- */
+
+/* Hai công tắc TỰ ĐÁNH / TỰ NHẶT ngay dưới radar. */
+.ae-switches {
+  display: flex;
+  flex-direction: column;
+  gap: calc(4 * var(--u));
+  align-items: stretch;
+  width: calc(86 * var(--u));
+}
+
+.ae-switch {
+  display: flex;
+  align-items: center;
+  gap: calc(6 * var(--u));
+  padding: calc(5 * var(--u)) calc(8 * var(--u));
+  border-radius: calc(3 * var(--u));
+  background: rgba(6, 6, 10, 0.72);
+  border: 1px solid rgba(216, 180, 110, 0.22);
+  -webkit-backdrop-filter: blur(calc(6 * var(--u)));
+  backdrop-filter: blur(calc(6 * var(--u)));
+  cursor: pointer;
+}
+
+.ae-switch__dot {
+  width: calc(8 * var(--u));
+  height: calc(8 * var(--u));
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #2b2b33;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ae-switch__text {
+  font-family: var(--font-display);
+  font-size: calc(8.5 * var(--u));
+  letter-spacing: 0.12em;
+  color: var(--ink-400);
+  white-space: nowrap;
+}
+
+.ae-switch--on {
+  border-color: rgba(216, 180, 110, 0.5);
+  background: rgba(26, 20, 10, 0.8);
+}
+
+.ae-switch--on .ae-switch__dot {
+  background: var(--gold-400);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.3),
+    0 0 calc(6 * var(--u)) rgba(224, 196, 124, 0.8);
+}
+
+.ae-switch--on .ae-switch__text {
+  color: var(--gold-300);
+}
+
+.ae-hud__topright {
+  position: absolute;
+  top: calc(12 * var(--u) + var(--sa-top));
+  right: calc(12 * var(--u) + var(--sa-right));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: calc(7 * var(--u));
+}
+
+/* Radar: đĩa tròn bản đồ, tên bản đồ và toạ độ gắn liền ngay dưới trong cùng
+   một khối — chạm bất kỳ đâu trên khối là mở bản đồ lớn. */
+.ae-radar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.ae-radar__ring {
+  position: relative;
+  z-index: 1;
+}
+
+.ae-radar__band {
+  margin-top: calc(-7 * var(--u));
+  min-width: calc(84 * var(--u));
+  max-width: calc(128 * var(--u));
+  padding: calc(8 * var(--u)) calc(9 * var(--u)) calc(4 * var(--u));
+  text-align: center;
+  border-radius: calc(3 * var(--u));
+  background: rgba(6, 6, 10, 0.82);
+  border: 1px solid rgba(216, 180, 110, 0.24);
+  -webkit-backdrop-filter: blur(calc(6 * var(--u)));
+  backdrop-filter: blur(calc(6 * var(--u)));
+}
+
+.ae-radar__name {
+  font-family: var(--font-display);
+  font-size: calc(9.5 * var(--u));
+  letter-spacing: 0.04em;
+  color: var(--gold-300);
+  line-height: 1.15;
+}
+
+.ae-radar__coord {
+  font-family: var(--font-mono);
+  font-size: calc(8 * var(--u));
+  letter-spacing: 0.1em;
+  color: var(--ink-400);
+}
+
+.ae-minimap {
+  position: relative;
+  width: calc(78 * var(--u));
+  height: calc(78 * var(--u));
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(
+    circle,
+    rgba(24, 30, 52, 0.92),
+    rgba(5, 7, 14, 0.96)
+  );
+  border: calc(2 * var(--u)) solid var(--gold-700);
+  box-shadow:
+    0 0 calc(14 * var(--u)) rgba(0, 0, 0, 0.6),
+    inset 0 0 calc(20 * var(--u)) rgba(0, 0, 0, 0.7);
+  pointer-events: auto;
+}
+
+/* Ảnh địa hình nhìn từ trên xuống (TerrainLight.jpg của chính bản đồ). Ảnh gốc
+   rất chói và bệt trắng vì vốn là bản đồ ÁNH SÁNG, không phải bản đồ để xem —
+   lọc lại cho ngả sắc đồng và tối bớt thì mới đọc được đường đi. */
+.ae-minimap__land {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(0.35) sepia(0.6) brightness(0.42) contrast(1.5) saturate(0.85);
+  opacity: 0.95;
+}
+
+.ae-minimap__grid {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 calc(13 * var(--u)),
+      rgba(216, 180, 110, 0.06) calc(13 * var(--u)) calc(14 * var(--u))
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 calc(13 * var(--u)),
+      rgba(216, 180, 110, 0.06) calc(13 * var(--u)) calc(14 * var(--u))
+    );
+}
+
+.ae-minimap__self {
+  position: absolute;
+  width: calc(6 * var(--u));
+  height: calc(6 * var(--u));
+  margin: calc(-3 * var(--u)) 0 0 calc(-3 * var(--u));
+  border-radius: 50%;
+  background: var(--gold-200);
+  box-shadow: 0 0 calc(8 * var(--u)) var(--gold-400);
+  transition: left 0.3s linear, top 0.3s linear;
+}
+
+.ae-minimap__blip {
+  position: absolute;
+  width: calc(4 * var(--u));
+  height: calc(4 * var(--u));
+  margin: calc(-2 * var(--u)) 0 0 calc(-2 * var(--u));
+  border-radius: 50%;
+  background: var(--red-400);
+}
+
+.ae-minimap__blip--npc {
+  background: var(--lime-500);
+}
+
+.ae-minimap__label {
+  position: absolute;
+  top: calc(3 * var(--u));
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: calc(8 * var(--u));
+  color: var(--gold-500);
+}
+
+.ae-purse {
+  padding: calc(6 * var(--u)) calc(8 * var(--u));
+  border-radius: calc(3 * var(--u));
+  background: var(--bg-panel);
+  border: 1px solid rgba(216, 180, 110, 0.26);
+  -webkit-backdrop-filter: blur(calc(6 * var(--u)));
+  backdrop-filter: blur(calc(6 * var(--u)));
+  display: flex;
+  flex-direction: column;
+  gap: calc(4 * var(--u));
+  min-width: calc(110 * var(--u));
+}
+
+.ae-purse__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(8 * var(--u));
+}
+
+.ae-purse__mark {
+  font-size: calc(11 * var(--u));
+}
+
+.ae-purse__mark--zen {
+  color: var(--gold-400);
+}
+.ae-purse__mark--jewel {
+  color: #7fc0e8;
+}
+
+.ae-purse__num {
+  font-family: var(--font-mono);
+  font-size: calc(10.5 * var(--u));
+  color: var(--gold-200);
+}
+
+.ae-purse__num--jewel {
+  color: var(--mana-200);
+}
+
+.ae-purse__sep {
+  height: 1px;
+  background: rgba(216, 180, 110, 0.14);
+}
+
+.ae-auto {
+  padding: calc(5 * var(--u)) calc(10 * var(--u));
+  border-radius: calc(3 * var(--u));
+  background: rgba(6, 6, 10, 0.7);
+  border: 1px solid rgba(216, 180, 110, 0.24);
+  font-family: var(--font-display);
+  font-size: calc(9.5 * var(--u));
+  letter-spacing: 0.14em;
+  color: var(--ink-300);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.ae-auto--on {
+  background: linear-gradient(180deg, var(--lime-700), #1c2a10);
+  border-color: #6f9c3a;
+  color: var(--lime-300);
+}
+
+/* ---- cột gem bên trái ---- */
+
+/* Cột gem gộp vào một nút ở MÉP PHẢI. Cả nửa trái từ giữa xuống dưới cố ý bỏ
+   trống để người chơi đặt ngón tay xoay cảnh mà không chạm nhầm nút nào. */
+
+.ae-menuwrap {
+  position: absolute;
+  right: calc(10 * var(--u) + var(--sa-right));
+  bottom: calc(306 * var(--u) + var(--sa-bottom));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: calc(9 * var(--u));
+}
+
+.ae-menu__toggle {
+  width: calc(46 * var(--u));
+  height: calc(46 * var(--u));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255, 236, 190, 0.2), transparent 58%),
+    linear-gradient(160deg, #251c32, #0e0a17);
+  border: 1px solid var(--gold-700);
+  box-shadow: 0 calc(3 * var(--u)) calc(8 * var(--u)) rgba(0, 0, 0, 0.65);
+}
+
+.ae-menu__toggle--on {
+  border-color: var(--gold-400);
+  box-shadow: 0 0 calc(10 * var(--u)) rgba(224, 196, 124, 0.55);
+}
+
+.ae-menu__glyph {
+  font-size: calc(18 * var(--u));
+  color: var(--gold-300);
+}
+
+/* Cột bung lên phía trên nút, nhãn nằm bên trái từng gem. */
+.ae-hud__menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: calc(9 * var(--u));
+  animation: ae-pin 0.18s var(--ease-out) both;
+}
+
+/* ---- hai nút hành động lớn, góc phải dưới ---- */
+
+.ae-hud__acts {
+  position: absolute;
+  right: calc(12 * var(--u) + var(--sa-right));
+  bottom: calc(210 * var(--u) + var(--sa-bottom));
+  display: flex;
+  align-items: flex-end;
+  gap: calc(10 * var(--u));
+}
+
+.ae-act {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: calc(1.5 * var(--u)) solid var(--gold-700);
+  box-shadow:
+    0 calc(3 * var(--u)) calc(9 * var(--u)) rgba(0, 0, 0, 0.65),
+    inset 0 0 calc(12 * var(--u)) rgba(0, 0, 0, 0.55);
+}
+
+.ae-act:active {
+  filter: brightness(1.3);
+  transform: scale(0.95);
+}
+
+.ae-act--atk {
+  width: calc(84 * var(--u));
+  height: calc(84 * var(--u));
+  background:
+    radial-gradient(circle at 36% 26%, rgba(255, 220, 190, 0.3), transparent 58%),
+    linear-gradient(160deg, #6e1d18, #2a0b0a);
+  border-color: #8d5a30;
+}
+
+.ae-act--skill {
+  width: calc(62 * var(--u));
+  height: calc(62 * var(--u));
+  background:
+    radial-gradient(circle at 36% 26%, rgba(210, 226, 255, 0.24), transparent 58%),
+    linear-gradient(160deg, #1c2748, #0a0e1e);
+}
+
+.ae-act__glyph {
+  font-size: calc(34 * var(--u));
+  color: #ffd9c2;
+  text-shadow: 0 calc(2 * var(--u)) calc(5 * var(--u)) rgba(0, 0, 0, 0.9);
+}
+
+.ae-act__icon {
+  /* Icon gốc của MU chỉ 17×16 điểm ảnh; phóng quá là vỡ hạt thấy rõ, nên để
+     nhỏ vừa phải trong nút. */
+  width: 56%;
+  height: 56%;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 1px calc(3 * var(--u)) rgba(0, 0, 0, 0.85));
+}
+
+/* ---- nhật ký chiến đấu: dải mỏng ngay trên thanh EXP ---- */
+
+/* Nhật ký nay ở GÓC TRÁI TRÊN, đúng chỗ cụm tên nhân vật + túi tiền vừa bỏ.
+   Bề ngang dừng trước radar để không đè lên đĩa bản đồ. Dòng mới chèn xuống
+   đáy khối nên mắt luôn tìm ở một chỗ. */
+.ae-log {
+  position: absolute;
+  left: calc(12 * var(--u) + var(--sa-left));
+  right: calc(112 * var(--u) + var(--sa-right));
+  top: calc(12 * var(--u) + var(--sa-top));
+  height: calc(92 * var(--u));
+  overflow: hidden;
+  padding: calc(6 * var(--u)) calc(8 * var(--u));
+  border-radius: calc(3 * var(--u));
+  background: linear-gradient(
+    180deg,
+    rgba(4, 4, 8, 0.1),
+    rgba(4, 4, 8, 0.55)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: calc(2 * var(--u));
+  pointer-events: none;
+}
+
+.ae-log__line {
+  font-size: calc(9.5 * var(--u));
+  line-height: 1.35;
+  color: var(--ink-300);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+  animation: ae-rise 0.25s var(--ease-out) both;
+}
+
+.ae-log__line--good {
+  color: var(--lime-500);
+}
+.ae-log__line--info {
+  color: #8fb8e0;
+}
+.ae-log__line--warn {
+  color: var(--gold-500);
+}
+/* Dòng thông báo của hệ thống: nạp nguồn dữ liệu, bung bản đồ, đổi thiết lập.
+   Để soi lỗi ngay trên máy mà không cần mở bảng điều khiển trình duyệt. */
+.ae-log__line--sys {
+  color: #8fa4c0;
+  font-family: var(--font-mono);
+  font-size: calc(8 * var(--u));
+  opacity: 0.85;
+}
+
+.ae-log__line--bad {
+  color: #ff8f6a;
+}
+
+/* ---- số bay ---- */
+
+.ae-floats {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ae-float {
+  position: absolute;
+  transform: translate(-50%, 0);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: calc(14 * var(--u));
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  animation: ae-float 0.95s ease-out forwards;
+  will-change: transform, opacity;
+}
+
+.ae-float--crit {
+  font-size: calc(20 * var(--u));
+  color: #ffd970;
+}
+.ae-float--dmg {
+  color: #ff8f6a;
+}
+.ae-float--hurt {
+  color: #ff6a5a;
+}
+.ae-float--heal {
+  color: #7ee08a;
+}
+.ae-float--mana {
+  color: var(--mana-300);
+}
+
+/* ---- thanh dưới ---- */
+
+.ae-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(172 * var(--u) + var(--sa-bottom));
+  pointer-events: none;
+}
+
+.ae-bar__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(3, 3, 6, 0.94) 0%,
+    rgba(3, 3, 6, 0.5) 66%,
+    transparent 100%
+  );
+}
+
+/* Thanh kinh nghiệm hạ xuống sát ngay trên khung bar — khung bar cao 113,7u
+   (ảnh 1952×516 vẽ vừa bề ngang 430u) cộng 2u kê đáy, nên 118u là vừa khít. */
+.ae-exp {
+  position: absolute;
+  left: calc(18 * var(--u));
+  right: calc(18 * var(--u));
+  bottom: calc(118 * var(--u) + var(--sa-bottom));
+  pointer-events: auto;
+}
+
+.ae-exp__track {
+  position: relative;
+  height: calc(5 * var(--u));
+  border-radius: calc(2 * var(--u));
+  background: rgba(0, 0, 0, 0.72);
+  border: 1px solid rgba(216, 180, 110, 0.2);
+  overflow: hidden;
+}
+
+.ae-exp__fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #0f3d15, #1f7a2b 55%, #35a844);
+  box-shadow: 0 0 calc(8 * var(--u)) rgba(40, 150, 60, 0.5);
+  transition: width 0.4s var(--ease-out);
+}
+
+/* Mười vạch chia như thanh EXP gốc của MU. */
+.ae-exp__ticks {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 9.9%,
+    rgba(0, 0, 0, 0.6) 9.9% 10%
+  );
+}
+
+.ae-exp__text {
+  margin-bottom: calc(2 * var(--u));
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: calc(7.5 * var(--u));
+  letter-spacing: 0.12em;
+  color: #c2ad78;
+  text-shadow: 0 1px calc(3 * var(--u)) rgba(0, 0, 0, 0.95);
+}
+
+/* Ảnh thanh HUD, đặt vừa đúng bề ngang màn. Hai vòng cầu đã nằm sát mép trong
+   chính tấm art (mép trái vòng ở 2% bề ngang) nên không cần kéo tràn ra ngoài.
+   Mọi toạ độ con là % của ảnh này — xem BAR_ORBS và BAR_SLOTS. */
+.ae-bar__art {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: calc(var(--sa-bottom) + 2 * var(--u));
+  pointer-events: auto;
+}
+
+.ae-bar__frame {
+  position: relative;
+}
+
+.ae-bar__img {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+}
+
+/* ---------------------------------------------------------------------------
+   HAI QUẢ CẦU MÁU / MANA
+
+   Lòng hai vòng trong ui_bar.png đã trong suốt hẳn (tools/make-bar.py), nên
+   chất lỏng nằm DƯỚI ảnh khung: đầu sọ bên trái và đầu rồng bên phải tự che
+   đúng phần lẽ ra bị khuất, không phải vẽ mặt nạ riêng nữa.
+
+   Hộp cầu do JS đặt theo BAR_ORBS — hình vuông thật, bán kính đã trừ 6px lề an
+   toàn so với vòng nhỏ hơn, và hai bên dùng CHUNG bán kính nên bằng nhau.
+   border-radius 50% + overflow hidden cắt gọn, chất lỏng không thể lem ra viền.
+
+   --lv là mực nước (JS đặt, ví dụ "62%"). Thân nước, hai lớp sóng và vệt sáng
+   mặt nước đều bám theo một biến này.
+   --------------------------------------------------------------------------- */
+
+.ae-orb {
+  --lv: 100%;
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* Lòng cầu lúc cạn. */
+.ae-orb__well {
+  position: absolute;
+  inset: 0;
+}
+
+.ae-orb--hp .ae-orb__well {
+  background: radial-gradient(circle at 50% 32%, #251016, #120709 70%, #080405);
+}
+
+.ae-orb--mp .ae-orb__well {
+  background: radial-gradient(circle at 50% 32%, #0f1a34, #070e1e 70%, #04070f);
+}
+
+/* Thân nước. Mép trên hạ 5,5% dưới mực nước — vừa đúng dưới đáy dao động của
+   lớp sóng, nên sóng tạo được cả đỉnh lẫn lõm mà không bao giờ hở ra lòng cầu. */
+.ae-orb__body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: calc(100% - var(--lv) + 5.5%);
+  transition: top 0.35s var(--ease-out);
+}
+
+.ae-orb--hp .ae-orb__body {
+  background: #6d1220;
+}
+
+.ae-orb--mp .ae-orb__body {
+  background: #143a86;
+}
+
+/* Hai lớp sóng, mỗi lớp là một HÌNH BẦU DỤC rất lớn quay chậm.
+   Vì sao bầu dục chứ không phải khối bo góc: với bầu dục bán trục a (ngang) và
+   b (dọc), điểm cao nhất khi quay góc θ cách tâm đúng √(a²sin²θ + b²cos²θ),
+   tức dao động gọn trong khoảng [a, b] — biên độ tính được chính xác bằng
+   hiệu hai bán trục, không phải mò.
+
+   Bản trước dùng khối rộng 168% quả cầu: vòng cung mặt nước võng tới 16% đường
+   kính, nhìn như thấu kính phồng chứ không phải mặt nước. Khối càng to thì
+   cung càng thoải — độ võng ≈ đường-kính / (4 × hệ-số-rộng). Ở 500% còn 5%,
+   vừa đủ cong tự nhiên.
+
+   waveA rộng 500%, cao hơn 3,5% → dao động ±5% đường kính quanh mực nước.
+   waveB nhỏ hơn, mờ, quay ngược và chậm hơn, luôn thấp hơn A nên chỉ tạo
+   chuyển động bên trong khối nước chứ không tranh làm mặt nước. */
+.ae-orb__wave {
+  position: absolute;
+  left: 50%;
+  top: calc(100% - var(--lv));
+  transition: top 0.35s var(--ease-out);
+  border-radius: 50%;
+  animation: ae-slosh 7s linear infinite;
+}
+
+.ae-orb__wave--a {
+  width: 500%;
+  aspect-ratio: 1 / 1.035;
+  translate: -50% -0.85%;
+}
+
+.ae-orb__wave--b {
+  width: 420%;
+  aspect-ratio: 1 / 1.05;
+  translate: -50% -0.5%;
+  opacity: 0.45;
+  animation-duration: 11s;
+  animation-direction: reverse;
+}
+
+.ae-orb--hp .ae-orb__wave--a {
+  background: #8e1a2a;
+}
+.ae-orb--hp .ae-orb__wave--b {
+  background: #4a0b14;
+}
+.ae-orb--mp .ae-orb__wave--a {
+  background: #1c50b4;
+}
+.ae-orb--mp .ae-orb__wave--b {
+  background: #0a2050;
+}
+
+@keyframes ae-slosh {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ae-orb__wave {
+    animation: none;
+  }
+}
+
+/* Vệt sáng mờ ở mặt nước — cố ý KHÔNG phải vạch sắc nét, vì mặt nước gợn thì
+   một đường thẳng tắp nhìn sẽ sai. */
+.ae-orb__line {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  top: calc(100% - var(--lv) - 4%);
+  height: 8%;
+  filter: blur(calc(2 * var(--u)));
+  transition: top 0.35s var(--ease-out);
+}
+
+.ae-orb--hp .ae-orb__line {
+  background: radial-gradient(
+    60% 100% at 50% 50%,
+    rgba(255, 176, 150, 0.5),
+    transparent 70%
+  );
+}
+
+.ae-orb--mp .ae-orb__line {
+  background: radial-gradient(
+    60% 100% at 50% 50%,
+    rgba(170, 214, 255, 0.5),
+    transparent 70%
+  );
+}
+
+/* Mặt kính: bóng cong phía trên, tối dần xuống đáy. */
+.ae-orb__gloss {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      52% 40% at 34% 20%,
+      rgba(255, 255, 255, 0.26),
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      transparent 34%,
+      rgba(0, 0, 0, 0.22) 74%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+  box-shadow: inset 0 0 calc(9 * var(--u)) rgba(0, 0, 0, 0.6);
+}
+
+/* Số máu / mana in giữa quả cầu. Nằm NGOÀI .ae-orb và trên ảnh khung, không
+   thì đầu sọ với đầu rồng che mất. */
+.ae-orb-num {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.ae-orb-num__now {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: calc(15 * var(--u));
+  letter-spacing: 0.03em;
+  color: #fff6e8;
+  text-shadow:
+    0 1px 0 #1a0d06,
+    0 0 calc(3 * var(--u)) rgba(0, 0, 0, 0.95),
+    0 calc(1.5 * var(--u)) calc(5 * var(--u)) rgba(0, 0, 0, 0.9);
+}
+
+.ae-orb-num__max {
+  margin-top: calc(1.5 * var(--u));
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: calc(8 * var(--u));
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px calc(2 * var(--u)) #000, 0 0 calc(4 * var(--u)) rgba(0, 0, 0, 0.9);
+}
+
+.ae-orb-num--hp .ae-orb-num__max {
+  color: rgba(255, 208, 196, 0.78);
+}
+
+.ae-orb-num--mp .ae-orb-num__max {
+  color: rgba(196, 226, 255, 0.78);
+}
+
+/* Bốn ô kỹ năng khảm giữa thanh. Hộp là khung ngoài đo được từ art.
+   KHÔNG dùng padding % để thu icon: padding tính theo BỀ NGANG KHỐI CHA (cả
+   khung bar, 430px) chứ không theo kích thước ô, nên 9% thành 38px mỗi bên và
+   ô phình ra 77px chồng lên nhau. Icon tự đặt cỡ 84% ở .ae-skill__icon —
+   đúng bằng tỉ lệ mặt tấm nền trong đo được (153/179 ngang, 178/215 dọc). */
+.ae-skill {
+  position: absolute;
+  z-index: 3;
+  cursor: pointer;
+  border-radius: calc(3 * var(--u));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Đang hồi chiêu — phủ tối, hiện số giây. */
+.ae-skill--cooling {
+  background: rgba(4, 4, 8, 0.66);
+  box-shadow: none;
+}
+
+/* Không đủ mana — phủ xanh lạnh. */
+.ae-skill--nomana {
+  background: rgba(4, 8, 20, 0.5);
+  box-shadow: none;
+}
+
+.ae-skill--selected {
+  box-shadow:
+    inset 0 0 calc(8 * var(--u)) rgba(255, 220, 150, 0.5),
+    0 0 calc(8 * var(--u)) rgba(224, 196, 124, 0.6);
+}
+
+/* Ô vật phẩm nhanh — toạ độ tâm, kích thước theo % ảnh. */
+.ae-quick {
+  position: absolute;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  aspect-ratio: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.ae-quick--empty {
+  background: rgba(4, 4, 8, 0.6);
+}
+
+.ae-quick__count {
+  font-family: var(--font-mono);
+  font-size: calc(8 * var(--u));
+  line-height: 1.2;
+  color: #f5e2b8;
+  text-shadow: 0 1px 2px #000, 0 0 3px #000;
+}
+
+/* ---- thông báo giữa màn ---- */
+
+.ae-toast {
+  position: absolute;
+  top: calc(112 * var(--u) + var(--sa-top));
+  left: 50%;
+  transform: translateX(-50%);
+  padding: calc(7 * var(--u)) calc(16 * var(--u));
+  border-radius: calc(3 * var(--u));
+  background: rgba(6, 6, 10, 0.9);
+  border: 1px solid var(--gold-700);
+  font-family: var(--font-display);
+  font-size: calc(11 * var(--u));
+  letter-spacing: 0.1em;
+  color: var(--gold-200);
+  white-space: nowrap;
+  box-shadow: 0 calc(6 * var(--u)) calc(20 * var(--u)) rgba(0, 0, 0, 0.6);
+  animation: ae-pin 0.2s var(--ease-out) both;
+  pointer-events: none;
+  z-index: 40;
+}
+
+/* ================================================================ HỘP THOẠI
+   ========================================================================= */
+
+.ae-modal {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-scrim);
+  -webkit-backdrop-filter: blur(calc(3 * var(--u)));
+  backdrop-filter: blur(calc(3 * var(--u)));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  pointer-events: auto;
+  padding: calc(var(--sa-top) + 8 * var(--u)) calc(8 * var(--u))
+    calc(var(--sa-bottom) + 8 * var(--u));
+}
+
+.ae-modal[hidden] {
+  display: none !important;
+}
+
+.ae-modal__panel {
+  /* 412u là bề ngang lớn nhất còn vừa: màn 430u trừ 2×8u đệm của lớp phủ và
+     chừa 1u mỗi bên. Khung ăn 46u mỗi mép nên phần dùng được là 320u —
+     đủ cho 8 ô 37u + 7 khe 1,5u + 4u đệm mỗi bên. */
+  width: calc(412 * var(--u));
+  max-width: 100%;
+  /* 88%: đủ để khay trang bị + lưới 8×8 + hàng chân cùng nằm gọn, khỏi phải
+     cuộn. Dưới mức này là hàng chân bị cắt. */
+  max-height: 88%;
+  display: flex;
+  flex-direction: column;
+  animation: ae-pin 0.22s var(--ease-out) both;
+}
+
+/* Tiêu đề bảng không được xuống dòng. */
+.ae-titlebar--modal .ae-titlebar__text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* .ae-frame__body phải là khối co giãn thì .ae-modal__body mới cuộn được.
+   Thiếu dòng này thì flex:1 bên dưới vô tác dụng (cha không phải flex), nội
+   dung dài tràn hẳn ra ngoài khung — panel Hành trang cao hơn 80% màn nên lộ
+   ngay: chân panel rơi xuống đè lên thanh HUD. */
+.ae-modal__panel > .ae-frame__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.ae-modal__body {
+  margin-top: calc(4 * var(--u));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ---- tab NHÂN VẬT ---- */
+
+.ae-charhead {
+  display: flex;
+  gap: calc(12 * var(--u));
+  align-items: center;
+}
+
+.ae-charhead__portrait {
+  width: calc(64 * var(--u));
+  height: calc(64 * var(--u));
+  flex: none;
+  border-radius: 50%;
+  border: calc(2 * var(--u)) solid var(--gold-700);
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255, 235, 190, 0.3), transparent 58%),
+    linear-gradient(160deg, #4a3a1e, #181008);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(26 * var(--u));
+  color: var(--gold-200);
+}
+
+.ae-charhead__name {
+  font-family: var(--font-display);
+  font-size: calc(14 * var(--u));
+  color: var(--gold-200);
+}
+
+.ae-charhead__role {
+  margin-top: calc(2 * var(--u));
+  font-size: calc(9.5 * var(--u));
+  letter-spacing: 0.08em;
+  color: var(--ink-400);
+}
+
+.ae-charhead__points {
+  margin-top: calc(6 * var(--u));
+  font-family: var(--font-mono);
+  font-size: calc(9.5 * var(--u));
+  color: var(--gold-600);
+}
+
+.ae-charhead__points b {
+  color: var(--lime-500);
+  font-weight: 600;
+}
+
+.ae-stats {
+  display: flex;
+  flex-direction: column;
+  gap: calc(10 * var(--u));
+  margin-top: calc(10 * var(--u));
+}
+
+.ae-stat__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: calc(8 * var(--u));
+}
+
+.ae-stat__label {
+  font-size: calc(9.5 * var(--u));
+  letter-spacing: 0.1em;
+  color: var(--ink-400);
+}
+
+.ae-stat__value {
+  font-family: var(--font-mono);
+  font-size: calc(10.5 * var(--u));
+  color: var(--gold-300);
+}
+
+.ae-stat .ae-meter {
+  margin-top: calc(3 * var(--u));
+}
+
+/* Nút cộng điểm. Luôn có mặt, hết điểm thì mờ đi — giấu hẳn thì mỗi lần lên
+   cấp cả bảng lại nhảy chỗ. */
+.ae-stat__plus {
+  width: calc(20 * var(--u));
+  height: calc(20 * var(--u));
+  flex: none;
+  border-radius: calc(3 * var(--u));
+  border: 1px solid rgba(140, 120, 80, 0.35);
+  background: linear-gradient(180deg, #2a2519, #16130d);
+  color: var(--ink-600);
+  font-family: var(--font-display);
+  font-size: calc(13 * var(--u));
+  line-height: 1;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.ae-stat__plus--on {
+  border-color: var(--gold-600);
+  background: linear-gradient(180deg, #4a3c1d, #241c0d);
+  color: var(--gold-200);
+  cursor: pointer;
+  box-shadow: 0 0 calc(5 * var(--u)) rgba(200, 171, 110, 0.28);
+}
+
+.ae-stat__plus--on:active {
+  background: linear-gradient(180deg, #241c0d, #4a3c1d);
+}
+
+.ae-stat__plus[hidden] {
+  display: none !important;
+}
+
+/* ---- bảng NHÂN VẬT kiểu MU ----
+   Giữ trong sắc đá – giấy cũ – đồng. Bốn chỉ số gốc trước đây mỗi thứ một màu
+   (đỏ / lục / lam / tím); bốn màu rực cạnh nhau trên nền gỗ nhìn rối nên bỏ,
+   chỉ còn chữ ngà và số màu đồng. */
+
+.ae-charhead__text {
+  min-width: 0;
+}
+
+.ae-charhead__points--has b {
+  color: var(--gold-200);
+}
+
+.ae-stat--mu {
+  padding: calc(6 * var(--u)) calc(8 * var(--u));
+  border-radius: calc(3 * var(--u));
+  background: linear-gradient(180deg, rgba(30, 26, 18, 0.5), rgba(12, 10, 7, 0.5));
+  border: 1px solid rgba(140, 120, 80, 0.18);
+}
+
+.ae-stat--mu .ae-stat__head {
+  align-items: center;
+}
+
+.ae-stat--mu .ae-stat__value {
+  margin-left: auto;
+  font-size: calc(12 * var(--u));
+  color: var(--ink-100);
+}
+
+/* Dòng nhỏ ghi chỉ số ấy ảnh hưởng tới cái gì — chép đúng theo công thức
+   trong src/offline/combatFormulas.ts của engine. */
+.ae-stat__mod {
+  margin-top: calc(2 * var(--u));
+  font-size: calc(8 * var(--u));
+  letter-spacing: 0.04em;
+  color: var(--ink-600);
+}
+
+.ae-stat--exp .ae-stat__value {
+  font-size: calc(9.5 * var(--u));
+  color: var(--ink-200);
+}
+
+/* Khối số dẫn xuất: sát thương, phòng thủ, tỉ lệ đánh trúng, sinh lực, mana. */
+.ae-der {
+  margin-top: calc(12 * var(--u));
+  padding: calc(8 * var(--u));
+  border-radius: calc(3 * var(--u));
+  border: 1px solid rgba(140, 120, 80, 0.22);
+  background: rgba(10, 9, 6, 0.5);
+}
+
+.ae-der__title {
+  font-family: var(--font-display);
+  font-size: calc(9 * var(--u));
+  letter-spacing: 0.18em;
+  color: var(--gold-600);
+  margin-bottom: calc(6 * var(--u));
+}
+
+.ae-der__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: calc(8 * var(--u));
+  padding: calc(3 * var(--u)) 0;
+  border-top: 1px solid rgba(140, 120, 80, 0.1);
+}
+
+.ae-der__row:first-of-type {
+  border-top: 0;
+}
+
+.ae-der__label {
+  font-size: calc(9 * var(--u));
+  letter-spacing: 0.08em;
+  color: var(--ink-500);
+}
+
+.ae-der__value {
+  font-family: var(--font-mono);
+  font-size: calc(10.5 * var(--u));
+  color: var(--ink-100);
+  white-space: nowrap;
+}
+
+/* ---- tab HÀNH TRANG ---- */
+
+/* Tiền nằm ở chân panel, cùng hàng với số ô đã dùng. */
+.ae-inv2__zen {
+  font-family: var(--font-mono);
+  font-size: calc(11 * var(--u));
+  color: var(--gold-400);
+}
+
+/* Lưới trang bị: 6 cột theo bản vẽ. */
+.ae-equip-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: calc(4 * var(--u));
+}
+
+/* Đường phân định khay trang bị với hòm đồ: nét chìm hai vạch, đủ rõ để thấy
+   ngay hai khu là hai phần khác nhau. */
+.ae-inv__divider {
+  height: calc(3 * var(--u));
+  margin: 0;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(216, 180, 110, 0.42) 18%,
+      rgba(216, 180, 110, 0.42) 82%,
+      transparent
+    )
+    0 0 / 100% 1px no-repeat,
+    linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.85) 18%, rgba(0, 0, 0, 0.85) 82%, transparent)
+    0 calc(2 * var(--u)) / 100% 1px no-repeat;
+}
+
+/* ---- hàng chân hòm đồ: chồng tiền + ô tiền + hai ô chờ ----
+   Bố cục theo đúng khay dưới trong ảnh mẫu (inventory-BOT.png): chồng tiền
+   vàng bên trái, một ô rộng ghi số Zen, rồi hai ô hẹp còn để trống.
+   Chồng tiền là ảnh CẮT TỪ CHÍNH ẢNH MẪU (tools/make-inv.py), không vẽ lại. */
+
+.ae-invfoot {
+  display: flex;
+  align-items: center;
+  gap: calc(6 * var(--u));
+}
+
+.ae-invfoot__coin {
+  width: calc(30 * var(--u));
+  height: calc(32 * var(--u));
+  flex: none;
+  object-fit: contain;
+  filter: drop-shadow(0 0 calc(5 * var(--u)) rgba(255, 200, 90, 0.4));
+}
+
+.ae-invfoot__field {
+  height: calc(26 * var(--u));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(3 * var(--u));
+  border: 1px solid rgba(150, 126, 82, 0.4);
+  background: linear-gradient(180deg, rgba(20, 18, 24, 0.96), rgba(10, 9, 13, 0.96));
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.8),
+    inset 0 calc(1 * var(--u)) calc(4 * var(--u)) rgba(0, 0, 0, 0.65);
+}
+
+.ae-invfoot__field--zen {
+  flex: 3;
+  font-family: var(--font-mono);
+  font-size: calc(12 * var(--u));
+  color: var(--gold-300);
+  letter-spacing: 0.04em;
+}
+
+.ae-invfoot__field--use {
+  flex: 2;
+  font-family: var(--font-mono);
+  font-size: calc(10 * var(--u));
+  color: var(--ink-300);
+}
+
+.ae-invfoot__field--use b {
+  color: var(--gold-400);
+}
+
+.ae-invfoot__field--ph {
+  flex: 2;
+  font-size: calc(8 * var(--u));
+  letter-spacing: 0.18em;
+  color: var(--ink-700);
+}
+
+/* ---- ba tab khoang túi ---- */
+
+.ae-invtabs {
+  display: flex;
+  gap: calc(4 * var(--u));
+  margin-bottom: calc(-6 * var(--u));
+}
+
+.ae-invtab {
+  flex: 1;
+  height: calc(22 * var(--u));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: calc(3 * var(--u)) calc(3 * var(--u)) 0 0;
+  border: 1px solid rgba(150, 126, 82, 0.32);
+  border-bottom: none;
+  background: linear-gradient(180deg, rgba(26, 22, 30, 0.92), rgba(12, 10, 15, 0.92));
+  font-family: var(--font-display);
+  font-size: calc(9 * var(--u));
+  letter-spacing: 0.14em;
+  color: var(--ink-500);
+}
+
+.ae-invtab--on {
+  border-color: var(--gold-700);
+  background: linear-gradient(180deg, rgba(64, 46, 24, 0.85), rgba(24, 18, 12, 0.95));
+  color: var(--gold-300);
+  box-shadow: inset 0 1px 0 rgba(255, 226, 168, 0.24);
+}
+
+.ae-invtab--locked {
+  color: var(--ink-700);
+}
+
+/* Khoang chưa mở: lưới mờ đi, ghi rõ chưa mở — không giả vờ có dữ liệu. */
+.ae-bag__items--off {
+  display: none;
+}
+
+.ae-bag__lock {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(4 * var(--u));
+  background: rgba(4, 4, 8, 0.72);
+  font-family: var(--font-display);
+  font-size: calc(11 * var(--u));
+  letter-spacing: 0.2em;
+  color: var(--ink-500);
+}
+
+/* Túi đồ MU là lưới 8 cột × 8 hàng. Bản vẽ dùng 6 cột cho lưới rút gọn;
+   lưới thật đặt --inv-cols khi dựng để khớp số cột của Store. */
+.ae-bag-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--inv-cols, 8), 1fr);
+  gap: calc(3 * var(--u));
+}
+
+.ae-inv__hint {
+  margin-top: calc(9 * var(--u));
+  font-size: calc(9.5 * var(--u));
+  color: var(--ink-500);
+  text-align: center;
+}
+
+/* ---- tab KỸ NĂNG ---- */
+
+.ae-skilllist {
+  display: flex;
+  flex-direction: column;
+  gap: calc(7 * var(--u));
+}
+
+.ae-skillrow {
+  display: flex;
+  gap: calc(10 * var(--u));
+  align-items: center;
+  padding: calc(7 * var(--u)) calc(8 * var(--u));
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(216, 180, 110, 0.12);
+  border-radius: calc(3 * var(--u));
+  cursor: pointer;
+}
+
+.ae-skillrow--active {
+  border-color: var(--gold-500);
+  background: rgba(60, 44, 14, 0.32);
+}
+
+.ae-skillrow__icon {
+  width: calc(36 * var(--u));
+  height: calc(36 * var(--u));
+  flex: none;
+}
+
+.ae-skillrow__main {
+  flex: 1;
+  min-width: 0;
+}
+
+.ae-skillrow__name {
+  font-family: var(--font-display);
+  font-size: calc(11.5 * var(--u));
+  color: var(--gold-200);
+}
+
+.ae-skillrow__desc {
+  margin-top: calc(1 * var(--u));
+  font-size: calc(9 * var(--u));
+  color: var(--ink-400);
+}
+
+.ae-skillrow__meta {
+  text-align: right;
+  flex: none;
+}
+
+.ae-skillrow__lvl {
+  font-family: var(--font-mono);
+  font-size: calc(10 * var(--u));
+  color: var(--gold-400);
+}
+
+.ae-skillrow__mp {
+  font-size: calc(8.5 * var(--u));
+  color: #5f86a8;
+}
+
+/* ---- tab NHIỆM VỤ / BẢN ĐỒ ---- */
+
+.ae-questlist {
+  display: flex;
+  flex-direction: column;
+  gap: calc(8 * var(--u));
+}
+
+.ae-quest {
+  padding: calc(8 * var(--u)) calc(10 * var(--u));
+  background: rgba(0, 0, 0, 0.28);
+  border-left: calc(3 * var(--u)) solid var(--gold-500);
+  border-radius: calc(2 * var(--u));
+  cursor: pointer;
+}
+
+.ae-quest--active {
+  background: rgba(60, 44, 14, 0.28);
+  border-left-color: #e0a83a;
+}
+
+.ae-quest--locked {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.ae-quest__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: calc(8 * var(--u));
+}
+
+.ae-quest__name {
+  font-family: var(--font-display);
+  font-size: calc(11.5 * var(--u));
+  color: var(--gold-200);
+}
+
+.ae-quest__prog {
+  font-family: var(--font-mono);
+  font-size: calc(9.5 * var(--u));
+  color: var(--gold-500);
+}
+
+.ae-quest .ae-meter {
+  margin-top: calc(4 * var(--u));
+  height: calc(3 * var(--u));
+}
+
+.ae-quest__reward {
+  margin-top: calc(5 * var(--u));
+  font-size: calc(9 * var(--u));
+  color: var(--ink-400);
+}
+
+/* ---- tab HỆ THỐNG ---- */
+
+.ae-toggles {
+  display: flex;
+  flex-direction: column;
+  gap: calc(2 * var(--u));
+}
+
+.ae-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(9 * var(--u)) calc(4 * var(--u));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+}
+
+.ae-toggle__label {
+  font-size: calc(11 * var(--u));
+  color: var(--ink-200);
+}
+
+.ae-toggle__switch {
+  position: relative;
+  width: calc(42 * var(--u));
+  height: calc(20 * var(--u));
+  flex: none;
+  border-radius: calc(11 * var(--u));
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid #3a3428;
+  transition: background 0.2s var(--ease-out), border-color 0.2s var(--ease-out);
+}
+
+.ae-toggle__knob {
+  position: absolute;
+  top: calc(2 * var(--u));
+  left: calc(3 * var(--u));
+  width: calc(14 * var(--u));
+  height: calc(14 * var(--u));
+  border-radius: 50%;
+  background: var(--gold-200);
+  transition: left 0.2s var(--ease-out);
+}
+
+.ae-toggle--on .ae-toggle__switch {
+  background: linear-gradient(180deg, var(--lime-700), #1c2a10);
+  border-color: #6f9c3a;
+}
+
+.ae-toggle--on .ae-toggle__knob {
+  left: calc(24 * var(--u));
+}
+
+.ae-modal__quit {
+  margin-top: calc(14 * var(--u));
+  width: 100%;
+}
+
+/* ================================================================ NẠP
+   ========================================================================= */
+
+.ae-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(14 * var(--u));
+  background: radial-gradient(70% 60% at 50% 40%, #141119 0%, #04040a 72%);
+  pointer-events: auto;
+}
+
+.ae-loading[hidden] {
+  display: none !important;
+}
+
+.ae-loading__mark {
+  width: calc(96 * var(--u));
+  height: calc(96 * var(--u));
+  border-radius: 50%;
+  border: calc(2 * var(--u)) solid transparent;
+  border-top-color: var(--gold-400);
+  border-right-color: rgba(224, 196, 124, 0.28);
+  animation: ae-spin 1.15s linear infinite;
+}
+
+.ae-loading__text {
+  font-family: var(--font-display);
+  font-size: calc(12 * var(--u));
+  letter-spacing: 0.2em;
+  color: var(--gold-300);
+  text-align: center;
+  padding: 0 calc(24 * var(--u));
+}
+
+.ae-loading__hint {
+  font-size: calc(9.5 * var(--u));
+  letter-spacing: 0.08em;
+  color: var(--ink-500);
+  text-align: center;
+  padding: 0 calc(30 * var(--u));
+  line-height: 1.6;
+}
+
+.ae-loading__track {
+  width: calc(220 * var(--u));
+  height: calc(4 * var(--u));
+  border-radius: calc(2 * var(--u));
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(216, 180, 110, 0.2);
+  overflow: hidden;
+}
+
+.ae-loading__fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #6d4a12, #e0a83a 60%, #f7e4a8);
+  transition: width 0.3s var(--ease-out);
+}
+
+/* Báo lỗi nạp — hiện nguyên văn để gỡ rối, không nuốt lỗi. */
+.ae-fatal {
+  position: absolute;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(10 * var(--u));
+  padding: calc(28 * var(--u));
+  background: rgba(4, 3, 6, 0.96);
+  pointer-events: auto;
+  text-align: center;
+}
+
+.ae-fatal[hidden] {
+  display: none !important;
+}
+
+.ae-fatal__title {
+  font-family: var(--font-display);
+  font-size: calc(15 * var(--u));
+  letter-spacing: 0.16em;
+  color: #ff8f6a;
+}
+
+.ae-fatal__msg {
+  font-family: var(--font-mono);
+  font-size: calc(10 * var(--u));
+  line-height: 1.6;
+  color: var(--ink-200);
+  /* 70%: thông báo "không tìm thấy kho" dài hơn hẳn một dòng stack, cắt mất
+     đoạn hướng dẫn sửa thì báo lỗi thành vô dụng. */
+  max-height: 70%;
+  overflow: auto;
+  text-align: left;
+  white-space: pre-wrap;
+  word-break: break-word;
+  text-align: left;
+  width: 100%;
+  padding: calc(10 * var(--u));
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--gold-800);
+  border-radius: calc(3 * var(--u));
+}
+
+/* ================================================================ HOẠT HÌNH
+   ========================================================================= */
+
+@keyframes ae-float {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 4px) scale(0.8);
+  }
+  18% {
+    opacity: 1;
+    transform: translate(-50%, -8px) scale(1.08);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -44px) scale(0.95);
+  }
+}
+
+@keyframes ae-breathe {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes ae-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ae-pin {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ae-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Người dùng tắt hiệu ứng chuyển động thì tôn trọng. */
+@media (prefers-reduced-motion: reduce) {
+  .ae *,
+  .ae *::before,
+  .ae *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ================================================================ CUỘN
+   ========================================================================= */
+
+.ae ::-webkit-scrollbar {
+  width: calc(3 * var(--u));
+}
+
+.ae ::-webkit-scrollbar-thumb {
+  background: #5a4a2a;
+  border-radius: calc(3 * var(--u));
+}
+
+.ae ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ================================================================ NGANG
+   Trò chơi thiết kế cho màn dọc. Xoay ngang thì che và nhắc xoay lại,
+   thay vì để giao diện vỡ.
+   ========================================================================= */
+
+.ae-rotate {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(12 * var(--u));
+  background: var(--bg-void);
+  pointer-events: auto;
+  text-align: center;
+  padding: calc(24 * var(--u));
+}
+
+.ae-rotate__glyph {
+  font-size: calc(40 * var(--u));
+  color: var(--gold-400);
+  animation: ae-breathe 2.4s ease-in-out infinite;
+}
+
+.ae-rotate__text {
+  font-family: var(--font-display);
+  font-size: calc(13 * var(--u));
+  letter-spacing: 0.18em;
+  color: var(--gold-300);
+}
+
+@media (orientation: landscape) and (max-height: 520px) {
+  .ae-rotate {
+    display: flex;
+  }
+}
+
+/* ---- Icon vật phẩm / kỹ năng trong năm ô của khung bar ---- */
+
+.ae-skill__icon {
+  width: 84%;
+  height: 84%;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.8));
+}
+
+.ae-skill__count {
+  position: absolute;
+  right: calc(2 * var(--u));
+  bottom: calc(1 * var(--u));
+  font-family: var(--font-mono);
+  font-size: calc(8 * var(--u));
+  color: var(--gold-200);
+  text-shadow: 0 1px 2px #000;
+  pointer-events: none;
+}
+
+.ae-skill--empty {
+  box-shadow: none;
+}
+
+/* ============================================================================
+   HÒM ĐỒ — cấu trúc MU (12 ô trang bị + lưới 8×8), đồ hoạ kiểu ARPG hiện đại
+   ----------------------------------------------------------------------------
+   Món đồ trải đúng số ô nó chiếm (lấy từ items.json của engine: giáp 2×3,
+   mũ 2×2, kiếm 1×3, cánh 5×3…). Nền ô là kính mờ tô theo CẤP CƯỜNG HOÁ, bảy
+   bậc dùng chung thang với normalizeItemLvl(). Tất cả bằng CSS, không thêm ảnh.
+   ========================================================================== */
+
+.ae-inv2 {
+  --cell: calc(37 * var(--u));
+  --gap: calc(1.5 * var(--u));
+  /* Viền tóc: trên màn Retina DPR3 thì 0,5px CSS vẫn ra 1–2 điểm ảnh thật,
+     đủ thấy mà không thành khung. Trước đây 1px cộng thêm đường sáng trắng
+     bên trong nên mỗi món trông như có hai lớp viền chồng nhau. */
+  --vien-item: 0.5px;
+  /* Icon MU chừa nhiều viền trong suốt quanh hình; phóng nhẹ cho đầy ô mà
+     vẫn không chạm mép. */
+  --icon-zoom: 1.12;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: calc(6 * var(--u));
+}
+
+/* ---- ô kính dùng chung cho cả paper doll lẫn túi đồ ---- */
+
+.ae-cell,
+.ae-item {
+  position: relative;
+  border-radius: calc(3 * var(--u));
+  border: var(--vien-item) solid rgb(var(--tint, 176 180 190) / 0.42);
+  background:
+    linear-gradient(
+      160deg,
+      rgb(var(--tint, 176 180 190) / 0.38) 0%,
+      rgb(var(--tint, 176 180 190) / 0.16) 46%,
+      rgba(4, 4, 8, 0.62) 100%
+    ),
+    radial-gradient(
+      120% 80% at 28% 10%,
+      rgba(255, 255, 255, 0.13),
+      transparent 60%
+    ),
+    /* Lớp đục dưới cùng: món đồ nằm ĐÈ lên lưới ô nền, để trong suốt thì
+       đường kẻ ô hằn xuyên qua món, nhìn như lỗi. */ linear-gradient(#0b0a0e, #0b0a0e);
+  box-shadow:
+    inset 0 calc(-1 * var(--u)) calc(3 * var(--u)) rgba(0, 0, 0, 0.45),
+    inset 0 0 calc(9 * var(--u)) rgba(0, 0, 0, 0.36);
+}
+
+/* Ô nền trống: viền đồng mảnh trên đá tối, đúng kiểu khay đồ trong ảnh mẫu.
+   Ô trống phải lõm và tối hẳn, nếu không món +0 (không có nhãn "+N" theo quy
+   ước MU) sẽ trông y hệt ô rỗng.
+   KHÔNG dùng backdrop-filter ở đây: 64 ô mỗi ô một lớp lọc nền là gánh nặng
+   thật trên máy di động, mà nền panel vốn đục nên nhìn cũng chẳng khác gì. */
+.ae-cell {
+  --tint: 96 100 112;
+  border-radius: calc(2 * var(--u));
+  border: var(--vien-item) solid rgba(150, 126, 82, 0.24);
+  background: linear-gradient(
+    158deg,
+    rgba(26, 24, 30, 0.92) 0%,
+    rgba(12, 11, 15, 0.96) 58%,
+    rgba(20, 18, 24, 0.92) 100%
+  );
+  box-shadow:
+    inset 0 0 0 var(--vien-item) rgba(0, 0, 0, 0.7),
+    inset 0 calc(1 * var(--u)) calc(4 * var(--u)) rgba(0, 0, 0, 0.6);
+}
+
+/* Bảy bậc cường hoá. Bậc càng cao, kính càng ấm và sáng. */
+.ae-item[data-tier='1'] {
+  --tint: 202 206 218;
+  border-color: rgb(202 206 218 / 0.48);
+}
+.ae-item[data-tier='2'] { --tint: 140 176 210; }
+.ae-item[data-tier='3'] { --tint: 130 200 175; }
+.ae-item[data-tier='4'] { --tint: 178 205 130; }
+.ae-item[data-tier='5'] { --tint: 224 196 118; }
+.ae-item[data-tier='6'] {
+  --tint: 226 156 96;
+  box-shadow:
+    inset 0 0 calc(9 * var(--u)) rgba(0, 0, 0, 0.42),
+    0 0 calc(5 * var(--u)) rgb(226 156 96 / 0.28);
+}
+.ae-item[data-tier='7'] {
+  --tint: 214 126 168;
+  box-shadow:
+    inset 0 0 calc(10 * var(--u)) rgba(0, 0, 0, 0.4),
+    0 0 calc(8 * var(--u)) rgb(214 126 168 / 0.4);
+}
+
+/* Hai cờ thật còn lại của engine, thể hiện bằng dấu phụ chứ không đổi nền. */
+.ae-item--exc {
+  border-color: rgba(120, 226, 178, 0.55);
+}
+
+.ae-item--skill::after {
+  content: '';
+  position: absolute;
+  top: calc(2 * var(--u));
+  right: calc(2 * var(--u));
+  width: calc(5 * var(--u));
+  height: calc(5 * var(--u));
+  border-radius: 50%;
+  background: #f0a83a;
+  box-shadow: 0 0 calc(4 * var(--u)) rgba(240, 168, 58, 0.9);
+}
+
+.ae-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: filter 0.14s var(--ease-out);
+}
+
+.ae-item:active {
+  filter: brightness(1.35);
+}
+
+/* Icon giữ canvas gốc: tỉ lệ canvas khớp số ô nên đặt phủ kín là vừa khít.
+   Phóng thêm --icon-zoom bằng transform chứ không nới width/height, để lưới
+   ô không bị đẩy lệch. */
+.ae-item__icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scale(var(--icon-zoom, 1));
+  pointer-events: none;
+}
+
+.ae-item__lvl {
+  position: absolute;
+  right: calc(2 * var(--u));
+  bottom: calc(1 * var(--u));
+  font-family: var(--font-mono);
+  font-size: calc(8 * var(--u));
+  color: var(--gold-200);
+  text-shadow: 0 1px 2px #000;
+  pointer-events: none;
+}
+
+/* ---- khay trang bị: ghép ảnh art, 12 ô trong suốt phủ lên ----
+   Khay này KHÔNG dựng bằng CSS: art có chạm khắc và hình mờ từng loại đồ,
+   vẽ lại bằng gradient là mất hết. Ảnh giữ đúng tỉ lệ gốc 1024/1008, mọi ô
+   định vị bằng % nên co giãn theo bề ngang panel mà không lệch. */
+
+.ae-doll {
+  position: relative;
+  aspect-ratio: 1024 / 1008;
+  border-radius: calc(3 * var(--u));
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.8),
+    inset 0 0 calc(14 * var(--u)) rgba(0, 0, 0, 0.55);
+}
+
+.ae-doll__art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Ô rỗng để nguyên art nhìn qua; chỉ viền sáng lên nhẹ khi có đồ. */
+.ae-doll__slot {
+  position: absolute;
+  border-radius: calc(2 * var(--u));
+}
+
+.ae-doll__slot.has-item {
+  box-shadow: 0 0 calc(6 * var(--u)) rgba(224, 196, 124, 0.35);
+}
+
+/* ---- túi đồ: lớp nền 64 ô + lớp món đồ phủ lên, cùng một lưới ----
+   Bề ngang dùng được chỉ 302u (panel 394u trừ hai mép khung 46u), nên 8 cột
+   36u + 7 khe 1,5u = 298,5u là cỡ ô LỚN NHẤT còn vừa. Muốn to nữa thì phải
+   bớt cột, mà 8 cột là cấu trúc túi thật của MU (INV.RowSize). */
+
+.ae-bag {
+  position: relative;
+  display: grid;
+  padding: calc(6 * var(--u));
+  border-radius: calc(4 * var(--u));
+  /* Thành khay: viền ngoài tối + gờ vát sáng + lòng khay lõm sâu. Ba lớp đó
+     mới cho cảm giác dày, chứ một đường viền to chỉ ăn mất chỗ chứa ô. */
+  border: calc(1.5 * var(--u)) solid rgba(58, 50, 38, 0.92);
+  background:
+    radial-gradient(120% 90% at 30% 8%, rgba(72, 62, 48, 0.3), transparent 62%),
+    linear-gradient(170deg, #16141a 0%, #0d0c11 52%, #131118 100%);
+  box-shadow:
+    inset 0 0 0 var(--vien-item) rgba(0, 0, 0, 0.9),
+    inset 0 0 0 calc(2.5 * var(--u)) rgba(26, 22, 17, 0.95),
+    inset 0 calc(2.5 * var(--u)) 0 calc(2.5 * var(--u)) rgba(152, 126, 80, 0.14),
+    inset 0 0 calc(20 * var(--u)) rgba(0, 0, 0, 0.68),
+    0 calc(1 * var(--u)) calc(4 * var(--u)) rgba(0, 0, 0, 0.55);
+}
+
+.ae-bag__grid,
+.ae-bag__items {
+  grid-area: 1 / 1;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, var(--cell));
+  gap: var(--gap);
+}
+
+.ae-bag__items {
+  pointer-events: none;
+}
+
+.ae-bag__items > * {
+  pointer-events: auto;
+}
+
+/* Dấu ô đích khi đang kéo. */
+.ae-bag__marker {
+  border-radius: calc(3 * var(--u));
+  border: 1px solid rgba(150, 226, 150, 0.75);
+  background: rgba(90, 200, 110, 0.18);
+  box-shadow: inset 0 0 calc(10 * var(--u)) rgba(90, 200, 110, 0.28);
+  pointer-events: none;
+}
+
+.ae-bag__marker--no {
+  border-color: rgba(226, 120, 110, 0.75);
+  background: rgba(200, 70, 60, 0.18);
+  box-shadow: inset 0 0 calc(10 * var(--u)) rgba(200, 70, 60, 0.28);
+}
+
+/* Món đang được kéo: bản gốc mờ đi, bản ma bám theo ngón tay.
+   touch-action:none là bắt buộc — thiếu nó Safari coi cú trượt là cuộn trang
+   và nuốt luôn thao tác kéo. */
+.ae-bag__items .ae-item {
+  touch-action: none;
+}
+
+.ae-item--dragging {
+  opacity: 0.25;
+}
+
+.ae-item--ghost {
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0.92;
+  filter: drop-shadow(0 calc(4 * var(--u)) calc(8 * var(--u)) rgba(0, 0, 0, 0.7));
+}
+
+.ae-inv2__foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: calc(9.5 * var(--u));
+  color: var(--ink-400);
+}
+
+.ae-inv2__foot b {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--gold-400);
+}
+
+/* Chú giải bảy bậc cường hoá. */
+.ae-tierkey {
+  display: flex;
+  gap: calc(3 * var(--u));
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: calc(8 * var(--u));
+  color: var(--ink-600);
+}
+
+.ae-tierkey__chip {
+  width: calc(13 * var(--u));
+  height: calc(9 * var(--u));
+  border-radius: calc(2 * var(--u));
+  border: 1px solid rgb(var(--tint) / 0.5);
+  background: linear-gradient(
+    160deg,
+    rgb(var(--tint) / 0.35),
+    rgba(4, 4, 8, 0.5)
+  );
+}
+
+/* ============================================================================
+   BẢN ĐỒ LỚN + BẢNG DỊCH CHUYỂN
+   ----------------------------------------------------------------------------
+   Nền là TerrainLight.jpg của chính bản đồ (256×256, nhìn từ trên xuống, do
+   engine dùng để đổ sáng địa hình). Ảnh gốc chói và bệt trắng nên phải lọc lại
+   mới đọc được. Lưới toạ độ trùng lưới 0…255 của MU nên chấm người chơi khớp.
+   ========================================================================== */
+
+.ae-warpview {
+  display: flex;
+  flex-direction: column;
+  gap: calc(9 * var(--u));
+}
+
+.ae-bigmap {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: calc(4 * var(--u));
+  overflow: hidden;
+  border: 1px solid var(--gold-800);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.85),
+    inset 0 0 calc(26 * var(--u)) rgba(0, 0, 0, 0.7);
+}
+
+.ae-bigmap__land {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(0.35) sepia(0.6) brightness(0.42) contrast(1.5) saturate(0.85);
+}
+
+.ae-bigmap__grid {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 calc(12.5% - 1px),
+      rgba(216, 180, 110, 0.12) calc(12.5% - 1px) 12.5%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 calc(12.5% - 1px),
+      rgba(216, 180, 110, 0.12) calc(12.5% - 1px) 12.5%
+    );
+}
+
+.ae-bigmap__self {
+  position: absolute;
+  width: calc(10 * var(--u));
+  height: calc(10 * var(--u));
+  margin: calc(-5 * var(--u)) 0 0 calc(-5 * var(--u));
+  border-radius: 50%;
+  background: var(--gold-100);
+  box-shadow: 0 0 calc(12 * var(--u)) var(--gold-400);
+  transition: left 0.3s linear, top 0.3s linear;
+}
+
+.ae-bigmap__cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: calc(14 * var(--u)) calc(10 * var(--u)) calc(7 * var(--u));
+  text-align: center;
+  background: linear-gradient(180deg, transparent, rgba(3, 3, 8, 0.9) 62%);
+}
+
+.ae-bigmap__name {
+  font-family: var(--font-display);
+  font-size: calc(13 * var(--u));
+  letter-spacing: 0.06em;
+  color: var(--gold-200);
+}
+
+.ae-bigmap__coord {
+  font-family: var(--font-mono);
+  font-size: calc(9 * var(--u));
+  letter-spacing: 0.12em;
+  color: var(--ink-300);
+}
+
+/* Bảng chọn điểm đến — hai cột cho gọn màn dọc. */
+.ae-warpgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(6 * var(--u));
+}
+
+.ae-warp {
+  position: relative;
+  padding: calc(7 * var(--u)) calc(9 * var(--u));
+  border-radius: calc(3 * var(--u));
+  cursor: pointer;
+  border: 1px solid rgba(150, 126, 82, 0.34);
+  background: linear-gradient(160deg, rgba(26, 22, 30, 0.94), rgba(11, 10, 14, 0.96));
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.8);
+}
+
+.ae-warp__name {
+  font-family: var(--font-display);
+  font-size: calc(11 * var(--u));
+  color: var(--gold-300);
+}
+
+.ae-warp__meta {
+  margin-top: calc(1 * var(--u));
+  font-size: calc(8 * var(--u));
+  color: var(--ink-500);
+}
+
+.ae-warp__state {
+  display: block;
+  margin-top: calc(3 * var(--u));
+  font-family: var(--font-mono);
+  font-size: calc(7.5 * var(--u));
+  letter-spacing: 0.08em;
+  color: var(--lime-500);
+}
+
+.ae-warp--locked {
+  opacity: 0.5;
+}
+
+.ae-warp--locked .ae-warp__state {
+  color: var(--ink-600);
+}
+
+.ae-warp--here {
+  border-color: var(--gold-500);
+  box-shadow: inset 0 0 calc(12 * var(--u)) rgba(224, 196, 124, 0.18);
+}
+
+.ae-warp--here .ae-warp__state {
+  color: var(--gold-300);
+}
+
+/* ---- hàng chọn một-trong-nhiều (góc camera, độ nét, giới hạn khung) ---- */
+
+.ae-pick {
+  margin-bottom: calc(10 * var(--u));
+}
+
+.ae-pick__label {
+  margin-bottom: calc(5 * var(--u));
+  font-size: calc(9.5 * var(--u));
+  letter-spacing: 0.1em;
+  color: var(--ink-400);
+}
+
+.ae-pick__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(5 * var(--u));
+}
+
+.ae-pick__btn {
+  padding: calc(6 * var(--u)) calc(10 * var(--u));
+  border-radius: calc(3 * var(--u));
+  cursor: pointer;
+  border: 1px solid rgba(150, 126, 82, 0.34);
+  background: linear-gradient(160deg, rgba(26, 22, 30, 0.94), rgba(11, 10, 14, 0.96));
+  font-size: calc(9.5 * var(--u));
+  color: var(--ink-300);
+}
+
+.ae-pick__btn--on {
+  border-color: var(--gold-500);
+  background: linear-gradient(160deg, rgba(66, 48, 24, 0.9), rgba(26, 19, 12, 0.96));
+  color: var(--gold-200);
+  box-shadow: inset 0 1px 0 rgba(255, 226, 168, 0.22);
+}
+
+.ae-perf {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: calc(12 * var(--u));
+  padding: calc(7 * var(--u)) calc(10 * var(--u));
+  border-radius: calc(3 * var(--u));
+  border: 1px solid var(--gold-800);
+  background: rgba(8, 7, 10, 0.72);
+  font-size: calc(9.5 * var(--u));
+  color: var(--ink-400);
+}
+
+.ae-perf__fps {
+  font-family: var(--font-mono);
+  font-size: calc(13 * var(--u));
+  color: var(--gold-300);
+}
+
+/* ===================================================================
+   19. ĐỒ ĐẠC: MÀU HẠNG, BẢNG CHÚ GIẢI, Ô TUỲ CHỌN, XƯỞNG RÈN
+   =================================================================== */
+
+/* Màu tên theo hạng món, đúng nếp MU:
+     cánh       vàng
+     đồ Thần    tím
+     Xuất sắc   xanh lá
+     có lỗ khảm lam ngọc
+     thường     ngà
+   Bốn màu này chỉ dùng cho CHỮ TÊN và viền góc ô, không tô cả nền — tô nền là
+   lưới túi đồ loang lổ bốn màu. */
+:root {
+  --rank-wing: #ffd75e;
+  --rank-divine: #c08cff;
+  --rank-excellent: #6ee787;
+  --rank-socket: #5ad0d0;
+  --rank-normal: #e6dcc4;
+}
+
+[data-rank='wing'] { --rank: var(--rank-wing); }
+[data-rank='divine'] { --rank: var(--rank-divine); }
+[data-rank='excellent'] { --rank: var(--rank-excellent); }
+[data-rank='socket'] { --rank: var(--rank-socket); }
+[data-rank='normal'] { --rank: var(--rank-normal); }
+
+/* Ô đồ mang hạng khác thường thì thêm một vệt sáng ở góc trên trái, đủ để
+   nhận ra khi lướt mắt mà không phá nền kính theo cấp cường hoá. */
+.ae-item[data-rank]:not([data-rank='normal'])::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc(9 * var(--u));
+  height: calc(9 * var(--u));
+  pointer-events: none;
+  background: linear-gradient(135deg, var(--rank) 0%, transparent 62%);
+  opacity: 0.9;
+}
+
+/* ---------------------------------------------------------- chú giải */
+
+.ae-tip {
+  position: fixed;
+  z-index: 90;
+  width: calc(200 * var(--u));
+  max-width: 70vw;
+  padding: calc(8 * var(--u)) calc(9 * var(--u));
+  border-radius: calc(3 * var(--u));
+  border: 1px solid rgba(150, 128, 84, 0.45);
+  background: linear-gradient(180deg, rgba(14, 12, 9, 0.97), rgba(7, 6, 5, 0.97));
+  box-shadow: 0 calc(6 * var(--u)) calc(18 * var(--u)) rgba(0, 0, 0, 0.75);
+  pointer-events: none;
+}
+
+.ae-tip[hidden] { display: none !important; }
+
+.ae-tip__name {
+  font-family: var(--font-display);
+  font-size: calc(11.5 * var(--u));
+  letter-spacing: 0.04em;
+  color: var(--rank, var(--rank-normal));
+  text-align: center;
+  padding-bottom: calc(5 * var(--u));
+  border-bottom: 1px solid rgba(150, 128, 84, 0.25);
+}
+
+.ae-tip__block {
+  margin-top: calc(5 * var(--u));
+  padding-top: calc(4 * var(--u));
+}
+
+.ae-tip__block + .ae-tip__block {
+  border-top: 1px solid rgba(150, 128, 84, 0.16);
+}
+
+.ae-tip__head {
+  font-size: calc(8 * var(--u));
+  letter-spacing: 0.14em;
+  color: var(--gold-600);
+  margin-bottom: calc(3 * var(--u));
+}
+
+.ae-tip__row {
+  display: flex;
+  justify-content: space-between;
+  gap: calc(8 * var(--u));
+  font-size: calc(9 * var(--u));
+  line-height: 1.5;
+}
+
+.ae-tip__k { color: var(--ink-500); }
+.ae-tip__v { color: var(--ink-100); font-family: var(--font-mono); }
+
+.ae-tip__block--req .ae-tip__v { color: var(--ink-300); }
+.ae-tip__block--socket .ae-tip__v { color: var(--rank-socket); font-family: var(--font-body); }
+.ae-tip__row--empty .ae-tip__v { color: var(--ink-700); }
+
+.ae-tip__tag {
+  margin-top: calc(5 * var(--u));
+  font-size: calc(8.5 * var(--u));
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: var(--rank, var(--rank-normal));
+}
+
+/* ------------------------------------------- hai ô tuỳ chọn dưới ô quần */
+
+/* Nền hộp là phần "còn lại": đen mờ, chữ tím. Chỉ những dòng CÓ giá trị thật
+   mới được tô lam đậm + chữ xanh ngọc, nên mắt bắt ngay chỗ có thông tin mà
+   không phải đọc hết hộp. */
+.ae-optbox {
+  --opt-tim: #b58cff;
+  --opt-ngoc: #74f0dc;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: calc(2 * var(--u));
+  padding: calc(4 * var(--u)) calc(5 * var(--u));
+  border-radius: calc(2 * var(--u));
+  border: var(--vien-item, 0.5px) solid rgba(110, 88, 160, 0.34);
+  background: linear-gradient(180deg, rgba(9, 7, 14, 0.86), rgba(4, 3, 7, 0.9));
+  overflow: hidden;
+}
+
+.ae-optbox__head {
+  font-size: calc(7 * var(--u));
+  letter-spacing: 0.1em;
+  color: var(--opt-tim);
+  white-space: nowrap;
+}
+
+.ae-optbox__body {
+  display: flex;
+  flex-direction: column;
+  gap: calc(1 * var(--u));
+  overflow: hidden;
+}
+
+/* Dòng có giá trị: dải lam đậm, chữ xanh ngọc. */
+.ae-optbox__line {
+  font-size: calc(7.5 * var(--u));
+  color: var(--opt-ngoc);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: calc(0.5 * var(--u)) calc(2 * var(--u));
+  margin: 0 calc(-1 * var(--u));
+  border-radius: calc(1.5 * var(--u));
+  background: linear-gradient(
+    180deg,
+    rgba(22, 52, 122, 0.92) 0%,
+    rgba(13, 32, 84, 0.95) 100%
+  );
+  box-shadow: inset 0 0 0 var(--vien-item, 0.5px) rgba(96, 150, 240, 0.28);
+}
+
+.ae-optbox__line--on { color: #9dfff0; }
+
+/* Chưa có gì để hiện: vẫn là phần "còn lại" — đen mờ, chữ tím. */
+.ae-optbox__none {
+  font-size: calc(7.5 * var(--u));
+  color: var(--opt-tim);
+  opacity: 0.62;
+  font-style: italic;
+}
+
+.ae-optbox--socket .ae-optbox__line { color: var(--opt-ngoc); }
+
+/* Hai tiêu đề hai sắc tím khác nhau cho dễ phân biệt khi liếc nhanh: ngọc ngả
+   lam (cùng phía với màu ngọc khảm), bộ ngả hồng. Vẫn trong họ tím như đã
+   chốt, chỉ tách sắc độ. Dòng "chưa có gì" ăn theo tiêu đề của hộp mình. */
+.ae-optbox--socket { --opt-tim: #8fa2ff; }
+.ae-optbox--set    { --opt-tim: #dd8cff; }
+
+/* Ô trang bị đang là đích thả trong lúc kéo. */
+.ae-doll__slot--drop {
+  outline: 1px solid var(--gold-400);
+  outline-offset: calc(-1 * var(--u));
+  background: rgba(224, 196, 124, 0.14);
+  border-radius: calc(2 * var(--u));
+}
+
+/* ------------------------------------------------------------ xưởng rèn */
+
+.ae-forge {
+  margin: calc(6 * var(--u)) 0 calc(4 * var(--u));
+  padding: calc(6 * var(--u)) calc(7 * var(--u));
+  border-radius: calc(3 * var(--u));
+  border: 1px solid rgba(150, 128, 84, 0.22);
+  background: linear-gradient(180deg, rgba(24, 20, 14, 0.6), rgba(10, 9, 6, 0.6));
+}
+
+.ae-forge__top {
+  display: flex;
+  align-items: center;
+  gap: calc(6 * var(--u));
+}
+
+.ae-forge__name {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-display);
+  font-size: calc(10 * var(--u));
+  color: var(--rank, var(--ink-500));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ae-forge__btn {
+  flex: none;
+  padding: calc(4 * var(--u)) calc(8 * var(--u));
+  border-radius: calc(2 * var(--u));
+  border: 1px solid var(--gold-700);
+  background: linear-gradient(180deg, #46381c, #221b0d);
+  color: var(--gold-200);
+  font-family: var(--font-display);
+  font-size: calc(8.5 * var(--u));
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.ae-forge__btn:disabled {
+  border-color: rgba(140, 120, 80, 0.25);
+  background: #1a1710;
+  color: var(--ink-700);
+  cursor: default;
+}
+
+.ae-forge__hint {
+  margin-top: calc(4 * var(--u));
+  font-family: var(--font-mono);
+  font-size: calc(7.5 * var(--u));
+  color: var(--ink-500);
+  line-height: 1.5;
+}
+
+.ae-forge__gems {
+  display: flex;
+  gap: calc(4 * var(--u));
+  margin-top: calc(5 * var(--u));
+}
+
+/* Năm viên ngọc tô đúng màu hệ của MU: Hoả đỏ cam, Thuỷ lam, Băng xanh băng,
+   Phong lục, Lôi tím. Màu lấy từ SOCKET_KINDS bên engine qua biến --gem, không
+   chép lại trong CSS để hai nơi khỏi lệch. */
+.ae-forge__gem {
+  flex: 1;
+  padding: calc(4 * var(--u)) 0;
+  border-radius: calc(2 * var(--u));
+  border: 1px solid color-mix(in srgb, var(--gem, #5ad0d0) 55%, transparent);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--gem, #5ad0d0) 18%, #0b0a08),
+    #0b0a08
+  );
+  color: var(--gem, #5ad0d0);
+  font-size: calc(8 * var(--u));
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+.ae-forge__gem:active:not(:disabled) {
+  box-shadow: 0 0 calc(7 * var(--u)) color-mix(in srgb, var(--gem) 60%, transparent);
+}
+
+.ae-forge__gem:disabled {
+  border-color: rgba(140, 120, 80, 0.18);
+  background: #14120d;
+  color: var(--ink-700);
+  cursor: default;
+}
+
+/* ------------------------------------------------- chấm lỗ khảm trên ô đồ */
+
+.ae-item__sockets {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(1.5 * var(--u));
+  display: flex;
+  justify-content: center;
+  gap: calc(2 * var(--u));
+  pointer-events: none;
+}
+
+.ae-item__gem {
+  width: calc(4.5 * var(--u));
+  height: calc(4.5 * var(--u));
+  border-radius: 50%;
+  background: var(--gem, #5ad0d0);
+  box-shadow:
+    0 0 calc(3 * var(--u)) var(--gem, #5ad0d0),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.6);
+}
+
+.ae-item__gem--empty {
+  background: transparent;
+  border: 1px solid rgba(215, 200, 160, 0.5);
+  box-shadow: inset 0 0 calc(2 * var(--u)) rgba(0, 0, 0, 0.8);
+}
+
+/* Chấm hệ ngọc đứng đầu mỗi dòng trong bảng chú giải. */
+.ae-tip__gem {
+  width: calc(6 * var(--u));
+  height: calc(6 * var(--u));
+  flex: none;
+  align-self: center;
+  border-radius: 50%;
+  background: var(--gem, #5ad0d0);
+  box-shadow: 0 0 calc(4 * var(--u)) var(--gem, #5ad0d0);
+}
+
+.ae-tip__gem--empty {
+  background: transparent;
+  border: 1px solid rgba(215, 200, 160, 0.4);
+  box-shadow: none;
+}
+
+.ae-tip__block--socket .ae-tip__row {
+  align-items: center;
+  gap: calc(5 * var(--u));
+}
+
+.ae-tip__block--socket .ae-tip__k { flex: none; }
+.ae-tip__block--socket .ae-tip__v { margin-left: auto; text-align: right; }
+
+/* ------------------------------------------ icon đổi màu theo cấp cường hoá
+   Bốn mốc dưới đây đặt trùng các mốc trong shader cường hoá của engine
+   (src/common/itemMaterial.ts), để món nằm trong hòm đồ ánh lên đúng màu mà
+   nó sẽ ánh khi mặc lên người: +2–4 đỏ, +5–6 lam, +7–8 vàng, +9 vàng đậm,
+   +10 trở lên rực và chạy sáng.
+   Dùng drop-shadow chứ không phủ lớp màu lên trên: icon MU vốn đã đủ chi tiết,
+   phủ màu lên là mất hình. */
+
+.ae-item[data-glow='red'] .ae-item__icon {
+  filter: drop-shadow(0 0 calc(3 * var(--u)) rgba(255, 90, 70, 0.85))
+    saturate(1.15) brightness(1.05);
+}
+
+.ae-item[data-glow='blue'] .ae-item__icon {
+  filter: drop-shadow(0 0 calc(3.5 * var(--u)) rgba(90, 160, 255, 0.9))
+    saturate(1.1) brightness(1.08);
+}
+
+.ae-item[data-glow='gold'] .ae-item__icon {
+  filter: drop-shadow(0 0 calc(4 * var(--u)) rgba(255, 205, 90, 0.9))
+    saturate(1.2) brightness(1.12);
+}
+
+.ae-item[data-glow='gold9'] .ae-item__icon {
+  filter: drop-shadow(0 0 calc(5 * var(--u)) rgba(255, 220, 110, 1))
+    saturate(1.3) brightness(1.18);
+}
+
+/* +10 trở lên: shader engine cho chạy nhiễu sáng, ở đây là nhịp sáng tắt chậm
+   để mắt nhận ra ngay món cực phẩm mà không chói. */
+.ae-item[data-glow='max'] .ae-item__icon {
+  filter: drop-shadow(0 0 calc(6 * var(--u)) rgba(255, 240, 170, 1))
+    saturate(1.4) brightness(1.25);
+  animation: ae-item-flare 1.8s var(--ease-out) infinite alternate;
+}
+
+@keyframes ae-item-flare {
+  from {
+    filter: drop-shadow(0 0 calc(4 * var(--u)) rgba(255, 230, 150, 0.85))
+      saturate(1.3) brightness(1.15);
+  }
+  to {
+    filter: drop-shadow(0 0 calc(9 * var(--u)) rgba(255, 248, 200, 1))
+      saturate(1.5) brightness(1.34);
+  }
+}
+
+/* Đã BỎ hiệu ứng bốc khói theo cấp cường hoá.
+   Thử hai lần: bản một là khối gradient mờ phồng lên (ra sương phủ), bản hai
+   là ba tia mảnh lệch pha (ra cột sáng thẳng đứng). Cả hai đều không ra dáng
+   khói lửa bốc nhẹ, chỉ làm rối ô đồ. Lý do kỹ thuật: khói đọc được là nhờ
+   đường viền cuộn và biến dạng không đều, mà gradient CSS thì luôn trơn và
+   đối xứng — muốn thật phải có sprite sheet hoặc một lớp canvas hạt riêng,
+   không phải thứ nên gánh cho 64 ô cùng lúc trên máy di động.
+   Cấp cường hoá vẫn nhận ra được qua màu nền ô (bảy bậc) và quầng sáng icon
+   (data-glow), hai thứ đó giữ nguyên. */
+
+/* ------------------------------------------------------ lắc nhẹ khi rê vào
+   Chỉ áp cho con trỏ thật (hover): trên cảm ứng không có trạng thái rê, mà
+   :hover trên iOS lại dính lại sau khi chạm nên sẽ lắc mãi. */
+@media (hover: hover) {
+  .ae-item:hover {
+    animation: ae-item-wobble 0.5s ease-in-out infinite;
+    z-index: 3;
+  }
+}
+
+@keyframes ae-item-wobble {
+  0%   { transform: rotate(0deg)    translateX(0); }
+  25%  { transform: rotate(-2.2deg) translateX(calc(-1 * var(--u))); }
+  50%  { transform: rotate(0deg)    translateX(0); }
+  75%  { transform: rotate(2.2deg)  translateX(var(--u)); }
+  100% { transform: rotate(0deg)    translateX(0); }
+}
+
+/* Đang kéo thì thôi lắc, kẻo giật hình theo con trỏ. */
+.ae-item--dragging,
+.ae-item--ghost {
+  animation: none !important;
+}
+
+/* Bớt hiệu ứng chuyển động thì tắt cả lắc lẫn nhịp sáng. */
+.ae-reduce .ae-item:hover,
+.ae-reduce .ae-item[data-glow='max'] .ae-item__icon {
+  animation: none !important;
+}
+
+/* ===================================================================
+   20. BẢNG GỠ LỖI TRONG CÀI ĐẶT
+   Chơi trên điện thoại không mở được bảng điều khiển trình duyệt, nên nhật ký
+   được giữ trong bộ nhớ rồi bày ra đây để bôi đen chép gửi đi.
+   =================================================================== */
+
+.ae-dbg {
+  margin-top: calc(12 * var(--u));
+  padding-top: calc(8 * var(--u));
+  border-top: 1px solid rgba(140, 120, 80, 0.2);
+}
+
+.ae-dbg__row {
+  display: flex;
+  align-items: center;
+  gap: calc(6 * var(--u));
+  margin-top: calc(6 * var(--u));
+}
+
+.ae-dbg__count {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-mono);
+  font-size: calc(8 * var(--u));
+  color: var(--ink-500);
+}
+
+.ae-dbg__count--bad { color: #e0705a; }
+
+/* <textarea> chứ không phải nút chép vào bộ nhớ tạm: trên iOS quyền chép hay
+   bị chặn, còn bôi đen chữ thì lúc nào cũng được. */
+.ae-dbg__box {
+  display: block;
+  width: 100%;
+  height: calc(180 * var(--u));
+  margin-top: calc(6 * var(--u));
+  padding: calc(6 * var(--u));
+  border-radius: calc(2 * var(--u));
+  border: 1px solid rgba(140, 120, 80, 0.3);
+  background: #08070a;
+  color: var(--ink-200);
+  font-family: var(--font-mono);
+  font-size: calc(7.5 * var(--u));
+  line-height: 1.45;
+  white-space: pre;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  resize: none;
+}
+
+.ae-dbg__box[hidden] { display: none !important; }
+
+
+/* ------------------------------------------------------- lò rèn: panel mini
+   Bật lên khi chạm một món. Để absolute nên không cộng vào chiều cao panel
+   Hành trang — chính hàng lò rèn cố định trước đây làm nội dung vượt khung và
+   sinh thanh cuộn, cuộn thì khay trang bị bị thanh tiêu đề cắt ngang. */
+.ae-forge--mini {
+  position: absolute;
+  left: 50%;
+  bottom: calc(46 * var(--u));
+  transform: translateX(-50%);
+  width: calc(292 * var(--u));
+  max-width: 96%;
+  z-index: 14;
+  padding: calc(7 * var(--u)) calc(8 * var(--u));
+  border-radius: calc(4 * var(--u));
+  border: calc(1.5 * var(--u)) solid rgba(58, 50, 38, 0.95);
+  background:
+    radial-gradient(120% 90% at 30% 6%, rgba(78, 66, 48, 0.34), transparent 64%),
+    linear-gradient(170deg, #1a1720 0%, #0e0d12 56%, #15121a 100%);
+  box-shadow:
+    inset 0 0 0 0.5px rgba(0, 0, 0, 0.9),
+    inset 0 calc(2 * var(--u)) 0 calc(2 * var(--u)) rgba(152, 126, 80, 0.16),
+    inset 0 0 calc(18 * var(--u)) rgba(0, 0, 0, 0.6),
+    0 calc(4 * var(--u)) calc(14 * var(--u)) rgba(0, 0, 0, 0.72);
+  animation: ae-forge-len 0.18s var(--ease-out) both;
+}
+
+@keyframes ae-forge-len {
+  from { opacity: 0; transform: translateX(-50%) translateY(calc(6 * var(--u))); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Màn chắn: chạm ra ngoài là đóng. Trong suốt hẳn, chỉ để bắt cú chạm —
+   tối màn hình ở đây là thừa vì panel mini đã nằm ngay trên hòm đồ. */
+.ae-forge__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 13;
+}
+
+.ae-forge__scrim[hidden],
+.ae-forge--mini[hidden] {
+  display: none !important;
+}
+
+.ae-forge__x {
+  flex: none;
+  width: calc(20 * var(--u));
+  height: calc(20 * var(--u));
+  padding: 0;
+  border-radius: calc(2 * var(--u));
+  border: 0.5px solid rgba(150, 128, 84, 0.4);
+  background: rgba(30, 26, 34, 0.9);
+  color: var(--gold-400);
+  font-size: calc(10 * var(--u));
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ae-forge__x:active {
+  background: rgba(58, 48, 36, 0.95);
+}
+
+
+/* ─────────────────── khối ĐỒ XUẤT SẮC trong bảng thông tin ───────────────────
+   Xếp màu theo đúng bảng thông tin MU: tiêu đề lục, các dòng tuỳ chọn lam
+   nhạt. Không tô nền cả khối — MU để nền chung, chỉ đổi màu chữ, tô nền vào
+   là bảng thành loang lổ khi món có nhiều dòng. */
+.ae-tip__block--exc {
+  border-top: var(--vien-item, 0.5px) solid rgba(110, 231, 135, 0.28);
+}
+
+.ae-tip__exchead {
+  font-size: calc(7.5 * var(--u));
+  letter-spacing: 0.12em;
+  color: var(--rank-excellent);
+  text-shadow: 0 0 calc(4 * var(--u)) rgba(110, 231, 135, 0.45);
+  margin-bottom: calc(1.5 * var(--u));
+}
+
+.ae-tip__excrow {
+  font-size: calc(7.5 * var(--u));
+  line-height: 1.45;
+  color: #9fd4ff;
+  white-space: nowrap;
+}
+
+
+/* ──────────── dòng "Nhãn: giá trị" kiểu bảng thông tin MU ────────────
+   Canh TRÁI, nhãn và giá trị viết liền nhau trên một dòng — không phải kiểu
+   nhãn trái / giá trị phải như bảng chỉ số. Đây là bố cục của bản gốc. */
+.ae-tip__line {
+  font-size: calc(7.5 * var(--u));
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.ae-tip__lk {
+  color: var(--ink-300);
+}
+
+.ae-tip__lv {
+  color: var(--ink-050);
+}
+
+/* Giới hạn lớp nhân vật — vàng, như bản gốc. */
+.ae-tip__block--class {
+  border-top: var(--vien-item, 0.5px) solid rgba(224, 196, 124, 0.26);
+}
+
+.ae-tip__cls {
+  font-size: calc(7.5 * var(--u));
+  line-height: 1.5;
+  color: var(--gold-300);
+  white-space: nowrap;
+}
+
+/* Dòng phép thuật của gậy — lục. */
+.ae-tip__block--magic {
+  border-top: var(--vien-item, 0.5px) solid rgba(110, 231, 135, 0.26);
+}
+
+.ae-tip__magic {
+  font-size: calc(7.5 * var(--u));
+  line-height: 1.5;
+  color: var(--rank-excellent);
+  white-space: nowrap;
+}
