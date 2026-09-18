@@ -1,0 +1,38 @@
+.world-page {
+  display: grid;
+  place-content: center;
+  position: absolute;
+  inset: 0;
+
+  .hud {
+    position: absolute;
+    inset: 0;
+
+    .money {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+    }
+
+    .coords {
+      position: absolute;
+      top: 2rem;
+      left: 1rem;
+    }
+
+    .panels-stack {
+      position: absolute;
+      top: 0;
+      bottom: 82px;
+      right: 0;
+      display: flex;
+      flex-direction: row;
+      gap: 2px;
+    }
+  }
+
+  .world-objects {
+    position: absolute;
+    inset: 0;
+  }
+}
