@@ -21,6 +21,8 @@ import { InteractiveAreaSystem } from './systems/interactiveAreaSystem';
 import { WalkSfxSystem } from './systems/walkSfxSystem';
 import { OfflineSpawnSystem } from '../offline/offlineSpawnSystem';
 import { OfflineCombatSystem } from '../offline/offlineCombatSystem';
+import { CombatSfxSystem } from '../offline/combatSfx';
+import { OfflineNpcSystem } from '../offline/offlineNpcSystem';
 
 const factories: ISystemFactory[] = [
   ModelLoaderSystem,
@@ -39,6 +41,8 @@ const factories: ISystemFactory[] = [
   // này.
   OfflineSpawnSystem,
   OfflineCombatSystem,
+  CombatSfxSystem,
+  OfflineNpcSystem,
   HighlightSystem,
   AnimationSystem,
   AppearanceSystem,

@@ -6,6 +6,29 @@ import type { ISystemFactory } from '../world';
 
 const MUSIC_DELAY = 1;
 
+/**
+ * Bản đồ → nhạc nền.
+ *
+ * Mười hai bản đồ dưới đây là toàn bộ số map có asset trong repo
+ * (World1,2,3,4,5,7,8,9,10,11,34,52 — chỉ số map = số thư mục trừ 1).
+ * Tên nhạc lấy đúng tên file trong assets/game-assets/Music.
+ */
+const NHAC_THEO_MAP: Partial<Record<number, Sounds>> = {
+  [ENUM_WORLD.WD_0LORENCIA]: 'Music/main_theme',
+  [ENUM_WORLD.WD_1DUNGEON]: 'Music/Dungeon',
+  [ENUM_WORLD.WD_2DEVIAS]: 'Music/Devias',
+  [ENUM_WORLD.WD_3NORIA]: 'Music/Noria',
+  [ENUM_WORLD.WD_4LOSTTOWER]: 'Music/lost_tower_a',
+  [ENUM_WORLD.WD_6STADIUM]: 'Music/DuelArena',
+  [ENUM_WORLD.WD_7ATLANSE]: 'Music/atlans',
+  [ENUM_WORLD.WD_8TARKAN]: 'Music/tarkan',
+  [ENUM_WORLD.WD_9DEVILSQUARE]: 'Music/devil_square_intro',
+  [ENUM_WORLD.WD_10ICARUS]: 'Music/icarus',
+  [ENUM_WORLD.WD_33AIDA]: 'Music/Aida',
+  [ENUM_WORLD.WD_51ELBELAND]: 'Music/elbeland',
+};
+
+
 export const BackgroundMusicSystem: ISystemFactory = world => {
   let delay = 0;
 
@@ -31,31 +54,9 @@ export const BackgroundMusicSystem: ISystemFactory = world => {
 
       const map = world.mapIndex;
 
-      let sound: Sounds = 'Music/MuTheme';
-
-      switch (map) {
-        case ENUM_WORLD.WD_0LORENCIA:
-          sound = 'Music/main_theme';
-          break;
-        case ENUM_WORLD.WD_3NORIA:
-          sound = 'Music/Noria';
-          break;
-        case ENUM_WORLD.WD_2DEVIAS:
-          sound = 'Music/Devias';
-          break;
-        case ENUM_WORLD.WD_4LOSTTOWER:
-          sound = 'Music/lost_tower_a';
-          break;
-        case ENUM_WORLD.WD_7ATLANSE:
-          sound = 'Music/atlans';
-          break;
-        case ENUM_WORLD.WD_8TARKAN:
-          sound = 'Music/tarkan';
-          break;
-        case ENUM_WORLD.WD_1DUNGEON:
-          sound = 'Music/Dungeon';
-          break;
-      }
+      /* Nhạc nền theo bản đồ. Chỉ khai những map CÓ thư mục asset trong
+         assets/game-assets, và chỉ dùng file nhạc CÓ trong assets/game-assets/Music. */
+      const sound: Sounds = NHAC_THEO_MAP[map] ?? 'Music/MuTheme';
 
       SoundsManager.loadAndPlaySoundEffect(sound);
 

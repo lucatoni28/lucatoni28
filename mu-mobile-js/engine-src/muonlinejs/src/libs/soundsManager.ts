@@ -103,6 +103,22 @@ export class SoundsManager {
 
       sub && sub.remove();
     });
+
+    /* Chạm trên canvas Babylon mới mở khoá được tiếng. Lớp giao diện phủ kín
+       màn nên cú chạm đầu tiên thường rơi vào nó, và tiếng không bao giờ bật.
+       Nghe thêm ở mức document cho chắc. */
+    const moKhoa = () => {
+      if (this.pageInteracted) {
+        document.removeEventListener('pointerup', moKhoa, true);
+        return;
+      }
+      try {
+        Engine.audioEngine && Engine.audioEngine.unlock();
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    document.addEventListener('pointerup', moKhoa, true);
   }
 
   static async loadSounds() {

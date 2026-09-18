@@ -128,6 +128,9 @@ export type Entity = Partial<{
     layer: HighlightLayer | null;
   };
   interactable: true;
+
+  /** Đánh dấu NPC chơi đơn — xem src/offline/offlineNpcSystem.ts. */
+  npcMark: true;
   keyboardInput: {
     pressedKeys: Set<string>;
   };

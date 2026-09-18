@@ -14,20 +14,16 @@ export type GfxKey =
   | 'setAura'
   | 'itemGlow';
 
-/** Bật sẵn cả bốn: bản dựng này nhắm chất lượng hình cao nhất. */
+/** Bật sẵn TẤT CẢ: bản dựng để thử máy, mở tối đa hiệu ứng. */
 export const GFX_DEFAULT: Record<GfxKey, boolean> = {
   shadow: true,
   sharpen: true,
   dust: true,
   firelight: true,
   setAura: true,
-  /* TẮT SẴN. Đây là lớp tán sáng hậu kỳ (bloom) tôi thêm, không có trong bản
-     gốc. Nó nhoè ánh sáng TRÀN RA NGOÀI đường viền món đồ; nhân vật mặc đủ
-     bộ +7 trở lên là bảy quầng chồng nhau thành một cục vàng, mất cả hình.
-     Hiệu ứng Excellent thật nằm ở shader — xem src/common/itemMaterial.ts,
-     phần "ánh cầu vồng chạy trên viền". Mã lớp này giữ nguyên trong
-     src/gfx/itemGlow.ts, bật lại được trong HỆ THỐNG nếu muốn. */
-  itemGlow: false,
+  /* Tán sáng hậu kỳ, không có trong bản gốc MU. Mặc +7 trở lên thì các quầng
+     chồng nhau và nhân vật ngả vàng. Tắt trong HỆ THỐNG nếu chói. */
+  itemGlow: true,
 };
 
 /**

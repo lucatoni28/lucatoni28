@@ -65185,15 +65185,29 @@ async function getTerrainData(world2, map2) {
     terrainHeight
   );
   const textureNames = getTilesList(map2);
+  const oXam = (sc2, ten) => {
+    const n2 = 2;
+    const px = new Uint8Array(n2 * n2 * 4);
+    px.fill(110);
+    for (let i = 3; i < px.length; i += 4) px[i] = 255;
+    const t2 = RawTexture.CreateRGBATexture(px, n2, n2, sc2, false, false);
+    t2.name = "thieu-" + ten;
+    return t2;
+  };
   const terrainTextures = (await Promise.all(
     textureNames.map(async (t2, i) => {
       const filePath = `World${worldNum}/${t2}.OZJ`;
-      const ozjBytes = await downloadDataBytesBuffer(filePath);
-      return readOJZBufferAsJPEGBuffer(
-        scene2,
-        filePath.replace(".", `_${i}.`),
-        ozjBytes
-      );
+      try {
+        const ozjBytes = await downloadDataBytesBuffer(filePath);
+        return await readOJZBufferAsJPEGBuffer(
+          scene2,
+          filePath.replace(".", `_${i}.`),
+          ozjBytes
+        );
+      } catch (e) {
+        console.warn(`[địa hình] thiếu ${filePath} — thay bằng ô xám`, e);
+        return { Texture: oXam(scene2, filePath) };
+      }
     })
   )).map((t2) => t2.Texture);
   const objsBuffer = await downloadDataBytesBuffer(
@@ -66339,6 +66353,18 @@ class SoundsManager {
       }
       sub && sub.remove();
     });
+    const moKhoa = () => {
+      if (this.pageInteracted) {
+        document.removeEventListener("pointerup", moKhoa, true);
+        return;
+      }
+      try {
+        Engine.audioEngine && Engine.audioEngine.unlock();
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    document.addEventListener("pointerup", moKhoa, true);
   }
   static async loadSounds() {
     while (!this.pageInteracted || !this.scene || !this.effectsTrack || !this.musicTrack) {
@@ -69215,6 +69241,20 @@ const KeyboardInputSystem = (world2) => {
   };
 };
 const MUSIC_DELAY = 1;
+const NHAC_THEO_MAP = {
+  [ENUM_WORLD.WD_0LORENCIA]: "Music/main_theme",
+  [ENUM_WORLD.WD_1DUNGEON]: "Music/Dungeon",
+  [ENUM_WORLD.WD_2DEVIAS]: "Music/Devias",
+  [ENUM_WORLD.WD_3NORIA]: "Music/Noria",
+  [ENUM_WORLD.WD_4LOSTTOWER]: "Music/lost_tower_a",
+  [ENUM_WORLD.WD_6STADIUM]: "Music/DuelArena",
+  [ENUM_WORLD.WD_7ATLANSE]: "Music/atlans",
+  [ENUM_WORLD.WD_8TARKAN]: "Music/tarkan",
+  [ENUM_WORLD.WD_9DEVILSQUARE]: "Music/devil_square_intro",
+  [ENUM_WORLD.WD_10ICARUS]: "Music/icarus",
+  [ENUM_WORLD.WD_33AIDA]: "Music/Aida",
+  [ENUM_WORLD.WD_51ELBELAND]: "Music/elbeland"
+};
 const BackgroundMusicSystem = (world2) => {
   let delay = 0;
   EventBus.on("requestWarp", () => {
@@ -69231,30 +69271,7 @@ const BackgroundMusicSystem = (world2) => {
       if (!world2.terrain) return;
       delay = Infinity;
       const map2 = world2.mapIndex;
-      let sound = "Music/MuTheme";
-      switch (map2) {
-        case ENUM_WORLD.WD_0LORENCIA:
-          sound = "Music/main_theme";
-          break;
-        case ENUM_WORLD.WD_3NORIA:
-          sound = "Music/Noria";
-          break;
-        case ENUM_WORLD.WD_2DEVIAS:
-          sound = "Music/Devias";
-          break;
-        case ENUM_WORLD.WD_4LOSTTOWER:
-          sound = "Music/lost_tower_a";
-          break;
-        case ENUM_WORLD.WD_7ATLANSE:
-          sound = "Music/atlans";
-          break;
-        case ENUM_WORLD.WD_8TARKAN:
-          sound = "Music/tarkan";
-          break;
-        case ENUM_WORLD.WD_1DUNGEON:
-          sound = "Music/Dungeon";
-          break;
-      }
+      const sound = NHAC_THEO_MAP[map2] ?? "Music/MuTheme";
       SoundsManager.loadAndPlaySoundEffect(sound);
       SoundsManager.musicTrack.setVolume(
         SoundsManager.musicVolume
@@ -69377,9 +69394,37 @@ const LORENCIA_SPAWNS = [
   // Hound — cấp 9
 ];
 const DUNGEON_SPAWNS = [{ id: 14, weight: 6 }];
+const TRON_HET = [
+  { id: 3, weight: 4 },
+  { id: 2, weight: 4 },
+  { id: 1, weight: 3 },
+  { id: 14, weight: 3 }
+];
 const SPAWN_TABLE = {
   0: LORENCIA_SPAWNS,
-  1: DUNGEON_SPAWNS
+  // Lorencia
+  1: DUNGEON_SPAWNS,
+  // Hầm ngục
+  2: TRON_HET,
+  // Devias
+  3: TRON_HET,
+  // Noria
+  4: TRON_HET,
+  // Lost Tower
+  6: TRON_HET,
+  // Stadium
+  7: TRON_HET,
+  // Atlans
+  8: TRON_HET,
+  // Tarkan
+  9: TRON_HET,
+  // Devil Square
+  10: TRON_HET,
+  // Icarus
+  33: TRON_HET,
+  // Aida
+  51: TRON_HET
+  // Elbeland
 };
 function pickSpawnId(table) {
   if (table.length === 0) return null;
@@ -69396,7 +69441,7 @@ const POPULATION = 24;
 const RESPAWN_DELAY = 8;
 const MIN_DIST_FROM_PLAYER = 7;
 const MAX_DIST_FROM_PLAYER = 45;
-const MAX_TRIES = 120;
+const MAX_TRIES$1 = 120;
 const OfflineSpawnSystem = (world2) => {
   const query = world2.with("monster", "transform");
   let elapsed = 0;
@@ -69431,7 +69476,7 @@ function randomSpot(world2) {
   const p2 = world2.playerEntity?.transform.pos;
   const px = p2 ? p2.x : TERRAIN_SIZE / 2;
   const pz = p2 ? p2.z : TERRAIN_SIZE / 2;
-  for (let i = 0; i < MAX_TRIES; i++) {
+  for (let i = 0; i < MAX_TRIES$1; i++) {
     const x2 = 1 + (Math.random() * (TERRAIN_SIZE - 2) | 0);
     const y2 = 1 + (Math.random() * (TERRAIN_SIZE - 2) | 0);
     if (!world2.isWalkable(x2, y2)) continue;
@@ -69818,6 +69863,144 @@ function strikeMonster(world2, e, now, mul2 = 1) {
   if (e.highlighted) world2.removeComponent(e, "highlighted");
   grantKill(m2);
 }
+const DANH_TRUNG = [
+  "Sound/eMeleeHit1",
+  "Sound/eMeleeHit2",
+  "Sound/eMeleeHit3",
+  "Sound/eMeleeHit4",
+  "Sound/eMeleeHit5"
+];
+const VUNG_VU_KHI = [
+  "Sound/eBlow1",
+  "Sound/eBlow2",
+  "Sound/eBlow3",
+  "Sound/eBlow4"
+];
+const NGUOI_KEU = [
+  "Sound/pMaleScream1",
+  "Sound/pMaleScream2",
+  "Sound/pMaleScream3"
+];
+const CHI_MANG = "Sound/eCombo";
+const HUT = "Sound/eSwingWeapon1";
+const QUAI_CHET = "Sound/death1";
+const LEN_CAP = "Sound/pLevelUp";
+const NHAT_TIEN = "Sound/pDropMoney";
+const RA_DO = "Sound/pDropItem";
+const CUONG_HOA_XONG = "Sound/eMix";
+const CUONG_HOA_HONG = "Sound/eBreak";
+const NGUOI_CHET = "Sound/pMaleDie";
+function bat(s) {
+  SoundsManager.loadAndPlaySoundEffect(s);
+}
+function batMot(ds) {
+  bat(ds[Math.random() * ds.length | 0]);
+}
+const lanCuoi = /* @__PURE__ */ new Map();
+function quaGan(nhom, cach) {
+  const gio = performance.now();
+  const truoc = lanCuoi.get(nhom) ?? -Infinity;
+  if (gio - truoc < cach) return true;
+  lanCuoi.set(nhom, gio);
+  return false;
+}
+const CombatSfxSystem = () => {
+  EventBus.on("offlineAttack", () => {
+    if (quaGan("vung", 120)) return;
+    batMot(VUNG_VU_KHI);
+  });
+  EventBus.on("offlineHit", ({ kind }) => {
+    if (kind === "miss") {
+      if (quaGan("hut", 150)) return;
+      bat(HUT);
+      return;
+    }
+    if (kind === "hurt") {
+      if (quaGan("dau", 400)) return;
+      batMot(NGUOI_KEU);
+      return;
+    }
+    if (kind === "crit") {
+      if (quaGan("cham", 90)) return;
+      bat(CHI_MANG);
+      return;
+    }
+    if (quaGan("cham", 90)) return;
+    batMot(DANH_TRUNG);
+  });
+  EventBus.on("offlineKill", () => bat(QUAI_CHET));
+  EventBus.on("offlineLevelUp", () => bat(LEN_CAP));
+  EventBus.on("offlinePlayerDied", () => bat(NGUOI_CHET));
+  EventBus.on("offlineLoot", ({ name }) => {
+    bat(name === "TÚI ĐẦY" ? NHAT_TIEN : RA_DO);
+  });
+  EventBus.on("offlineUpgrade", ({ ok: ok2 }) => {
+    bat(ok2 ? CUONG_HOA_XONG : CUONG_HOA_HONG);
+  });
+  return { update: () => {
+  } };
+};
+const NPC_IDS = [226, 236, 240, 247, 249, 251, 254, 255, 257, 371, 375];
+const MAX_TRIES = 200;
+const MIN_CACH_NHAU = 4;
+const MIN_CACH_NGUOI = 5;
+function spotTrongLang(world2, daDung) {
+  const p0 = world2.playerEntity?.transform.pos;
+  for (let i = 0; i < MAX_TRIES; i++) {
+    const x2 = 1 + (Math.random() * (TERRAIN_SIZE - 2) | 0);
+    const y2 = 1 + (Math.random() * (TERRAIN_SIZE - 2) | 0);
+    if (!world2.isWalkable(x2, y2)) continue;
+    if (!isFlagInBinaryMask(world2.getTerrainFlag(x2, y2), TWFlags.SafeZone)) continue;
+    if (p0 && Math.hypot(p0.x - x2, p0.z - y2) < MIN_CACH_NGUOI) continue;
+    if (daDung.some((p2) => Math.hypot(p2.x - x2, p2.y - y2) < MIN_CACH_NHAU)) continue;
+    return { x: x2, y: y2 };
+  }
+  return null;
+}
+const OfflineNpcSystem = (world2) => {
+  const query = world2.with("npcMark", "transform");
+  let daDat = false;
+  EventBus.on("warpCompleted", () => {
+    for (const e of [...query]) world2.remove(e);
+    daDat = false;
+  });
+  return {
+    update: () => {
+      if (!Store.isOffline) return;
+      if (!world2.terrain) return;
+      if (daDat) return;
+      daDat = true;
+      const cho = [];
+      for (const id3 of NPC_IDS) {
+        const modelFactory = ModelFactoryPerId[id3];
+        if (!modelFactory) continue;
+        const spot = spotTrongLang(world2, cho);
+        if (!spot) continue;
+        cho.push(spot);
+        world2.add({
+          worldIndex: world2.mapIndex,
+          npcMark: true,
+          transform: {
+            pos: new Vector3(
+              spot.x,
+              world2.getTerrainHeight(spot.x, spot.y),
+              spot.y
+            ),
+            rot: new Vector3(0, Math.random() * Math.PI * 2, 0),
+            scale: modelFactory.OverrideScale >= 0 ? modelFactory.OverrideScale : 1,
+            posOffset: new Vector3(0.5, 0, 0.5)
+          },
+          modelFactory,
+          monsterAnimation: { action: MonsterActionType.Stop1 },
+          visibility: { lastChecked: 0, state: "hidden" },
+          screenPosition: { worldOffsetZ: 2.5, x: 0, y: 0 },
+          objectNameInWorld: monsterById(id3)?.Name ?? `NPC ${id3}`,
+          interactable: true
+        });
+      }
+    }
+  };
+};
 const factories = [
   ModelLoaderSystem,
   PointerInputSystem,
@@ -69835,6 +70018,8 @@ const factories = [
   // này.
   OfflineSpawnSystem,
   OfflineCombatSystem,
+  CombatSfxSystem,
+  OfflineNpcSystem,
   HighlightSystem,
   AnimationSystem,
   AppearanceSystem,
@@ -70089,7 +70274,7 @@ function createSetAura(world2) {
     chieu: Math.random() < 0.3 ? -1 : 1,
     caoDao: 0.1 + Math.random() * 0.28
   }));
-  function bat() {
+  function bat2() {
     if (mesh) return true;
     const scene2 = world2.scene;
     const p2 = CreatePlane("gfxSetAura", { size: 1 }, scene2);
@@ -70117,7 +70302,7 @@ function createSetAura(world2) {
     mesh = null;
   }
   return {
-    bat,
+    bat: bat2,
     tat,
     get on() {
       return !!mesh;
@@ -70163,7 +70348,7 @@ function createShadows(world2) {
   const m2 = Matrix.Identity();
   let lechX = 0;
   let lechZ = 0;
-  function bat() {
+  function bat2() {
     if (mat) return true;
     const scene2 = world2.scene;
     const p2 = CreatePlane("gfxBlob", { size: 1 }, scene2);
@@ -70212,7 +70397,7 @@ function createShadows(world2) {
   }
   let hen = 0;
   return {
-    bat,
+    bat: bat2,
     tat,
     get on() {
       return !!mat;
@@ -70263,7 +70448,7 @@ function createItemGlow(world2) {
   const scene2 = world2.scene;
   let lop = null;
   const dangCo = /* @__PURE__ */ new Set();
-  function bat() {
+  function bat2() {
     if (lop) return true;
     lop = new GlowLayer("gfxItemGlow", scene2, {
       // Nửa độ phân giải là đủ: quầng sáng vốn nhoè, không ai soi từng điểm ảnh.
@@ -70310,7 +70495,7 @@ function createItemGlow(world2) {
     }
   }
   return {
-    bat,
+    bat: bat2,
     tat,
     quet,
     get soMon() {
@@ -70324,13 +70509,9 @@ const GFX_DEFAULT = {
   dust: true,
   firelight: true,
   setAura: true,
-  /* TẮT SẴN. Đây là lớp tán sáng hậu kỳ (bloom) tôi thêm, không có trong bản
-     gốc. Nó nhoè ánh sáng TRÀN RA NGOÀI đường viền món đồ; nhân vật mặc đủ
-     bộ +7 trở lên là bảy quầng chồng nhau thành một cục vàng, mất cả hình.
-     Hiệu ứng Excellent thật nằm ở shader — xem src/common/itemMaterial.ts,
-     phần "ánh cầu vồng chạy trên viền". Mã lớp này giữ nguyên trong
-     src/gfx/itemGlow.ts, bật lại được trong HỆ THỐNG nếu muốn. */
-  itemGlow: false
+  /* Tán sáng hậu kỳ, không có trong bản gốc MU. Mặc +7 trở lên thì các quầng
+     chồng nhau và nhân vật ngả vàng. Tắt trong HỆ THỐNG nếu chói. */
+  itemGlow: true
 };
 function createGfx(world2) {
   const scene2 = world2.scene;

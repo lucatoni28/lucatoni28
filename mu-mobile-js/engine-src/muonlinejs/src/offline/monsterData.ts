@@ -60,10 +60,34 @@ export const LORENCIA_SPAWNS = [
 
 export const DUNGEON_SPAWNS = [{ id: 14, weight: 6 }];
 
-/** Bảng đẻ theo chỉ số bản đồ; map chưa khai báo thì không đẻ con nào. */
+/** Trộn cả bốn con có mesh — dùng cho những map ngoài Lorencia và Hầm ngục. */
+const TRON_HET = [
+  { id: 3, weight: 4 },
+  { id: 2, weight: 4 },
+  { id: 1, weight: 3 },
+  { id: 14, weight: 3 },
+];
+
+/**
+ * Bảng đẻ theo chỉ số bản đồ. Khai đủ 12 map CÓ asset trong repo.
+ *
+ * Con nào thật sự thuộc map nào là dữ liệu của server MU, không có trong repo
+ * này — nên ngoài Lorencia và Hầm ngục thì dùng chung một bảng trộn cả bốn con
+ * đã có mesh. Thêm mesh vào ModelFactoryPerId là mở rộng được ngay.
+ */
 export const SPAWN_TABLE: Record<number, { id: number; weight: number }[]> = {
-  0: LORENCIA_SPAWNS,
-  1: DUNGEON_SPAWNS,
+  0: LORENCIA_SPAWNS,   // Lorencia
+  1: DUNGEON_SPAWNS,    // Hầm ngục
+  2: TRON_HET,          // Devias
+  3: TRON_HET,          // Noria
+  4: TRON_HET,          // Lost Tower
+  6: TRON_HET,          // Stadium
+  7: TRON_HET,          // Atlans
+  8: TRON_HET,          // Tarkan
+  9: TRON_HET,          // Devil Square
+  10: TRON_HET,         // Icarus
+  33: TRON_HET,         // Aida
+  51: TRON_HET,         // Elbeland
 };
 
 /** Bốc một id theo trọng số. */

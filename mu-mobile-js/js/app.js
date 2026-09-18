@@ -274,6 +274,9 @@ export async function startApp() {
         if (map !== mapDangChoi) {
           releaseMap(mapDangChoi);
           mapDangChoi = map;
+          const ten = WORLD_NAMES[map] || `Bản đồ ${map}`;
+          hud.pushLog(`Bạn tiến vào ${ten}.`, 'info');
+          hud.flash(ten.toUpperCase());
         }
         // Đổi bản đồ là engine dựng lại camera, phải áp lại góc nhìn ĐANG CHỌN.
         bridge.applyGfx();

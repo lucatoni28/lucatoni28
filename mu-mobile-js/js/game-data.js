@@ -27,15 +27,21 @@ export const CHAR_CLASS = {
 };
 
 /** ENUM_WORLD — src/common/types.ts */
+/* Chỉ số thế giới của engine (ENUM_WORLD). Chỉ liệt kê những map CÓ asset
+   trong assets/game-assets: World<n> ứng với chỉ số n − 1. */
 export const WORLD = {
-  LORENCIA: 0,
-  DUNGEON: 1,
-  DEVIAS: 2,
-  NORIA: 3,
-  LOSTTOWER: 4,
-  ATLANS: 7,
-  TARKAN: 8,
-  ICARUS: 10,
+  LORENCIA: 0,     // World1
+  DUNGEON: 1,      // World2
+  DEVIAS: 2,       // World3
+  NORIA: 3,        // World4
+  LOSTTOWER: 4,    // World5
+  STADIUM: 6,      // World7
+  ATLANS: 7,       // World8
+  TARKAN: 8,       // World9
+  DEVILSQUARE: 9,  // World10
+  ICARUS: 10,      // World11
+  AIDA: 33,        // World34
+  ELBELAND: 51,    // World52
 };
 
 /**
@@ -86,15 +92,21 @@ export const HEROES = [
  * Điểm dịch chuyển — đúng danh sách warp của engine, kèm cấp tối thiểu và
  * giá Zen thật. Tên bản đồ giữ nguyên gốc MU.
  */
+/* Bản dựng để thử máy: MỞ HẾT, không khoá cấp, không mất phí. Cả 12 bản đồ
+   có asset đều đi được ngay. Đổi minLvl/cost ở đây là khoá lại. */
 export const WARP_POINTS = [
-  { id: WORLD.LORENCIA, name: 'Lorencia', vi: 'Đồng bằng Lorencia', minLvl: 10, cost: 2000 },
-  { id: WORLD.NORIA, name: 'Noria', vi: 'Rừng Noria', minLvl: 10, cost: 2000 },
-  { id: WORLD.DEVIAS, name: 'Devias', vi: 'Băng nguyên Devias', minLvl: 20, cost: 2000 },
-  { id: WORLD.DUNGEON, name: 'Dungeon', vi: 'Hầm ngục', minLvl: 30, cost: 3000 },
-  { id: WORLD.LOSTTOWER, name: 'Lost Tower', vi: 'Tháp Mất Tích', minLvl: 50, cost: 5000 },
-  { id: WORLD.ATLANS, name: 'Atlans', vi: 'Thủy cung Atlans', minLvl: 70, cost: 4000 },
-  { id: WORLD.TARKAN, name: 'Tarkan', vi: 'Sa mạc Tarkan', minLvl: 140, cost: 8000 },
-  { id: WORLD.ICARUS, name: 'Icarus', vi: 'Không đảo Icarus', minLvl: 170, cost: 10000 },
+  { id: WORLD.LORENCIA, name: 'Lorencia', vi: 'Đồng bằng Lorencia', minLvl: 0, cost: 0 },
+  { id: WORLD.NORIA, name: 'Noria', vi: 'Rừng Noria', minLvl: 0, cost: 0 },
+  { id: WORLD.DEVIAS, name: 'Devias', vi: 'Băng nguyên Devias', minLvl: 0, cost: 0 },
+  { id: WORLD.DUNGEON, name: 'Dungeon', vi: 'Hầm ngục', minLvl: 0, cost: 0 },
+  { id: WORLD.LOSTTOWER, name: 'Lost Tower', vi: 'Tháp Mất Tích', minLvl: 0, cost: 0 },
+  { id: WORLD.STADIUM, name: 'Stadium', vi: 'Đấu trường', minLvl: 0, cost: 0 },
+  { id: WORLD.ATLANS, name: 'Atlans', vi: 'Thủy cung Atlans', minLvl: 0, cost: 0 },
+  { id: WORLD.TARKAN, name: 'Tarkan', vi: 'Sa mạc Tarkan', minLvl: 0, cost: 0 },
+  { id: WORLD.DEVILSQUARE, name: 'Devil Square', vi: 'Quảng trường Quỷ', minLvl: 0, cost: 0 },
+  { id: WORLD.ICARUS, name: 'Icarus', vi: 'Không đảo Icarus', minLvl: 0, cost: 0 },
+  { id: WORLD.AIDA, name: 'Aida', vi: 'Thánh địa Aida', minLvl: 0, cost: 0 },
+  { id: WORLD.ELBELAND, name: 'Elbeland', vi: 'Rừng Elbeland', minLvl: 0, cost: 0 },
 ];
 
 /**

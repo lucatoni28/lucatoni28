@@ -67,17 +67,36 @@ export async function getTerrainData(world: World, map: ENUM_WORLD) {
 
   const textureNames = getTilesList(map);
 
+  /** Ô 2×2 xám, dùng khi thiếu file tile. Không đọc file nào. */
+  const oXam = (sc: Scene, ten: string) => {
+    const n = 2;
+    const px = new Uint8Array(n * n * 4);
+    px.fill(110);
+    for (let i = 3; i < px.length; i += 4) px[i] = 255;
+    const t = RawTexture.CreateRGBATexture(px, n, n, sc, false, false);
+    t.name = 'thieu-' + ten;
+    return t;
+  };
+
   const terrainTextures = (
     await Promise.all(
       textureNames.map(async (t, i) => {
         const filePath = `World${worldNum}/${t}.OZJ`;
-        const ozjBytes = await downloadDataBytesBuffer(filePath);
-
-        return readOJZBufferAsJPEGBuffer(
-          scene,
-          filePath.replace('.', `_${i}.`),
-          ozjBytes
-        );
+        try {
+          const ozjBytes = await downloadDataBytesBuffer(filePath);
+          return await readOJZBufferAsJPEGBuffer(
+            scene,
+            filePath.replace('.', `_${i}.`),
+            ozjBytes
+          );
+        } catch (e) {
+          /* Bộ asset gốc thiếu vài tile (World7 và World52 không có
+             TileGround01.OZJ). Trước đây một file hụt là Promise.all đổ, địa
+             hình không dựng nổi và cả bản đồ trắng trơn. Nay thay bằng một ô
+             xám và ghi rõ thiếu file nào. */
+          console.warn(`[địa hình] thiếu ${filePath} — thay bằng ô xám`, e);
+          return { Texture: oXam(scene, filePath) };
+        }
       })
     )
   ).map(t => t.Texture);
