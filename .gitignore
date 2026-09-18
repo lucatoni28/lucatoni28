@@ -1,2 +1,7 @@
-mu-mobile/
+# Bản sao y hệt thư mục public/ ở gốc repo (đã đối chiếu diff -rq: không lệch
+# file nào). Giữ trên đĩa để mở thẳng mu-mobile/index.html lúc dựng, nhưng
+# không commit lần hai — commit là repo phình từ 599 MB lên 1,2 GB.
+mu-mobile/public/
+
+# Gói zip ba file, dựng lại được bất cứ lúc nào bằng tools/build-ios.mjs
 mu-mobile.zip
