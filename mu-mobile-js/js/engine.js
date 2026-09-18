@@ -6909,7 +6909,7 @@ var ul = { bundleType: tl.bundleType, version: tl.version, rendererPackageName: 
   a = Zb(a);
   return null === a ? null : a.stateNode;
 }, findFiberByHostInstance: tl.findFiberByHostInstance || jl, findHostInstancesForRefresh: null, scheduleRefresh: null, scheduleRoot: null, setRefreshHandler: null, getCurrentFiber: null, reconcilerVersion: "18.3.1-next-f1338f8080-20240426" };
-if ("undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__) {
+if (false) {   // móc React DevTools — đã vô hiệu
   var vl = __REACT_DEVTOOLS_GLOBAL_HOOK__;
   if (!vl.isDisabled && vl.supportsFiber) try {
     kc = vl.inject(ul), lc = vl;
@@ -6985,9 +6985,7 @@ reactDom_production_min.unstable_renderSubtreeIntoContainer = function(a, b, c, 
 };
 reactDom_production_min.version = "18.3.1-next-f1338f8080-20240426";
 function checkDCE() {
-  if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") {
-    return;
-  }
+  return;   // móc React DevTools — đã vô hiệu
   try {
     __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
   } catch (err) {
@@ -11071,7 +11069,7 @@ function getSelf() {
     die("MobX requires global '" + m2 + "' to be available or polyfilled");
   }
 });
-if (typeof __MOBX_DEVTOOLS_GLOBAL_HOOK__ === "object") {
+if (false) {   // móc MobX DevTools — đã vô hiệu
   __MOBX_DEVTOOLS_GLOBAL_HOOK__.injectMobx({
     spy,
     extras: {
@@ -11553,7 +11551,6 @@ function muAssets() {
   return typeof window !== "undefined" ? window.MU_ASSETS : void 0;
 }
 function resolveUrlToDataFolder(url) {
-  if (url.startsWith("http://") || url.startsWith("https://")) return url;
   if (url.startsWith("base64:")) return url;
   if (url.startsWith("/") || url.startsWith(".")) {
     url = url.substring(1);
@@ -30672,6 +30669,19 @@ class LocalStorage {
     }
   }
 }
+const STCPackets = [...ConnectServerPackets, ...ServerToClientPackets].filter((p2) => p2.Direction === "ServerToClient");
+const packetsCacheByCode = [];
+STCPackets.forEach((p2) => {
+  const code = p2.Code;
+  if (packetsCacheByCode[code] == null) {
+    packetsCacheByCode[code] = [p2];
+  } else {
+    packetsCacheByCode[code].push(p2);
+  }
+});
+function createSocket(_opts) {
+  throw new Error("Bản này chỉ chơi đơn: đã gỡ lớp kết nối máy chủ.");
+}
 function mitt(n2) {
   return { all: n2 = n2 || /* @__PURE__ */ new Map(), on: function(t2, e) {
     var i = n2.get(t2);
@@ -30689,92 +30699,6 @@ function mitt(n2) {
   } };
 }
 const EventBus = mitt();
-const STCPackets = [...ConnectServerPackets, ...ServerToClientPackets].filter((p2) => p2.Direction === "ServerToClient");
-const packetsCacheByCode = [];
-STCPackets.forEach((p2) => {
-  const code = p2.Code;
-  if (packetsCacheByCode[code] == null) {
-    packetsCacheByCode[code] = [p2];
-  } else {
-    packetsCacheByCode[code].push(p2);
-  }
-});
-const HEADERS = /* @__PURE__ */ new Set([193, 194, 195, 196]);
-function createSocket({ wsAddress, tcpIP, tcpPort }) {
-  const LOG_PREFIX = `[${tcpIP}:${tcpPort}]`;
-  const decryptor = new SimpleModulusDecryptor();
-  decryptor.decryptionKeys = SimpleModulusDecryptor.DefaultClientKey;
-  const socket = new WebSocket(
-    `${wsAddress}?host=${tcpIP}&port=${tcpPort}`
-  );
-  socket.binaryType = "arraybuffer";
-  let bytes = new Uint8Array(0);
-  function removePacketAndGoNext(length) {
-    bytes = bytes.slice(length);
-    if (bytes.byteLength > 0) {
-      handlePacketsQueue();
-    }
-  }
-  function handlePacketsQueue() {
-    if (bytes.length < 1) return;
-    const packetType = bytes[0];
-    if (!HEADERS.has(packetType)) {
-      console.error(`${LOG_PREFIX}NOT_MU_PACKET: 0x${byteToString(packetType)}`);
-      if (packetType === 137 || packetType === 107) {
-        console.log(`${LOG_PREFIX}`, bytes);
-        return;
-      }
-    }
-    const packetHeaderSize = getSizeOfPacketType(packetType);
-    let packet = new DataView(bytes.buffer, 0, 3);
-    const length = getPacketSize(bytes);
-    packet = new DataView(bytes.buffer, 0, length);
-    if (packetType >= 195) {
-      const [s, decryptedPacket] = decryptor.Decrypt(new Uint8Array(packet.buffer, 0, length));
-      if (!s) {
-        console.error(`${LOG_PREFIX} can't decrypt packet`);
-        removePacketAndGoNext(length);
-        return;
-      } else {
-        packet = new DataView(decryptedPacket.buffer);
-      }
-    }
-    const codeIndex = packetHeaderSize === 3 ? 3 : 2;
-    const packetCode = packet.getUint8(codeIndex);
-    const subCode = packet.getUint8(codeIndex + 1);
-    const packetsByCode = packetsCacheByCode[packetCode];
-    const pDef = packetsByCode.find((p2) => p2.SubCode == null || p2.SubCode === subCode);
-    if (!pDef) {
-      console.error(`${LOG_PREFIX}no packet: 0x` + byteToString(packetCode));
-      removePacketAndGoNext(length);
-      return;
-    }
-    console.log(
-      `${LOG_PREFIX}[${pDef.name}][${pDef.HeaderType}]0x${byteToString(pDef.Code)}${pDef.SubCode != null ? `(0x${byteToString(pDef.SubCode)})` : ""} lng:${length}`
-    );
-    EventBus.emit(pDef.Name, packet);
-    removePacketAndGoNext(length);
-  }
-  socket.addEventListener("message", (event) => {
-    const buffer = event.data;
-    const newBytes = new Uint8Array(buffer);
-    bytes = new Uint8Array([...bytes, ...newBytes]);
-    handlePacketsQueue();
-  });
-  socket.addEventListener("open", (event) => {
-    console.log(`${LOG_PREFIX}opened:`, event);
-    EventBus.emit("wsOpened", { socket });
-  });
-  socket.addEventListener("close", (event) => {
-    console.log(`${LOG_PREFIX}closed:`, event);
-    EventBus.emit("wsClosed", { socket });
-  });
-  socket.addEventListener("error", (event) => {
-    console.log(`${LOG_PREFIX}error:`, event);
-    EventBus.emit("wsError", { socket, error: event.error });
-  });
-  return { socket };
-}
 class InventoryConstants {
   /// <summary>
   /// The first equippable item slot index.
@@ -62722,10 +62646,6 @@ const Store = new class _Store {
     testPlayer.objectNameInWorld = "TestPlayer";
     EventBus.emit("requestWarp", { map: ENUM_WORLD.WD_0LORENCIA });
   }
-  playOnline() {
-    this.uiState = 1;
-    this.connectToConnectServer();
-  }
   setTestItems() {
     const DragonSetIndex = 1;
     Store.playerData.items[InventoryConstants.HelmSlot] = {
@@ -62856,9 +62776,7 @@ const Store = new class _Store {
   async connectToGameServer(ip, port) {
     const config = this.config;
     const { socket } = createSocket({
-      wsAddress: `${config.wsHost ?? WS_HOST}:${config.wsPort ?? WS_PORT}`,
-      tcpIP: ip,
-      tcpPort: port
+      wsAddress: `${config.wsHost ?? WS_HOST}:${config.wsPort ?? WS_PORT}`
     });
     this.gsSocket = socket;
     this.encryptor = new SimpleModulusEncryptor();
@@ -64192,10 +64110,7 @@ const Debug = observer(() => {
   ] });
 });
 const PreloaderPage = () => {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "preloader-page", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "buttons", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => Store.playOffline(), children: "Play Offline" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => Store.playOnline(), children: "Play Online" })
-  ] }) });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "preloader-page", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "buttons", children: /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => Store.playOffline(), children: "Play Offline" }) }) });
 };
 const CurrentPage = observer(() => {
   const state = Store.uiState;
@@ -64227,33 +64142,7 @@ const App = observer(() => {
   ] });
 });
 async function addInspectorForScene(scene2) {
-  const switchDebugLayer = () => {
-    if (scene2.debugLayer.isVisible()) {
-      scene2.debugLayer.hide();
-    } else {
-      scene2.debugLayer.show({ overlay: true });
-    }
-  };
   window.addEventListener("keydown", async (ev) => {
-    if (ev.shiftKey && ev.ctrlKey && ev.altKey && ev.keyCode === 73) {
-      const debuggerScript = document.querySelector("script[inspector]");
-      if (!debuggerScript) {
-        console.log(`Start loading inspector...`);
-        const s = document.createElement("script");
-        s.setAttribute("inspector", "true");
-        s.src = "assets/js/babylon.inspector.bundle.js";
-        s.onload = () => {
-          console.log(`Inspector loaded!`);
-          switchDebugLayer();
-        };
-        s.onerror = () => {
-          console.log(`Inspector failed to load`);
-        };
-        document.body.appendChild(s);
-        return;
-      }
-      switchDebugLayer();
-    }
   });
 }
 function createCanvas() {
@@ -64326,7 +64215,7 @@ class TestScene extends Scene {
     this.autoClear = true;
     this.clearColor = new Color4(0, 0, 0, 1);
     this.ambientColor = new Color3(1, 1, 1);
-    addInspectorForScene(this);
+    addInspectorForScene();
     const light2 = new DirectionalLight(
       "DirectionalLight2",
       new Vector3(0, 1, -2),

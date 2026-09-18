@@ -1,0 +1,21 @@
+.notification {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  .message {
+    font-size: 14px;
+    color: #333;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #f0f0f0da;
+
+    &.error {
+      background-color: #ffccccda;
+      color: #d8000c;
+    }
+  }
+}

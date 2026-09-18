@@ -15,8 +15,8 @@ không sinh mã.
 | `ui/` | 9 ảnh giao diện |
 | `icons/` | 4 icon vật phẩm đã cắt viền |
 | `assets/` | 599 MB asset game — 11.996 file |
-| `engine-src/` | nguồn engine đã sửa, để dựng lại `js/engine.js` |
-| `tools/` | script sinh bảng kê, cắt icon, tải phông |
+| `engine-src/` | nguồn đầy đủ của engine, đã vá sẵn |
+| `tools/` | script dựng engine, sinh bảng kê, cắt icon |
 
 ## Nguồn nạp
 
@@ -38,8 +38,23 @@ nguồn. Đã quét cả `js/`: không còn một địa chỉ mạng nào trong
 2. `engine.js` dựng cảnh, đặt `window.__store`
 3. `app.js` dựng giao diện
 
+## Không có gì nạp từ ngoài
+
+- Không WebSocket, không EventSource, không sendBeacon, không service worker.
+- Không cookie, không indexedDB. `localStorage` dùng đúng một khoá `mu.save`
+  cho bản lưu game — hiện ngay trên màn khởi đầu, không gửi đi đâu.
+- Không móc React DevTools, không móc MobX DevTools.
+- Lớp kết nối máy chủ MU đã gỡ khỏi nguồn engine, không phải chặn.
+- Nhật ký gỡ lỗi chỉ giữ trong bộ nhớ, mặc định TẮT, bật bằng `?debug=1`.
+
 ## Dựng lại engine
 
-`js/engine.js` và `js/babylon.js` là bản dựng từ `afrokick/muonlinejs` đã vá.
-Cách dựng lại nằm ở `engine-src/README.md`. Dựng với `minify: false` — bản
-trong repo này là bản không nén.
+Nguồn engine nằm ngay trong `engine-src/muonlinejs/`, không phải clone từ đâu.
+
+```bash
+cd engine-src/muonlinejs && bun install
+cd ../.. && node tools/dung-engine.mjs
+```
+
+`bun install` là bước duy nhất còn cần mạng. Script dựng tự kiểm: còn địa chỉ
+mạng hay còn `new WebSocket` trong mã chạy là báo lỗi và dừng.

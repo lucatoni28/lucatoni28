@@ -1,19 +1,7 @@
-// Lớp gỡ lỗi. PHẢI nằm đầu bundle và tự cài ngay khi nạp.
+// Lớp gỡ lỗi. Giữ nhật ký TRONG BỘ NHỚ để hiện lên màn hình.
+// Không gửi đi đâu, không ghi vào trình duyệt.
 //
-// VÌ SAO CẦN: chơi trên iPhone qua JSAnywhere thì không mở được bảng điều khiển
-// trình duyệt. Hỏng cái gì là chịu, không biết hỏng ở đâu. Lớp này giữ lại mọi
-// dòng nhật ký trong bộ nhớ để xuất ra chép gửi đi.
-//
-// VÌ SAO PHẢI ĐẦU BUNDLE: lỗi nặng nhất là lỗi lúc khởi động — engine chưa
-// dựng, giao diện chưa có. Cài muộn một nhịp là mất đúng dòng cần nhất.
-//
-// Bật/tắt, theo thứ tự ưu tiên:
-//   ?debug=1 hoặc ?debug=0 trên URL
-//   window.MU_DEBUG đặt trong index.html
-//   localStorage 'mu.debug'
-//   mặc định: BẬT (bản này đang trong lúc dựng)
-
-const KHOA = 'mu.debug';
+// Mặc định TẮT. Bật bằng ?debug=1 trên URL, hoặc window.MU_DEBUG = true.
 
 /** Giữ tối đa bấy nhiêu dòng. Vượt thì bỏ dòng cũ nhất. */
 const MAX = 800;
@@ -29,14 +17,7 @@ function batDau() {
   if (typeof window !== 'undefined' && typeof window.MU_DEBUG === 'boolean') {
     return window.MU_DEBUG;
   }
-  try {
-    const s = localStorage.getItem(KHOA);
-    if (s === '1') return true;
-    if (s === '0') return false;
-  } catch {
-    /* localStorage bị chặn */
-  }
-  return true;
+  return false;
 }
 
 const t0 = Date.now();
@@ -111,11 +92,6 @@ export const DBG = {
 
   setOn(v) {
     this.on = !!v;
-    try {
-      localStorage.setItem(KHOA, v ? '1' : '0');
-    } catch {
-      /* bỏ qua */
-    }
     this.info('gỡ lỗi', v ? 'BẬT' : 'TẮT');
   },
 
@@ -135,7 +111,6 @@ export const DBG = {
     } catch {
       m.push('trang          (không đọc được)');
     }
-    m.push(`trình duyệt    ${navigator.userAgent}`);
     m.push(`màn            ${innerWidth}×${innerHeight} · DPR ${devicePixelRatio}`);
 
     const A = typeof window !== 'undefined' ? window.MU_ASSETS : null;

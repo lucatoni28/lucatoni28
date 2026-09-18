@@ -1,0 +1,47 @@
+.maps-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-family: monospace;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+
+  .maps-list-title {
+    color: #ffd700;
+    text-align: center;
+  }
+
+  table {
+    margin: 20px 10px;
+    border-collapse: collapse;
+
+    th,
+    td {
+      padding: 0 10px;
+      text-align: center;
+    }
+
+    th {
+      color: #74a0e4;
+    }
+
+    tbody tr {
+      &:hover {
+        background-color: #828013c4;
+      }
+    }
+  }
+
+  .close-button {
+    background-color: #ff0000aa;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 0;
+  }
+}
