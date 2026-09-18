@@ -1,0 +1,12 @@
+# Không đưa thư mục nguồn lên site đã dựng.
+#
+# VÌ SAO: mu-mobile/ chứa NGUYÊN LIỆU dựng, không phải sản phẩm. Trong đó
+# js/babylon.js và js/engine.js là bản dựng thô chưa qua bước quét địa chỉ của
+# tools/build-ios.mjs, nên còn chuỗi cdn.babylonjs.com, unpkg.com, reactjs.org.
+# Không file nào được index.html nạp lúc chạy, nhưng để Vercel phục vụ thì
+# chúng vẫn nằm công khai trên site — trái với yêu cầu "mọi đường dẫn nạp src
+# phải nằm trong repo này".
+#
+# Nguồn vẫn ở nguyên trong git, chỉ là không lên site. Muốn dựng lại thì clone
+# repo về là có đủ.
+mu-mobile/
