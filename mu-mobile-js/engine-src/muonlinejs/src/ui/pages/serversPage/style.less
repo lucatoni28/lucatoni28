@@ -1,0 +1,41 @@
+.servers-page {
+  margin: 0.7rem 0.75rem;
+  display: grid;
+  place-content: center;
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
+
+.server-item {
+  pointer-events: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid #888;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1.15rem;
+  color: #fff;
+  transition: background 0.2s;
+  margin-bottom: 0.15rem;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.12);
+}
+
+.server-item:hover {
+  background: rgba(60, 60, 60, 0.75);
+}
+
+.server-name {
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.server-load {
+  font-family: monospace;
+  font-size: 1rem;
+  margin-left: 1.5rem;
+}

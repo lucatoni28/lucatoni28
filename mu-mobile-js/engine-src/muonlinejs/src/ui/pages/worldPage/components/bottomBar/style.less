@@ -1,0 +1,191 @@
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  @icon-size: 52px;
+  @exp-bar-height: 8px;
+  @dark-fill-color: #0a0a0a;
+  @exp-fill-color: #66d914;
+
+  .vertical-bar {
+    position: relative;
+
+    .bg {
+      position: absolute;
+      inset: 0;
+      background-color: #333;
+      border-radius: 2px;
+      border: 2px solid #000;
+    }
+
+    .fill {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+    }
+
+    .current {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: #fff;
+      font-size: 12px;
+    }
+  }
+
+  .hp-bar {
+    @fill-color: #e00101;
+    .fill {
+      background: linear-gradient(
+        to right,
+        @dark-fill-color,
+        @fill-color,
+        @fill-color,
+        @dark-fill-color
+      );
+    }
+  }
+
+  .mp-bar {
+    @fill-color: #0000ff;
+    .fill {
+      background: linear-gradient(
+        to right,
+        @dark-fill-color,
+        @fill-color,
+        @fill-color,
+        @dark-fill-color
+      );
+    }
+  }
+
+  .sd-bar {
+    @fill-color: #ffa500;
+    .fill {
+      background: linear-gradient(
+        to right,
+        @dark-fill-color,
+        @fill-color,
+        @fill-color,
+        @dark-fill-color
+      );
+    }
+  }
+
+  .ag-bar {
+    @fill-color: #9400d3;
+    .fill {
+      background: linear-gradient(
+        to right,
+        @dark-fill-color,
+        @fill-color,
+        @fill-color,
+        @dark-fill-color
+      );
+    }
+  }
+
+  .panel {
+    display: grid;
+    grid-template-columns: 8fr 2fr 1fr 12fr 1fr 2fr 8fr;
+    grid-template-rows: min-content;
+    gap: 1px;
+
+    .consumable-items {
+      display: flex;
+      justify-self: end;
+
+      .consumable-item {
+        position: relative;
+        width: @icon-size;
+        height: @icon-size;
+
+        border: 2px solid #333;
+        border-radius: 4px;
+
+        background: linear-gradient(to bottom, #0a0a0a, #666);
+
+        .item-icon {
+          transform: scale(2);
+        }
+
+        .hot-key {
+          position: absolute;
+          top: -6px;
+          left: -1px;
+          color: #ffd700;
+          text-shadow: 0 0 2px #000;
+          font-size: 16px;
+        }
+
+        .count {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          color: #fff;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .skills {
+      justify-self: center;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1px;
+
+      font-size: 8px;
+    }
+
+    .buttons {
+      justify-self: start;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+
+      font-size: 8px;
+    }
+  }
+
+  .exp-bar {
+    position: relative;
+    height: @exp-bar-height;
+    background-color: #555;
+
+    .fill {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(
+        to top,
+        @dark-fill-color,
+        @exp-fill-color,
+        @exp-fill-color,
+        @dark-fill-color
+      );
+    }
+
+    .value {
+      position: absolute;
+      right: 1px;
+      top: -@exp-bar-height;
+      color: #fff;
+      font-size: 12px;
+    }
+  }
+}
