@@ -1,0 +1,68 @@
+.character-info {
+  background-color: #333;
+  pointer-events: auto;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 2px solid #000;
+  color: #fff;
+  font-size: 14px;
+  height: 100%;
+
+  @yellow-color: #ff0;
+
+  .nickname {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: #0ff;
+  }
+
+  .level {
+    color: @yellow-color;
+  }
+
+  .level-points {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .status {
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+  }
+
+  .stats {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .stat {
+      display: flex;
+      align-items: center;
+      border-radius: 8px;
+      background-color: #626262;
+      gap: 8px;
+
+      .label {
+        width: 6ch;
+        text-align: center;
+        color: @yellow-color;
+      }
+
+      .value {
+        width: 10ch;
+        text-align: center;
+        color: @yellow-color;
+        background-color: #000;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  .attribute-value {
+    font-size: 12px;
+  }
+}
